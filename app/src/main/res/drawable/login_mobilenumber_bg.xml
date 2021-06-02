@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android" >
+    <item>
+        <shape>
+            <padding
+                android:bottom="1dp"
+
+                android:right="1dp"
+                android:top="1dp" />
+            <corners
+                android:bottomRightRadius="@dimen/marign10dp"
+                android:topRightRadius="@dimen/marign10dp"
+                />
+
+            <solid android:color="#05DCDCDC" />
+
+        </shape>
+    </item>
+    <item>
+        <shape>
+            <padding
+                android:bottom="1dp"
+                android:right="1dp"
+                android:top="1dp" />
+
+
+            <corners
+                android:bottomRightRadius="@dimen/marign10dp"
+                android:topRightRadius="@dimen/marign10dp"
+                />
+            <solid android:color="#05DCDCDC" />
+
+
+        </shape>
+    </item>
+    <item>
+        <shape>
+            <padding
+                android:bottom="1dp"
+                android:right="1dp"
+                android:top="1dp" />
+
+            <corners
+                android:bottomRightRadius="@dimen/marign10dp"
+                android:topRightRadius="@dimen/marign10dp"
+                />
+
+            <solid android:color="#05DCDCDC" />
+
+
+        </shape>
+    </item>
+
+    <item>
+        <shape>
+            <solid
+                android:color="@color/white"/>
+            <corners
+                android:bottomRightRadius="@dimen/marign10dp"
+                android:topRightRadius="@dimen/marign10dp"
+                />
+            <stroke
+                android:width="2dp"
+                android:color="@color/white"></stroke>
+
+        </shape>
+    </item>
+
+</layer-list>

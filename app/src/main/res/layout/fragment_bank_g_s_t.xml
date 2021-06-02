@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".ui.profile.profile.MyProfileFragment">
+
+    <TextView
+        android:id="@+id/tv_bank_Deatil"
+        android:textSize="@dimen/marign18sp"
+        android:textColor="@color/dark_blue"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:layout_marginTop="@dimen/marign20dp"
+        android:layout_marginLeft="@dimen/marign20dp"
+        android:fontFamily="@font/lato_bold"
+        android:text="@string/bankdetail"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
+    <TextView
+        android:id="@+id/tv_user_acc_number"
+        android:textColor="@color/black"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_bank_Deatil"
+        android:layout_marginTop="@dimen/marign20dp"
+        android:layout_marginLeft="@dimen/marign20dp"
+        android:fontFamily="@font/lato_bold"
+        android:text="Acc. Number: ABCGDS"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+    <TextView
+        android:id="@+id/tv_acc_holder_name"
+        android:textColor="@color/black"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_user_acc_number"
+        android:layout_marginTop="@dimen/marign5dp"
+        android:layout_marginLeft="@dimen/marign20dp"
+        android:fontFamily="@font/lato_bold"
+        android:text="Acc. Holder Name: add"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+    <TextView
+        android:id="@+id/tv_user_bank_name"
+        android:textColor="@color/black"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_acc_holder_name"
+        android:layout_marginTop="@dimen/marign5dp"
+        android:layout_marginLeft="@dimen/marign20dp"
+        android:fontFamily="@font/lato_bold"
+        android:text="Bank Name: add"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@+id/landingFragment">
+
+    <fragment
+        android:id="@+id/landingFragment"
+        android:name="com.example.spidpay.ui.landing_page.LandingFragment"
+        android:label="Home" >
+        <action
+            android:id="@+id/action_landingFragment_to_addMoneyFragment"
+            app:destination="@id/addMoneyFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/profileFragmentTab"
+        android:name="com.example.spidpay.ui.profile.ProfileFragmentTab"
+        android:label="ProfileFragmentTab" />
+    <fragment
+        android:id="@+id/changePasswordFragment"
+        android:name="com.example.spidpay.ui.changepassword.ChangePasswordFragment"
+        android:label="fragment_chanhe_password"
+        tools:layout="@layout/fragment_change_password" />
+    <fragment
+        android:id="@+id/addMoneyFragment"
+        android:name="com.example.spidpay.ui.addmoney.AddMoneyFragment"
+        android:label="fragment_add_money"
+        tools:layout="@layout/fragment_add_money" >
+
+    </fragment>
+    <fragment
+        android:id="@+id/available_Online_Balance_Fragment"
+        android:name="com.example.spidpay.ui.addmoney.Available_Online_Balance_Fragment"
+        android:label="fragment_available_online_balance"
+        tools:layout="@layout/fragment_available_online_balance" />
+    <fragment
+        android:id="@+id/cash_Desposit_Fragment"
+        android:name="com.example.spidpay.ui.addmoney.Cash_Desposit_Fragment"
+        android:label="fragment_cash_deposit"
+        tools:layout="@layout/fragment_cash_deposit" />
+    <fragment
+        android:id="@+id/allTransactionFragment"
+        android:name="com.example.spidpay.ui.alltransaction.AllTransactionFragment"
+        android:label="AllTransactionFragment" />
+    <fragment
+        android:id="@+id/request_Wallet_Transfer_Fragment"
+        android:name="com.example.spidpay.ui.requestwallettransfer.Request_Wallet_Transfer_Fragment"
+        android:label="Request_Wallet_Transfer_Fragment" />
+    <fragment
+        android:id="@+id/low_Balance_Fragment"
+        android:name="com.example.spidpay.ui.lowbalance.Low_Balance_Fragment"
+        android:label="Low_Balance_Fragment" />
+    <fragment
+        android:id="@+id/transfer_Money_Fragment"
+        android:name="com.example.spidpay.ui.transferwallet.Transfer_Money_Fragment"
+        android:label="Transfer_Money_Fragment" />
+    <fragment
+        android:id="@+id/bankGSTFragment"
+        android:name="com.example.spidpay.ui.profile.bankgst.BankGSTFragment"
+        android:label="BankGSTFragment" />
+    <fragment
+        android:id="@+id/transferToBanKFragment"
+        android:name="com.example.spidpay.ui.banktransfer.TransferToBanKFragment"
+        android:label="TransferToBanKFragment" />
+
+</navigation>

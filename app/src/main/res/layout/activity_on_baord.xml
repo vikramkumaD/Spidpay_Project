@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    >
+
+    <ImageView
+        android:layout_marginTop="@dimen/marign20dp"
+        android:layout_centerHorizontal="true"
+        android:src="@mipmap/ic_launcher"
+        android:layout_width="@dimen/marign150dp"
+        android:layout_height="@dimen/marign150dp"></ImageView>
+
+
+    <LinearLayout
+        android:layout_centerInParent="true"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/marign20dp"
+        android:layout_marginRight="@dimen/marign20dp"
+        android:layout_marginBottom="@dimen/marign20dp"
+        android:orientation="vertical">
+
+        <TextView
+            android:textSize="@dimen/marign20sp"
+            android:textStyle="bold"
+            android:layout_gravity="center"
+            android:id="@+id/tv_loginemail"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/mobileno"
+            android:textColor="@color/purple_200"></TextView>
+
+        <TextView
+            android:layout_marginTop="@dimen/marign5dp"
+            android:textSize="@dimen/marign16sp"
+            android:layout_gravity="center"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/otptxt"
+            android:textColor="@color/black"></TextView>
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+
+            <LinearLayout
+                android:layout_weight="0"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/marign15dp"
+                    android:background="@drawable/dialogwith_whiteborder"
+                    android:orientation="horizontal">
+
+                    <EditText
+                        android:cursorVisible="false"
+                        android:clickable="false"
+                        android:focusable="false"
+                        android:textColor="@color/purple_200"
+                        android:text="+91"
+                        android:maxLength="10"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/marign35dp"
+                        android:layout_weight="1"
+                        android:background="@android:color/transparent"
+                        android:inputType="number"
+                        android:paddingLeft="@dimen/marign10dp"
+                        android:paddingRight="@dimen/marign10dp"
+                        android:textColorHint="@color/lightgrey"></EditText>
+
+                </LinearLayout>
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_weight="1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/marign15dp"
+                android:background="@drawable/dialogwith_blackborder"
+                android:orientation="horizontal">
+
+                <EditText
+                    android:maxLength="10"
+                    android:id="@+id/edt_loginmobilenumber"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/marign35dp"
+                    android:layout_weight="1"
+                    android:background="@android:color/transparent"
+                    android:hint="@string/mobileno"
+                    android:inputType="number"
+                    android:paddingLeft="@dimen/marign10dp"
+                    android:paddingRight="@dimen/marign10dp"
+                    android:textColorHint="@color/lightgrey"></EditText>
+
+                <ImageView
+                    android:id="@+id/img_cleareloginmobilenumber"
+                    android:layout_width="@dimen/marign20dp"
+                    android:layout_height="@dimen/marign20dp"
+                    android:layout_gravity="center"
+                    android:layout_marginRight="@dimen/marign10dp"
+                    android:layout_weight="0"
+                    android:src="@drawable/ic_baseline_cancel_24"
+                    android:visibility="gone"></ImageView>
+            </LinearLayout>
+
+
+        </LinearLayout>
+
+
+        <Button
+            android:id="@+id/btn_login"
+            android:textAllCaps="false"
+            android:textColor="@color/white"
+            android:text="@string/txtcontinue"
+            android:layout_marginTop="@dimen/marign20dp"
+            android:layout_marginRight="@dimen/marign20dp"
+            android:layout_marginLeft="@dimen/marign20dp"
+            android:background="@drawable/button_bg_blue"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+
+        <TextView
+            android:id="@+id/tv_loginforgotpass"
+            android:paddingRight="@dimen/marign15dp"
+            android:paddingLeft="@dimen/marign15dp"
+            android:layout_marginTop="@dimen/marign20dp"
+            android:gravity="center"
+            android:layout_gravity="center"
+            android:textSize="@dimen/marign18sp"
+            android:textStyle="bold"
+            android:textColor="@color/dark_blue"
+            android:text="@string/forgotpassword_txt"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+
+
+        <TextView
+            android:id="@+id/tv_signup"
+            android:paddingRight="@dimen/marign15dp"
+            android:paddingLeft="@dimen/marign15dp"
+            android:layout_marginTop="@dimen/marign20dp"
+            android:gravity="center"
+            android:layout_gravity="center"
+            android:textSize="@dimen/marign18sp"
+            android:textStyle="bold"
+            android:textColor="@color/dark_blue"
+            android:text="@string/signup_txt"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+    </LinearLayout>
+
+</RelativeLayout>

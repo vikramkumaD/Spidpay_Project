@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <dimen name="design_navigation_separator_vertical_padding"
+        tools:override="true">0dp</dimen>
+    <dimen name="txtsize20sp">20sp</dimen>
+    <dimen name="txtsize25sp">25sp</dimen>
+    <dimen name="marign60dp">60dp</dimen>
+    <dimen name="marign30dp">30dp</dimen>
+    <dimen name="marign10dp">10dp</dimen>
+    <dimen name="marign20dp">20dp</dimen>
+    <dimen name="marign40dp">40dp</dimen>
+    <dimen name="marign16sp">16sp</dimen>
+    <dimen name="marign18sp">18sp</dimen>
+    <dimen name="marign20sp">20sp</dimen>
+    <dimen name="marign5dp">5dp</dimen>
+    <dimen name="marign25sp">25sp</dimen>
+    <dimen name="marign35sp">35sp</dimen>
+    <dimen name="marign35dp">40dp</dimen>
+    <dimen name="marign25dp">25dp</dimen>
+    <dimen name="marign7dp">7dp</dimen>
+    <dimen name="marign50dp">50dp</dimen>
+    <dimen name="marign180dp">180dp</dimen>
+    <dimen name="marign150dp">150dp</dimen>
+    <dimen name="marign45dp">45dp</dimen>
+    <dimen name="marign70dp">70dp</dimen>
+    <dimen name="marign100dp">100dp</dimen>
+    <dimen name="marign120dp">120dp</dimen>
+    <dimen name="marign110dp">110dp</dimen>
+    <dimen name="marign15dp">15dp</dimen>
+    <dimen name="marign12sp">12sp</dimen>
+    <dimen name="marign90dp">90dp</dimen>
+    <dimen name="marign12dp">12dp</dimen>
+    <dimen name="marign13sp">13sp</dimen>
+    <dimen name="marign130dp">130dp</dimen>
+    <dimen name="marign10sp">10sp</dimen>
+    <dimen name="marign140dp">140dp</dimen>
+    <dimen name="marign170dp">170dp</dimen>
+    <dimen name="marign14sp">14sp</dimen>
+    <!-- Default screen margins, per the Android Design guidelines. -->
+    <dimen name="activity_horizontal_margin">16dp</dimen>
+    <dimen name="activity_vertical_margin">16dp</dimen>
+    <dimen name="marign80dp">80dp</dimen>
+    <dimen name="marign3dp">3dp</dimen>
+    <dimen name="marign55dp">55dp</dimen>
+    <dimen name="marign17dp">17dp</dimen>
+
+</resources>

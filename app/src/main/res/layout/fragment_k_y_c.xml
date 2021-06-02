@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".ui.profile.profile.MyProfileFragment">
+
+    <TextView
+        android:id="@+id/tv_contact_detail"
+        android:textSize="@dimen/marign18sp"
+        android:textColor="@color/dark_blue"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:layout_marginTop="@dimen/marign20dp"
+        android:layout_marginLeft="@dimen/marign20dp"
+        android:fontFamily="@font/lato_bold"
+        android:text="@string/kycdetail"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
+    <TextView
+        android:id="@+id/tv_userpannumber"
+        android:textColor="@color/black"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_contact_detail"
+        android:layout_marginTop="@dimen/marign20dp"
+        android:layout_marginLeft="@dimen/marign20dp"
+        android:fontFamily="@font/lato_bold"
+        android:text="Pan Number: ABCGDS"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+    <TextView
+        android:id="@+id/tv_useraadhardetail"
+        android:textColor="@color/black"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_userpannumber"
+        android:layout_marginTop="@dimen/marign5dp"
+        android:layout_marginLeft="@dimen/marign20dp"
+        android:fontFamily="@font/lato_bold"
+        android:text="Aadhar Detail: add"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+    <TextView
+        android:id="@+id/tv_userevoterid"
+        android:textColor="@color/black"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_useraadhardetail"
+        android:layout_marginTop="@dimen/marign5dp"
+        android:layout_marginLeft="@dimen/marign20dp"
+        android:fontFamily="@font/lato_bold"
+        android:text="Voter ID/DL: add detail"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
+
+    <TextView
+        android:id="@+id/tv_company_deatils"
+        android:textSize="@dimen/marign18sp"
+        android:textColor="@color/dark_blue"
+        app:layout_constraintTop_toBottomOf="@+id/tv_userevoterid"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:layout_marginTop="@dimen/marign20dp"
+        android:layout_marginLeft="@dimen/marign20dp"
+        android:fontFamily="@font/lato_bold"
+        android:text="@string/companydeatil"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
+    <TextView
+        android:id="@+id/tv_storname"
+        android:textColor="@color/black"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_company_deatils"
+        android:layout_marginTop="@dimen/marign5dp"
+        android:layout_marginLeft="@dimen/marign20dp"
+        android:fontFamily="@font/lato_bold"
+        android:text="Store Name: Pandya Store"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
+    <TextView
+        android:id="@+id/tv_storetype"
+        android:textColor="@color/black"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_storname"
+        android:layout_marginTop="@dimen/marign5dp"
+        android:layout_marginLeft="@dimen/marign20dp"
+        android:fontFamily="@font/lato_bold"
+        android:text="Company Type: Partnership firm"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
+    <TextView
+        android:id="@+id/tv_adyogaadhar"
+        android:textColor="@color/black"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_storetype"
+        android:layout_marginTop="@dimen/marign5dp"
+        android:layout_marginLeft="@dimen/marign20dp"
+        android:fontFamily="@font/lato_bold"
+        android:text="Udyog Aadhar: add"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
+    <TextView
+        android:id="@+id/tv_partnershipdeed"
+        android:textColor="@color/black"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_adyogaadhar"
+        android:layout_marginTop="@dimen/marign5dp"
+        android:layout_marginLeft="@dimen/marign20dp"
+        android:fontFamily="@font/lato_bold"
+        android:text="Partnership Deed: add"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

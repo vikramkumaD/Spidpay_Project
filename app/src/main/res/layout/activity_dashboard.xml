@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.DashboardActivity">
+
+    <ImageView
+        android:id="@+id/img_welcomebase"
+        android:layout_width="130dp"
+        android:layout_height="130dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="@dimen/marign30dp"
+        android:contentDescription="@string/image"
+        android:src="@drawable/spidpay_logo" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:fontFamily="@font/lato_bold"
+            android:gravity="center"
+            android:text="@string/dashboard_welcome"
+            android:textColor="@color/dark_blue"
+            android:textSize="@dimen/marign25sp" />
+
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="@dimen/marign15dp"
+            android:fontFamily="@font/lato"
+            android:gravity="center"
+            android:text="@string/dashboard_txt1"
+            android:textColor="@color/black"
+            android:textSize="@dimen/marign20sp" />
+
+        <Button
+            android:id="@+id/btn_dashboardlogin"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/marign20dp"
+            android:layout_marginTop="@dimen/marign30dp"
+            android:layout_marginRight="@dimen/marign20dp"
+            android:background="@drawable/button_bg_blue"
+            android:fontFamily="@font/lato"
+            android:text="@string/dashboard_txt2"
+            android:textAllCaps="false"
+            android:textColor="@color/white"
+            android:textSize="@dimen/marign18sp" />
+
+        <Button
+            android:id="@+id/btn_dashboardregister"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/marign20dp"
+            android:layout_marginTop="@dimen/marign20dp"
+            android:layout_marginRight="@dimen/marign20dp"
+            android:background="@drawable/button_bg_green"
+            android:fontFamily="@font/lato"
+            android:text="@string/dashboard_txt5"
+            android:textAllCaps="false"
+            android:textColor="@color/white"
+            android:textSize="@dimen/marign20sp"
+            android:visibility="gone" />
+
+        <TextView
+            android:id="@+id/tv_signup"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="@dimen/marign30dp"
+            android:fontFamily="@font/lato_bold"
+            android:gravity="center"
+            android:paddingLeft="@dimen/marign15dp"
+            android:paddingRight="@dimen/marign15dp"
+            android:text="@string/signup_txt"
+            android:textColor="@color/dark_blue"
+            android:textSize="22sp" />
+
+    </LinearLayout>
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="@dimen/marign15dp">
+
+
+        <TextView
+            android:paddingStart="@dimen/marign10dp"
+            android:paddingEnd="@dimen/marign10dp"
+            android:id="@+id/tv_termsncondtion"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:text="@string/dashboard_txt3"
+            android:textColor="@color/black"
+            android:textSize="@dimen/marign18sp" />
+
+
+    </RelativeLayout>
+
+
+</RelativeLayout>

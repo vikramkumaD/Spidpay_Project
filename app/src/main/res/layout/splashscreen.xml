@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".ui.SplashscreenActivity">
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/splashbg"
+            android:fitsSystemWindows="true"
+            android:scaleType="fitXY"
+            android:contentDescription="@string/image" />
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:orientation="vertical">
+
+            <ImageView
+                android:id="@+id/img_spidpay"
+                android:layout_width="330dp"
+                android:layout_height="66dp"
+                android:layout_centerHorizontal="true"
+                android:layout_gravity="center"
+                android:src="@drawable/spidpay"
+                android:contentDescription="@string/image" />
+
+            <TextView
+                android:id="@+id/tv_spidpaybasetext"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/img_spidpay"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="@dimen/marign60dp"
+                android:fontFamily="@font/lato_bold"
+                android:gravity="center"
+                android:paddingLeft="@dimen/marign10dp"
+                android:paddingRight="@dimen/marign10dp"
+                android:text="@string/spidpaybasetext"
+                android:textColor="@color/white"
+                android:textSize="@dimen/marign25sp" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/tv_spidpaybasetext"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="@dimen/marign25dp"
+                android:orientation="vertical">
+
+
+
+                    <TextView
+                        android:id="@+id/tv_splash"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:fontFamily="@font/lato"
+                        android:gravity="center"
+                        android:paddingLeft="@dimen/marign15dp"
+                        android:paddingRight="@dimen/marign15dp"
+                        android:text="@string/splashtxt"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/marign18sp" />
+
+
+
+
+            </LinearLayout>
+
+
+        </RelativeLayout>
+
+    </RelativeLayout>
+</layout>
+

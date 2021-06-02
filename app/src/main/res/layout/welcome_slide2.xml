@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ImageView
+        android:id="@+id/img_welcomebase"
+        android:layout_width="120dp"
+        android:layout_height="120dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="@dimen/marign30dp"
+        android:contentDescription="@string/image"
+        android:src="@drawable/spidpay_logo"/>
+
+
+    <TextView
+        android:id="@+id/tv_welcomescreen_txt1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/img_welcomebase"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="@dimen/marign20dp"
+        android:fontFamily="@font/lato_bold"
+        android:gravity="center"
+        android:text="@string/welcomescreentext5"
+        android:textColor="@color/dark_blue"
+        android:textSize="@dimen/marign35sp" />
+
+    <TextView
+        android:id="@+id/tv_welcomescreentext2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tv_welcomescreen_txt1"
+        android:layout_centerHorizontal="true"
+        android:fontFamily="@font/lato_bold"
+        android:gravity="center"
+        android:text="@string/welcomescreentext6"
+        android:textColor="@color/light_green"
+        android:textSize="@dimen/marign35sp" />
+
+
+    <TextView
+        android:id="@+id/welcomescreentext3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tv_welcomescreentext2"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="@dimen/marign40dp"
+        android:fontFamily="@font/lato"
+        android:gravity="center"
+        android:paddingLeft="@dimen/marign10dp"
+        android:paddingRight="@dimen/marign10dp"
+        android:text="@string/welcomescreentext7"
+        android:textColor="@color/welcome_txt_color"
+        android:textSize="@dimen/marign20sp" />
+
+    <LinearLayout
+        android:id="@+id/linear_welcomescreen1"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/welcomescreentext3"
+        android:orientation="horizontal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:layout_marginTop="@dimen/marign3dp"
+            android:fontFamily="@font/lato"
+            android:gravity="center"
+            android:paddingStart="@dimen/marign10dp"
+            android:text="@string/welcomescreentext4"
+            android:textColor="@color/welcome_txt_color"
+            android:textSize="@dimen/marign20sp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingStart="5dp"
+            android:layout_marginTop="@dimen/marign3dp"
+            android:fontFamily="@font/lato"
+            android:gravity="center"
+            android:paddingEnd="@dimen/marign10dp"
+            android:text="@string/welcomescreentext8"
+            android:textColor="@color/dark_blue"
+            android:textSize="@dimen/marign20sp"
+            android:textStyle="bold" />
+
+
+    </LinearLayout>
+    <RelativeLayout
+        android:layout_marginBottom="@dimen/marign30dp"
+        android:layout_marginTop="@dimen/marign10dp"
+        android:layout_marginRight="@dimen/marign10dp"
+        android:layout_marginLeft="@dimen/marign10dp"
+        android:layout_below="@id/linear_welcomescreen1"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ImageView
+
+            android:contentDescription="@string/image"
+            android:src="@drawable/welcome_screen_2"
+            android:layout_width="500dp"
+            android:layout_height="377dp" />
+
+
+    </RelativeLayout>
+
+
+</RelativeLayout>
