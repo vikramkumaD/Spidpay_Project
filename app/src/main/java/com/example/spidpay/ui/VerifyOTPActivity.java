@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.view.WindowManager;
 
 import com.example.spidpay.R;
+import com.example.spidpay.ui.signup.RegisterActivity;
 
 public class VerifyOTPActivity extends AppCompatActivity {
 

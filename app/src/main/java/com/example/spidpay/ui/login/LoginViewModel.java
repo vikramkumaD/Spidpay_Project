@@ -17,11 +17,12 @@ public class LoginViewModel extends ViewModel {
     public String mobile_number, password;
     public MutableLiveData<String> mstring_mobile_number = new MutableLiveData<>();
     public MutableLiveData<Boolean> mboolean_mobile_number = new MutableLiveData<>();
+
     public void check_mobile_number(String data) {
         if (data.length() > 0)
-            mboolean_mobile_number.postValue(true);
+            mboolean_mobile_number.setValue(true);
         else
-            mboolean_mobile_number.postValue(false);
+            mboolean_mobile_number.setValue(false);
     }
 
     public void update_mobile_number() {

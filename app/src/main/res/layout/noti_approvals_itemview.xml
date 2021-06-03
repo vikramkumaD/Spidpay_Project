@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/approval_bg"
+        app:cardCornerRadius="@dimen/marign15dp">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/marign10dp">
+
+            <TextView
+                android:id="@+id/tv_request_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/lato_bold"
+                android:text="Wallet Tranfer Request"
+                android:textColor="@color/black"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/tv_request_amont_label"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/marign5dp"
+                android:fontFamily="@font/lato"
+                android:text="@string/requestedmt"
+                android:textColor="@color/approval_text_color"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tv_request_name" />
+
+            <TextView
+                android:id="@+id/tv_request_amont_value"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/marign5dp"
+                android:fontFamily="@font/lato"
+                android:text="Rs 130000"
+                android:textColor="@color/light_green"
+                app:layout_constraintLeft_toRightOf="@+id/tv_request_amont_label"
+                app:layout_constraintTop_toBottomOf="@+id/tv_request_name" />
+
+            <TextView
+                android:id="@+id/tv_request_description"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/marign5dp"
+                android:fontFamily="@font/lato"
+                android:text="@string/requestedmt"
+                android:textColor="@color/approval_text_color"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tv_request_amont_label" />
+
+
+            <Button
+                android:layout_marginTop="@dimen/marign20dp"
+                android:paddingStart="@dimen/marign20dp"
+                android:paddingEnd="@dimen/marign20dp"
+                android:paddingTop="@dimen/marign10dp"
+                android:paddingBottom="@dimen/marign10dp"
+                android:background="@drawable/button_bg_green"
+                android:minHeight="0dp"
+                android:minWidth="0dp"
+                android:id="@+id/btn_approve"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAllCaps="false"
+                android:text="@string/btn_approve"
+                android:textColor="@color/white"
+                android:fontFamily="@font/lato_bold"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tv_request_description" />
+
+            <Button
+                android:textAllCaps="false"
+                android:textColor="@color/white"
+                android:layout_marginTop="@dimen/marign20dp"
+                android:paddingStart="@dimen/marign30dp"
+                android:paddingEnd="@dimen/marign20dp"
+                android:paddingTop="@dimen/marign10dp"
+                android:paddingBottom="@dimen/marign10dp"
+                android:background="@drawable/reject_btn_bg"
+                android:minHeight="0dp"
+                android:minWidth="0dp"
+                android:layout_marginStart="@dimen/marign10dp"
+                android:id="@+id/btn_reject"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/btn_reject"
+                app:layout_constraintLeft_toRightOf="@+id/btn_approve"
+                app:layout_constraintTop_toBottomOf="@+id/tv_request_description" />
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+    </androidx.cardview.widget.CardView>
+</layout>

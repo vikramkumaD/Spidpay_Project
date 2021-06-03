@@ -1,145 +1,183 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <ImageView
-        android:id="@+id/img_welcomebase"
-        android:layout_width="120dp"
-        android:layout_height="120dp"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="@dimen/marign30dp"
-        android:contentDescription="@string/image"
-        android:src="@drawable/spidpay_logo" />
+    <data>
 
+        <variable
+            name="register_viewmodel"
+            type="com.example.spidpay.ui.signup.RegisterViewModel" />
 
-    <LinearLayout
+        <import type="android.view.View" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_centerInParent="true"
-        android:layout_marginLeft="@dimen/marign20dp"
-        android:layout_marginRight="@dimen/marign20dp"
-        android:layout_marginBottom="@dimen/marign20dp"
-        android:orientation="vertical">
+        android:layout_height="match_parent">
+
+        <ImageView
+            android:id="@+id/img_welcomebase"
+            android:layout_width="120dp"
+            android:layout_height="120dp"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="@dimen/marign30dp"
+            android:contentDescription="@string/image"
+            android:src="@drawable/spidpay_logo"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
 
         <TextView
-            android:id="@+id/tv_loginemail"
+            android:id="@+id/tv_signup_txt"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/marign20dp"
+            android:layout_marginTop="@dimen/marign40dp"
+            android:layout_marginEnd="@dimen/marign20dp"
+            android:layout_marginBottom="@dimen/marign20dp"
             android:fontFamily="@font/lato_bold"
             android:text="@string/signup"
             android:textColor="@color/purple_200"
-            android:textSize="@dimen/marign20sp" />
+            android:textSize="@dimen/marign20sp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/img_welcomebase" />
 
 
         <LinearLayout
-
+            android:id="@+id/linear_signup_fullname"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/marign20dp"
             android:layout_marginTop="@dimen/marign15dp"
+            android:layout_marginEnd="@dimen/marign20dp"
+            android:layout_marginBottom="@dimen/marign20dp"
             android:background="@drawable/edittext_shadow"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            app:layout_constraintTop_toBottomOf="@+id/tv_signup_txt">
 
             <EditText
                 android:id="@+id/edt_registerfullname"
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/marign35dp"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:background="@android:color/transparent"
                 android:hint="@string/fullname"
-                android:inputType="number"
+                android:inputType="text"
                 android:maxLength="10"
                 android:paddingLeft="@dimen/marign10dp"
+                android:paddingTop="@dimen/marign10dp"
                 android:paddingRight="@dimen/marign10dp"
+                android:paddingBottom="@dimen/marign10dp"
+                android:text="@={register_viewmodel.fullname}"
                 android:textColorHint="@color/lightgrey" />
 
             <ImageView
-                android:id="@+id/img_clearregisterfullname"
+                android:id="@+id/img_clear_register_fullname"
                 android:layout_width="@dimen/marign20dp"
                 android:layout_height="@dimen/marign20dp"
                 android:layout_gravity="center"
-                android:layout_marginRight="@dimen/marign10dp"
-                android:layout_weight="0"
-                android:src="@drawable/ic_baseline_cancel_24"
-                android:visibility="gone" />
+                android:layout_marginEnd="@dimen/marign10dp"
+                android:focusable="false"
+                android:onClick="@{()->register_viewmodel.clear_full_name()}"
+                android:src="@drawable/clear_field"
+                android:visibility="@{register_viewmodel.boolean_register_full_name ? View.VISIBLE : View.GONE}"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+
         </LinearLayout>
 
         <LinearLayout
-
+            android:id="@+id/linear_signup_mobile_number"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/marign20dp"
             android:layout_marginTop="@dimen/marign15dp"
+            android:layout_marginEnd="@dimen/marign20dp"
+            android:layout_marginBottom="@dimen/marign20dp"
             android:background="@drawable/edittext_shadow"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            app:layout_constraintTop_toBottomOf="@+id/linear_signup_fullname">
 
             <EditText
                 android:id="@+id/edt_registermobilenumber"
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/marign35dp"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:background="@android:color/transparent"
                 android:hint="@string/mobileno"
                 android:inputType="number"
                 android:maxLength="10"
                 android:paddingLeft="@dimen/marign10dp"
+                android:paddingTop="@dimen/marign10dp"
                 android:paddingRight="@dimen/marign10dp"
+                android:paddingBottom="@dimen/marign10dp"
+                android:text="@={register_viewmodel.mobilenumber}"
                 android:textColorHint="@color/lightgrey" />
 
+
             <ImageView
-                android:id="@+id/img_cleareregistermobilenumber"
+                android:id="@+id/img_cleare_register_mobilenumber"
                 android:layout_width="@dimen/marign20dp"
                 android:layout_height="@dimen/marign20dp"
                 android:layout_gravity="center"
-                android:layout_marginRight="@dimen/marign10dp"
-                android:layout_weight="0"
-                android:src="@drawable/ic_baseline_cancel_24"
-                android:visibility="gone" />
+                android:layout_marginEnd="@dimen/marign10dp"
+                android:focusable="false"
+                android:onClick="@{()->register_viewmodel.clear_mobile_number()}"
+                android:src="@drawable/clear_field"
+                android:visibility="@{register_viewmodel.boolean_register_mobile_number ? View.VISIBLE : View.GONE}"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent" />
+
         </LinearLayout>
 
-        <LinearLayout
-
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/linear_signup_password"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/marign20dp"
             android:layout_marginTop="@dimen/marign15dp"
-            android:background="@drawable/edittext_shadow"
-            android:orientation="horizontal">
+            android:layout_marginEnd="@dimen/marign20dp"
+            app:hintEnabled="false"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/linear_signup_mobile_number"
+            app:passwordToggleDrawable="@drawable/ic_baseline_remove_red_eye_24"
+            app:passwordToggleEnabled="true">
 
-            <EditText
-                android:id="@+id/edt_registerpassword"
+            <androidx.appcompat.widget.AppCompatEditText
+                android:id="@+id/edt_loginpassword"
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/marign35dp"
-                android:layout_weight="1"
-                android:background="@android:color/transparent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/edittext_shadow"
                 android:hint="@string/password"
-                android:inputType="textPassword"
-                android:paddingLeft="@dimen/marign10dp"
-                android:paddingRight="@dimen/marign10dp"
-                android:textColorHint="@color/lightgrey" />
+                android:inputType="text"
+                android:paddingStart="@dimen/marign15dp"
+                android:paddingTop="@dimen/marign10dp"
+                android:paddingEnd="@dimen/marign10dp"
+                android:text="@={register_viewmodel.password}"
+                app:hintEnabled="false" />
 
-            <ImageView
-                android:id="@+id/img_cleareregisterpassword"
-                android:layout_width="@dimen/marign20dp"
-                android:layout_height="@dimen/marign20dp"
-                android:layout_gravity="center"
-                android:layout_marginRight="@dimen/marign10dp"
-                android:layout_weight="0"
-                android:src="@drawable/ic_baseline_cancel_24"
-                android:visibility="gone" />
-        </LinearLayout>
+        </com.google.android.material.textfield.TextInputLayout>
 
 
         <Button
+            android:onClick="@{(v)->register_viewmodel.validate_signupView(v)}"
             android:id="@+id/btn_register"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="@dimen/marign10dp"
+            android:layout_marginStart="@dimen/marign20dp"
             android:layout_marginTop="@dimen/marign20dp"
-            android:layout_marginRight="@dimen/marign10dp"
+            android:layout_marginEnd="@dimen/marign20dp"
+            android:layout_marginBottom="@dimen/marign20dp"
             android:background="@drawable/button_bg_green"
             android:fontFamily="@font/lato"
             android:text="@string/register"
             android:textColor="@color/white"
-            android:textSize="@dimen/marign18sp" />
+            android:textSize="@dimen/marign18sp"
+            app:layout_constraintTop_toBottomOf="@+id/linear_signup_password" />
 
 
         <TextView
@@ -154,15 +192,10 @@
             android:paddingRight="@dimen/marign15dp"
             android:text="@string/signup_txt2"
             android:textColor="@color/dark_blue"
-            android:textSize="@dimen/marign18sp" />
-
-    </LinearLayout>
-
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_marginBottom="@dimen/marign15dp">
+            android:textSize="@dimen/marign18sp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/btn_register" />
 
 
         <TextView
@@ -171,15 +204,18 @@
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
             android:layout_gravity="center"
+            android:layout_marginBottom="@dimen/marign15dp"
             android:fontFamily="@font/lato"
             android:gravity="center"
             android:paddingStart="@dimen/marign10dp"
             android:paddingEnd="@dimen/marign10dp"
             android:text="@string/dashboard_txt3"
             android:textColor="@color/black"
-            android:textSize="@dimen/marign18sp" />
+            android:textSize="@dimen/marign18sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent" />
 
 
-    </RelativeLayout>
-
-</RelativeLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

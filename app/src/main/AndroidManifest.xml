@@ -19,7 +19,7 @@
         <activity android:name=".ui.DashboardActivity" />
         <activity android:name=".ui.WelcomeActivity" />
         <activity
-            android:name=".ui.RegisterActivity"
+            android:name=".ui.signup.RegisterActivity"
             android:screenOrientation="portrait" />
         <activity
             android:name=".ui.login.LoginActivity"

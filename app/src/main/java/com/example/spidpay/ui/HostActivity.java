@@ -13,6 +13,7 @@ import com.google.android.material.navigation.NavigationView;
 import androidx.core.view.GravityCompat;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
+import androidx.navigation.fragment.NavHostFragment;
 import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
 import androidx.drawerlayout.widget.DrawerLayout;
@@ -24,7 +25,7 @@ public class HostActivity extends AppCompatActivity implements ChangeTitlenandIc
 
     private AppBarConfiguration mAppBarConfiguration;
     private ActivityHostBinding binding;
-    private boolean ishostfragment = false;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,9 +49,9 @@ public class HostActivity extends AppCompatActivity implements ChangeTitlenandIc
         });
 
 
-        binding.imgBackpress.setOnClickListener(v -> {
-            onBackPressed();
-        });
+        binding.imgBackpress.setOnClickListener(v -> onBackPressed());
+
+        binding.relativeNotification.setOnClickListener(v -> navController.navigate(R.id.notificationFragment));
 
     }
 
@@ -63,8 +64,7 @@ public class HostActivity extends AppCompatActivity implements ChangeTitlenandIc
     @Override
     public boolean onSupportNavigateUp() {
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_content_host);
-        return NavigationUI.navigateUp(navController, mAppBarConfiguration)
-                || super.onSupportNavigateUp();
+        return NavigationUI.navigateUp(navController, mAppBarConfiguration) || super.onSupportNavigateUp();
     }
 
     @Override
@@ -77,8 +77,6 @@ public class HostActivity extends AppCompatActivity implements ChangeTitlenandIc
 
     @Override
     public void changeTitlenadIcon(String title, boolean ishostfrag) {
-
-        this.ishostfragment = ishostfrag;
         if (!ishostfrag) {
             binding.tvPageTitle.setText("");
             binding.imgOpendrawer.setVisibility(View.VISIBLE);

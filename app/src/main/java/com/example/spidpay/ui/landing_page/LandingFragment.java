@@ -45,7 +45,6 @@ public class LandingFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
         landingfragmentBinding.imgMainwalletPopoup.setOnClickListener(v -> showMainWalletPopup());
         landingfragmentBinding.imgTradewalletPopoup.setOnClickListener(v -> showTradeWalletPopup());
-
         changeTitlenandIconInterface.changeTitlenadIcon("", false);
     }
 

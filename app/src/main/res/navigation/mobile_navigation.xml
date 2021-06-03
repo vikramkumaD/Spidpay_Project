@@ -12,6 +12,9 @@
         <action
             android:id="@+id/action_landingFragment_to_addMoneyFragment"
             app:destination="@id/addMoneyFragment" />
+        <action
+            android:id="@+id/action_landingFragment_to_notificationFragment"
+            app:destination="@id/notificationFragment" />
     </fragment>
     <fragment
         android:id="@+id/profileFragmentTab"
@@ -63,5 +66,11 @@
         android:id="@+id/transferToBanKFragment"
         android:name="com.example.spidpay.ui.banktransfer.TransferToBanKFragment"
         android:label="TransferToBanKFragment" />
+    <fragment
+        android:id="@+id/notificationFragment"
+        android:name="com.example.spidpay.ui.notification.NotificationFragment"
+        android:label="NotificationFragment" >
+
+    </fragment>
 
 </navigation>

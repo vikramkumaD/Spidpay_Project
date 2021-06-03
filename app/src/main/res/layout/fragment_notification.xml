@@ -14,7 +14,7 @@
         tools:context=".ui.profile.ProfileFragmentTab">
 
         <com.google.android.material.tabs.TabLayout
-            android:id="@+id/tabLayout"
+            android:id="@+id/tabLayout_notification"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:tabBackground="@color/welcome_green_2"
@@ -28,7 +28,7 @@
             app:tabTextColor="@color/unselecttabcolor" />
 
         <androidx.viewpager2.widget.ViewPager2
-            android:id="@+id/viewPager"
+            android:id="@+id/viewPager_notification"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="1" />

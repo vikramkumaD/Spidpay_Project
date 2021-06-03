@@ -151,4 +151,9 @@
     <string name="mobilenoerror2">Mobile number must be 10 digit!</string>
     <string name="passworderror1">Enter password!</string>
     <string name="passworderror2">Create 6 digit Password!</string>
+    <string name="filedcannotbeblank">Field cannot be blank!</string>
+    <string name="notification">Notification</string>
+    <string name="requestedmt">Requested Amount:</string>
+    <string name="btn_approve">Approve</string>
+    <string name="btn_reject">Reject</string>
 </resources>

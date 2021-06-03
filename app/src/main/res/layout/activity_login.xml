@@ -59,7 +59,6 @@
 
 
         <LinearLayout
-
             android:id="@+id/linear_mobile_number"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
