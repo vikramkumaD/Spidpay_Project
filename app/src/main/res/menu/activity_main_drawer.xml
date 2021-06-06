@@ -4,7 +4,6 @@
     tools:showIn="navigation_view">
     <group android:checkableBehavior="single">
         <item
-
             android:id="@+id/profileFragmentTab"
             android:icon="@drawable/calender"
             android:title="@string/profile" />
@@ -20,6 +19,7 @@
             android:icon="@drawable/onboarding"
             android:title="@string/productonBoarding" />
         <item
+            android:id="@+id/transaction_Report_Fragment"
             android:icon="@drawable/report"
             android:title="@string/report" />
 

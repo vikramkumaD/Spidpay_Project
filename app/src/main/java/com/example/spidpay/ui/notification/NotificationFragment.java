@@ -15,7 +15,9 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.spidpay.R;
+import com.example.spidpay.constant.Constant;
 import com.example.spidpay.interfaces.ChangeTitlenandIconInterface;
+import com.example.spidpay.interfaces.UpdateBottomView;
 import com.example.spidpay.ui.notification.alerts.AlertFragment;
 import com.example.spidpay.ui.notification.approvals.Approvalragment;
 import com.example.spidpay.ui.profile.ProfileFragmentTab;
@@ -36,6 +38,9 @@ public class NotificationFragment extends Fragment {
     private static final int NUM_PAGES = 2;
     private final String[] titles = new String[]{"ALERTS", "APPROVALS"};
     ChangeTitlenandIconInterface changeTitlenandIconInterface;
+    UpdateBottomView updateBottomView;
+
+
 
     public NotificationFragment() {
     }
@@ -53,6 +58,7 @@ public class NotificationFragment extends Fragment {
     public void onAttach(@NonNull @NotNull Context context) {
         super.onAttach(context);
         changeTitlenandIconInterface=(ChangeTitlenandIconInterface)context;
+        updateBottomView=(UpdateBottomView)context;
     }
 
     @Override
@@ -73,6 +79,7 @@ public class NotificationFragment extends Fragment {
     public void onViewCreated(@NonNull @NotNull View view, @Nullable @org.jetbrains.annotations.Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         changeTitlenandIconInterface.changeTitlenadIcon(getResources().getString(R.string.notification),true);
+        updateBottomView.bottomViewId(Constant.BOTTOM_NOTIFICATION);
         FragmentStateAdapter pagerAdapter = new MyPagerAdapter(getActivity());
         ViewPager2 viewPager=view.findViewById(R.id.viewPager_notification);
         viewPager.setAdapter(pagerAdapter);
@@ -104,4 +111,6 @@ public class NotificationFragment extends Fragment {
             return NUM_PAGES;
         }
     }
+
+
 }

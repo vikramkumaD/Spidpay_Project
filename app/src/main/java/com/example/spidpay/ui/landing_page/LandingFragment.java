@@ -17,8 +17,10 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.example.spidpay.R;
+import com.example.spidpay.constant.Constant;
 import com.example.spidpay.databinding.LandingfragmentBinding;
 import com.example.spidpay.interfaces.ChangeTitlenandIconInterface;
+import com.example.spidpay.interfaces.UpdateBottomView;
 import com.google.android.material.bottomsheet.BottomSheetDialog;
 
 import org.jetbrains.annotations.NotNull;
@@ -28,11 +30,13 @@ public class LandingFragment extends Fragment {
     BottomSheetDialog main_wallet_popup, trade_wallet_popup;
     private LandingfragmentBinding landingfragmentBinding;
     ChangeTitlenandIconInterface changeTitlenandIconInterface;
+    UpdateBottomView updateBottomView;
 
     @Override
     public void onAttach(@NonNull @NotNull Context context) {
         super.onAttach(context);
         changeTitlenandIconInterface = (ChangeTitlenandIconInterface) context;
+        updateBottomView=(UpdateBottomView)context;
     }
 
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -46,6 +50,7 @@ public class LandingFragment extends Fragment {
         landingfragmentBinding.imgMainwalletPopoup.setOnClickListener(v -> showMainWalletPopup());
         landingfragmentBinding.imgTradewalletPopoup.setOnClickListener(v -> showTradeWalletPopup());
         changeTitlenandIconInterface.changeTitlenadIcon("", false);
+        updateBottomView.bottomViewId(Constant.BOTTOM_HOME);
     }
 
     @Override

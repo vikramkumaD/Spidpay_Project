@@ -126,7 +126,7 @@
 
 
                 <RelativeLayout
-                    android:id="@+id/relative_store"
+                    android:id="@+id/relative_commisson"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
@@ -199,7 +199,7 @@
                 </RelativeLayout>
 
                 <RelativeLayout
-                    android:id="@+id/relative_person"
+                    android:id="@+id/relative_history"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_weight="1"

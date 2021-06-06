@@ -156,4 +156,14 @@
     <string name="requestedmt">Requested Amount:</string>
     <string name="btn_approve">Approve</string>
     <string name="btn_reject">Reject</string>
+    <string name="successful">Successful</string>
+    <string name="refund">Refund</string>
+    <string name="failed">Failed</string>
+    <string name="selecttrasctionperiod">Select transaction period</string>
+    <string name="lastmonth">Last Month</string>
+    <string name="last3month">Last 3 Month</string>
+    <string name="last6month">Last 6 Month</string>
+    <string name="lastoneyear">Last 1 Year</string>
+    <string name="selectcustomedate">Or Select Custom Date</string>
+    <string name="startdate">Start Date</string>
 </resources>

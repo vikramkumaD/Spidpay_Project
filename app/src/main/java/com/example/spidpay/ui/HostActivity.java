@@ -6,7 +6,9 @@ import android.view.View;
 import android.view.Menu;
 
 import com.example.spidpay.R;
+import com.example.spidpay.constant.Constant;
 import com.example.spidpay.interfaces.ChangeTitlenandIconInterface;
+import com.example.spidpay.interfaces.UpdateBottomView;
 import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.navigation.NavigationView;
 
@@ -21,7 +23,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.spidpay.databinding.ActivityHostBinding;
 
-public class HostActivity extends AppCompatActivity implements ChangeTitlenandIconInterface {
+public class HostActivity extends AppCompatActivity implements ChangeTitlenandIconInterface, UpdateBottomView {
 
     private AppBarConfiguration mAppBarConfiguration;
     private ActivityHostBinding binding;
@@ -52,6 +54,8 @@ public class HostActivity extends AppCompatActivity implements ChangeTitlenandIc
         binding.imgBackpress.setOnClickListener(v -> onBackPressed());
 
         binding.relativeNotification.setOnClickListener(v -> navController.navigate(R.id.notificationFragment));
+
+        binding.relativeHome.setOnClickListener(v -> navController.navigate(R.id.landingFragment));
 
     }
 
@@ -86,6 +90,50 @@ public class HostActivity extends AppCompatActivity implements ChangeTitlenandIc
             binding.imgOpendrawer.setVisibility(View.GONE);
             binding.imgBackpress.setVisibility(View.VISIBLE);
         }
+    }
 
+    public void updateBottomView(int id) {
+        if (id == Constant.BOTTOM_NOTIFICATION) {
+            update_Notification();
+        } else if (id == Constant.BOTTOM_HOME) {
+            update_Home();
+        } else if (id == Constant.BOTTOM_COMMISION) {
+            update_Commision();
+        } else if (id == Constant.BOTTOM_HISTORY) {
+            update_History();
+        }
+    }
+
+    public void update_Notification() {
+        binding.relativeNotification.setBackgroundColor(getResources().getColor(R.color.green));
+        binding.relativeHome.setBackgroundColor(getResources().getColor(R.color.botton_nav_inactive_color));
+        binding.relativeHistory.setBackgroundColor(getResources().getColor(R.color.botton_nav_inactive_color));
+        binding.relativeCommisson.setBackgroundColor(getResources().getColor(R.color.botton_nav_inactive_color));
+    }
+
+    public void update_Home() {
+        binding.relativeNotification.setBackgroundColor(getResources().getColor(R.color.botton_nav_inactive_color));
+        binding.relativeHome.setBackgroundColor(getResources().getColor(R.color.green));
+        binding.relativeHistory.setBackgroundColor(getResources().getColor(R.color.botton_nav_inactive_color));
+        binding.relativeCommisson.setBackgroundColor(getResources().getColor(R.color.botton_nav_inactive_color));
+    }
+
+    public void update_History() {
+        binding.relativeNotification.setBackgroundColor(getResources().getColor(R.color.botton_nav_inactive_color));
+        binding.relativeHome.setBackgroundColor(getResources().getColor(R.color.botton_nav_inactive_color));
+        binding.relativeHistory.setBackgroundColor(getResources().getColor(R.color.green));
+        binding.relativeCommisson.setBackgroundColor(getResources().getColor(R.color.botton_nav_inactive_color));
+    }
+
+    public void update_Commision() {
+        binding.relativeNotification.setBackgroundColor(getResources().getColor(R.color.botton_nav_inactive_color));
+        binding.relativeHome.setBackgroundColor(getResources().getColor(R.color.botton_nav_inactive_color));
+        binding.relativeHistory.setBackgroundColor(getResources().getColor(R.color.botton_nav_inactive_color));
+        binding.relativeCommisson.setBackgroundColor(getResources().getColor(R.color.green));
+    }
+
+    @Override
+    public void bottomViewId(int id) {
+        updateBottomView(id);
     }
 }

@@ -72,5 +72,9 @@
         android:label="NotificationFragment" >
 
     </fragment>
+    <fragment
+        android:id="@+id/transaction_Report_Fragment"
+        android:name="com.example.spidpay.ui.report.Transaction_Report_Fragment"
+        android:label="Transaction_Report_Fragment" />
 
 </navigation>

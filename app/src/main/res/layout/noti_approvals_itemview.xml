@@ -7,12 +7,12 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/approval_bg"
-        app:cardCornerRadius="@dimen/marign15dp">
+        app:cardCornerRadius="@dimen/marign10dp">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:padding="@dimen/marign10dp">
+            android:padding="@dimen/marign15dp">
 
             <TextView
                 android:id="@+id/tv_request_name"
@@ -52,7 +52,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/marign5dp"
                 android:fontFamily="@font/lato"
-                android:text="@string/requestedmt"
+                android:text="Desc."
                 android:textColor="@color/approval_text_color"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/tv_request_amont_label" />
@@ -72,20 +72,23 @@
                 android:layout_height="wrap_content"
                 android:textAllCaps="false"
                 android:text="@string/btn_approve"
+                android:gravity="center"
                 android:textColor="@color/white"
                 android:fontFamily="@font/lato_bold"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/tv_request_description" />
 
             <Button
+                android:gravity="center"
                 android:textAllCaps="false"
                 android:textColor="@color/white"
                 android:layout_marginTop="@dimen/marign20dp"
                 android:paddingStart="@dimen/marign30dp"
-                android:paddingEnd="@dimen/marign20dp"
-                android:paddingTop="@dimen/marign10dp"
-                android:paddingBottom="@dimen/marign10dp"
+                android:paddingEnd="@dimen/marign30dp"
+                android:paddingTop="8dp"
+                android:paddingBottom="8dp"
                 android:background="@drawable/reject_btn_bg"
+
                 android:minHeight="0dp"
                 android:minWidth="0dp"
                 android:layout_marginStart="@dimen/marign10dp"
