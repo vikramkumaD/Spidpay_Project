@@ -4,7 +4,6 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.NavController;
-import androidx.navigation.Navigation;
 import androidx.navigation.fragment.NavHostFragment;
 
 import android.content.Context;
@@ -17,7 +16,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.example.spidpay.R;
-import com.example.spidpay.constant.Constant;
+import com.example.spidpay.util.Constant;
 import com.example.spidpay.databinding.LandingfragmentBinding;
 import com.example.spidpay.interfaces.ChangeTitlenandIconInterface;
 import com.example.spidpay.interfaces.UpdateBottomView;
@@ -51,6 +50,11 @@ public class LandingFragment extends Fragment {
         landingfragmentBinding.imgTradewalletPopoup.setOnClickListener(v -> showTradeWalletPopup());
         changeTitlenandIconInterface.changeTitlenadIcon("", false);
         updateBottomView.bottomViewId(Constant.BOTTOM_HOME);
+
+        landingfragmentBinding.relativeAeps.setOnClickListener(v -> {
+            NavController navController = NavHostFragment.findNavController(this);
+            navController.navigate(R.id.AEPS_Dashboard_Fragment);
+        });
     }
 
     @Override

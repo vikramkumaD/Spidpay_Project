@@ -1,4 +1,4 @@
-package com.example.spidpay.constant;
+package com.example.spidpay.util;
 
 import android.content.Context;
 import android.graphics.Rect;

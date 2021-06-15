@@ -50,7 +50,7 @@ public class RegisterViewModel extends ViewModel {
             commonInterface.onFailed(view.getContext().getResources().getString(R.string.mobilenoerror2));
             return;
         }
-        commonInterface.onSuccess();
+      //  commonInterface.onSuccess(responseLiveData);
     }
 
 }

@@ -2,6 +2,7 @@ package com.example.spidpay.ui.login;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.DataBindingUtil;
+import androidx.lifecycle.LiveData;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
@@ -18,9 +19,14 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.spidpay.R;
+import com.example.spidpay.data.repository.LoginRepository;
+import com.example.spidpay.data.request.LocationMap;
+import com.example.spidpay.data.request.LoginRequest;
+import com.example.spidpay.data.response.LoginResponse;
 import com.example.spidpay.databinding.ActivityLoginBinding;
 import com.example.spidpay.interfaces.CommonInterface;
 import com.example.spidpay.ui.VerifyOTPActivity;
+import com.example.spidpay.util.Constant;
 
 public class LoginActivity extends AppCompatActivity implements CommonInterface {
     LoginViewModel loginViewModel;
@@ -35,7 +41,6 @@ public class LoginActivity extends AppCompatActivity implements CommonInterface 
         activityLoginBinding = DataBindingUtil.setContentView(this, R.layout.activity_login);
         commonInterface = this;
         intliazeView();
-
     }
 
     public void intliazeView() {
@@ -45,10 +50,26 @@ public class LoginActivity extends AppCompatActivity implements CommonInterface 
         tv_signup = findViewById(R.id.tv_signup);
         tv_signup.setText(spannableString);
         findViewById(R.id.btn_login).setOnClickListener((View v) -> startActivity(new Intent(LoginActivity.this, VerifyOTPActivity.class)));
+
+        LoginRepository loginRepository = new LoginRepository(LoginActivity.this, commonInterface);
         loginViewModel = new ViewModelProvider(this).get(LoginViewModel.class);
         loginViewModel.commonInterface = commonInterface;
-        activityLoginBinding.setLoginViewmodel(loginViewModel);
+        loginViewModel.loginRepository = loginRepository;
 
+        LocationMap locationMap = new LocationMap();
+        locationMap.location = "Mumbai";
+        locationMap.Device_IMEINO = "Mumbai";
+        locationMap.Device_IP = "1.1.1.1";
+        locationMap.Langitutde = "72.1254";
+        locationMap.Lattitude = "12.1254";
+
+        LoginRequest loginRequest = new LoginRequest();
+        loginRequest.password = "9145288397";
+        loginRequest.userName = "9145288397";
+        loginRequest.locationMap = locationMap;
+        loginViewModel.loginRequest = loginRequest;
+
+        activityLoginBinding.setLoginViewmodel(loginViewModel);
 
         activityLoginBinding.setLifecycleOwner(this);
 
@@ -69,9 +90,8 @@ public class LoginActivity extends AppCompatActivity implements CommonInterface 
             }
         });
 
-        loginViewModel.mstring_mobile_number.observe(this, s -> {
-                activityLoginBinding.edtLoginMobileNumber.setText(s);
-        });
+        loginViewModel.mstring_mobile_number.observe(this, s -> activityLoginBinding.edtLoginMobileNumber.setText(s));
+
 
     }
 
@@ -108,7 +128,13 @@ public class LoginActivity extends AppCompatActivity implements CommonInterface 
     }
 
     @Override
-    public void onSuccess() {
-        startActivity(new Intent(LoginActivity.this,VerifyOTPActivity.class));
+    public void onSuccess(LiveData<LoginResponse> responseLiveData) {
+        responseLiveData.observe(this, loginResponse -> {
+            if (loginResponse.status.equals(Constant.Success)) {
+                 Toast.makeText(this, Constant.Success, Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        //startActivity(new Intent(LoginActivity.this, VerifyOTPActivity.class));
     }
 }

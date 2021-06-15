@@ -1,0 +1,208 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.aeps.AEPS_Custom_Deatil_Fragment">
+
+
+    <LinearLayout
+        android:id="@+id/linear_aeps_customer_phone_number"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/marign20dp"
+        android:layout_marginTop="@dimen/marign30dp"
+        android:layout_marginEnd="@dimen/marign20dp"
+        android:layout_marginBottom="@dimen/marign20dp"
+        android:background="@drawable/edittext_shadow"
+        android:orientation="horizontal"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <EditText
+            android:id="@+id/edt_aeps_customer_number"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@android:color/transparent"
+            android:hint="@string/custphonenumber"
+            android:inputType="number"
+            android:maxLength="10"
+            android:paddingLeft="@dimen/marign10dp"
+            android:paddingTop="@dimen/marign10dp"
+            android:paddingRight="@dimen/marign10dp"
+            android:paddingBottom="@dimen/marign10dp"
+            android:textColorHint="@color/lightgrey" />
+
+        <ImageView
+            android:id="@+id/img_aeps_customer_number"
+            android:layout_width="@dimen/marign20dp"
+            android:layout_height="@dimen/marign20dp"
+            android:layout_gravity="center"
+            android:layout_marginEnd="@dimen/marign10dp"
+            android:focusable="false"
+            android:src="@drawable/clear_field"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/linear_aeps_customer_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/marign20dp"
+        android:layout_marginTop="@dimen/marign10dp"
+        android:layout_marginEnd="@dimen/marign20dp"
+        android:layout_marginBottom="@dimen/marign20dp"
+        android:background="@drawable/edittext_shadow"
+        android:orientation="horizontal"
+        app:layout_constraintTop_toBottomOf="@+id/linear_aeps_customer_phone_number">
+
+        <EditText
+            android:id="@+id/edt_aeps_customer_name"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@android:color/transparent"
+            android:hint="@string/custphonename"
+            android:inputType="number"
+            android:maxLength="10"
+            android:paddingLeft="@dimen/marign10dp"
+            android:paddingTop="@dimen/marign10dp"
+            android:paddingRight="@dimen/marign10dp"
+            android:paddingBottom="@dimen/marign10dp"
+            android:textColorHint="@color/lightgrey" />
+
+        <ImageView
+            android:id="@+id/img_aeps_customer_name"
+            android:layout_width="@dimen/marign20dp"
+            android:layout_height="@dimen/marign20dp"
+            android:layout_gravity="center"
+            android:layout_marginEnd="@dimen/marign10dp"
+            android:focusable="false"
+            android:src="@drawable/clear_field"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/linear_aeps_customer_bank"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/marign20dp"
+        android:layout_marginTop="@dimen/marign10dp"
+        android:layout_marginEnd="@dimen/marign20dp"
+        android:layout_marginBottom="@dimen/marign20dp"
+        android:background="@drawable/edittext_shadow"
+        android:orientation="horizontal"
+        app:layout_constraintTop_toBottomOf="@+id/linear_aeps_customer_name">
+
+        <EditText
+            android:id="@+id/edt_aeps_customer_bank"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@android:color/transparent"
+            android:drawableRight="@drawable/ic_baseline_keyboard_arrow_down_24"
+            android:hint="@string/selectbank"
+            android:inputType="number"
+            android:maxLength="10"
+            android:paddingLeft="@dimen/marign10dp"
+            android:paddingTop="@dimen/marign10dp"
+            android:paddingRight="@dimen/marign10dp"
+            android:paddingBottom="@dimen/marign10dp"
+            android:textColorHint="@color/lightgrey" />
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/linear_aeps_customer_addhar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/marign20dp"
+        android:layout_marginTop="@dimen/marign10dp"
+        android:layout_marginEnd="@dimen/marign20dp"
+        android:layout_marginBottom="@dimen/marign20dp"
+        android:background="@drawable/edittext_shadow"
+        android:orientation="horizontal"
+        app:layout_constraintTop_toBottomOf="@+id/linear_aeps_customer_bank">
+
+        <EditText
+            android:id="@+id/edt_aeps_customer_addhar"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@android:color/transparent"
+            android:hint="@string/aadharnumber"
+            android:inputType="number"
+            android:maxLength="10"
+            android:paddingLeft="@dimen/marign10dp"
+            android:paddingTop="@dimen/marign10dp"
+            android:paddingRight="@dimen/marign10dp"
+            android:paddingBottom="@dimen/marign10dp"
+            android:textColorHint="@color/lightgrey" />
+
+        <ImageView
+            android:id="@+id/img_aeps_customer_addhar"
+            android:layout_width="@dimen/marign20dp"
+            android:layout_height="@dimen/marign20dp"
+            android:layout_gravity="center"
+            android:layout_marginEnd="@dimen/marign10dp"
+            android:focusable="false"
+            android:src="@drawable/clear_field"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/tv_termsncondtion"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/marign20dp"
+        android:layout_marginTop="@dimen/marign40dp"
+        android:fontFamily="@font/lato_bold"
+        android:text="@string/selectdevice"
+        android:textColor="@color/black"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linear_aeps_customer_addhar" />
+
+    <TextView
+        android:id="@+id/aepstxt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/marign20dp"
+        android:fontFamily="@font/lato_bold"
+        android:paddingStart="@dimen/marign20dp"
+        android:paddingEnd="@dimen/marign20dp"
+        android:text="@string/aepstxt"
+        android:textColor="@color/black"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_termsncondtion" />
+
+    <Button
+        android:id="@+id/btn_next"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/marign20dp"
+        android:layout_marginTop="@dimen/marign20dp"
+        android:layout_marginEnd="@dimen/marign20dp"
+        android:layout_marginBottom="@dimen/marign20dp"
+        android:background="@drawable/button_bg_green"
+        android:fontFamily="@font/lato"
+        android:text="@string/next"
+        android:textColor="@color/white"
+        android:textSize="@dimen/marign18sp"
+        app:layout_constraintTop_toBottomOf="@+id/aepstxt" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

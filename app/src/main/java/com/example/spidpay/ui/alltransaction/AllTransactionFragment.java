@@ -13,7 +13,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.spidpay.R;
-import com.example.spidpay.constant.ItemOffsetDecoration;
+import com.example.spidpay.util.ItemOffsetDecoration;
 import com.example.spidpay.databinding.FragmentAllTransactionBinding;
 import com.example.spidpay.interfaces.ChangeTitlenandIconInterface;
 

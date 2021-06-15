@@ -1,15 +1,15 @@
 package com.example.spidpay.ui.login;
 
 import android.view.View;
-import android.widget.EditText;
-import android.widget.ImageView;
 
 import androidx.lifecycle.LiveData;
-import androidx.lifecycle.MediatorLiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
 import com.example.spidpay.R;
+import com.example.spidpay.data.repository.LoginRepository;
+import com.example.spidpay.data.request.LoginRequest;
+import com.example.spidpay.data.response.LoginResponse;
 import com.example.spidpay.interfaces.CommonInterface;
 
 public class LoginViewModel extends ViewModel {
@@ -17,6 +17,11 @@ public class LoginViewModel extends ViewModel {
     public String mobile_number, password;
     public MutableLiveData<String> mstring_mobile_number = new MutableLiveData<>();
     public MutableLiveData<Boolean> mboolean_mobile_number = new MutableLiveData<>();
+
+    LoginRequest loginRequest;
+    LoginRepository loginRepository;
+    MutableLiveData<LoginResponse> mutableLiveData;
+
 
     public void check_mobile_number(String data) {
         if (data.length() > 0)
@@ -47,6 +52,14 @@ public class LoginViewModel extends ViewModel {
             commonInterface.onFailed(view.getContext().getResources().getString(R.string.passworderror2));
             return;
         }
-        commonInterface.onSuccess();
+
+        getLoginResponse();
+
     }
+
+    public void getLoginResponse() {
+        LiveData<LoginResponse> responseLiveData= loginRepository.getLoginResposne(loginRequest);
+        commonInterface.onSuccess(responseLiveData);
+    }
+
 }

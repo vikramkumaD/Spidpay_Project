@@ -1,21 +1,18 @@
 package com.example.spidpay.ui;
 
 import android.os.Bundle;
-import android.view.Gravity;
 import android.view.View;
 import android.view.Menu;
 
 import com.example.spidpay.R;
-import com.example.spidpay.constant.Constant;
+import com.example.spidpay.util.Constant;
 import com.example.spidpay.interfaces.ChangeTitlenandIconInterface;
 import com.example.spidpay.interfaces.UpdateBottomView;
-import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.navigation.NavigationView;
 
 import androidx.core.view.GravityCompat;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
-import androidx.navigation.fragment.NavHostFragment;
 import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
 import androidx.drawerlayout.widget.DrawerLayout;

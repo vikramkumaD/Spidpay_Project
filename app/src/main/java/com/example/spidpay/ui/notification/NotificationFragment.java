@@ -15,15 +15,11 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.spidpay.R;
-import com.example.spidpay.constant.Constant;
+import com.example.spidpay.util.Constant;
 import com.example.spidpay.interfaces.ChangeTitlenandIconInterface;
 import com.example.spidpay.interfaces.UpdateBottomView;
 import com.example.spidpay.ui.notification.alerts.AlertFragment;
 import com.example.spidpay.ui.notification.approvals.Approvalragment;
-import com.example.spidpay.ui.profile.ProfileFragmentTab;
-import com.example.spidpay.ui.profile.bankgst.BankGSTFragment;
-import com.example.spidpay.ui.profile.kyc.KYCFragment;
-import com.example.spidpay.ui.profile.profile.MyProfileFragment;
 import com.google.android.material.tabs.TabLayout;
 import com.google.android.material.tabs.TabLayoutMediator;
 

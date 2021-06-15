@@ -166,4 +166,16 @@
     <string name="lastoneyear">Last 1 Year</string>
     <string name="selectcustomedate">Or Select Custom Date</string>
     <string name="startdate">Start Date</string>
+    <string name="selectdevice">Select Device</string>
+    <string name="mantra">Mantra</string>
+    <string name="morpho">Morpho</string>
+    <string name="startech">Startech</string>
+    <string name="precision">Precision</string>
+    <string name="custphonenumber">Customer Phone Number</string>
+    <string name="custphonename">Customer Name</string>
+    <string name="aadharnumber">Aadhar Number</string>
+    <string name="aepstxt">Before pressing Next button, please read Terms and Condition</string>
+    <string name="cashwithdrwal">Cash Withdrwal</string>
+    <string name="balanceenquiry">Balance Enquiry</string>
+    <string name="ministatement">Mini Statement</string>
 </resources>

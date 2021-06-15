@@ -76,5 +76,15 @@
         android:id="@+id/transaction_Report_Fragment"
         android:name="com.example.spidpay.ui.report.Transaction_Report_Fragment"
         android:label="Transaction_Report_Fragment" />
+    <fragment
+        android:id="@+id/AEPS_Dashboard_Fragment"
+        android:name="com.example.spidpay.ui.aeps.AEPS_Dashboard_Fragment"
+        android:label="fragment_a_e_p_s__dashboard_"
+        tools:layout="@layout/fragment_a_e_p_s__dashboard_" />
+    <fragment
+        android:id="@+id/AEPS_Custom_Deatil_Fragment"
+        android:name="com.example.spidpay.ui.aeps.AEPS_Custom_Deatil_Fragment"
+        android:label="fragment_a_e_p_s__custom__deatil_"
+        tools:layout="@layout/fragment_a_e_p_s__custom__deatil_" />
 
 </navigation>

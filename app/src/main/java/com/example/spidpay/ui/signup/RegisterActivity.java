@@ -2,6 +2,7 @@ package com.example.spidpay.ui.signup;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.DataBindingUtil;
+import androidx.lifecycle.LiveData;
 import androidx.lifecycle.ViewModelProvider;
 
 import android.content.Intent;
@@ -15,6 +16,7 @@ import android.view.WindowManager;
 import android.widget.Toast;
 
 import com.example.spidpay.R;
+import com.example.spidpay.data.response.LoginResponse;
 import com.example.spidpay.databinding.ActivityRegisterBinding;
 import com.example.spidpay.interfaces.CommonInterface;
 import com.example.spidpay.ui.HostActivity;
@@ -78,7 +80,7 @@ public class RegisterActivity extends AppCompatActivity implements CommonInterfa
     }
 
     @Override
-    public void onSuccess() {
+    public void onSuccess(LiveData<LoginResponse> responseLiveData) {
         startActivity(new Intent(RegisterActivity.this, HostActivity.class));
     }
 }

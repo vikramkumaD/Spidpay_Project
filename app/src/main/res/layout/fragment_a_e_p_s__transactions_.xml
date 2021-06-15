@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.aeps.AEPS_Transactions_Fragment">
+
+    <TextView
+        android:id="@+id/tv_transactiontype"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/marign20dp"
+        android:layout_marginTop="@dimen/marign40dp"
+        android:fontFamily="@font/lato_bold"
+        android:text="@string/selecttrasctiontype"
+        android:textColor="@color/black"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+    <RadioGroup
+        android:id="@+id/rg_trasaction_type"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/marign20dp"
+        android:layout_marginTop="@dimen/marign20dp"
+        android:orientation="vertical"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_transactiontype">
+
+        <RadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/cashwithdrwal" />
+
+        <RadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/balanceenquiry" />
+
+        <RadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/ministatement" />
+
+
+    </RadioGroup>
+
+    <Button
+        android:id="@+id/btn_next"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/marign20dp"
+        android:layout_marginTop="@dimen/marign20dp"
+        android:layout_marginEnd="@dimen/marign20dp"
+        android:layout_marginBottom="@dimen/marign20dp"
+        android:background="@drawable/button_bg_green"
+        android:fontFamily="@font/lato"
+        android:text="@string/next"
+        android:textColor="@color/white"
+        android:textSize="@dimen/marign18sp"
+        app:layout_constraintTop_toBottomOf="@+id/rg_trasaction_type" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
