@@ -3,6 +3,7 @@ package com.example.spidpay.ui.signup;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.DataBindingUtil;
 import androidx.lifecycle.LiveData;
+import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
 import android.content.Intent;
@@ -12,32 +13,40 @@ import android.text.SpannableString;
 import android.text.Spanned;
 import android.text.TextWatcher;
 import android.text.style.ForegroundColorSpan;
+import android.view.View;
 import android.view.WindowManager;
 import android.widget.Toast;
 
 import com.example.spidpay.R;
+import com.example.spidpay.data.repository.RegisterRepository;
 import com.example.spidpay.data.response.LoginResponse;
+import com.example.spidpay.data.response.RegisterResponse;
 import com.example.spidpay.databinding.ActivityRegisterBinding;
-import com.example.spidpay.interfaces.CommonInterface;
+import com.example.spidpay.interfaces.LoginInterface;
+import com.example.spidpay.interfaces.RegisterInterface;
 import com.example.spidpay.ui.HostActivity;
 
 
-public class RegisterActivity extends AppCompatActivity implements CommonInterface {
+public class RegisterActivity extends AppCompatActivity implements RegisterInterface {
     ActivityRegisterBinding activityRegisterBinding;
-    CommonInterface commonInterface;
+    RegisterInterface registerInterface;
+    RegisterViewModel registerViewModel;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         activityRegisterBinding = DataBindingUtil.setContentView(this, R.layout.activity_register);
-        commonInterface=this;
+        registerInterface = (RegisterInterface) this;
         SpannableString spannableString = new SpannableString(getResources().getString(R.string.dashboard_txt3));
         ForegroundColorSpan foregroundColorSpanCyan = new ForegroundColorSpan(getResources().getColor(R.color.termsncondtion));
         spannableString.setSpan(foregroundColorSpanCyan, 29, 48, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
         activityRegisterBinding.tvTermsncondtion.setText(spannableString);
-        RegisterViewModel  registerViewModel = new ViewModelProvider(this).get(RegisterViewModel.class);
-        registerViewModel.commonInterface=commonInterface;
+
+        RegisterRepository registerRepository=new RegisterRepository(RegisterActivity.this,registerInterface);
+        registerViewModel = new ViewModelProvider(this).get(RegisterViewModel.class);
+        registerViewModel.registerInterface = registerInterface;
+        registerViewModel.registerRepository=registerRepository;
         activityRegisterBinding.setRegisterViewmodel(registerViewModel);
         activityRegisterBinding.setLifecycleOwner(this);
         activityRegisterBinding.edtRegisterfullname.addTextChangedListener(new TextWatcher() {
@@ -75,12 +84,22 @@ public class RegisterActivity extends AppCompatActivity implements CommonInterfa
     }
 
     @Override
-    public void onFailed(String msg) {
-        Toast.makeText(this, msg, Toast.LENGTH_SHORT).show();
+    public void onServiceStart() {
+        activityRegisterBinding.pbLogin.setVisibility(View.VISIBLE);
+        registerViewModel.getRegisterResponse();
     }
 
     @Override
-    public void onSuccess(LiveData<LoginResponse> responseLiveData) {
-        startActivity(new Intent(RegisterActivity.this, HostActivity.class));
+    public void onFailed(String msg) {
+        activityRegisterBinding.pbLogin.setVisibility(View.GONE);
+        Toast.makeText(this, msg, Toast.LENGTH_SHORT).show();
+    }
+
+
+    @Override
+    public void onSuccess(LiveData<RegisterResponse> responseLiveData) {
+        activityRegisterBinding.pbLogin.setVisibility(View.GONE);
+        responseLiveData.observe(this, registerResponse -> {
+        });
     }
 }

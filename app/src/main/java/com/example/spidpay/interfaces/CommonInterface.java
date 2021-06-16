@@ -1,11 +1,7 @@
 package com.example.spidpay.interfaces;
 
-import androidx.lifecycle.LiveData;
-
-import com.example.spidpay.data.response.LoginResponse;
-
 public interface CommonInterface {
+    void onServiceStart();
 
     void onFailed(String msg);
-    void onSuccess(LiveData<LoginResponse> responseLiveData);
 }

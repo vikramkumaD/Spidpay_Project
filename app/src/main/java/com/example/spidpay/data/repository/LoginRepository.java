@@ -8,7 +8,8 @@ import com.example.spidpay.data.RetrofitClient;
 import com.example.spidpay.data.RetrofitInterface;
 import com.example.spidpay.data.request.LoginRequest;
 import com.example.spidpay.data.response.LoginResponse;
-import com.example.spidpay.interfaces.CommonInterface;
+import com.example.spidpay.interfaces.LoginInterface;
+import com.example.spidpay.util.NoInternetException;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -16,11 +17,11 @@ import retrofit2.Response;
 
 public class LoginRepository {
     Context context;
-    CommonInterface commonInterface;
+    LoginInterface loginInterface;
 
-    public LoginRepository(Context context, CommonInterface commonInterface) {
+    public LoginRepository(Context context, LoginInterface loginInterface) {
         this.context = context;
-        this.commonInterface = commonInterface;
+        this.loginInterface = loginInterface;
     }
 
     public MutableLiveData<LoginResponse> getLoginResposne(LoginRequest loginRequest) {
@@ -33,13 +34,17 @@ public class LoginRepository {
                 if (response.isSuccessful() && response.body() != null) {
                     responseMutableLiveData.postValue(response.body());
                 } else {
-                    commonInterface.onFailed("Server error!");
+                    loginInterface.onFailed("Server error!");
                 }
             }
 
             @Override
             public void onFailure(Call<LoginResponse> call, Throwable t) {
-                commonInterface.onFailed("Server error!");
+                if (t instanceof NoInternetException) {
+                    loginInterface.onFailed("No Internet");
+                } else {
+                    loginInterface.onFailed(t.getMessage());
+                }
             }
         });
 
