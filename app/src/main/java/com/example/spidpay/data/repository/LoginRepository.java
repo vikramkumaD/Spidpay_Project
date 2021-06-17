@@ -6,8 +6,11 @@ import androidx.lifecycle.MutableLiveData;
 
 import com.example.spidpay.data.RetrofitClient;
 import com.example.spidpay.data.RetrofitInterface;
+import com.example.spidpay.data.request.ChangePasswordRequest;
 import com.example.spidpay.data.request.LoginRequest;
+import com.example.spidpay.data.response.CommonResponse;
 import com.example.spidpay.data.response.LoginResponse;
+import com.example.spidpay.interfaces.ForgotPassInterface;
 import com.example.spidpay.interfaces.LoginInterface;
 import com.example.spidpay.util.NoInternetException;
 
@@ -18,10 +21,12 @@ import retrofit2.Response;
 public class LoginRepository {
     Context context;
     LoginInterface loginInterface;
+    ForgotPassInterface forgotPassInterface;
 
-    public LoginRepository(Context context, LoginInterface loginInterface) {
+    public LoginRepository(Context context, LoginInterface loginInterface, ForgotPassInterface forgotPassInterface) {
         this.context = context;
         this.loginInterface = loginInterface;
+        this.forgotPassInterface = forgotPassInterface;
     }
 
     public MutableLiveData<LoginResponse> getLoginResposne(LoginRequest loginRequest) {
@@ -50,4 +55,33 @@ public class LoginRepository {
 
         return responseMutableLiveData;
     }
+
+    public MutableLiveData<CommonResponse> getResetPass(ChangePasswordRequest changePasswordRequest) {
+        MutableLiveData<CommonResponse> responseMutableLiveData = new MutableLiveData<>();
+        RetrofitInterface retrofitInterface = RetrofitClient.GetRetrofitClient(context).create(RetrofitInterface.class);
+        Call<CommonResponse> call = retrofitInterface.resetPass(changePasswordRequest);
+        call.enqueue(new Callback<CommonResponse>() {
+            @Override
+            public void onResponse(Call<CommonResponse> call, Response<CommonResponse> response) {
+                if (response.isSuccessful() && response.body() != null) {
+                    responseMutableLiveData.postValue(response.body());
+                } else {
+                    forgotPassInterface.onForgotFailed("Server error!");
+                }
+            }
+
+            @Override
+            public void onFailure(Call<CommonResponse> call, Throwable t) {
+                if (t instanceof NoInternetException) {
+                    forgotPassInterface.onForgotFailed("No Internet");
+                } else {
+                    forgotPassInterface.onForgotFailed(t.getMessage());
+                }
+            }
+        });
+
+        return responseMutableLiveData;
+    }
+
+
 }

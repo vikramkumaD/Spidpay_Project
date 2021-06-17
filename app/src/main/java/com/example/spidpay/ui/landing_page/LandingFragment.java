@@ -48,13 +48,19 @@ public class LandingFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
         landingfragmentBinding.imgMainwalletPopoup.setOnClickListener(v -> showMainWalletPopup());
         landingfragmentBinding.imgTradewalletPopoup.setOnClickListener(v -> showTradeWalletPopup());
-        changeTitlenandIconInterface.changeTitlenadIcon("", false);
-        updateBottomView.bottomViewId(Constant.BOTTOM_HOME);
+
 
         landingfragmentBinding.relativeAeps.setOnClickListener(v -> {
             NavController navController = NavHostFragment.findNavController(this);
             navController.navigate(R.id.AEPS_Dashboard_Fragment);
         });
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        changeTitlenandIconInterface.changeTitlenadIcon("", false);
+        updateBottomView.bottomViewId(Constant.BOTTOM_HOME);
     }
 
     @Override

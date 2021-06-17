@@ -6,7 +6,7 @@
     <string name="forgotpassword">Forgot Password</string>
     <string name="needaccount">Need Account ? Signup</string>
     <string name="register">Register</string>
-    <string name="email">Email</string>
+    <string name="email">Email-id</string>
     <string name="submit">Submit</string>
     <string name="otp">OTP</string>
     <string name="cancel">Cancel</string>
@@ -179,4 +179,13 @@
     <string name="balanceenquiry">Balance Enquiry</string>
     <string name="ministatement">Mini Statement</string>
     <string name="inrestedfor">Interested for</string>
+    <string name="firstname">First Name</string>
+    <string name="lastname">Last Name</string>
+    <string name="confirmpassword">Confirm Password</string>
+    <string name="entervalidemail">Enter valid email-id!</string>
+    <string name="passwordnotmatch">Password not matching!</string>
+    <string name="entermobilenumber">Enter Mobile Number!</string>
+    <string name="passwordreset">Password Reset Successfull!</string>
+    <string name="pleaseseletcinterestedfor">Please select Interested for!</string>
+    <string name="enterotp">Enter OTP!</string>
 </resources>

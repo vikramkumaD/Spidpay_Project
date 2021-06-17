@@ -6,10 +6,14 @@ import androidx.core.content.ContextCompat;
 import androidx.databinding.DataBindingUtil;
 import androidx.lifecycle.LiveData;
 
+import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
 import android.Manifest;
+import android.app.ProgressDialog;
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Build;
 import android.os.Bundle;
 import android.text.Editable;
@@ -17,21 +21,33 @@ import android.text.SpannableString;
 import android.text.Spanned;
 import android.text.TextWatcher;
 import android.text.style.ForegroundColorSpan;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.view.WindowManager;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.ImageView;
+import android.widget.ProgressBar;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.example.spidpay.R;
 import com.example.spidpay.data.repository.LoginRepository;
+import com.example.spidpay.data.response.CommonResponse;
 import com.example.spidpay.data.response.LoginResponse;
 import com.example.spidpay.databinding.ActivityLoginBinding;
+import com.example.spidpay.interfaces.ForgotPassInterface;
 import com.example.spidpay.interfaces.LoginInterface;
 
 import com.example.spidpay.location.LocationViewModel;
+import com.example.spidpay.ui.HostActivity;
 import com.example.spidpay.ui.signup.RegisterActivity;
 import com.example.spidpay.util.Constant;
+import com.example.spidpay.util.PrefManager;
 import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.android.gms.location.LocationServices;
+import com.google.android.material.bottomsheet.BottomSheetDialog;
 
 
 import org.jetbrains.annotations.NotNull;
@@ -39,9 +55,10 @@ import org.jetbrains.annotations.NotNull;
 import java.util.ArrayList;
 import java.util.List;
 
-public class LoginActivity extends AppCompatActivity implements LoginInterface {
+public class LoginActivity extends AppCompatActivity implements LoginInterface, ForgotPassInterface {
     LoginViewModel loginViewModel;
     TextView tv_signup;
+    BottomSheetDialog forgot_bottomsheet;
     ActivityLoginBinding activityLoginBinding;
     LoginInterface loginInterface;
     int croaselocation, finelocation;
@@ -49,6 +66,8 @@ public class LoginActivity extends AppCompatActivity implements LoginInterface {
     LocationViewModel locationViewModel;
     List<String> listPermissionsNeeded;
     final int PERMISSION_REQUEST_CODE = 100;
+    ProgressBar pb_forgot;
+    ForgotPassInterface forgotPassInterface;
 
     @RequiresApi(api = Build.VERSION_CODES.M)
     @Override
@@ -57,6 +76,7 @@ public class LoginActivity extends AppCompatActivity implements LoginInterface {
         this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         activityLoginBinding = DataBindingUtil.setContentView(this, R.layout.activity_login);
         loginInterface = this;
+        forgotPassInterface = this;
         intliazeView();
     }
 
@@ -86,9 +106,10 @@ public class LoginActivity extends AppCompatActivity implements LoginInterface {
         }
 
 
-        LoginRepository loginRepository = new LoginRepository(LoginActivity.this, loginInterface);
+        LoginRepository loginRepository = new LoginRepository(LoginActivity.this, loginInterface,forgotPassInterface);
         loginViewModel = new ViewModelProvider(this).get(LoginViewModel.class);
         loginViewModel.loginInterface = loginInterface;
+        loginViewModel.forgotPassInterface = forgotPassInterface;
         loginViewModel.loginRepository = loginRepository;
 
         activityLoginBinding.setLoginViewmodel(loginViewModel);
@@ -110,10 +131,13 @@ public class LoginActivity extends AppCompatActivity implements LoginInterface {
                 loginViewModel.check_mobile_number(s.toString());
             }
         });
+
         loginViewModel.mstring_mobile_number.observe(this, s -> activityLoginBinding.edtLoginMobileNumber.setText(s));
 
 
         activityLoginBinding.tvSignup.setOnClickListener(v -> startActivity(new Intent(LoginActivity.this, RegisterActivity.class)));
+
+        activityLoginBinding.tvLoginforgotpass.setOnClickListener(v -> forgotpasswordDialog());
     }
 
     @RequiresApi(api = Build.VERSION_CODES.M)
@@ -141,32 +165,49 @@ public class LoginActivity extends AppCompatActivity implements LoginInterface {
         }
     }
 
-
-   /* private void openForgotPassDialog() {
-        android.app.AlertDialog.Builder builder = new android.app.AlertDialog.Builder(LoginActivity.this);
+    public void forgotpasswordDialog() {
         View view = LayoutInflater.from(LoginActivity.this).inflate(R.layout.forgotpasswordlayout, null);
-        builder.setView(view);
-        android.app.AlertDialog forgotdialog = builder.create();
-        RelativeLayout relative_cancel = view.findViewById(R.id.relative_cancel);
-        relative_cancel.setOnClickListener(v1 -> forgotdialog.dismiss());
+        forgot_bottomsheet = new BottomSheetDialog(LoginActivity.this);
+        forgot_bottomsheet.setContentView(view);
+        forgot_bottomsheet.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+        pb_forgot = view.findViewById(R.id.pb_login);
 
+        EditText edt_login_mobile_number = view.findViewById(R.id.edt_login_mobile_number);
+        EditText edt_loginpassword = view.findViewById(R.id.edt_loginpassword);
+        ImageView img_cleare_forgot_mobilenumber = view.findViewById(R.id.img_cleare_forgot_mobilenumber);
+        Button btn_continue = view.findViewById(R.id.btn_continue);
+        btn_continue.setOnClickListener(v -> {
+            if (!edt_login_mobile_number.getText().toString().trim().equals("") && !edt_loginpassword.getText().toString().trim().equals("")) {
+                loginViewModel.mobile_number = edt_login_mobile_number.getText().toString().trim();
+                loginViewModel.password = edt_loginpassword.getText().toString().trim();
+                loginViewModel.validate_Forgot_Field(v);
 
-        RelativeLayout relative_ok = view.findViewById(R.id.relative_ok);
-        relative_ok.setOnClickListener(v12 -> forgotdialog.dismiss());
+            } else {
+                Constant.showToast(LoginActivity.this, getResources().getString(R.string.filedcannotbeblank));
+            }
+        });
+        edt_login_mobile_number.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
 
-        forgotdialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
-        forgotdialog.show();
-        forgotdialog.setCanceledOnTouchOutside(false);
-        WindowManager.LayoutParams layoutParams = new WindowManager.LayoutParams();
-        layoutParams.copyFrom(forgotdialog.getWindow().getAttributes());
-        int horizontalMargin = (int) getResources().getDimension(R.dimen.marign10dp);
-        ((ViewGroup.MarginLayoutParams) view.getLayoutParams()).leftMargin = horizontalMargin;
-        ((ViewGroup.MarginLayoutParams) view.getLayoutParams()).rightMargin = horizontalMargin;
-        layoutParams.width = WindowManager.LayoutParams.WRAP_CONTENT;
-        layoutParams.height = WindowManager.LayoutParams.WRAP_CONTENT;
-        forgotdialog.getWindow().setAttributes(layoutParams);
+            }
 
-    }*/
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+                if (s.length() > 0) {
+                    img_cleare_forgot_mobilenumber.setVisibility(View.VISIBLE);
+                } else {
+                    img_cleare_forgot_mobilenumber.setVisibility(View.GONE);
+                }
+            }
+        });
+        forgot_bottomsheet.show();
+    }
 
     @Override
     public void onServiceStart() {
@@ -197,10 +238,33 @@ public class LoginActivity extends AppCompatActivity implements LoginInterface {
         activityLoginBinding.pbLogin.setVisibility(View.GONE);
         responseLiveData.observe(this, loginResponse -> {
             if (loginResponse.status.equals(Constant.Success)) {
-                Constant.showToast(LoginActivity.this, loginResponse.status);
+                new PrefManager(LoginActivity.this).setUserID(loginResponse.loginUserData.userId);
+                startActivity(new Intent(LoginActivity.this, HostActivity.class));
             }
         });
-
-        //startActivity(new Intent(LoginActivity.this, VerifyOTPActivity.class));
     }
+
+    @Override
+    public void onForgotSuccess(LiveData<CommonResponse> commonResponseLiveData) {
+        pb_forgot.setVisibility(View.GONE);
+        commonResponseLiveData.observe(this, commonResponse -> {
+            if (commonResponse.message.equals(Constant.Success)) {
+                forgot_bottomsheet.dismiss();
+                Constant.showToast(LoginActivity.this, getResources().getString(R.string.passwordreset));
+            }
+        });
+    }
+
+    @Override
+    public void onForgotFailed(String msg) {
+        pb_forgot.setVisibility(View.GONE);
+        Constant.showToast(LoginActivity.this, msg);
+    }
+
+    @Override
+    public void onForgotStart() {
+        pb_forgot.setVisibility(View.VISIBLE);
+        loginViewModel.getResetPassword();
+    }
+
 }

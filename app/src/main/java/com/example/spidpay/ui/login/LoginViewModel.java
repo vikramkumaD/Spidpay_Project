@@ -8,19 +8,22 @@ import androidx.lifecycle.ViewModel;
 
 import com.example.spidpay.R;
 import com.example.spidpay.data.repository.LoginRepository;
+import com.example.spidpay.data.request.ChangePasswordRequest;
 import com.example.spidpay.data.request.LocationMap;
 import com.example.spidpay.data.request.LoginRequest;
+import com.example.spidpay.data.response.CommonResponse;
 import com.example.spidpay.data.response.LoginResponse;
+import com.example.spidpay.interfaces.ForgotPassInterface;
 import com.example.spidpay.interfaces.LoginInterface;
 import com.google.android.gms.location.FusedLocationProviderClient;
 
 public class LoginViewModel extends ViewModel {
     LoginInterface loginInterface;
+    ForgotPassInterface forgotPassInterface;
+
     public String mobile_number, password, latitude, longitude, city;
     public MutableLiveData<String> mstring_mobile_number = new MutableLiveData<>();
     public MutableLiveData<Boolean> mboolean_mobile_number = new MutableLiveData<>();
-
-
     LoginRepository loginRepository;
 
 
@@ -35,28 +38,46 @@ public class LoginViewModel extends ViewModel {
         mstring_mobile_number.postValue("");
     }
 
-
     public void validateLogin(View view) {
         if (mobile_number == null || mobile_number.isEmpty()) {
             loginInterface.onFailed(view.getContext().getResources().getString(R.string.mobilenoerror1));
             return;
         }
-        if (mobile_number.length() <= 9) {
+
+        if (!validate_Mobile_Number()) {
             loginInterface.onFailed(view.getContext().getResources().getString(R.string.mobilenoerror2));
-            return;
         }
+
+
         if (password == null || password.isEmpty()) {
             loginInterface.onFailed(view.getContext().getResources().getString(R.string.passworderror1));
             return;
         }
-        if (password.length() < 6) {
+       /* if (password.length() < 6) {
             loginInterface.onFailed(view.getContext().getResources().getString(R.string.passworderror2));
             return;
-        }
+        }*/
 
         loginInterface.onServiceStart();
 
 
+    }
+
+    public void validate_Forgot_Field(View view) {
+        if (!validate_Mobile_Number()) {
+            loginInterface.onFailed(view.getContext().getResources().getString(R.string.mobilenoerror2));
+            return;
+        }
+
+        forgotPassInterface.onForgotStart();
+    }
+
+    public boolean validate_Mobile_Number() {
+        if (mobile_number.length() <= 9) {
+            return false;
+        } else {
+            return true;
+        }
     }
 
 
@@ -80,5 +101,13 @@ public class LoginViewModel extends ViewModel {
 
     }
 
+    public void getResetPassword() {
+        ChangePasswordRequest resetPass = new ChangePasswordRequest();
+        resetPass.password = password;
+        resetPass.userID=mobile_number;
 
+        LiveData<CommonResponse> commonResponseLiveData = loginRepository.getResetPass(resetPass);
+        forgotPassInterface.onForgotSuccess(commonResponseLiveData);
+
+    }
 }

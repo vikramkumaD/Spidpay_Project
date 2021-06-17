@@ -2,43 +2,39 @@ package com.example.spidpay.ui.changepassword;
 
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.LiveData;
+import androidx.lifecycle.Observer;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.spidpay.R;
+import com.example.spidpay.data.response.CommonResponse;
+import com.example.spidpay.databinding.FragmentChangePasswordBinding;
+import com.example.spidpay.databinding.FragmentTransferMoneyBinding;
+import com.example.spidpay.interfaces.ChangePasswordInterface;
+import com.example.spidpay.util.Constant;
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link ChangePasswordFragment#newInstance} factory method to
- * create an instance of this fragment.
- */
-public class ChangePasswordFragment extends Fragment {
+import org.jetbrains.annotations.NotNull;
 
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
+
+public class ChangePasswordFragment extends Fragment implements ChangePasswordInterface {
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
-
-    // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
+    FragmentChangePasswordBinding fragmentChangePasswordBinding;
+    ChangePasswordViewModel changePasswordViewModel;
+
 
     public ChangePasswordFragment() {
         // Required empty public constructor
     }
 
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment ChanhePasswordFragment.
-     */
-    // TODO: Rename and change types and number of parameters
     public static ChangePasswordFragment newInstance(String param1, String param2) {
         ChangePasswordFragment fragment = new ChangePasswordFragment();
         Bundle args = new Bundle();
@@ -58,9 +54,32 @@ public class ChangePasswordFragment extends Fragment {
     }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_change_password, container, false);
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        fragmentChangePasswordBinding = FragmentChangePasswordBinding.inflate(inflater, container, false);
+        return fragmentChangePasswordBinding.getRoot();
+    }
+
+    @Override
+    public void onViewCreated(@NonNull @NotNull View view, @Nullable @org.jetbrains.annotations.Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+
+
+    }
+
+    @Override
+    public void onSuccess(LiveData<CommonResponse> commonResponseLiveData) {
+        commonResponseLiveData.observe(this, commonResponse -> {
+
+        });
+    }
+
+    @Override
+    public void onServiceStart() {
+
+    }
+
+    @Override
+    public void onFailed(String msg) {
+        Constant.showToast(requireContext(), msg);
     }
 }

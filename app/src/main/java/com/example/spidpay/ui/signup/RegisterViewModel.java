@@ -10,51 +10,103 @@ import com.example.spidpay.R;
 import com.example.spidpay.data.repository.RegisterRepository;
 import com.example.spidpay.data.request.RegisterRequest;
 import com.example.spidpay.data.request.Register_UserInfo;
+import com.example.spidpay.data.response.InterrestedforResponse;
 import com.example.spidpay.data.response.RegisterResponse;
 import com.example.spidpay.interfaces.RegisterInterface;
+import com.example.spidpay.util.Constant;
+
+import java.util.List;
+import java.util.Objects;
 
 public class RegisterViewModel extends ViewModel {
 
     RegisterInterface registerInterface;
-    public String password, fullname, mobilenumber;
-    // public MutableLiveData<String> string_register_full_name = new MutableLiveData<>();
-    public MutableLiveData<Boolean> boolean_register_full_name = new MutableLiveData<>();
-    public MutableLiveData<Boolean> boolean_register_mobile_number = new MutableLiveData<>();
-    // public MutableLiveData<String> string_register_mobile_number = new MutableLiveData<>();
+    public String password, confirm_password, code;
+    public MutableLiveData<String> string_register_first_name = new MutableLiveData<>();
+    public MutableLiveData<String> string_register_last_name = new MutableLiveData<>();
+    public MutableLiveData<String> string_register_mobile_number = new MutableLiveData<>();
+    public MutableLiveData<String> string_register_email_Address = new MutableLiveData<>();
 
     RegisterRepository registerRepository;
 
-    public void validate_full_name(String name) {
+
+    public void update_first_name(String name) {
         if (name.length() > 0)
-            boolean_register_full_name.setValue(true);
+            string_register_first_name.setValue(name);
         else
-            boolean_register_full_name.setValue(false);
+            string_register_first_name.setValue("");
     }
 
-    public void validate_mobile_number(String name) {
+    public void clear_first_name() {
+        string_register_first_name.setValue("");
+    }
+
+
+    public void update_last_name(String name) {
         if (name.length() > 0)
-            boolean_register_mobile_number.setValue(true);
+            string_register_last_name.setValue(name);
         else
-            boolean_register_mobile_number.setValue(false);
+            string_register_last_name.setValue("");
     }
 
 
-    public void clear_full_name() {
-        fullname = "";
+    public void clear_last_name() {
+        string_register_last_name.setValue("");
     }
+
+
+    public void update_mobile_number(String name) {
+        if (name.length() > 0)
+            string_register_mobile_number.setValue(name);
+        else
+            string_register_mobile_number.setValue("");
+    }
+
+    public void update_email_Address(String name) {
+        if (name.length() > 0)
+            string_register_email_Address.setValue(name);
+        else
+            string_register_email_Address.setValue("");
+    }
+
 
     public void clear_mobile_number() {
-        mobilenumber = "";
+        string_register_mobile_number.setValue("");
+    }
+
+    public void clear_email() {
+        string_register_email_Address.setValue("");
     }
 
 
     public void validate_signupView(View view) {
-        if (fullname == null || fullname.isEmpty() || mobilenumber == null || mobilenumber.isEmpty() || password == null || password.isEmpty()) {
+        if (string_register_first_name.getValue() == null || string_register_first_name.getValue().equals("")
+                || string_register_last_name.getValue() == null || string_register_last_name.getValue().equals("")
+                || string_register_mobile_number.getValue() == null || string_register_mobile_number.getValue().equals("")
+                || string_register_email_Address.getValue() == null || string_register_email_Address.getValue().equals("")
+                || password == null || password.equals("")
+                || confirm_password == null || confirm_password.equals("")) {
             registerInterface.onFailed(view.getContext().getResources().getString(R.string.filedcannotbeblank));
             return;
         }
-        if (mobilenumber.length() <= 9) {
+
+        if (code == null || code.equals("")) {
+            registerInterface.onFailed(view.getContext().getResources().getString(R.string.pleaseseletcinterestedfor));
+            return;
+        }
+
+        if (string_register_mobile_number.getValue().length() <= 9) {
             registerInterface.onFailed(view.getContext().getResources().getString(R.string.mobilenoerror2));
+            return;
+        }
+
+        if (!Constant.validate(string_register_email_Address.getValue())) {
+            registerInterface.onFailed(view.getResources().getString(R.string.entervalidemail));
+            return;
+        }
+
+        if (!password.equals(confirm_password)) {
+            registerInterface.onFailed(view.getResources().getString(R.string.passwordnotmatch));
             return;
         }
 
@@ -62,28 +114,34 @@ public class RegisterViewModel extends ViewModel {
 
     }
 
+
     public void getRegisterResponse() {
         RegisterRequest registerRequest = new RegisterRequest();
-        registerRequest.sendOTP = "N";
+        registerRequest.sendOTP = "Y";
         registerRequest.webPortal = "N";
 
         Register_UserInfo register_userInfo = new Register_UserInfo();
-        register_userInfo.email = "india@gmmail.com";
-        register_userInfo.firstName = fullname;
-        register_userInfo.lastName = "";
-        register_userInfo.mobileNo = mobilenumber;
+        register_userInfo.email = string_register_email_Address.getValue();
+        register_userInfo.firstName = string_register_first_name.getValue();
+        register_userInfo.lastName = string_register_first_name.getValue();
+        register_userInfo.mobileNo = string_register_mobile_number.getValue();
         register_userInfo.password = password;
-        register_userInfo.userType = "1001";
+        register_userInfo.userType = code;
         register_userInfo.domainCode = "SPIDPAY";
         register_userInfo.parentUserId = "d103f219-6e1c-4096-bc4b-8a4a1ce3b138";
 
         registerRequest.register_userInfo = register_userInfo;
 
-       LiveData<RegisterResponse> registerResponseLiveData= registerRepository.getRegisterResponse(registerRequest);
+        LiveData<RegisterResponse> registerResponseLiveData = registerRepository.getRegisterResponse(registerRequest);
 
-       registerInterface.onSuccess(registerResponseLiveData);
+        registerInterface.onSuccess(registerResponseLiveData);
 
 
+    }
+
+    public LiveData<List<InterrestedforResponse>> getInterrestedFor() {
+        LiveData<List<InterrestedforResponse>> interrestedforliveData = registerRepository.getInterrestedfor();
+        return interrestedforliveData;
     }
 
 }
