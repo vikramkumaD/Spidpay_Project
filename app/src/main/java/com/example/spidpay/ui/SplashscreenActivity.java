@@ -13,14 +13,15 @@ import android.view.WindowManager;
 
 import com.example.spidpay.R;
 import com.example.spidpay.databinding.SplashscreenBinding;
+import com.example.spidpay.util.PrefManager;
 
 public class SplashscreenActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
-        SplashscreenBinding splashscreenBinding= DataBindingUtil.setContentView(this,R.layout.splashscreen);
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
+        SplashscreenBinding splashscreenBinding = DataBindingUtil.setContentView(this, R.layout.splashscreen);
         SpannableString spannableString = new SpannableString(getResources().getString(R.string.splashtxt));
         ForegroundColorSpan foregroundColorSpanCyan = new ForegroundColorSpan(getResources().getColor(R.color.seagreen));
         ForegroundColorSpan foregroundColorSpanBlue = new ForegroundColorSpan(getResources().getColor(R.color.seagreen));
@@ -32,7 +33,13 @@ public class SplashscreenActivity extends AppCompatActivity {
         new Thread(() -> {
             try {
                 Thread.sleep(2000);
-                startActivity(new Intent(SplashscreenActivity.this, WelcomeActivity.class));
+                if (new PrefManager(SplashscreenActivity.this).getIsFirstTime()) {
+                    startActivity(new Intent(SplashscreenActivity.this, DashboardActivity.class));
+                } else {
+                    startActivity(new Intent(SplashscreenActivity.this, WelcomeActivity.class));
+                }
+
+
                 finish();
             } catch (InterruptedException e) {
                 e.printStackTrace();

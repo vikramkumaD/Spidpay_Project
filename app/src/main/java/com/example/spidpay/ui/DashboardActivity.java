@@ -14,6 +14,7 @@ import android.widget.TextView;
 import com.example.spidpay.R;
 import com.example.spidpay.ui.login.LoginActivity;
 import com.example.spidpay.ui.signup.RegisterActivity;
+import com.example.spidpay.util.PrefManager;
 
 public class DashboardActivity extends AppCompatActivity {
     TextView tv_signup;
@@ -23,6 +24,8 @@ public class DashboardActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_dashboard);
+
+        new PrefManager(DashboardActivity.this).setIsFirstTime(true);
 
         findViewById(R.id.btn_dashboardlogin).setOnClickListener(v -> startActivity(new Intent(DashboardActivity.this, LoginActivity.class)));
         tv_signup = findViewById(R.id.tv_signup);

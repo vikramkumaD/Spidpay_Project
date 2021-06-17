@@ -26,13 +26,13 @@ public class PrefManager {
         return pref.getString("userid", "");
     }
 
-    public void setIsFirstTime(String isFirstTime) {
-        editor.putString("IsFirstTime", isFirstTime);
+    public void setIsFirstTime(boolean isFirstTime) {
+        editor.putBoolean("IsFirstTime", isFirstTime);
         editor.commit();
     }
 
-    public String getIsFirstTime() {
-        return pref.getString("IsFirstTime", "");
+    public boolean getIsFirstTime() {
+        return pref.getBoolean("IsFirstTime", false);
     }
 
 }

@@ -43,6 +43,7 @@ import com.example.spidpay.interfaces.LoginInterface;
 import com.example.spidpay.location.LocationViewModel;
 import com.example.spidpay.ui.HostActivity;
 import com.example.spidpay.ui.signup.RegisterActivity;
+import com.example.spidpay.ui.verifyotp.VerifyOTPActivity;
 import com.example.spidpay.util.Constant;
 import com.example.spidpay.util.PrefManager;
 import com.google.android.gms.location.FusedLocationProviderClient;
@@ -106,7 +107,7 @@ public class LoginActivity extends AppCompatActivity implements LoginInterface, 
         }
 
 
-        LoginRepository loginRepository = new LoginRepository(LoginActivity.this, loginInterface,forgotPassInterface);
+        LoginRepository loginRepository = new LoginRepository(LoginActivity.this, loginInterface, forgotPassInterface);
         loginViewModel = new ViewModelProvider(this).get(LoginViewModel.class);
         loginViewModel.loginInterface = loginInterface;
         loginViewModel.forgotPassInterface = forgotPassInterface;
@@ -239,7 +240,10 @@ public class LoginActivity extends AppCompatActivity implements LoginInterface, 
         responseLiveData.observe(this, loginResponse -> {
             if (loginResponse.status.equals(Constant.Success)) {
                 new PrefManager(LoginActivity.this).setUserID(loginResponse.loginUserData.userId);
-                startActivity(new Intent(LoginActivity.this, HostActivity.class));
+                Intent intent = new Intent(LoginActivity.this, VerifyOTPActivity.class);
+                intent.putExtra("username", loginResponse.loginUserData.username);
+                startActivity(intent);
+                finish();
             }
         });
     }

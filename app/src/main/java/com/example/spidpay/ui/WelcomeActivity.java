@@ -40,16 +40,22 @@ public class WelcomeActivity extends AppCompatActivity {
         myViewPagerAdapter = new MyViewPagerAdapter();
         viewPager.setAdapter(myViewPagerAdapter);
         viewPager.addOnPageChangeListener(viewPagerPageChangeListener);
-        btnSkip.setOnClickListener(v -> startActivity(new Intent(WelcomeActivity.this, DashboardActivity.class)));
+        btnSkip.setOnClickListener(v -> {
+            startActivity(new Intent(WelcomeActivity.this, DashboardActivity.class));
+            finish();
+        });
+
         btnNext.setOnClickListener(v -> {
             int current = getItem(+1);
             if (current < layouts.length) {
                 viewPager.setCurrentItem(current);
             } else {
                 startActivity(new Intent(WelcomeActivity.this, DashboardActivity.class));
+                finish();
             }
         });
     }
+
     private void addBottomDots(int currentPage) {
         dots = new TextView[layouts.length];
 
