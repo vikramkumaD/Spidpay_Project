@@ -36,7 +36,7 @@ public class Noti_Approval_Adapter extends RecyclerView.Adapter<Noti_Approval_Ad
         return 6;
     }
 
-    public class NotiApprovalViewHolder extends RecyclerView.ViewHolder {
+    public static class NotiApprovalViewHolder extends RecyclerView.ViewHolder {
         NotiApprovalsItemviewBinding notiApprovalsItemviewBinding;
         public NotiApprovalViewHolder(NotiApprovalsItemviewBinding itemView) {
             super(itemView.getRoot());

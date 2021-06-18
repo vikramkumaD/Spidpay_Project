@@ -2,11 +2,13 @@
     <string name="app_name">SPID-PAY</string>
     <string name="login">Login</string>
     <string name="mobileno">Mobile Number</string>
+    <string name="mobileno1">Mobile Number:</string>
     <string name="password">Password</string>
     <string name="forgotpassword">Forgot Password</string>
     <string name="needaccount">Need Account ? Signup</string>
     <string name="register">Register</string>
     <string name="email">Email-id</string>
+    <string name="email1">Email-id:</string>
     <string name="submit">Submit</string>
     <string name="otp">OTP</string>
     <string name="cancel">Cancel</string>
@@ -173,7 +175,7 @@
     <string name="precision">Precision</string>
     <string name="custphonenumber">Customer Phone Number</string>
     <string name="custphonename">Customer Name</string>
-    <string name="aadharnumber">Aadhar Number</string>
+    <string name="aadharnumber">Aadhar Number:</string>
     <string name="aepstxt">Before pressing Next button, please read Terms and Condition</string>
     <string name="cashwithdrwal">Cash Withdrwal</string>
     <string name="balanceenquiry">Balance Enquiry</string>
@@ -188,4 +190,16 @@
     <string name="passwordreset">Password Reset Successfull!</string>
     <string name="pleaseseletcinterestedfor">Please select Interested for!</string>
     <string name="enterotp">Enter OTP!</string>
+    <string name="username">User Name</string>
+    <string name="usertype">User Type:</string>
+    <string name="address1">Address 1</string>
+    <string name="address2">Address 2</string>
+    <string name="city">City</string>
+    <string name="pincode">PinCode</string>
+    <string name="state">State</string>
+    <string name="country">Country</string>
+    <string name="update">Update</string>
+    <string name="updateaddress">Update Address</string>
+    <string name="pannumber">Pan Number:</string>
+    <string name="voterid">Voter ID:</string>
 </resources>

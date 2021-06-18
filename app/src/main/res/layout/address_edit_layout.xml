@@ -1,0 +1,179 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="address"
+            type="com.example.spidpay.data.response.MyAddressResponse" />
+
+        <variable
+            name="myprofileviewmodel"
+            type="com.example.spidpay.ui.profile.MyProfileViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/marign15dp">
+
+        <TextView
+            android:id="@+id/tv_update_address"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/lato_bold"
+            android:text="@string/updateaddress"
+            android:textColor="@color/black"
+            android:textSize="@dimen/marign20sp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/img_dismiss_dialog"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:src="@drawable/clear_field"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <EditText
+            android:id="@+id/edt_edit_address1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/marign20dp"
+            android:layout_weight="1"
+            android:background="@drawable/edittext_shadow"
+            android:hint="@string/address1"
+            android:inputType="text"
+            android:paddingLeft="@dimen/marign10dp"
+            android:paddingTop="@dimen/marign10dp"
+            android:paddingRight="@dimen/marign10dp"
+            android:paddingBottom="@dimen/marign10dp"
+            android:singleLine="true"
+            android:text="@={address.address1}"
+            android:textColorHint="@color/lightgrey"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_update_address" />
+
+        <EditText
+
+            android:id="@+id/edt_edit_address2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/marign10dp"
+            android:layout_weight="1"
+            android:background="@drawable/edittext_shadow"
+            android:hint="@string/address2"
+            android:inputType="text"
+            android:paddingLeft="@dimen/marign10dp"
+            android:paddingTop="@dimen/marign10dp"
+            android:paddingRight="@dimen/marign10dp"
+            android:paddingBottom="@dimen/marign10dp"
+            android:singleLine="true"
+            android:text="@={address.address2}"
+            android:textColorHint="@color/lightgrey"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/edt_edit_address1" />
+
+        <EditText
+
+            android:id="@+id/edt_edit_address_city"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/marign10dp"
+            android:layout_weight="1"
+            android:background="@drawable/edittext_shadow"
+            android:hint="@string/city"
+            android:inputType="text"
+            android:paddingLeft="@dimen/marign10dp"
+            android:paddingTop="@dimen/marign10dp"
+            android:paddingRight="@dimen/marign10dp"
+            android:paddingBottom="@dimen/marign10dp"
+            android:singleLine="true"
+            android:text="@={address.address3}"
+            android:textColorHint="@color/lightgrey"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/edt_edit_address2" />
+
+        <EditText
+
+            android:id="@+id/edt_edit_address_picode"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/marign10dp"
+            android:layout_weight="1"
+            android:background="@drawable/edittext_shadow"
+            android:hint="@string/pincode"
+            android:inputType="number"
+            android:paddingLeft="@dimen/marign10dp"
+            android:paddingTop="@dimen/marign10dp"
+            android:paddingRight="@dimen/marign10dp"
+            android:paddingBottom="@dimen/marign10dp"
+            android:singleLine="true"
+            android:text="@={address.pinCode}"
+            android:textColorHint="@color/lightgrey"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/edt_edit_address_city" />
+
+
+        <EditText
+
+            android:id="@+id/edt_edit_address_state"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/marign10dp"
+            android:layout_weight="1"
+            android:background="@drawable/edittext_shadow"
+            android:hint="@string/state"
+            android:inputType="text"
+            android:paddingLeft="@dimen/marign10dp"
+            android:paddingTop="@dimen/marign10dp"
+            android:paddingRight="@dimen/marign10dp"
+            android:paddingBottom="@dimen/marign10dp"
+            android:singleLine="true"
+            android:text="@={address.state}"
+            android:textColorHint="@color/lightgrey"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/edt_edit_address_picode" />
+
+
+        <EditText
+            android:id="@+id/edt_edit_address_country"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/marign10dp"
+            android:layout_weight="1"
+            android:background="@drawable/edittext_shadow"
+            android:hint="@string/country"
+            android:inputType="text"
+            android:paddingLeft="@dimen/marign10dp"
+            android:paddingTop="@dimen/marign10dp"
+            android:paddingRight="@dimen/marign10dp"
+            android:paddingBottom="@dimen/marign10dp"
+            android:singleLine="true"
+            android:text="@={address.country}"
+            android:textColorHint="@color/lightgrey"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/edt_edit_address_state" />
+
+        <Button
+            android:id="@+id/btn_update_address"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/marign10dp"
+            android:layout_marginTop="@dimen/marign20dp"
+            android:layout_marginEnd="@dimen/marign10dp"
+            android:layout_marginBottom="@dimen/marign20dp"
+            android:background="@drawable/button_bg_green"
+            android:fontFamily="@font/lato"
+            android:onClick="@{(v)->myprofileviewmodel.validate_edit_Address(v,address)}"
+            android:text="@string/update"
+            android:textColor="@color/white"
+            android:textSize="@dimen/marign18sp"
+            app:layout_constraintTop_toBottomOf="@+id/edt_edit_address_country" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

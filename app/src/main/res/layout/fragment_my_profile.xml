@@ -1,129 +1,218 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".ui.profile.profile.MyProfileFragment">
+    xmlns:tools="http://schemas.android.com/tools">
 
-    <TextView
-        android:id="@+id/tv_contact_detail"
-        android:textSize="@dimen/marign18sp"
-        android:textColor="@color/dark_blue"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        android:layout_marginTop="@dimen/marign20dp"
-        android:layout_marginLeft="@dimen/marign20dp"
-        android:fontFamily="@font/lato_bold"
-        android:text="@string/contactdetail"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
+    <data>
 
-    <TextView
-        android:id="@+id/tv_username"
-        android:textColor="@color/black"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv_contact_detail"
-        android:layout_marginTop="@dimen/marign20dp"
-        android:layout_marginLeft="@dimen/marign20dp"
-        android:fontFamily="@font/lato_bold"
-        android:text="User Name: Ahmed Patel"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
-    <TextView
-        android:id="@+id/tv_usertype"
-        android:textColor="@color/black"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv_username"
-        android:layout_marginTop="@dimen/marign5dp"
-        android:layout_marginLeft="@dimen/marign20dp"
-        android:fontFamily="@font/lato_bold"
-        android:text="User Type: Retailer"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
-    <TextView
-        android:id="@+id/tv_useremail"
-        android:textColor="@color/black"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv_usertype"
-        android:layout_marginTop="@dimen/marign5dp"
-        android:layout_marginLeft="@dimen/marign20dp"
-        android:fontFamily="@font/lato_bold"
-        android:text="Email: ap@gmil.com"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
-    <TextView
-        android:id="@+id/tv_usermobileno"
-        android:textColor="@color/black"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv_useremail"
-        android:layout_marginTop="@dimen/marign5dp"
-        android:layout_marginLeft="@dimen/marign20dp"
-        android:fontFamily="@font/lato_bold"
-        android:text="Mobile no.: 123456789"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
-    <TextView
-        android:id="@+id/tv_usercontactno"
-        android:textColor="@color/black"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv_usermobileno"
-        android:layout_marginTop="@dimen/marign5dp"
-        android:layout_marginLeft="@dimen/marign20dp"
-        android:fontFamily="@font/lato_bold"
-        android:text="Alternative con: 12345789"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
+        <variable
+            name="userprofile"
+            type="com.example.spidpay.data.response.MyProfileResponse" />
+
+        <variable
+            name="useraddress"
+            type="com.example.spidpay.data.response.MyAddressResponse" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:background="#05DCDCDC"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".ui.profile.profile.MyProfileFragment">
+
+        <TextView
+            android:id="@+id/tv_contact_detail"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/marign20dp"
+            android:layout_marginTop="@dimen/marign20dp"
+            android:fontFamily="@font/lato_bold"
+            android:text="@string/contactdetail"
+            android:textColor="@color/dark_blue"
+            android:textSize="@dimen/marign18sp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/tv_username"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/marign20dp"
+            android:layout_marginTop="@dimen/marign20dp"
+            android:fontFamily="@font/lato_bold"
+            android:text="@string/username"
+            android:textColor="@color/black"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_contact_detail" />
+
+        <TextView
+            android:id="@+id/tv_firstname_lastname"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/marign20dp"
+            android:layout_marginTop="@dimen/marign20dp"
+            android:fontFamily="@font/lato_bold"
+            android:text="@{userprofile.firstName+userprofile.lastName}"
+            android:textColor="@color/black"
+            app:layout_constraintLeft_toRightOf="@+id/tv_username"
+            app:layout_constraintTop_toBottomOf="@+id/tv_contact_detail" />
+
+        <TextView
+            android:id="@+id/tv_usertype"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/marign20dp"
+            android:layout_marginTop="@dimen/marign5dp"
+            android:fontFamily="@font/lato_bold"
+            android:text="@string/usertype"
+            android:textColor="@color/black"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_username" />
+
+        <TextView
+            android:id="@+id/tv_usertype_value"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/marign20dp"
+            android:layout_marginTop="@dimen/marign5dp"
+            android:fontFamily="@font/lato_bold"
+            android:text="@{userprofile.userType}"
+            android:textColor="@color/black"
+            app:layout_constraintLeft_toRightOf="@+id/tv_usertype"
+            app:layout_constraintTop_toBottomOf="@+id/tv_username" />
+
+        <TextView
+            android:id="@+id/tv_useremail"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/marign20dp"
+            android:layout_marginTop="@dimen/marign5dp"
+            android:fontFamily="@font/lato_bold"
+            android:text="@string/email1"
+            android:textColor="@color/black"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_usertype" />
+
+        <TextView
+            android:id="@+id/tv_useremail_value"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/marign20dp"
+            android:layout_marginTop="@dimen/marign5dp"
+            android:fontFamily="@font/lato_bold"
+            android:text="@{userprofile.email}"
+            android:textColor="@color/black"
+            app:layout_constraintLeft_toRightOf="@+id/tv_useremail"
+            app:layout_constraintTop_toBottomOf="@+id/tv_usertype" />
+
+        <TextView
+            android:id="@+id/tv_usermobileno"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/marign20dp"
+            android:layout_marginTop="@dimen/marign5dp"
+            android:fontFamily="@font/lato_bold"
+            android:text="@string/mobileno1"
+            android:textColor="@color/black"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_useremail" />
+
+        <TextView
+            android:id="@+id/tv_user_mobileno_value"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/marign20dp"
+            android:layout_marginTop="@dimen/marign5dp"
+            android:fontFamily="@font/lato_bold"
+            android:text="@{userprofile.mobileNo}"
+            android:textColor="@color/black"
+            app:layout_constraintLeft_toRightOf="@+id/tv_usermobileno"
+            app:layout_constraintTop_toBottomOf="@+id/tv_useremail" />
+
+        <TextView
+            android:id="@+id/tv_usercontactno"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/marign20dp"
+            android:layout_marginTop="@dimen/marign5dp"
+            android:fontFamily="@font/lato_bold"
+            android:text="Alternative con: 12345789"
+            android:textColor="@color/black"
+            android:visibility="gone"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_usermobileno" />
 
 
-    <TextView
-        android:id="@+id/tv_addresss"
-        android:textSize="@dimen/marign18sp"
-        android:textColor="@color/dark_blue"
-        app:layout_constraintTop_toBottomOf="@+id/tv_usercontactno"
-        app:layout_constraintLeft_toLeftOf="parent"
-        android:layout_marginTop="@dimen/marign20dp"
-        android:layout_marginLeft="@dimen/marign20dp"
-        android:fontFamily="@font/lato_bold"
-        android:text="@string/address"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
+        <TextView
+            android:id="@+id/tv_addresss"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/marign20dp"
+            android:layout_marginTop="@dimen/marign20dp"
+            android:fontFamily="@font/lato_bold"
+            android:text="@string/address"
+            android:textColor="@color/dark_blue"
+            android:textSize="@dimen/marign18sp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_usercontactno" />
 
-    <TextView
-        android:id="@+id/tv_userflatno"
-        android:textColor="@color/black"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv_addresss"
-        android:layout_marginTop="@dimen/marign5dp"
-        android:layout_marginLeft="@dimen/marign20dp"
-        android:fontFamily="@font/lato_bold"
-        android:text="12/231, Ram society"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
+        <ImageView
+            android:id="@+id/img_edit_address"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:layout_marginTop="@dimen/marign20dp"
+            android:layout_marginEnd="@dimen/marign20dp"
+            android:src="@drawable/ic_baseline_edit_24"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_usercontactno" />
 
-    <TextView
-        android:id="@+id/tv_usercity"
-        android:textColor="@color/black"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv_userflatno"
-        android:layout_marginTop="@dimen/marign5dp"
-        android:layout_marginLeft="@dimen/marign20dp"
-        android:fontFamily="@font/lato_bold"
-        android:text="Mumbai, Maharastra"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
-
-    <TextView
-        android:id="@+id/tv_usecontry"
-        android:textColor="@color/black"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv_usercity"
-        android:layout_marginTop="@dimen/marign5dp"
-        android:layout_marginLeft="@dimen/marign20dp"
-        android:fontFamily="@font/lato_bold"
-        android:text="India 400067"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
+        <TextView
+            android:id="@+id/tv_userflatno"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/marign20dp"
+            android:layout_marginTop="@dimen/marign5dp"
+            android:fontFamily="@font/lato_bold"
+            android:text="@{(useraddress.address1 !=null ? useraddress.address1 : ``).concat(` `).concat(useraddress.address2 !=null ? useraddress.address2 : ``)}"
+            android:textColor="@color/black"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_addresss" />
 
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <TextView
+            android:id="@+id/tv_usercity"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/marign20dp"
+            android:layout_marginTop="@dimen/marign5dp"
+            android:fontFamily="@font/lato_bold"
+            android:text="@{(useraddress.address3 !=null ? useraddress.address3 : ``).concat(` `).concat(useraddress.state !=null ? useraddress.state : ``)}"
+            android:textColor="@color/black"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_userflatno" />
+
+        <TextView
+            android:id="@+id/tv_usecontry"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/marign20dp"
+            android:layout_marginTop="@dimen/marign5dp"
+            android:fontFamily="@font/lato_bold"
+            android:text="@{(useraddress.country !=null ? useraddress.country : ``).concat(`-`).concat(useraddress.pinCode !=null ? useraddress.pinCode : ``)}"
+            android:textColor="@color/black"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_usercity" />
+
+        <ProgressBar
+            android:id="@+id/pb_myprofile"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

@@ -47,7 +47,7 @@ public class InterrestedforAdapter extends RecyclerView.Adapter<InterrestedforAd
         return list.size();
     }
 
-    public class InterrestedforViewHolder extends RecyclerView.ViewHolder {
+    public static class InterrestedforViewHolder extends RecyclerView.ViewHolder {
         InterrestedforItemviewBinding interrestedforItemviewBinding;
 
         public InterrestedforViewHolder(@NonNull @NotNull InterrestedforItemviewBinding itemView) {
