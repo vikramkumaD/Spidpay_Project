@@ -4,8 +4,11 @@ import com.example.spidpay.data.request.ChangePasswordRequest;
 import com.example.spidpay.data.request.LoginRequest;
 import com.example.spidpay.data.request.RegisterRequest;
 import com.example.spidpay.data.request.UpdateAddressRequest;
+import com.example.spidpay.data.request.UpdateCompanyRequest;
+import com.example.spidpay.data.request.UpdateKYCRequest;
 import com.example.spidpay.data.request.VerifyOTPReqest;
 import com.example.spidpay.data.response.CommonResponse;
+import com.example.spidpay.data.response.CompanyReponse;
 import com.example.spidpay.data.response.InterrestedforResponse;
 import com.example.spidpay.data.response.KYCResponse;
 import com.example.spidpay.data.response.LoginResponse;
@@ -60,5 +63,16 @@ public interface RetrofitInterface {
 
     @GET("user/v1/{userId}/{kyc-info}")
     Call<KYCResponse> getKYCInfo(@Path("userId") String user, @Path("kyc-info") String kycinfo);
+
+    @Headers({"Content-Type:application/json"})
+    @PUT("user/v1/update/kyc")
+    Call<UpdateResponse> updateKYC(@Body UpdateKYCRequest updateKYCRequest);
+
+    @Headers({"Content-Type:application/json"})
+    @PUT("user/v1/update/company")
+    Call<UpdateResponse> updateCompany(@Body UpdateCompanyRequest updateCompanyRequest);
+
+    @GET("user/v1/{userId}/{company-info}")
+    Call<CompanyReponse> getCompany(@Path("userId") String user, @Path("company-info") String company);
 
 }

@@ -1,59 +1,142 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".ui.profile.profile.MyProfileFragment">
+    xmlns:tools="http://schemas.android.com/tools">
 
-    <TextView
-        android:id="@+id/tv_bank_Deatil"
-        android:textSize="@dimen/marign18sp"
-        android:textColor="@color/dark_blue"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        android:layout_marginTop="@dimen/marign20dp"
-        android:layout_marginLeft="@dimen/marign20dp"
-        android:fontFamily="@font/lato_bold"
-        android:text="@string/bankdetail"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
+    <data>
 
-    <TextView
-        android:id="@+id/tv_user_acc_number"
-        android:textColor="@color/black"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv_bank_Deatil"
-        android:layout_marginTop="@dimen/marign20dp"
-        android:layout_marginLeft="@dimen/marign20dp"
-        android:fontFamily="@font/lato_bold"
-        android:text="Acc. Number: ABCGDS"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
-    <TextView
-        android:id="@+id/tv_acc_holder_name"
-        android:textColor="@color/black"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv_user_acc_number"
-        android:layout_marginTop="@dimen/marign5dp"
-        android:layout_marginLeft="@dimen/marign20dp"
-        android:fontFamily="@font/lato_bold"
-        android:text="Acc. Holder Name: add"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
-    <TextView
-        android:id="@+id/tv_user_bank_name"
-        android:textColor="@color/black"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv_acc_holder_name"
-        android:layout_marginTop="@dimen/marign5dp"
-        android:layout_marginLeft="@dimen/marign20dp"
-        android:fontFamily="@font/lato_bold"
-        android:text="Bank Name: add"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
+        <variable
+            name="bankinfo"
+            type="com.example.spidpay.data.response.BankDetailsResponse" />
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".ui.profile.profile.MyProfileFragment">
+
+        <TextView
+            android:id="@+id/tv_bank_Deatil"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/marign20dp"
+            android:layout_marginTop="@dimen/marign20dp"
+            android:fontFamily="@font/lato_bold"
+            android:text="@string/bankdetail"
+            android:textColor="@color/dark_blue"
+            android:textSize="@dimen/marign18sp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/img_edit_company"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:layout_marginEnd="@dimen/marign20dp"
+            android:src="@drawable/ic_baseline_edit_24"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/tv_bank_Deatil" />
 
 
+        <TextView
+            android:id="@+id/tv_user_acc_number"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/marign20dp"
+            android:layout_marginTop="@dimen/marign20dp"
+            android:fontFamily="@font/lato_bold"
+            android:text="@string/accnumber"
+            android:textColor="@color/black"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_bank_Deatil" />
+
+        <TextView
+            android:id="@+id/tv_user_acc_number_value"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/marign20dp"
+            android:layout_marginTop="@dimen/marign20dp"
+            android:fontFamily="@font/lato_bold"
+            android:text="@{bankinfo.accountNo}"
+            android:textColor="@color/black"
+            app:layout_constraintLeft_toRightOf="@+id/tv_user_acc_number"
+            app:layout_constraintTop_toBottomOf="@+id/tv_bank_Deatil" />
 
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <TextView
+            android:id="@+id/tv_acc_holder_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/marign20dp"
+            android:layout_marginTop="@dimen/marign5dp"
+            android:fontFamily="@font/lato_bold"
+            android:text="@string/accname"
+            android:textColor="@color/black"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_user_acc_number" />
+
+
+        <TextView
+            android:id="@+id/tv_acc_holder_name_value"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/marign20dp"
+            android:layout_marginTop="@dimen/marign5dp"
+            android:fontFamily="@font/lato_bold"
+            android:text="@{bankinfo.accountHolderName}"
+            android:textColor="@color/black"
+            app:layout_constraintLeft_toRightOf="@+id/tv_acc_holder_name"
+            app:layout_constraintTop_toBottomOf="@+id/tv_user_acc_number" />
+
+        <TextView
+            android:id="@+id/tv_user_bank_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/marign20dp"
+            android:layout_marginTop="@dimen/marign5dp"
+            android:fontFamily="@font/lato_bold"
+            android:text="@string/bankname"
+            android:textColor="@color/black"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_acc_holder_name" />
+
+        <TextView
+            android:id="@+id/tv_user_bank_name_value"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/marign20dp"
+            android:layout_marginTop="@dimen/marign5dp"
+            android:fontFamily="@font/lato_bold"
+            android:text="@{bankinfo.companyType.description}"
+            android:textColor="@color/black"
+            app:layout_constraintLeft_toRightOf="@+id/tv_user_bank_name"
+            app:layout_constraintTop_toBottomOf="@+id/tv_acc_holder_name" />
+
+        <TextView
+            android:id="@+id/tv_user_bank_ifsccode"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/marign20dp"
+            android:layout_marginTop="@dimen/marign5dp"
+            android:fontFamily="@font/lato_bold"
+            android:text="@string/bankname"
+            android:textColor="@color/black"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_user_bank_name" />
+
+        <TextView
+            android:id="@+id/tv_user_bank_name_ifsccode_value"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/marign20dp"
+            android:layout_marginTop="@dimen/marign5dp"
+            android:fontFamily="@font/lato_bold"
+            android:text="@{bankinfo.ifscCode}"
+            android:textColor="@color/black"
+            app:layout_constraintLeft_toRightOf="@+id/tv_user_bank_ifsccode"
+            app:layout_constraintTop_toBottomOf="@+id/tv_user_bank_name" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

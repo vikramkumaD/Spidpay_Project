@@ -9,6 +9,10 @@
             name="kycinfo"
             type="com.example.spidpay.data.response.KYCResponse" />
 
+        <variable
+            name="companyinfo"
+            type="com.example.spidpay.data.response.CompanyReponse" />
+
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -20,7 +24,7 @@
             android:id="@+id/tv_contact_detail"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="@dimen/marign20dp"
+            android:layout_marginStart="@dimen/marign20dp"
             android:layout_marginTop="@dimen/marign20dp"
             android:fontFamily="@font/lato_bold"
             android:text="@string/kycdetail"
@@ -29,11 +33,20 @@
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
+        <ImageView
+            android:id="@+id/img_edit_kyc"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:layout_marginEnd="@dimen/marign20dp"
+            android:src="@drawable/ic_baseline_edit_24"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/tv_contact_detail" />
+
         <TextView
             android:id="@+id/tv_user_pan_number"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="@dimen/marign20dp"
+            android:layout_marginStart="@dimen/marign20dp"
             android:layout_marginTop="@dimen/marign20dp"
             android:fontFamily="@font/lato_bold"
             android:text="@string/pannumber"
@@ -45,7 +58,7 @@
             android:id="@+id/tv_userpannumber_value"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="@dimen/marign20dp"
+            android:layout_marginStart="@dimen/marign20dp"
             android:layout_marginTop="@dimen/marign20dp"
             android:fontFamily="@font/lato_bold"
             android:text="@={kycinfo.panNo}"
@@ -58,7 +71,7 @@
             android:id="@+id/tv_user_aadhar"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="@dimen/marign20dp"
+            android:layout_marginStart="@dimen/marign20dp"
             android:layout_marginTop="@dimen/marign5dp"
             android:fontFamily="@font/lato_bold"
             android:text="@string/aadharnumber"
@@ -71,7 +84,7 @@
             android:id="@+id/tv_user_aadhar_detail"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="@dimen/marign20dp"
+            android:layout_marginStart="@dimen/marign20dp"
             android:layout_marginTop="@dimen/marign5dp"
             android:fontFamily="@font/lato_bold"
             android:text="@={kycinfo.aadharNo}"
@@ -83,7 +96,7 @@
             android:id="@+id/tv_usere_voter"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="@dimen/marign20dp"
+            android:layout_marginStart="@dimen/marign20dp"
             android:layout_marginTop="@dimen/marign5dp"
             android:fontFamily="@font/lato_bold"
             android:text="@string/voterid"
@@ -96,7 +109,7 @@
             android:id="@+id/tv_userevoterid"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="@dimen/marign20dp"
+            android:layout_marginStart="@dimen/marign20dp"
             android:layout_marginTop="@dimen/marign5dp"
             android:fontFamily="@font/lato_bold"
             android:text="@={kycinfo.idNo}"
@@ -109,7 +122,7 @@
             android:id="@+id/tv_company_deatils"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="@dimen/marign20dp"
+            android:layout_marginStart="@dimen/marign20dp"
             android:layout_marginTop="@dimen/marign20dp"
             android:fontFamily="@font/lato_bold"
             android:text="@string/companydeatil"
@@ -118,53 +131,213 @@
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tv_userevoterid" />
 
+        <ImageView
+            android:id="@+id/img_edit_company_info"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:layout_marginEnd="@dimen/marign20dp"
+            android:src="@drawable/ic_baseline_edit_24"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/tv_company_deatils" />
+
+
         <TextView
             android:id="@+id/tv_storname"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="@dimen/marign20dp"
+            android:layout_marginStart="@dimen/marign20dp"
             android:layout_marginTop="@dimen/marign5dp"
             android:fontFamily="@font/lato_bold"
-            android:text="Store Name: Pandya Store"
+            android:text="@string/storename"
             android:textColor="@color/black"
             app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_company_deatils" />
+
+
+        <TextView
+            android:id="@+id/tv_storname_value"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/marign20dp"
+            android:layout_marginTop="@dimen/marign5dp"
+            android:fontFamily="@font/lato_bold"
+            android:text="@={companyinfo.companyName}"
+            android:textColor="@color/black"
+            app:layout_constraintLeft_toRightOf="@+id/tv_storname"
             app:layout_constraintTop_toBottomOf="@+id/tv_company_deatils" />
 
         <TextView
             android:id="@+id/tv_storetype"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="@dimen/marign20dp"
+            android:layout_marginStart="@dimen/marign20dp"
             android:layout_marginTop="@dimen/marign5dp"
             android:fontFamily="@font/lato_bold"
-            android:text="Company Type: Partnership firm"
+            android:text="@string/companytype"
             android:textColor="@color/black"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tv_storname" />
 
         <TextView
+            android:id="@+id/tv_storetype_value"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/marign20dp"
+            android:layout_marginTop="@dimen/marign5dp"
+            android:fontFamily="@font/lato_bold"
+            android:text="@={companyinfo.companyType.description}"
+            android:textColor="@color/black"
+            app:layout_constraintLeft_toRightOf="@+id/tv_storetype"
+            app:layout_constraintTop_toBottomOf="@+id/tv_storname" />
+
+
+        <TextView
             android:id="@+id/tv_adyogaadhar"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="@dimen/marign20dp"
+            android:layout_marginStart="@dimen/marign20dp"
             android:layout_marginTop="@dimen/marign5dp"
             android:fontFamily="@font/lato_bold"
-            android:text="Udyog Aadhar: add"
+            android:text="@string/udyohaddhar"
             android:textColor="@color/black"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tv_storetype" />
 
         <TextView
+            android:id="@+id/tv_adyogaadhar_value"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/marign20dp"
+            android:layout_marginTop="@dimen/marign5dp"
+            android:fontFamily="@font/lato_bold"
+            android:text="@={companyinfo.udyogAadhar}"
+            android:textColor="@color/black"
+            app:layout_constraintLeft_toRightOf="@+id/tv_adyogaadhar"
+            app:layout_constraintTop_toBottomOf="@+id/tv_storetype" />
+
+
+        <TextView
             android:id="@+id/tv_partnershipdeed"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="@dimen/marign20dp"
+            android:layout_marginStart="@dimen/marign20dp"
             android:layout_marginTop="@dimen/marign5dp"
             android:fontFamily="@font/lato_bold"
-            android:text="Partnership Deed: add"
+            android:text="@string/partnershipdeed"
             android:textColor="@color/black"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tv_adyogaadhar" />
+
+
+        <TextView
+            android:id="@+id/tv_partnershipdeed_value"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/marign20dp"
+            android:layout_marginTop="@dimen/marign5dp"
+            android:fontFamily="@font/lato_bold"
+            android:text="@={companyinfo.partnershipDeed}"
+            android:textColor="@color/black"
+            app:layout_constraintLeft_toRightOf="@+id/tv_partnershipdeed"
+            app:layout_constraintTop_toBottomOf="@+id/tv_adyogaadhar" />
+
+        <TextView
+            android:id="@+id/tv_moa_aoa"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/marign20dp"
+            android:layout_marginTop="@dimen/marign5dp"
+            android:fontFamily="@font/lato_bold"
+            android:text="@string/moa"
+            android:textColor="@color/black"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_partnershipdeed" />
+
+        <TextView
+            android:id="@+id/tv_moa_aoa_value"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/marign20dp"
+            android:layout_marginTop="@dimen/marign5dp"
+            android:fontFamily="@font/lato_bold"
+            android:text="@={companyinfo.moa}"
+            android:textColor="@color/black"
+            app:layout_constraintLeft_toRightOf="@+id/tv_moa_aoa"
+            app:layout_constraintTop_toBottomOf="@+id/tv_partnershipdeed" />
+
+        <TextView
+            android:id="@+id/tv_coi"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/marign20dp"
+            android:layout_marginTop="@dimen/marign5dp"
+            android:fontFamily="@font/lato_bold"
+            android:text="@string/coi"
+            android:textColor="@color/black"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_moa_aoa" />
+
+        <TextView
+            android:id="@+id/tv_coi_value"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/marign20dp"
+            android:layout_marginTop="@dimen/marign5dp"
+            android:fontFamily="@font/lato_bold"
+            android:text="@={companyinfo.coi}"
+            android:textColor="@color/black"
+            app:layout_constraintLeft_toRightOf="@+id/tv_coi"
+            app:layout_constraintTop_toBottomOf="@+id/tv_moa_aoa" />
+
+        <TextView
+            android:id="@+id/tv_declration"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/marign20dp"
+            android:layout_marginTop="@dimen/marign5dp"
+            android:fontFamily="@font/lato_bold"
+            android:text="@string/declaration"
+            android:textColor="@color/black"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_coi" />
+
+        <TextView
+            android:id="@+id/tv_declration_value"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/marign20dp"
+            android:layout_marginTop="@dimen/marign5dp"
+            android:fontFamily="@font/lato_bold"
+            android:text="@={companyinfo.declaration}"
+            android:textColor="@color/black"
+            app:layout_constraintLeft_toRightOf="@+id/tv_declration"
+            app:layout_constraintTop_toBottomOf="@+id/tv_coi" />
+
+
+        <TextView
+            android:id="@+id/tv_gst"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/marign20dp"
+            android:layout_marginTop="@dimen/marign5dp"
+            android:fontFamily="@font/lato_bold"
+            android:text="@string/gstinnumber"
+            android:textColor="@color/black"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_declration" />
+
+        <TextView
+            android:id="@+id/tv_gst_value"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/marign20dp"
+            android:layout_marginTop="@dimen/marign5dp"
+            android:fontFamily="@font/lato_bold"
+            android:text="@={companyinfo.gstNO}"
+            android:textColor="@color/black"
+            app:layout_constraintLeft_toRightOf="@+id/tv_gst"
+            app:layout_constraintTop_toBottomOf="@+id/tv_declration" />
+
 
         <ProgressBar
             android:id="@+id/pb_kyc"

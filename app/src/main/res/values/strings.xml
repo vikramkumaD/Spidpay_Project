@@ -202,4 +202,17 @@
     <string name="updateaddress">Update Address</string>
     <string name="pannumber">Pan Number:</string>
     <string name="voterid">Voter ID:</string>
+    <string name="updatekyc">Update KYC</string>
+    <string name="accnumber">A/C Number:</string>
+    <string name="storename">Store Name:</string>
+    <string name="companytype">Company Type:</string>
+    <string name="udyohaddhar">Udyog Aadhar:</string>
+    <string name="partnershipdeed">Partnership Deed:</string>
+    <string name="moa">MOA/AOA:</string>
+    <string name="coi">COI:</string>
+    <string name="declaration">Declaration:</string>
+    <string name="updatecompanydetail">Update Company Detail</string>
+    <string name="gstinnumber">GSTIN Number:</string>
+    <string name="accname">A/C Holder Name:</string>
+    <string name="bankname">Bank Name:</string>
 </resources>
