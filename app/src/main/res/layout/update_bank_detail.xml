@@ -4,9 +4,12 @@
 
     <data>
 
+        <import type="com.example.spidpay.util.Converter"/>
+
+
         <variable
-            name="company"
-            type="com.example.spidpay.data.response.CompanyReponse" />
+            name="bank"
+            type="com.example.spidpay.data.response.BankDetailsResponse" />
 
         <variable
             name="myprofileviewmodel"
@@ -23,7 +26,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="@font/lato_bold"
-            android:text="@string/updatecompanydetail"
+            android:text="@string/updatebankdeatil"
             android:textColor="@color/black"
             android:textSize="@dimen/marign20sp"
             app:layout_constraintLeft_toLeftOf="parent"
@@ -39,158 +42,82 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <EditText
-            android:id="@+id/edt_edit_com_name"
+            android:id="@+id/edt_user_acc_number"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/marign20dp"
             android:layout_weight="1"
             android:background="@drawable/edittext_shadow"
-            android:hint="@string/pannumber"
-            android:inputType="text"
+            android:hint="@string/accnumber"
+            android:inputType="number"
             android:paddingLeft="@dimen/marign10dp"
             android:paddingTop="@dimen/marign10dp"
             android:paddingRight="@dimen/marign10dp"
             android:paddingBottom="@dimen/marign10dp"
             android:singleLine="true"
-            android:text="@={company.companyName}"
+            android:text="@={Converter.convertIntToString(bank.accountNo)}"
             android:textColorHint="@color/lightgrey"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tv_update_address" />
 
         <EditText
-
-            android:id="@+id/edt_edit_com_type"
+            android:id="@+id/edt_user_account_name"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/marign10dp"
             android:layout_weight="1"
             android:background="@drawable/edittext_shadow"
-            android:hint="@string/aadharnumber"
+            android:hint="@string/accname"
             android:inputType="text"
             android:paddingLeft="@dimen/marign10dp"
             android:paddingTop="@dimen/marign10dp"
             android:paddingRight="@dimen/marign10dp"
             android:paddingBottom="@dimen/marign10dp"
             android:singleLine="true"
-            android:text="@={company.companyType.description}"
+            android:text="@={bank.accountHolderName}"
             android:textColorHint="@color/lightgrey"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/edt_edit_com_name" />
+            app:layout_constraintTop_toBottomOf="@+id/edt_user_acc_number" />
 
         <EditText
-            android:id="@+id/edt_edit_udyog"
+            android:focusable="false"
+            android:cursorVisible="false"
+            android:id="@+id/edt_user_bank_name"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/marign10dp"
             android:layout_weight="1"
             android:background="@drawable/edittext_shadow"
-            android:hint="@string/voterid"
+            android:hint="@string/bankname"
             android:inputType="text"
             android:paddingLeft="@dimen/marign10dp"
             android:paddingTop="@dimen/marign10dp"
             android:paddingRight="@dimen/marign10dp"
             android:paddingBottom="@dimen/marign10dp"
             android:singleLine="true"
-            android:text="@={company.udyogAadhar}"
+            android:text="@={bank.companyType.description}"
             android:textColorHint="@color/lightgrey"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/edt_edit_com_type" />
+            app:layout_constraintTop_toBottomOf="@+id/edt_user_account_name" />
 
         <EditText
-            android:id="@+id/edt_edit_partnership"
+            android:id="@+id/edt_user_bank_ifsc"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/marign10dp"
             android:layout_weight="1"
             android:background="@drawable/edittext_shadow"
-            android:hint="@string/voterid"
+            android:hint="@string/ifsccode"
             android:inputType="text"
             android:paddingLeft="@dimen/marign10dp"
             android:paddingTop="@dimen/marign10dp"
             android:paddingRight="@dimen/marign10dp"
             android:paddingBottom="@dimen/marign10dp"
             android:singleLine="true"
-            android:text="@={company.partnershipDeed}"
+            android:text="@={bank.ifscCode}"
             android:textColorHint="@color/lightgrey"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/edt_edit_udyog" />
-
-
-        <EditText
-            android:id="@+id/edt_edit_moa"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/marign10dp"
-            android:layout_weight="1"
-            android:background="@drawable/edittext_shadow"
-            android:hint="@string/voterid"
-            android:inputType="text"
-            android:paddingLeft="@dimen/marign10dp"
-            android:paddingTop="@dimen/marign10dp"
-            android:paddingRight="@dimen/marign10dp"
-            android:paddingBottom="@dimen/marign10dp"
-            android:singleLine="true"
-            android:text="@={company.moa}"
-            android:textColorHint="@color/lightgrey"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/edt_edit_partnership" />
-
-        <EditText
-            android:id="@+id/edt_edit_coi"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/marign10dp"
-            android:layout_weight="1"
-            android:background="@drawable/edittext_shadow"
-            android:hint="@string/voterid"
-            android:inputType="text"
-            android:paddingLeft="@dimen/marign10dp"
-            android:paddingTop="@dimen/marign10dp"
-            android:paddingRight="@dimen/marign10dp"
-            android:paddingBottom="@dimen/marign10dp"
-            android:singleLine="true"
-            android:text="@={company.coi}"
-            android:textColorHint="@color/lightgrey"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/edt_edit_moa" />
-
-        <EditText
-            android:id="@+id/edt_edit_declration"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/marign10dp"
-            android:layout_weight="1"
-            android:background="@drawable/edittext_shadow"
-            android:hint="@string/voterid"
-            android:inputType="text"
-            android:paddingLeft="@dimen/marign10dp"
-            android:paddingTop="@dimen/marign10dp"
-            android:paddingRight="@dimen/marign10dp"
-            android:paddingBottom="@dimen/marign10dp"
-            android:singleLine="true"
-            android:text="@={company.declaration}"
-            android:textColorHint="@color/lightgrey"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/edt_edit_coi" />
-
-        <EditText
-            android:id="@+id/edt_edit_gstno"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/marign10dp"
-            android:layout_weight="1"
-            android:background="@drawable/edittext_shadow"
-            android:hint="@string/voterid"
-            android:inputType="text"
-            android:paddingLeft="@dimen/marign10dp"
-            android:paddingTop="@dimen/marign10dp"
-            android:paddingRight="@dimen/marign10dp"
-            android:paddingBottom="@dimen/marign10dp"
-            android:singleLine="true"
-            android:text="@={company.declaration}"
-            android:textColorHint="@color/lightgrey"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/edt_edit_declration" />
+            app:layout_constraintTop_toBottomOf="@+id/edt_user_bank_name" />
 
 
         <Button
@@ -203,11 +130,11 @@
             android:layout_marginBottom="@dimen/marign20dp"
             android:background="@drawable/button_bg_green"
             android:fontFamily="@font/lato"
-            android:onClick="@{(v)->myprofileviewmodel.validate_compnay(v,company)}"
+            android:onClick="@{(v)->myprofileviewmodel.validate_BankInfo(v,bank)}"
             android:text="@string/update"
             android:textColor="@color/white"
             android:textSize="@dimen/marign18sp"
-            app:layout_constraintTop_toBottomOf="@+id/edt_edit_gstno" />
+            app:layout_constraintTop_toBottomOf="@+id/edt_user_bank_ifsc" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

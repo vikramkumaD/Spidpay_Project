@@ -8,7 +8,6 @@ import com.example.spidpay.data.RetrofitClient;
 import com.example.spidpay.data.RetrofitInterface;
 import com.example.spidpay.data.request.RegisterRequest;
 import com.example.spidpay.data.response.InterrestedforResponse;
-import com.example.spidpay.data.response.LoginResponse;
 import com.example.spidpay.data.response.RegisterResponse;
 import com.example.spidpay.interfaces.RegisterInterface;
 import com.example.spidpay.util.Constant;
@@ -54,32 +53,5 @@ public class RegisterRepository {
             }
         });
         return responseMutableLiveData;
-    }
-
-    public MutableLiveData<List<InterrestedforResponse>> getInterrestedfor() {
-        MutableLiveData<List<InterrestedforResponse>> listMutableLiveData = new MutableLiveData<>();
-        RetrofitInterface retrofitInterface = RetrofitClient.GetRetrofitClient(context).create(RetrofitInterface.class);
-        Call<List<InterrestedforResponse>> call = retrofitInterface.getInterrestedfor(Constant.USER, Constant.ROLE_INTERRESTEDFOR);
-        call.enqueue(new Callback<List<InterrestedforResponse>>() {
-            @Override
-            public void onResponse(Call<List<InterrestedforResponse>> call, Response<List<InterrestedforResponse>> response) {
-                if (response.isSuccessful() && response.body() != null) {
-                    listMutableLiveData.postValue(response.body());
-                } else {
-                    registerInterface.onFailed("Server error!");
-                }
-            }
-
-            @Override
-            public void onFailure(Call<List<InterrestedforResponse>> call, Throwable t) {
-                if (t instanceof NoInternetException) {
-                    registerInterface.onFailed("No Internet");
-                } else {
-                    registerInterface.onFailed(t.getMessage());
-                }
-            }
-        });
-        return listMutableLiveData;
-
     }
 }

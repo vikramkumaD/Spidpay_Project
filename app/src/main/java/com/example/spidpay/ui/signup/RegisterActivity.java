@@ -23,21 +23,26 @@ import android.widget.Toast;
 
 import com.example.spidpay.R;
 import com.example.spidpay.data.repository.RegisterRepository;
+import com.example.spidpay.data.repository.StaticRepository;
 import com.example.spidpay.data.response.RegisterResponse;
 import com.example.spidpay.databinding.ActivityRegisterBinding;
-import com.example.spidpay.interfaces.OnClickIterface;
+import com.example.spidpay.interfaces.OnStaticClickIterface;
 import com.example.spidpay.interfaces.RegisterInterface;
+import com.example.spidpay.interfaces.StaticInterface;
 import com.example.spidpay.ui.verifyotp.VerifyOTPActivity;
+import com.example.spidpay.util.Constant;
 import com.example.spidpay.util.ItemOffsetDecoration;
 import com.google.android.material.bottomsheet.BottomSheetDialog;
 
 
-public class RegisterActivity extends AppCompatActivity implements RegisterInterface, OnClickIterface {
+public class RegisterActivity extends AppCompatActivity implements RegisterInterface, OnStaticClickIterface,StaticInterface {
     ActivityRegisterBinding activityRegisterBinding;
     RegisterInterface registerInterface;
     RegisterViewModel registerViewModel;
     BottomSheetDialog interrestedfor_bottomsheet;
-    OnClickIterface onClickIterface;
+    OnStaticClickIterface onStaticClickIterface;
+    StaticRepository staticRepository;
+    StaticInterface staticInterface;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,14 +50,17 @@ public class RegisterActivity extends AppCompatActivity implements RegisterInter
         this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         activityRegisterBinding = DataBindingUtil.setContentView(this, R.layout.activity_register);
         registerInterface = this;
-        onClickIterface = this;
+        onStaticClickIterface = this;
+        staticInterface = (StaticInterface) this;
         SpannableString spannableString = new SpannableString(getResources().getString(R.string.dashboard_txt3));
         ForegroundColorSpan foregroundColorSpanCyan = new ForegroundColorSpan(getResources().getColor(R.color.termsncondtion));
         spannableString.setSpan(foregroundColorSpanCyan, 29, 48, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
         activityRegisterBinding.tvTermsncondtion.setText(spannableString);
+        staticRepository = new StaticRepository(RegisterActivity.this, staticInterface);
         RegisterRepository registerRepository = new RegisterRepository(RegisterActivity.this, registerInterface);
         registerViewModel = new ViewModelProvider(this).get(RegisterViewModel.class);
         registerViewModel.registerInterface = registerInterface;
+        registerViewModel.staticRepository=staticRepository;
         registerViewModel.registerRepository = registerRepository;
         activityRegisterBinding.setRegisterViewmodel(registerViewModel);
         activityRegisterBinding.setLifecycleOwner(this);
@@ -160,7 +168,7 @@ public class RegisterActivity extends AppCompatActivity implements RegisterInter
         rv_interreseted_for.addItemDecoration(itemOffsetDecoration);
 
         registerViewModel.getInterrestedFor().observe(this, interrestedforResponses -> {
-            InterrestedforAdapter interrestedforAdapter = new InterrestedforAdapter(interrestedforResponses, onClickIterface);
+            InterrestedforAdapter interrestedforAdapter = new InterrestedforAdapter(interrestedforResponses, onStaticClickIterface);
             rv_interreseted_for.setAdapter(interrestedforAdapter);
             interrestedfor_bottomsheet.show();
         });
@@ -174,4 +182,14 @@ public class RegisterActivity extends AppCompatActivity implements RegisterInter
         interrestedfor_bottomsheet.dismiss();
     }
 
+    @Override
+    public void onStaticStart() {
+        activityRegisterBinding.pbLogin.setVisibility(View.VISIBLE);
+    }
+
+    @Override
+    public void onStaticFailed(String msg) {
+        Constant.showToast(RegisterActivity.this,msg);
+        activityRegisterBinding.pbLogin.setVisibility(View.VISIBLE);
+    }
 }

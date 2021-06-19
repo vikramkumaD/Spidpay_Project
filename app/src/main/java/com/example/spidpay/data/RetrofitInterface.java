@@ -4,9 +4,11 @@ import com.example.spidpay.data.request.ChangePasswordRequest;
 import com.example.spidpay.data.request.LoginRequest;
 import com.example.spidpay.data.request.RegisterRequest;
 import com.example.spidpay.data.request.UpdateAddressRequest;
+import com.example.spidpay.data.request.UpdateBankInfoRequest;
 import com.example.spidpay.data.request.UpdateCompanyRequest;
 import com.example.spidpay.data.request.UpdateKYCRequest;
 import com.example.spidpay.data.request.VerifyOTPReqest;
+import com.example.spidpay.data.response.BankDetailsResponse;
 import com.example.spidpay.data.response.CommonResponse;
 import com.example.spidpay.data.response.CompanyReponse;
 import com.example.spidpay.data.response.InterrestedforResponse;
@@ -40,7 +42,7 @@ public interface RetrofitInterface {
     Call<RegisterResponse> user_onBoarding(@Body RegisterRequest loginRequest);
 
     @GET("static-data/v1/{category}")
-    Call<List<InterrestedforResponse>> getInterrestedfor(@Path("category") String user, @Query("role") String role);
+    Call<List<InterrestedforResponse>> getstaticdata(@Path("category") String user, @Query("role") String role);
 
     @GET("change-password/v1")
     Call<CommonResponse> changepassword(@Body ChangePasswordRequest changePasswordRequest);
@@ -74,5 +76,13 @@ public interface RetrofitInterface {
 
     @GET("user/v1/{userId}/{company-info}")
     Call<CompanyReponse> getCompany(@Path("userId") String user, @Path("company-info") String company);
+
+    @GET("user/v1/{userId}/{bank-info}")
+    Call<BankDetailsResponse> getBankInfo(@Path("userId") String user, @Path("bank-info") String bank);
+
+    @Headers({"Content-Type:application/json"})
+    @PUT("user/v1/update/bank-info")
+    Call<UpdateResponse> updateBankInfo(@Body UpdateBankInfoRequest updateBankInfoRequest);
+
 
 }

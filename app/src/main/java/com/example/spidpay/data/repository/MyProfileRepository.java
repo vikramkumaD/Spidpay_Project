@@ -7,19 +7,22 @@ import androidx.lifecycle.MutableLiveData;
 import com.example.spidpay.data.RetrofitClient;
 import com.example.spidpay.data.RetrofitInterface;
 import com.example.spidpay.data.request.UpdateAddressRequest;
+import com.example.spidpay.data.request.UpdateBankInfoRequest;
 import com.example.spidpay.data.request.UpdateCompanyRequest;
 import com.example.spidpay.data.request.UpdateKYCRequest;
-import com.example.spidpay.data.response.CommonResponse;
+import com.example.spidpay.data.response.BankDetailsResponse;
 import com.example.spidpay.data.response.CompanyReponse;
+import com.example.spidpay.data.response.CompanyType;
 import com.example.spidpay.data.response.KYCResponse;
 import com.example.spidpay.data.response.MyAddressResponse;
 import com.example.spidpay.data.response.MyProfileResponse;
 import com.example.spidpay.data.response.UpdateResponse;
-import com.example.spidpay.interfaces.CommonInterface;
-import com.example.spidpay.interfaces.CompanyInterface;
+import com.example.spidpay.interfaces.BankInteface;
 import com.example.spidpay.interfaces.KYCInterface;
 import com.example.spidpay.interfaces.MyProfileInterface;
 import com.example.spidpay.util.NoInternetException;
+
+import org.jetbrains.annotations.NotNull;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -29,8 +32,12 @@ public class MyProfileRepository {
     Context context;
     KYCInterface kycInterface;
     MyProfileInterface myProfileInterface;
-    CompanyInterface companyInterface;
+    BankInteface bankInteface;
 
+    public MyProfileRepository(Context context, BankInteface bankInteface) {
+        this.context = context;
+        this.bankInteface = bankInteface;
+    }
 
     public MyProfileRepository(Context context, MyProfileInterface myProfileInterface) {
         this.context = context;
@@ -42,10 +49,6 @@ public class MyProfileRepository {
         this.kycInterface = kycInterface;
     }
 
-    public MyProfileRepository(Context context, CompanyInterface companyInterface) {
-        this.context = context;
-        this.companyInterface = companyInterface;
-    }
 
     public MutableLiveData<MyProfileResponse> getMyProfile(String userid) {
         MutableLiveData<MyProfileResponse> myProfileResponseMutableLiveData = new MutableLiveData<>();
@@ -231,5 +234,59 @@ public class MyProfileRepository {
         });
         return myAddressResponseMutableLiveData;
     }
+
+    public MutableLiveData<BankDetailsResponse> getBankDetail(String userid) {
+        MutableLiveData<BankDetailsResponse> detailsResponseMutableLiveData = new MutableLiveData<>();
+        RetrofitInterface retrofitInterface = RetrofitClient.GetRetrofitClient(context).create(RetrofitInterface.class);
+        Call<BankDetailsResponse> myProfileResponseCall = retrofitInterface.getBankInfo(userid, "bank-info");
+        myProfileResponseCall.enqueue(new Callback<BankDetailsResponse>() {
+            @Override
+            public void onResponse(Call<BankDetailsResponse> call, Response<BankDetailsResponse> response) {
+                if (response.isSuccessful() && response.body() != null) {
+                    detailsResponseMutableLiveData.postValue(response.body());
+                } else {
+                    bankInteface.onFailed("Server error");
+                }
+            }
+
+            @Override
+            public void onFailure(Call<BankDetailsResponse> call, Throwable t) {
+                if (t instanceof NoInternetException) {
+                    bankInteface.onFailed("No Internet");
+                } else {
+                    bankInteface.onFailed(t.getMessage());
+                }
+            }
+        });
+        return detailsResponseMutableLiveData;
+
+    }
+
+    public MutableLiveData<UpdateResponse> updateBankInfo(UpdateBankInfoRequest updateKYCRequest) {
+        MutableLiveData<UpdateResponse> myAddressResponseMutableLiveData = new MutableLiveData<>();
+        RetrofitInterface retrofitInterface = RetrofitClient.GetRetrofitClient(context).create(RetrofitInterface.class);
+        Call<UpdateResponse> myProfileResponseCall = retrofitInterface.updateBankInfo(updateKYCRequest);
+        myProfileResponseCall.enqueue(new Callback<UpdateResponse>() {
+            @Override
+            public void onResponse(@NotNull Call<UpdateResponse> call, @NotNull Response<UpdateResponse> response) {
+                if (response.isSuccessful() && response.body() != null) {
+                    myAddressResponseMutableLiveData.postValue(response.body());
+                } else {
+                    bankInteface.onFailed("Server error");
+                }
+            }
+
+            @Override
+            public void onFailure(@NotNull Call<UpdateResponse> call, Throwable t) {
+                if (t instanceof NoInternetException) {
+                    bankInteface.onFailed("No Internet");
+                } else {
+                    bankInteface.onFailed(t.getMessage());
+                }
+            }
+        });
+        return myAddressResponseMutableLiveData;
+    }
+
 
 }

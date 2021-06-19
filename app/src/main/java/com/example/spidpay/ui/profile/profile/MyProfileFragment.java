@@ -2,15 +2,18 @@ package com.example.spidpay.ui.profile.profile;
 
 import android.content.Context;
 import android.os.Bundle;
+
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.databinding.DataBindingUtil;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.ViewModelProvider;
+
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+
 import com.example.spidpay.R;
 import com.example.spidpay.data.repository.MyProfileRepository;
 import com.example.spidpay.data.response.MyAddressResponse;
@@ -20,6 +23,7 @@ import com.example.spidpay.databinding.AddressEditLayoutBinding;
 import com.example.spidpay.databinding.FragmentMyProfileBinding;
 import com.example.spidpay.interfaces.ChangeTitlenandIconInterface;
 import com.example.spidpay.interfaces.MyProfileInterface;
+import com.example.spidpay.interfaces.StaticInterface;
 import com.example.spidpay.interfaces.UpdateBottomView;
 import com.example.spidpay.ui.profile.MyProfileViewModel;
 import com.example.spidpay.util.Constant;
@@ -27,7 +31,7 @@ import com.example.spidpay.util.PrefManager;
 import com.google.android.material.bottomsheet.BottomSheetDialog;
 
 
-public class MyProfileFragment extends Fragment implements MyProfileInterface {
+public class MyProfileFragment extends Fragment implements MyProfileInterface, StaticInterface {
     private static final String ARG_PARAM1 = "param1";
     FragmentMyProfileBinding fragmentMyProfileBinding;
     ChangeTitlenandIconInterface changeTitlenandIconInterface;
@@ -134,5 +138,16 @@ public class MyProfileFragment extends Fragment implements MyProfileInterface {
         addressEditLayoutBinding.setLifecycleOwner(this);
         update_address_bottomSheetDialog.show();
         addressEditLayoutBinding.imgDismissDialog.setOnClickListener(v -> update_address_bottomSheetDialog.dismiss());
+    }
+
+    @Override
+    public void onStaticStart() {
+        fragmentMyProfileBinding.pbMyprofile.setVisibility(View.VISIBLE);
+    }
+
+    @Override
+    public void onStaticFailed(String msg) {
+        Constant.showToast(requireActivity(), msg);
+        fragmentMyProfileBinding.pbMyprofile.setVisibility(View.GONE);
     }
 }

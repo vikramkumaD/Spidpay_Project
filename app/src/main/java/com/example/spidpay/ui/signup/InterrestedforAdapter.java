@@ -1,7 +1,6 @@
 package com.example.spidpay.ui.signup;
 
 import android.view.LayoutInflater;
-import android.view.View;
 import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
@@ -11,7 +10,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.spidpay.R;
 import com.example.spidpay.data.response.InterrestedforResponse;
 import com.example.spidpay.databinding.InterrestedforItemviewBinding;
-import com.example.spidpay.interfaces.OnClickIterface;
+import com.example.spidpay.interfaces.OnStaticClickIterface;
 
 import org.jetbrains.annotations.NotNull;
 
@@ -19,12 +18,12 @@ import java.util.List;
 
 public class InterrestedforAdapter extends RecyclerView.Adapter<InterrestedforAdapter.InterrestedforViewHolder> {
 
-    OnClickIterface onClickIterface;
+    OnStaticClickIterface onStaticClickIterface;
     List<InterrestedforResponse> list;
 
-    public InterrestedforAdapter(List<InterrestedforResponse> list, OnClickIterface onClickIterface) {
+    public InterrestedforAdapter(List<InterrestedforResponse> list, OnStaticClickIterface onStaticClickIterface) {
         this.list = list;
-        this.onClickIterface = onClickIterface;
+        this.onStaticClickIterface = onStaticClickIterface;
     }
 
     @NonNull
@@ -38,7 +37,7 @@ public class InterrestedforAdapter extends RecyclerView.Adapter<InterrestedforAd
     @Override
     public void onBindViewHolder(@NonNull @NotNull InterrestedforViewHolder holder, int position) {
         holder.interrestedforItemviewBinding.setInterestedfor(list.get(position));
-        holder.interrestedforItemviewBinding.setOninterestedforclick(onClickIterface);
+        holder.interrestedforItemviewBinding.setOninterestedforclick(onStaticClickIterface);
         holder.interrestedforItemviewBinding.executePendingBindings();
     }
 

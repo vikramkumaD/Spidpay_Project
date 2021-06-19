@@ -215,4 +215,7 @@
     <string name="gstinnumber">GSTIN Number:</string>
     <string name="accname">A/C Holder Name:</string>
     <string name="bankname">Bank Name:</string>
+    <string name="updatebankdeatil">Update Bank Deatil</string>
+    <string name="ifsccode">IFSC Code</string>
+    <string name="companyname">Company Name</string>
 </resources>

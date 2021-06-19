@@ -8,6 +8,7 @@ import androidx.lifecycle.ViewModel;
 
 import com.example.spidpay.R;
 import com.example.spidpay.data.repository.RegisterRepository;
+import com.example.spidpay.data.repository.StaticRepository;
 import com.example.spidpay.data.request.RegisterRequest;
 import com.example.spidpay.data.request.Register_UserInfo;
 import com.example.spidpay.data.response.InterrestedforResponse;
@@ -16,10 +17,10 @@ import com.example.spidpay.interfaces.RegisterInterface;
 import com.example.spidpay.util.Constant;
 
 import java.util.List;
-import java.util.Objects;
 
 public class RegisterViewModel extends ViewModel {
 
+    StaticRepository staticRepository;
     RegisterInterface registerInterface;
     public String password, confirm_password, code;
     public MutableLiveData<String> string_register_first_name = new MutableLiveData<>();
@@ -140,7 +141,7 @@ public class RegisterViewModel extends ViewModel {
     }
 
     public LiveData<List<InterrestedforResponse>> getInterrestedFor() {
-        LiveData<List<InterrestedforResponse>> interrestedforliveData = registerRepository.getInterrestedfor();
+        LiveData<List<InterrestedforResponse>> interrestedforliveData = staticRepository.getStaticData(Constant.USER,Constant.ROLE_INTERRESTEDFOR);
         return interrestedforliveData;
     }
 

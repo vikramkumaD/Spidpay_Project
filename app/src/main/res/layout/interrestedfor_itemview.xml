@@ -9,7 +9,7 @@
             type="com.example.spidpay.data.response.InterrestedforResponse" />
         <variable
             name="oninterestedforclick"
-            type="com.example.spidpay.interfaces.OnClickIterface" />
+            type="com.example.spidpay.interfaces.OnStaticClickIterface" />
         
     </data>
 

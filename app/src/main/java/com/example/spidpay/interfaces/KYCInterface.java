@@ -8,7 +8,7 @@ import com.example.spidpay.data.response.UpdateResponse;
 
 public interface KYCInterface extends CommonInterface {
 
-    void onSuccess(LiveData<KYCResponse> kycResponseLiveData);
+    void onKYCSuccess(LiveData<KYCResponse> kycResponseLiveData);
 
     void onUpdateSucess(LiveData<UpdateResponse> updateResponseLiveData);
 

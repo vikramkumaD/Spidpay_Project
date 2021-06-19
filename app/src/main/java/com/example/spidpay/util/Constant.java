@@ -13,12 +13,11 @@ public class Constant {
 
     public static final String USER_API = "http://45.79.120.79:6500/spidpay-identity/api/";
 
-    //http://45.79.120.79:6500/spidpay-identity/api/user/v1/update/address
 
-
-
-    public static final String USER="user";
-    public static final String ROLE_INTERRESTEDFOR="SP_EXT_WHITE_LABLE";
+    public static final String BANK = "bank";
+    public static final String COMPANY = "company";
+    public static final String USER = "user";
+    public static final String ROLE_INTERRESTEDFOR = "SP_EXT_WHITE_LABLE";
 
     public static final String Success = "Success";
 
