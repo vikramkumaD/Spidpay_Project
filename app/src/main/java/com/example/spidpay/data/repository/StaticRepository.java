@@ -8,10 +8,12 @@ import com.example.spidpay.data.RetrofitClient;
 import com.example.spidpay.data.RetrofitInterface;
 import com.example.spidpay.data.response.InterrestedforResponse;
 import com.example.spidpay.interfaces.StaticInterface;
+import com.example.spidpay.util.Constant;
 import com.example.spidpay.util.NoInternetException;
 
 import org.jetbrains.annotations.NotNull;
 
+import java.io.IOException;
 import java.util.List;
 
 import retrofit2.Call;
@@ -37,7 +39,18 @@ public class StaticRepository {
                 if (response.isSuccessful() && response.body() != null) {
                     listMutableLiveData.postValue(response.body());
                 } else {
-                    staticInterface.onStaticFailed("Server error!");
+                    try {
+                        if (response.errorBody() != null) {
+                            String errorBody = response.errorBody().string();
+                            String error = Constant.parseErrorBodyofRetrofit(errorBody, context);
+                            staticInterface.onStaticFailed(error);
+                        } else {
+                            staticInterface.onStaticFailed(Constant.Server_ERROR);
+                        }
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                        staticInterface.onStaticFailed(e.toString());
+                    }
                 }
             }
 

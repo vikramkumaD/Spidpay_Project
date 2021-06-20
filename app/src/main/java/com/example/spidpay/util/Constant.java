@@ -7,6 +7,9 @@ import android.view.WindowManager;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Toast;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -15,6 +18,7 @@ public class Constant {
     public static final String USER_API = "http://45.79.120.79:6500/spidpay-identity/api/";
 
 
+    public static final String Server_ERROR = "Server error!";
     public static final String BANK = "bank";
     public static final String COMPANY = "company";
     public static final String USER = "user";
@@ -27,8 +31,22 @@ public class Constant {
     public static final int BOTTOM_NOTIFICATION = 3;
     public static final int BOTTOM_HISTORY = 4;
 
+    public static String parseErrorBodyofRetrofit(String errorbody, Context context) {
+        JSONObject jsonObject1;
+        try {
+            jsonObject1 = new JSONObject(errorbody);
+            JSONObject jsonObject = jsonObject1.getJSONObject("error");
+            String message = jsonObject.getString("message");
+            return message;
+        } catch (JSONException e) {
+            e.printStackTrace();
+            return e.toString();
+        }
+    }
+
+
     public static void STOP_TOUCH(Activity activity) {
-        activity. getWindow().setFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE, WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
+        activity.getWindow().setFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE, WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
     }
 
     public static void START_TOUCH(Activity activity) {

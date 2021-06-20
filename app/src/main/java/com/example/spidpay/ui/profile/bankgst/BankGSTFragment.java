@@ -122,6 +122,7 @@ public class BankGSTFragment extends Fragment implements BankInteface, StaticInt
         updateResponseLiveData.observe(this, updateResponse -> {
             if (updateResponse.userid.equals(new PrefManager(requireActivity()).getUserID())) {
                 bottomSheetDialog_bankinfo.dismiss();
+                Constant.START_TOUCH(requireActivity());
                 myProfileViewModel.getBankInfo(updateResponse.userid);
             }
         });

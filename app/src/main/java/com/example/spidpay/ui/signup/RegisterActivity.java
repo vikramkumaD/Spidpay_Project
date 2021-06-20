@@ -145,13 +145,12 @@ public class RegisterActivity extends AppCompatActivity implements RegisterInter
     public void onFailed(String msg) {
         Constant.START_TOUCH(RegisterActivity.this);
         activityRegisterBinding.pbLogin.setVisibility(View.GONE);
-        Toast.makeText(this, msg, Toast.LENGTH_SHORT).show();
+        Constant.showToast(RegisterActivity.this,msg);
     }
 
 
     @Override
     public void onSuccess(LiveData<RegisterResponse> responseLiveData) {
-
         responseLiveData.observe(this, registerResponse -> {
             if (registerResponse.username != null && !registerResponse.username.equals("")) {
                 Constant.START_TOUCH(RegisterActivity.this);

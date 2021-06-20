@@ -12,7 +12,10 @@ import com.example.spidpay.data.response.CommonResponse;
 import com.example.spidpay.data.response.LoginResponse;
 import com.example.spidpay.interfaces.ForgotPassInterface;
 import com.example.spidpay.interfaces.LoginInterface;
+import com.example.spidpay.util.Constant;
 import com.example.spidpay.util.NoInternetException;
+
+import java.io.IOException;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -39,7 +42,18 @@ public class LoginRepository {
                 if (response.isSuccessful() && response.body() != null) {
                     responseMutableLiveData.postValue(response.body());
                 } else {
-                    loginInterface.onFailed("Server error!");
+                    try {
+                        if (response.errorBody() != null) {
+                            String errorBody = response.errorBody().string();
+                            String error = Constant.parseErrorBodyofRetrofit(errorBody, context);
+                            loginInterface.onFailed(error);
+                        } else {
+                            loginInterface.onFailed(Constant.Server_ERROR);
+                        }
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                        loginInterface.onFailed(e.toString());
+                    }
                 }
             }
 
@@ -66,7 +80,18 @@ public class LoginRepository {
                 if (response.isSuccessful() && response.body() != null) {
                     responseMutableLiveData.postValue(response.body());
                 } else {
-                    forgotPassInterface.onForgotFailed("Server error!");
+                    try {
+                        if (response.errorBody() != null) {
+                            String errorBody = response.errorBody().string();
+                            String error = Constant.parseErrorBodyofRetrofit(errorBody, context);
+                            loginInterface.onFailed(error);
+                        } else {
+                            loginInterface.onFailed(Constant.Server_ERROR);
+                        }
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                        loginInterface.onFailed(e.toString());
+                    }
                 }
             }
 

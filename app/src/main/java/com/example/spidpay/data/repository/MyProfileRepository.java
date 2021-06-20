@@ -20,9 +20,12 @@ import com.example.spidpay.data.response.UpdateResponse;
 import com.example.spidpay.interfaces.BankInteface;
 import com.example.spidpay.interfaces.KYCInterface;
 import com.example.spidpay.interfaces.MyProfileInterface;
+import com.example.spidpay.util.Constant;
 import com.example.spidpay.util.NoInternetException;
 
 import org.jetbrains.annotations.NotNull;
+
+import java.io.IOException;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -60,7 +63,18 @@ public class MyProfileRepository {
                 if (response.isSuccessful() && response.body() != null) {
                     myProfileResponseMutableLiveData.postValue(response.body());
                 } else {
-                    myProfileInterface.onFailed("Server error");
+                    try {
+                        if (response.errorBody() != null) {
+                            String errorBody = response.errorBody().string();
+                            String error = Constant.parseErrorBodyofRetrofit(errorBody, context);
+                            myProfileInterface.onFailed(error);
+                        } else {
+                            myProfileInterface.onFailed(Constant.Server_ERROR);
+                        }
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                        myProfileInterface.onFailed(e.toString());
+                    }
                 }
             }
 
@@ -89,7 +103,18 @@ public class MyProfileRepository {
                 if (response.isSuccessful() && response.body() != null) {
                     myAddressResponseMutableLiveData.postValue(response.body());
                 } else {
-                    myProfileInterface.onFailed("Server error");
+                    try {
+                        if (response.errorBody() != null) {
+                            String errorBody = response.errorBody().string();
+                            String error = Constant.parseErrorBodyofRetrofit(errorBody, context);
+                            myProfileInterface.onFailed(error);
+                        } else {
+                            myProfileInterface.onFailed(Constant.Server_ERROR);
+                        }
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                        myProfileInterface.onFailed(e.toString());
+                    }
                 }
             }
 
@@ -115,7 +140,18 @@ public class MyProfileRepository {
                 if (response.isSuccessful() && response.body() != null) {
                     kycResponseMutableLiveData.postValue(response.body());
                 } else {
-                    kycInterface.onFailed("Server error");
+                    try {
+                        if (response.errorBody() != null) {
+                            String errorBody = response.errorBody().string();
+                            String error = Constant.parseErrorBodyofRetrofit(errorBody, context);
+                            kycInterface.onFailed(error);
+                        } else {
+                            kycInterface.onFailed(Constant.Server_ERROR);
+                        }
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                        kycInterface.onFailed(e.toString());
+                    }
                 }
             }
 
@@ -141,7 +177,18 @@ public class MyProfileRepository {
                 if (response.isSuccessful() && response.body() != null) {
                     kycResponseMutableLiveData.postValue(response.body());
                 } else {
-                    kycInterface.onFailed("Server error");
+                    try {
+                        if (response.errorBody() != null) {
+                            String errorBody = response.errorBody().string();
+                            String error = Constant.parseErrorBodyofRetrofit(errorBody, context);
+                            kycInterface.onFailed(error);
+                        } else {
+                            kycInterface.onFailed(Constant.Server_ERROR);
+                        }
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                        kycInterface.onFailed(e.toString());
+                    }
                 }
             }
 
@@ -167,7 +214,18 @@ public class MyProfileRepository {
                 if (response.isSuccessful() && response.body() != null) {
                     myAddressResponseMutableLiveData.postValue(response.body());
                 } else {
-                    myProfileInterface.onFailed("Server error");
+                    try {
+                        if (response.errorBody() != null) {
+                            String errorBody = response.errorBody().string();
+                            String error = Constant.parseErrorBodyofRetrofit(errorBody, context);
+                            myProfileInterface.onFailed(error);
+                        } else {
+                            myProfileInterface.onFailed(Constant.Server_ERROR);
+                        }
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                        myProfileInterface.onFailed(e.toString());
+                    }
                 }
             }
 
@@ -193,7 +251,18 @@ public class MyProfileRepository {
                 if (response.isSuccessful() && response.body() != null) {
                     myAddressResponseMutableLiveData.postValue(response.body());
                 } else {
-                    kycInterface.onFailed("Server error");
+                    try {
+                        if (response.errorBody() != null) {
+                            String errorBody = response.errorBody().string();
+                            String error = Constant.parseErrorBodyofRetrofit(errorBody, context);
+                            kycInterface.onFailed(error);
+                        } else {
+                            kycInterface.onFailed(Constant.Server_ERROR);
+                        }
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                        kycInterface.onFailed(e.toString());
+                    }
                 }
             }
 
@@ -219,7 +288,18 @@ public class MyProfileRepository {
                 if (response.isSuccessful() && response.body() != null) {
                     myAddressResponseMutableLiveData.postValue(response.body());
                 } else {
-                    kycInterface.onFailed("Server error");
+                    try {
+                        if (response.errorBody() != null) {
+                            String errorBody = response.errorBody().string();
+                            String error = Constant.parseErrorBodyofRetrofit(errorBody, context);
+                            kycInterface.onFailed(error);
+                        } else {
+                            kycInterface.onFailed(Constant.Server_ERROR);
+                        }
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                        kycInterface.onFailed(e.toString());
+                    }
                 }
             }
 
@@ -245,7 +325,18 @@ public class MyProfileRepository {
                 if (response.isSuccessful() && response.body() != null) {
                     detailsResponseMutableLiveData.postValue(response.body());
                 } else {
-                    bankInteface.onFailed("Server error");
+                    try {
+                        if (response.errorBody() != null) {
+                            String errorBody = response.errorBody().string();
+                            String error = Constant.parseErrorBodyofRetrofit(errorBody, context);
+                            bankInteface.onFailed(error);
+                        } else {
+                            bankInteface.onFailed(Constant.Server_ERROR);
+                        }
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                        bankInteface.onFailed(e.toString());
+                    }
                 }
             }
 
@@ -272,7 +363,18 @@ public class MyProfileRepository {
                 if (response.isSuccessful() && response.body() != null) {
                     myAddressResponseMutableLiveData.postValue(response.body());
                 } else {
-                    bankInteface.onFailed("Server error");
+                    try {
+                        if (response.errorBody() != null) {
+                            String errorBody = response.errorBody().string();
+                            String error = Constant.parseErrorBodyofRetrofit(errorBody, context);
+                            bankInteface.onFailed(error);
+                        } else {
+                            bankInteface.onFailed(Constant.Server_ERROR);
+                        }
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                        bankInteface.onFailed(e.toString());
+                    }
                 }
             }
 

@@ -11,7 +11,10 @@ import com.example.spidpay.data.request.VerifyOTPReqest;
 import com.example.spidpay.data.response.LoginResponse;
 import com.example.spidpay.data.response.VerifyOTPResponse;
 import com.example.spidpay.interfaces.VerifyOTPInterface;
+import com.example.spidpay.util.Constant;
 import com.example.spidpay.util.NoInternetException;
+
+import java.io.IOException;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -37,7 +40,18 @@ public class VerifyOTPRepository {
                 if (response.isSuccessful() && response.body() != null) {
                     responseMutableLiveData.postValue(response.body());
                 } else {
-                    verifyOTPInterface.onFailed("Server error!");
+                    try {
+                        if (response.errorBody() != null) {
+                            String errorBody = response.errorBody().string();
+                            String error = Constant.parseErrorBodyofRetrofit(errorBody, context);
+                            verifyOTPInterface.onFailed(error);
+                        } else {
+                            verifyOTPInterface.onFailed(Constant.Server_ERROR);
+                        }
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                        verifyOTPInterface.onFailed(e.toString());
+                    }
                 }
             }
             @Override

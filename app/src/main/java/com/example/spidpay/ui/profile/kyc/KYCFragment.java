@@ -14,9 +14,11 @@ import androidx.lifecycle.LiveData;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+
 import com.example.spidpay.R;
 import com.example.spidpay.data.repository.MyProfileRepository;
 import com.example.spidpay.data.repository.StaticRepository;
@@ -91,7 +93,7 @@ public class KYCFragment extends Fragment implements KYCInterface, OnStaticClick
         myProfileRepository = new MyProfileRepository(requireActivity(), kycInterface);
         myProfileViewModel.myProfileRepository = myProfileRepository;
         myProfileViewModel.kycInterface = kycInterface;
-        myProfileViewModel.staticInterface=staticInterface;
+        myProfileViewModel.staticInterface = staticInterface;
 
         myProfileViewModel.staticRepository = staticRepository;
         myProfileViewModel.getKYCInfo(new PrefManager(requireContext()).getUserID());
@@ -107,20 +109,17 @@ public class KYCFragment extends Fragment implements KYCInterface, OnStaticClick
 
     @Override
     public void onKYCSuccess(LiveData<KYCResponse> kycResponseLiveData) {
-
         kycResponseLiveData.observe(this, kycResponse -> {
-
             if (kycResponse.panNo != null && !kycResponse.panNo.equals("")) {
                 fragmentKYCBinding.pbKyc.setVisibility(View.GONE);
                 Constant.START_TOUCH(requireActivity());
                 fragmentKYCBinding.setKycinfo(kycResponse);
                 this.kycResponse = kycResponse;
                 myProfileViewModel.getCompanyInfo(new PrefManager(getContext()).getUserID());
-            }
-            else {
+            } else {
                 Constant.START_TOUCH(requireActivity());
                 fragmentKYCBinding.pbKyc.setVisibility(View.GONE);
-                this.kycResponse=new KYCResponse();
+                this.kycResponse = new KYCResponse();
             }
         });
     }
@@ -128,29 +127,30 @@ public class KYCFragment extends Fragment implements KYCInterface, OnStaticClick
     @Override
     public void onUpdateSucess(LiveData<UpdateResponse> updateResponseLiveData) {
         updateResponseLiveData.observe(this, updateResponse -> {
-            if (updateResponse.userid.equals(new PrefManager(getContext()).getUserID()))
-            {
+            if (updateResponse.userid.equals(new PrefManager(getContext()).getUserID())) {
                 Constant.START_TOUCH(requireActivity());
                 fragmentKYCBinding.pbKyc.setVisibility(View.GONE);
                 bottomSheetDialog_kyc.dismiss();
                 myProfileViewModel.getKYCInfo(updateResponse.userid);
             }
-
         });
     }
 
 
     @Override
     public void onCompanySuccess(LiveData<CompanyReponse> companyReponseLiveData) {
-        fragmentKYCBinding.pbKyc.setVisibility(View.GONE);
+
         companyReponseLiveData.observe(this, companyReponse -> {
             if (companyReponse.companyName != null && !companyReponse.companyName.equals("")) {
+                fragmentKYCBinding.pbKyc.setVisibility(View.GONE);
+                Constant.START_TOUCH(requireActivity());
                 fragmentKYCBinding.setCompanyinfo(companyReponse);
                 this.companyReponse = companyReponse;
-                myProfileViewModel.code=companyReponse.companyType.code;
-            }
-            else {
-                this.companyReponse=new CompanyReponse();
+                myProfileViewModel.code = companyReponse.companyType.code;
+            } else {
+                fragmentKYCBinding.pbKyc.setVisibility(View.GONE);
+                Constant.START_TOUCH(requireActivity());
+                this.companyReponse = new CompanyReponse();
             }
         });
     }
@@ -203,7 +203,7 @@ public class KYCFragment extends Fragment implements KYCInterface, OnStaticClick
         bottomSheetDialog_company.show();
         updateBankDetailBinding.imgDismissDialog.setOnClickListener(v -> bottomSheetDialog_company.dismiss());
         updateBankDetailBinding.edtEditComType.setOnClickListener(v -> {
-            myProfileViewModel.static_value=Constant.COMPANY;
+            myProfileViewModel.static_value = Constant.COMPANY;
             getCompayType();
         });
     }
@@ -245,7 +245,7 @@ public class KYCFragment extends Fragment implements KYCInterface, OnStaticClick
     @Override
     public void onStaticFailed(String msg) {
         Constant.START_TOUCH(requireActivity());
-        Constant.showToast(requireActivity(),msg);
+        Constant.showToast(requireActivity(), msg);
         fragmentKYCBinding.pbKyc.setVisibility(View.GONE);
     }
 }

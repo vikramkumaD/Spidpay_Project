@@ -1,20 +1,16 @@
 package com.example.spidpay.data.repository;
 
 import android.content.Context;
-
 import androidx.lifecycle.MutableLiveData;
-
 import com.example.spidpay.data.RetrofitClient;
 import com.example.spidpay.data.RetrofitInterface;
 import com.example.spidpay.data.request.RegisterRequest;
-import com.example.spidpay.data.response.InterrestedforResponse;
 import com.example.spidpay.data.response.RegisterResponse;
 import com.example.spidpay.interfaces.RegisterInterface;
 import com.example.spidpay.util.Constant;
 import com.example.spidpay.util.NoInternetException;
-
-import java.util.List;
-
+import org.jetbrains.annotations.NotNull;
+import java.io.IOException;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -34,12 +30,22 @@ public class RegisterRepository {
         Call<RegisterResponse> call = retrofitInterface.user_onBoarding(registerRequest);
         call.enqueue(new Callback<RegisterResponse>() {
             @Override
-            public void onResponse(Call<RegisterResponse> call, Response<RegisterResponse> response) {
+            public void onResponse(@NotNull Call<RegisterResponse> call, @NotNull Response<RegisterResponse> response) {
                 if (response.isSuccessful() && response.body() != null) {
                     responseMutableLiveData.postValue(response.body());
-
                 } else {
-                    registerInterface.onFailed("Server error!");
+                    try {
+                        if (response.errorBody() != null) {
+                            String errorBody = response.errorBody().string();
+                            String error = Constant.parseErrorBodyofRetrofit(errorBody, context);
+                            registerInterface.onFailed(error);
+                        } else {
+                            registerInterface.onFailed(Constant.Server_ERROR);
+                        }
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                        registerInterface.onFailed(e.toString());
+                    }
                 }
             }
 
