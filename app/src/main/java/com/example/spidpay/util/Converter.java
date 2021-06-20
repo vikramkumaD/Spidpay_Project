@@ -4,16 +4,16 @@ import androidx.databinding.InverseMethod;
 
 public class Converter {
 
-    public static int convertStringToInt(String value) {
+    public static Double convertStringToDouble(String value) {
         try {
-            return Integer.parseInt(value);
+            return Double.parseDouble(value);
         } catch (NumberFormatException e) {
-            return -1;
+            return 0.0;
         }
     }
 
-    @InverseMethod("convertStringToInt")
-    public static String convertIntToString(int value) {
+    @InverseMethod("convertStringToDouble")
+    public static String convertDoubleToString(Double value) {
         return String.valueOf(value);
     }
 }

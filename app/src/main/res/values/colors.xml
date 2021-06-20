@@ -17,6 +17,7 @@
     <color name="darkgrey">#A9A9A9</color>
     <color name="darkgrey1">#808080</color>
     <color name="lightgrey">#D1D1D1</color>
+    <color name="border_color">#50D1D1D1</color>
     <color name="shadeslightgrey">#30DCDCDC</color>
     <color name="add_money_hint_color">#DEE4E5</color>
     <color name="green">#2AC052</color>

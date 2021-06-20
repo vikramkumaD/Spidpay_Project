@@ -21,10 +21,10 @@ public class RetrofitClient {
         HttpLoggingInterceptor logginginternal = new HttpLoggingInterceptor();
         logginginternal.setLevel(HttpLoggingInterceptor.Level.BODY);
         OkHttpClient okHttpClientinternal = new OkHttpClient.Builder()
-                .readTimeout(360, TimeUnit.SECONDS)
+                .readTimeout(30, TimeUnit.SECONDS)
                 .addInterceptor(new NetworkInterceptor(context))
                 .addInterceptor(logginginternal)
-                .connectTimeout(360, TimeUnit.SECONDS)
+                .connectTimeout(20, TimeUnit.SECONDS)
                 .build();
         retrofitinternal = new Retrofit.Builder()
                 .baseUrl(Constant.USER_API)

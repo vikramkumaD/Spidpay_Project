@@ -212,10 +212,10 @@ public class LoginActivity extends AppCompatActivity implements LoginInterface, 
 
     @Override
     public void onServiceStart() {
+        Constant.STOP_TOUCH(LoginActivity.this);
         Constant.dismissKeyboard(LoginActivity.this);
         activityLoginBinding.pbLogin.setVisibility(View.VISIBLE);
         locationViewModel = new ViewModelProvider(this).get(LocationViewModel.class);
-
         locationViewModel.getLocationUpdate().observe(this, locationModel -> {
             if (locationModel != null && locationModel.latitude != null && locationModel.longitude != null && locationModel.city != null) {
 
@@ -230,15 +230,17 @@ public class LoginActivity extends AppCompatActivity implements LoginInterface, 
 
     @Override
     public void onFailed(String msg) {
+        Constant.START_TOUCH(LoginActivity.this);
         activityLoginBinding.pbLogin.setVisibility(View.GONE);
         Constant.showToast(LoginActivity.this, msg);
     }
 
     @Override
     public void onSuccess(LiveData<LoginResponse> responseLiveData) {
-        activityLoginBinding.pbLogin.setVisibility(View.GONE);
         responseLiveData.observe(this, loginResponse -> {
             if (loginResponse.status.equals(Constant.Success)) {
+                Constant.START_TOUCH(LoginActivity.this);
+                activityLoginBinding.pbLogin.setVisibility(View.GONE);
                 new PrefManager(LoginActivity.this).setUserID(loginResponse.loginUserData.userId);
                 Intent intent = new Intent(LoginActivity.this, VerifyOTPActivity.class);
                 intent.putExtra("username", loginResponse.loginUserData.username);
@@ -246,6 +248,8 @@ public class LoginActivity extends AppCompatActivity implements LoginInterface, 
                 finish();
             }
         });
+
+
     }
 
     @Override

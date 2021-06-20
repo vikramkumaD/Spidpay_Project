@@ -29,6 +29,8 @@ import com.example.spidpay.ui.profile.MyProfileViewModel;
 import com.example.spidpay.util.Constant;
 import com.example.spidpay.util.PrefManager;
 import com.google.android.material.bottomsheet.BottomSheetDialog;
+import org.jetbrains.annotations.NotNull;
+
 
 
 public class MyProfileFragment extends Fragment implements MyProfileInterface, StaticInterface {
@@ -62,7 +64,7 @@ public class MyProfileFragment extends Fragment implements MyProfileInterface, S
     }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+    public View onCreateView(@NotNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         fragmentMyProfileBinding = FragmentMyProfileBinding.inflate(inflater, container, false);
         return fragmentMyProfileBinding.getRoot();
     }
@@ -90,6 +92,7 @@ public class MyProfileFragment extends Fragment implements MyProfileInterface, S
     @Override
     public void onProfileSuccess(LiveData<MyProfileResponse> myProfileResponseLiveData) {
         myProfileResponseLiveData.observe(this, myProfileResponse -> {
+            Constant.START_TOUCH(requireActivity());
             fragmentMyProfileBinding.pbMyprofile.setVisibility(View.GONE);
             fragmentMyProfileBinding.setUserprofile(myProfileResponse);
             myProfileViewModel.getMyAddress(new PrefManager(requireContext()).getUserID());
@@ -99,6 +102,7 @@ public class MyProfileFragment extends Fragment implements MyProfileInterface, S
     @Override
     public void onAddressSuccess(LiveData<MyAddressResponse> myProfileResponseLiveData) {
         myProfileResponseLiveData.observe(this, myAddressResponse -> {
+            Constant.START_TOUCH(requireActivity());
             fragmentMyProfileBinding.pbMyprofile.setVisibility(View.GONE);
             fragmentMyProfileBinding.setUseraddress(myAddressResponse);
             this.myAddressResponse = myAddressResponse;
@@ -111,6 +115,9 @@ public class MyProfileFragment extends Fragment implements MyProfileInterface, S
             if (commonResponse.userid.equals(new PrefManager(getActivity()).getUserID())) {
                 update_address_bottomSheetDialog.dismiss();
                 myProfileViewModel.getMyAddress(commonResponse.userid);
+                Constant.START_TOUCH(requireActivity());
+                fragmentMyProfileBinding.pbMyprofile.setVisibility(View.GONE);
+
             }
         });
     }
@@ -118,11 +125,13 @@ public class MyProfileFragment extends Fragment implements MyProfileInterface, S
 
     @Override
     public void onServiceStart() {
+        Constant.STOP_TOUCH(requireActivity());
         fragmentMyProfileBinding.pbMyprofile.setVisibility(View.VISIBLE);
     }
 
     @Override
     public void onFailed(String msg) {
+        Constant.START_TOUCH(requireActivity());
         Constant.showToast(getActivity(), msg);
         fragmentMyProfileBinding.pbMyprofile.setVisibility(View.GONE);
     }
@@ -142,11 +151,13 @@ public class MyProfileFragment extends Fragment implements MyProfileInterface, S
 
     @Override
     public void onStaticStart() {
+        Constant.STOP_TOUCH(requireActivity());
         fragmentMyProfileBinding.pbMyprofile.setVisibility(View.VISIBLE);
     }
 
     @Override
     public void onStaticFailed(String msg) {
+        Constant.START_TOUCH(requireActivity());
         Constant.showToast(requireActivity(), msg);
         fragmentMyProfileBinding.pbMyprofile.setVisibility(View.GONE);
     }

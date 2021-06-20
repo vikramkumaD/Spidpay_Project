@@ -10,8 +10,7 @@ public class UpdateBankInfoRequest {
     public BanKRequest banKRequest;
 
     public static class BanKRequest {
-        public String accountHolderName, branchName, ifscCode, bankName;
-        public int accountNo;
+        public String accountHolderName, branchName, ifscCode, bankName,accountNo;
     }
 
 }

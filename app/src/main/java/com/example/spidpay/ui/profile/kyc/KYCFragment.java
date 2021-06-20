@@ -14,25 +14,20 @@ import androidx.lifecycle.LiveData;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-
 import com.example.spidpay.R;
 import com.example.spidpay.data.repository.MyProfileRepository;
-import com.example.spidpay.data.repository.RegisterRepository;
 import com.example.spidpay.data.repository.StaticRepository;
 import com.example.spidpay.data.response.CompanyReponse;
 import com.example.spidpay.data.response.KYCResponse;
-import com.example.spidpay.data.response.RegisterResponse;
 import com.example.spidpay.data.response.UpdateResponse;
 import com.example.spidpay.databinding.FragmentKYCBinding;
 import com.example.spidpay.databinding.UpdateCompanyDetailBinding;
 import com.example.spidpay.databinding.UpdateKycLayoutBinding;
 import com.example.spidpay.interfaces.KYCInterface;
 import com.example.spidpay.interfaces.OnStaticClickIterface;
-import com.example.spidpay.interfaces.RegisterInterface;
 import com.example.spidpay.interfaces.StaticInterface;
 import com.example.spidpay.ui.profile.MyProfileViewModel;
 import com.example.spidpay.ui.signup.InterrestedforAdapter;
@@ -83,7 +78,7 @@ public class KYCFragment extends Fragment implements KYCInterface, OnStaticClick
     }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+    public View onCreateView(@NotNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         fragmentKYCBinding = FragmentKYCBinding.inflate(inflater, container, false);
         return fragmentKYCBinding.getRoot();
     }
@@ -96,6 +91,8 @@ public class KYCFragment extends Fragment implements KYCInterface, OnStaticClick
         myProfileRepository = new MyProfileRepository(requireActivity(), kycInterface);
         myProfileViewModel.myProfileRepository = myProfileRepository;
         myProfileViewModel.kycInterface = kycInterface;
+        myProfileViewModel.staticInterface=staticInterface;
+
         myProfileViewModel.staticRepository = staticRepository;
         myProfileViewModel.getKYCInfo(new PrefManager(requireContext()).getUserID());
         getViewLifecycleOwner();
@@ -110,12 +107,20 @@ public class KYCFragment extends Fragment implements KYCInterface, OnStaticClick
 
     @Override
     public void onKYCSuccess(LiveData<KYCResponse> kycResponseLiveData) {
-        fragmentKYCBinding.pbKyc.setVisibility(View.GONE);
+
         kycResponseLiveData.observe(this, kycResponse -> {
+
             if (kycResponse.panNo != null && !kycResponse.panNo.equals("")) {
+                fragmentKYCBinding.pbKyc.setVisibility(View.GONE);
+                Constant.START_TOUCH(requireActivity());
                 fragmentKYCBinding.setKycinfo(kycResponse);
                 this.kycResponse = kycResponse;
                 myProfileViewModel.getCompanyInfo(new PrefManager(getContext()).getUserID());
+            }
+            else {
+                Constant.START_TOUCH(requireActivity());
+                fragmentKYCBinding.pbKyc.setVisibility(View.GONE);
+                this.kycResponse=new KYCResponse();
             }
         });
     }
@@ -123,9 +128,14 @@ public class KYCFragment extends Fragment implements KYCInterface, OnStaticClick
     @Override
     public void onUpdateSucess(LiveData<UpdateResponse> updateResponseLiveData) {
         updateResponseLiveData.observe(this, updateResponse -> {
-            if (updateResponse.userid.equals(new PrefManager(getContext()).getUserID())) ;
-            bottomSheetDialog_kyc.dismiss();
-            myProfileViewModel.getKYCInfo(updateResponse.userid);
+            if (updateResponse.userid.equals(new PrefManager(getContext()).getUserID()))
+            {
+                Constant.START_TOUCH(requireActivity());
+                fragmentKYCBinding.pbKyc.setVisibility(View.GONE);
+                bottomSheetDialog_kyc.dismiss();
+                myProfileViewModel.getKYCInfo(updateResponse.userid);
+            }
+
         });
     }
 
@@ -137,6 +147,10 @@ public class KYCFragment extends Fragment implements KYCInterface, OnStaticClick
             if (companyReponse.companyName != null && !companyReponse.companyName.equals("")) {
                 fragmentKYCBinding.setCompanyinfo(companyReponse);
                 this.companyReponse = companyReponse;
+                myProfileViewModel.code=companyReponse.companyType.code;
+            }
+            else {
+                this.companyReponse=new CompanyReponse();
             }
         });
     }
@@ -147,17 +161,21 @@ public class KYCFragment extends Fragment implements KYCInterface, OnStaticClick
             if (updateResponse.userid.equals(new PrefManager(getContext()).getUserID())) {
                 bottomSheetDialog_company.dismiss();
                 myProfileViewModel.getCompanyInfo(updateResponse.userid);
+                Constant.START_TOUCH(requireActivity());
+                fragmentKYCBinding.pbKyc.setVisibility(View.GONE);
             }
         });
     }
 
     @Override
     public void onServiceStart() {
+        Constant.STOP_TOUCH(requireActivity());
         fragmentKYCBinding.pbKyc.setVisibility(View.VISIBLE);
     }
 
     @Override
     public void onFailed(String msg) {
+        Constant.START_TOUCH(requireActivity());
         Constant.showToast(getContext(), msg);
         fragmentKYCBinding.pbKyc.setVisibility(View.GONE);
     }
@@ -201,6 +219,8 @@ public class KYCFragment extends Fragment implements KYCInterface, OnStaticClick
         rv_interreseted_for.addItemDecoration(itemOffsetDecoration);
 
         myProfileViewModel.getStaticData().observe(this, interrestedforResponses -> {
+            Constant.START_TOUCH(requireActivity());
+            fragmentKYCBinding.pbKyc.setVisibility(View.GONE);
             InterrestedforAdapter interrestedforAdapter = new InterrestedforAdapter(interrestedforResponses, onStaticClickIterface);
             rv_interreseted_for.setAdapter(interrestedforAdapter);
             interrestedfor_bottomsheet.show();
@@ -218,11 +238,13 @@ public class KYCFragment extends Fragment implements KYCInterface, OnStaticClick
 
     @Override
     public void onStaticStart() {
+        Constant.STOP_TOUCH(requireActivity());
         fragmentKYCBinding.pbKyc.setVisibility(View.VISIBLE);
     }
 
     @Override
     public void onStaticFailed(String msg) {
+        Constant.START_TOUCH(requireActivity());
         Constant.showToast(requireActivity(),msg);
         fragmentKYCBinding.pbKyc.setVisibility(View.GONE);
     }

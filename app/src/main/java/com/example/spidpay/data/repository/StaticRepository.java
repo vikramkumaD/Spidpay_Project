@@ -10,6 +10,8 @@ import com.example.spidpay.data.response.InterrestedforResponse;
 import com.example.spidpay.interfaces.StaticInterface;
 import com.example.spidpay.util.NoInternetException;
 
+import org.jetbrains.annotations.NotNull;
+
 import java.util.List;
 
 import retrofit2.Call;
@@ -31,7 +33,7 @@ public class StaticRepository {
         Call<List<InterrestedforResponse>> call = retrofitInterface.getstaticdata(cat, role);
         call.enqueue(new Callback<List<InterrestedforResponse>>() {
             @Override
-            public void onResponse(Call<List<InterrestedforResponse>> call, Response<List<InterrestedforResponse>> response) {
+            public void onResponse(@NotNull Call<List<InterrestedforResponse>> call, @NotNull Response<List<InterrestedforResponse>> response) {
                 if (response.isSuccessful() && response.body() != null) {
                     listMutableLiveData.postValue(response.body());
                 } else {
@@ -40,7 +42,7 @@ public class StaticRepository {
             }
 
             @Override
-            public void onFailure(Call<List<InterrestedforResponse>> call, Throwable t) {
+            public void onFailure(@NotNull Call<List<InterrestedforResponse>> call, @NotNull Throwable t) {
                 if (t instanceof NoInternetException) {
                     staticInterface.onStaticFailed("No Internet");
                 } else {

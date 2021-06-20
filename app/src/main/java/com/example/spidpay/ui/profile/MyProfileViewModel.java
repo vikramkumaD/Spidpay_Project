@@ -23,6 +23,7 @@ import com.example.spidpay.data.response.UpdateResponse;
 import com.example.spidpay.interfaces.BankInteface;
 import com.example.spidpay.interfaces.KYCInterface;
 import com.example.spidpay.interfaces.MyProfileInterface;
+import com.example.spidpay.interfaces.StaticInterface;
 import com.example.spidpay.util.Constant;
 
 import java.util.List;
@@ -33,6 +34,7 @@ public class MyProfileViewModel extends ViewModel {
     public MyProfileRepository myProfileRepository;
     public MyProfileInterface myProfileInterface;
     public BankInteface bankInteface;
+    public StaticInterface staticInterface;
     public KYCInterface kycInterface;
     public String userid, code, static_value;
 
@@ -76,12 +78,20 @@ public class MyProfileViewModel extends ViewModel {
     }
 
     public void validate_KYC(View view, KYCResponse kycResponse) {
-        if (kycResponse.panNo == null || kycResponse.panNo.equals("") || kycResponse.aadharNo == null || kycResponse.equals("") || kycResponse.idNo == null || kycResponse.idNo.equals("")) {
-            kycInterface.onFailed(view.getResources().getString(R.string.filedcannotbeblank));
+       /* if (kycResponse == null) {
+            kycInterface.onServiceStart();
+            updateKYCInfo(kycResponse);
             return;
-        }
+        } else {
+            if (kycResponse.panNo == null || kycResponse.panNo.equals("") || kycResponse.aadharNo == null || kycResponse.equals("") || kycResponse.idNo == null || kycResponse.idNo.equals("")) {
+                kycInterface.onFailed(view.getResources().getString(R.string.filedcannotbeblank));
+                return;
+            }
+        }*/
+
         kycInterface.onServiceStart();
         updateKYCInfo(kycResponse);
+
     }
 
     public void updateKYCInfo(KYCResponse kycResponse) {
@@ -103,8 +113,7 @@ public class MyProfileViewModel extends ViewModel {
         kycInterface.onCompanySuccess(liveData);
     }
 
-    public void validate_compnay(View view, CompanyReponse companyReponse) {
-        if (companyReponse.companyName == null || companyReponse.companyName.equals("") ||
+    public void validate_compnay(View view, CompanyReponse companyReponse) {/*if (companyReponse.companyName == null || companyReponse.companyName.equals("") ||
                 companyReponse.companyType.description == null || companyReponse.companyType.description.equals("") ||
                 companyReponse.coi == null || companyReponse.coi.equals("") || companyReponse.declaration == null || companyReponse.declaration.equals("") ||
                 companyReponse.gstNO == null || companyReponse.gstNO.equals("") || companyReponse.moa == null || companyReponse.moa.equals("") ||
@@ -113,6 +122,8 @@ public class MyProfileViewModel extends ViewModel {
             kycInterface.onFailed(view.getResources().getString(R.string.filedcannotbeblank));
             return;
         }
+        */
+
         kycInterface.onServiceStart();
         updateCompanyDeatil(companyReponse);
     }
@@ -154,18 +165,21 @@ public class MyProfileViewModel extends ViewModel {
     public void updateBankInfo(BankDetailsResponse bankDetailsResponse) {
         UpdateBankInfoRequest updateBankInfoRequest = new UpdateBankInfoRequest();
         updateBankInfoRequest.userId = userid;
+
         UpdateBankInfoRequest.BanKRequest banKRequest = new UpdateBankInfoRequest.BanKRequest();
         banKRequest.accountHolderName = bankDetailsResponse.accountHolderName;
         banKRequest.accountNo = bankDetailsResponse.accountNo;
         banKRequest.ifscCode = bankDetailsResponse.ifscCode;
         banKRequest.branchName = bankDetailsResponse.branchName;
-        bankDetailsResponse.branchName = code;
+        banKRequest.bankName = code;
+
         updateBankInfoRequest.banKRequest = banKRequest;
         LiveData<UpdateResponse> updateResponseLiveData = myProfileRepository.updateBankInfo(updateBankInfoRequest);
         bankInteface.onUpdateSuccess(updateResponseLiveData);
     }
 
     public LiveData<List<InterrestedforResponse>> getStaticData() {
+        staticInterface.onStaticStart();
         LiveData<List<InterrestedforResponse>> interrestedforliveData = staticRepository.getStaticData(static_value, Constant.ROLE_INTERRESTEDFOR);
         return interrestedforliveData;
     }

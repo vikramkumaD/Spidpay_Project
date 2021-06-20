@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
+
     <data>
+
         <variable
             name="login_viewmodel"
             type="com.example.spidpay.ui.login.LoginViewModel" />
@@ -157,6 +159,7 @@
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/linear_mobile_number"
             app:passwordToggleDrawable="@drawable/ic_baseline_remove_red_eye_24"
+
             app:passwordToggleEnabled="true">
 
             <androidx.appcompat.widget.AppCompatEditText
@@ -164,10 +167,10 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@drawable/edittext_shadow"
+                android:gravity="center_vertical"
                 android:hint="@string/password"
                 android:inputType="text"
                 android:paddingStart="@dimen/marign15dp"
-                android:paddingTop="@dimen/marign10dp"
                 android:paddingEnd="@dimen/marign10dp"
                 android:text="@={login_viewmodel.password}"
                 app:hintEnabled="false" />
@@ -241,14 +244,14 @@
             app:layout_constraintTop_toBottomOf="@+id/login_view" />
 
         <ProgressBar
-            android:visibility="gone"
             android:id="@+id/pb_login"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
+            android:layout_height="wrap_content"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

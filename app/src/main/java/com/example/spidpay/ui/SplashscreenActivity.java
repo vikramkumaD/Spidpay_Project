@@ -25,10 +25,10 @@ public class SplashscreenActivity extends AppCompatActivity {
         SpannableString spannableString = new SpannableString(getResources().getString(R.string.splashtxt));
         ForegroundColorSpan foregroundColorSpanCyan = new ForegroundColorSpan(getResources().getColor(R.color.seagreen));
         ForegroundColorSpan foregroundColorSpanBlue = new ForegroundColorSpan(getResources().getColor(R.color.seagreen));
-        ForegroundColorSpan foregroundColorSpanGreen = new ForegroundColorSpan(Color.GREEN);
         spannableString.setSpan(foregroundColorSpanCyan, 0, 8, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
         spannableString.setSpan(foregroundColorSpanBlue, 31, 52, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
         splashscreenBinding.tvSplash.setText(spannableString);
+
 
         new Thread(() -> {
             try {

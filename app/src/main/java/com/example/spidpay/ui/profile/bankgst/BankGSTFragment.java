@@ -29,7 +29,6 @@ import com.example.spidpay.interfaces.BankInteface;
 import com.example.spidpay.interfaces.OnStaticClickIterface;
 import com.example.spidpay.interfaces.StaticInterface;
 import com.example.spidpay.ui.profile.MyProfileViewModel;
-import com.example.spidpay.ui.profile.kyc.KYCFragment;
 import com.example.spidpay.ui.signup.InterrestedforAdapter;
 import com.example.spidpay.util.Constant;
 import com.example.spidpay.util.ItemOffsetDecoration;
@@ -49,7 +48,6 @@ public class BankGSTFragment extends Fragment implements BankInteface, StaticInt
     BottomSheetDialog bottomSheetDialog_bankinfo;
     BankDetailsResponse bankDetailsResponse;
     BottomSheetDialog interrestedfor_bottomsheet;
-
     OnStaticClickIterface onStaticClickIterface;
     StaticInterface staticInterface;
     StaticRepository staticRepository;
@@ -76,7 +74,7 @@ public class BankGSTFragment extends Fragment implements BankInteface, StaticInt
     }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+    public View onCreateView(@NotNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         fragmentBankGSTBinding = FragmentBankGSTBinding.inflate(inflater, container, false);
         return fragmentBankGSTBinding.getRoot();
     }
@@ -90,6 +88,7 @@ public class BankGSTFragment extends Fragment implements BankInteface, StaticInt
         myProfileViewModel.bankInteface = bankInteface;
         myProfileViewModel.myProfileRepository = myProfileRepository;
         myProfileViewModel.staticRepository = staticRepository;
+        myProfileViewModel.staticInterface=staticInterface;
         myProfileViewModel.getBankInfo(new PrefManager(getContext()).getUserID());
         getViewLifecycleOwner();
     }
@@ -104,13 +103,18 @@ public class BankGSTFragment extends Fragment implements BankInteface, StaticInt
     public void onSuccess(LiveData<BankDetailsResponse> bankDetailsResponseLiveData) {
         bankDetailsResponseLiveData.observe(this, bankDetailsResponse -> {
             if (bankDetailsResponse.accountHolderName != null && !bankDetailsResponse.accountHolderName.equals("")) {
+                Constant.START_TOUCH(requireActivity());
+                fragmentBankGSTBinding.pbBankinfo.setVisibility(View.GONE);
                 fragmentBankGSTBinding.setBankinfo(bankDetailsResponse);
                 this.bankDetailsResponse = bankDetailsResponse;
+                myProfileViewModel.code=bankDetailsResponse.companyType.code;
             } else {
+                Constant.START_TOUCH(requireActivity());
+                fragmentBankGSTBinding.pbBankinfo.setVisibility(View.GONE);
                 this.bankDetailsResponse = new BankDetailsResponse();
             }
         });
-        fragmentBankGSTBinding.pbBankinfo.setVisibility(View.GONE);
+
     }
 
     @Override
@@ -125,11 +129,13 @@ public class BankGSTFragment extends Fragment implements BankInteface, StaticInt
 
     @Override
     public void onServiceStart() {
+        Constant.STOP_TOUCH(requireActivity());
         fragmentBankGSTBinding.pbBankinfo.setVisibility(View.VISIBLE);
     }
 
     @Override
     public void onFailed(String msg) {
+        Constant.START_TOUCH(requireActivity());
         Constant.showToast(getContext(), msg);
         fragmentBankGSTBinding.pbBankinfo.setVisibility(View.GONE);
     }
@@ -160,6 +166,8 @@ public class BankGSTFragment extends Fragment implements BankInteface, StaticInt
         rv_interreseted_for.addItemDecoration(itemOffsetDecoration);
 
         myProfileViewModel.getStaticData().observe(this, interrestedforResponses -> {
+            fragmentBankGSTBinding.pbBankinfo.setVisibility(View.GONE);
+            Constant.START_TOUCH(requireActivity());
             InterrestedforAdapter interrestedforAdapter = new InterrestedforAdapter(interrestedforResponses, onStaticClickIterface);
             rv_interreseted_for.setAdapter(interrestedforAdapter);
             interrestedfor_bottomsheet.show();
@@ -174,14 +182,15 @@ public class BankGSTFragment extends Fragment implements BankInteface, StaticInt
         interrestedfor_bottomsheet.dismiss();
     }
 
-
     @Override
     public void onStaticStart() {
+        Constant.STOP_TOUCH(requireActivity());
         fragmentBankGSTBinding.pbBankinfo.setVisibility(View.VISIBLE);
     }
 
     @Override
     public void onStaticFailed(String msg) {
+        Constant.START_TOUCH(requireActivity());
         Constant.showToast(requireActivity(), msg);
         fragmentBankGSTBinding.pbBankinfo.setVisibility(View.GONE);
     }

@@ -55,7 +55,7 @@
             android:paddingRight="@dimen/marign10dp"
             android:paddingBottom="@dimen/marign10dp"
             android:singleLine="true"
-            android:text="@={Converter.convertIntToString(bank.accountNo)}"
+            android:text="@={bank.accountNo}"
             android:textColorHint="@color/lightgrey"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tv_update_address" />

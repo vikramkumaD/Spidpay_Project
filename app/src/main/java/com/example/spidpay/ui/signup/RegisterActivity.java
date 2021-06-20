@@ -29,13 +29,15 @@ import com.example.spidpay.databinding.ActivityRegisterBinding;
 import com.example.spidpay.interfaces.OnStaticClickIterface;
 import com.example.spidpay.interfaces.RegisterInterface;
 import com.example.spidpay.interfaces.StaticInterface;
+import com.example.spidpay.ui.login.LoginActivity;
 import com.example.spidpay.ui.verifyotp.VerifyOTPActivity;
 import com.example.spidpay.util.Constant;
 import com.example.spidpay.util.ItemOffsetDecoration;
+import com.example.spidpay.util.PrefManager;
 import com.google.android.material.bottomsheet.BottomSheetDialog;
 
 
-public class RegisterActivity extends AppCompatActivity implements RegisterInterface, OnStaticClickIterface,StaticInterface {
+public class RegisterActivity extends AppCompatActivity implements RegisterInterface, OnStaticClickIterface, StaticInterface {
     ActivityRegisterBinding activityRegisterBinding;
     RegisterInterface registerInterface;
     RegisterViewModel registerViewModel;
@@ -60,8 +62,9 @@ public class RegisterActivity extends AppCompatActivity implements RegisterInter
         RegisterRepository registerRepository = new RegisterRepository(RegisterActivity.this, registerInterface);
         registerViewModel = new ViewModelProvider(this).get(RegisterViewModel.class);
         registerViewModel.registerInterface = registerInterface;
-        registerViewModel.staticRepository=staticRepository;
+        registerViewModel.staticRepository = staticRepository;
         registerViewModel.registerRepository = registerRepository;
+        registerViewModel.staticInterface = staticInterface;
         activityRegisterBinding.setRegisterViewmodel(registerViewModel);
         activityRegisterBinding.setLifecycleOwner(this);
         activityRegisterBinding.edtRegisterIntrestedFor.setOnClickListener(v -> showInterestedForDialog());
@@ -133,12 +136,14 @@ public class RegisterActivity extends AppCompatActivity implements RegisterInter
 
     @Override
     public void onServiceStart() {
+        Constant.START_TOUCH(RegisterActivity.this);
         activityRegisterBinding.pbLogin.setVisibility(View.VISIBLE);
         registerViewModel.getRegisterResponse();
     }
 
     @Override
     public void onFailed(String msg) {
+        Constant.START_TOUCH(RegisterActivity.this);
         activityRegisterBinding.pbLogin.setVisibility(View.GONE);
         Toast.makeText(this, msg, Toast.LENGTH_SHORT).show();
     }
@@ -146,9 +151,12 @@ public class RegisterActivity extends AppCompatActivity implements RegisterInter
 
     @Override
     public void onSuccess(LiveData<RegisterResponse> responseLiveData) {
-        activityRegisterBinding.pbLogin.setVisibility(View.GONE);
+
         responseLiveData.observe(this, registerResponse -> {
             if (registerResponse.username != null && !registerResponse.username.equals("")) {
+                Constant.START_TOUCH(RegisterActivity.this);
+                activityRegisterBinding.pbLogin.setVisibility(View.GONE);
+                new PrefManager(RegisterActivity.this).setUserID(registerResponse.userId);
                 Intent intent = new Intent(RegisterActivity.this, VerifyOTPActivity.class);
                 intent.putExtra("username", registerResponse.username);
                 startActivity(intent);
@@ -168,9 +176,15 @@ public class RegisterActivity extends AppCompatActivity implements RegisterInter
         rv_interreseted_for.addItemDecoration(itemOffsetDecoration);
 
         registerViewModel.getInterrestedFor().observe(this, interrestedforResponses -> {
+            if (interrestedforResponses.size() > 0) {
+                Constant.START_TOUCH(RegisterActivity.this);
+                activityRegisterBinding.pbLogin.setVisibility(View.GONE);
+            }
+
             InterrestedforAdapter interrestedforAdapter = new InterrestedforAdapter(interrestedforResponses, onStaticClickIterface);
             rv_interreseted_for.setAdapter(interrestedforAdapter);
             interrestedfor_bottomsheet.show();
+
         });
 
     }
@@ -184,12 +198,14 @@ public class RegisterActivity extends AppCompatActivity implements RegisterInter
 
     @Override
     public void onStaticStart() {
+        Constant.STOP_TOUCH(RegisterActivity.this);
         activityRegisterBinding.pbLogin.setVisibility(View.VISIBLE);
     }
 
     @Override
     public void onStaticFailed(String msg) {
-        Constant.showToast(RegisterActivity.this,msg);
-        activityRegisterBinding.pbLogin.setVisibility(View.VISIBLE);
+        Constant.STOP_TOUCH(RegisterActivity.this);
+        Constant.showToast(RegisterActivity.this, msg);
+        activityRegisterBinding.pbLogin.setVisibility(View.GONE);
     }
 }

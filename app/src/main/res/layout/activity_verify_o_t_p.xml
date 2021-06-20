@@ -62,7 +62,7 @@
             android:layout_marginStart="@dimen/marign20dp"
             android:layout_marginTop="@dimen/marign15dp"
             android:layout_marginEnd="@dimen/marign20dp"
-            android:background="@drawable/login_mobilenumber_bg"
+            android:background="@drawable/edittext_shadow"
             android:orientation="horizontal"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintLeft_toLeftOf="parent"
