@@ -17,6 +17,8 @@ public class Constant {
 
     public static final String USER_API = "http://45.79.120.79:6500/spidpay-identity/api/";
 
+    public static final String WALLET_API = "http://45.79.120.79:6700/spidpay-wallet/";
+
 
     public static final String Server_ERROR = "Server error!";
     public static final String BANK = "bank";
@@ -31,7 +33,7 @@ public class Constant {
     public static final int BOTTOM_NOTIFICATION = 3;
     public static final int BOTTOM_HISTORY = 4;
 
-    public static String parseErrorBodyofRetrofit(String errorbody, Context context) {
+    public static String parseErrorBodyofRetrofit(String errorbody) {
         JSONObject jsonObject1;
         try {
             jsonObject1 = new JSONObject(errorbody);

@@ -16,7 +16,7 @@ public class RetrofitClient {
 
     public static Retrofit retrofitinternal = null;
 
-    public static Retrofit GetRetrofitClient( Context context) {
+    public static Retrofit GetRetrofitClient(Context context,String baseurl) {
         retrofitinternal = null;
         HttpLoggingInterceptor logginginternal = new HttpLoggingInterceptor();
         logginginternal.setLevel(HttpLoggingInterceptor.Level.BODY);
@@ -27,7 +27,7 @@ public class RetrofitClient {
                 .connectTimeout(20, TimeUnit.SECONDS)
                 .build();
         retrofitinternal = new Retrofit.Builder()
-                .baseUrl(Constant.USER_API)
+                .baseUrl(baseurl)
                 .addConverterFactory(GsonConverterFactory.create())
                 .client(okHttpClientinternal)
                 .build();

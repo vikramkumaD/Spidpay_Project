@@ -10,6 +10,7 @@ import com.example.spidpay.data.request.ChangePasswordRequest;
 import com.example.spidpay.data.response.CommonResponse;
 import com.example.spidpay.data.response.LoginResponse;
 import com.example.spidpay.interfaces.ChangePasswordInterface;
+import com.example.spidpay.util.Constant;
 import com.example.spidpay.util.NoInternetException;
 
 import retrofit2.Call;
@@ -28,7 +29,7 @@ public class ChangePasswordRepository {
 
     public MutableLiveData<CommonResponse> changePassword(ChangePasswordRequest changePasswordRequest) {
         MutableLiveData<CommonResponse> responseMutableLiveData = new MutableLiveData<>();
-        RetrofitInterface retrofitInterface = RetrofitClient.GetRetrofitClient(context).create(RetrofitInterface.class);
+        RetrofitInterface retrofitInterface = RetrofitClient.GetRetrofitClient(context, Constant.USER).create(RetrofitInterface.class);
         Call<CommonResponse> call = retrofitInterface.changepassword(changePasswordRequest);
         call.enqueue(new Callback<CommonResponse>() {
             @Override

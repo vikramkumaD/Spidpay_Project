@@ -19,6 +19,7 @@ import com.example.spidpay.data.response.RegisterResponse;
 import com.example.spidpay.data.response.MyProfileResponse;
 import com.example.spidpay.data.response.UpdateResponse;
 import com.example.spidpay.data.response.VerifyOTPResponse;
+import com.example.spidpay.data.response.WalletResponse;
 
 import java.util.List;
 
@@ -84,5 +85,7 @@ public interface RetrofitInterface {
     @PUT("user/v1/update/bank-info")
     Call<UpdateResponse> updateBankInfo(@Body UpdateBankInfoRequest updateBankInfoRequest);
 
+    @GET("v1/{userId}")
+    Call<List<WalletResponse>> getWalletResponse(@Path("userId") String userId);
 
 }

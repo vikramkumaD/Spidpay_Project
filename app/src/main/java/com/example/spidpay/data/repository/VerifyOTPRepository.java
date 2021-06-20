@@ -32,7 +32,7 @@ public class VerifyOTPRepository {
 
     public MutableLiveData<VerifyOTPResponse> getVerifyOTP(VerifyOTPReqest loginRequest) {
         MutableLiveData<VerifyOTPResponse> responseMutableLiveData = new MutableLiveData<>();
-        RetrofitInterface retrofitInterface = RetrofitClient.GetRetrofitClient(context).create(RetrofitInterface.class);
+        RetrofitInterface retrofitInterface = RetrofitClient.GetRetrofitClient(context, Constant.USER).create(RetrofitInterface.class);
         Call<VerifyOTPResponse> call = retrofitInterface.verifyOTP(loginRequest);
         call.enqueue(new Callback<VerifyOTPResponse>() {
             @Override
@@ -43,7 +43,7 @@ public class VerifyOTPRepository {
                     try {
                         if (response.errorBody() != null) {
                             String errorBody = response.errorBody().string();
-                            String error = Constant.parseErrorBodyofRetrofit(errorBody, context);
+                            String error = Constant.parseErrorBodyofRetrofit(errorBody);
                             verifyOTPInterface.onFailed(error);
                         } else {
                             verifyOTPInterface.onFailed(Constant.Server_ERROR);

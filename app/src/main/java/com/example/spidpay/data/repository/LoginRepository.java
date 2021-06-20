@@ -34,7 +34,7 @@ public class LoginRepository {
 
     public MutableLiveData<LoginResponse> getLoginResposne(LoginRequest loginRequest) {
         MutableLiveData<LoginResponse> responseMutableLiveData = new MutableLiveData<>();
-        RetrofitInterface retrofitInterface = RetrofitClient.GetRetrofitClient(context).create(RetrofitInterface.class);
+        RetrofitInterface retrofitInterface = RetrofitClient.GetRetrofitClient(context, Constant.USER).create(RetrofitInterface.class);
         Call<LoginResponse> call = retrofitInterface.user_login(loginRequest);
         call.enqueue(new Callback<LoginResponse>() {
             @Override
@@ -45,7 +45,7 @@ public class LoginRepository {
                     try {
                         if (response.errorBody() != null) {
                             String errorBody = response.errorBody().string();
-                            String error = Constant.parseErrorBodyofRetrofit(errorBody, context);
+                            String error = Constant.parseErrorBodyofRetrofit(errorBody);
                             loginInterface.onFailed(error);
                         } else {
                             loginInterface.onFailed(Constant.Server_ERROR);
@@ -72,7 +72,7 @@ public class LoginRepository {
 
     public MutableLiveData<CommonResponse> getResetPass(ChangePasswordRequest changePasswordRequest) {
         MutableLiveData<CommonResponse> responseMutableLiveData = new MutableLiveData<>();
-        RetrofitInterface retrofitInterface = RetrofitClient.GetRetrofitClient(context).create(RetrofitInterface.class);
+        RetrofitInterface retrofitInterface = RetrofitClient.GetRetrofitClient(context, Constant.USER).create(RetrofitInterface.class);
         Call<CommonResponse> call = retrofitInterface.resetPass(changePasswordRequest);
         call.enqueue(new Callback<CommonResponse>() {
             @Override
@@ -83,7 +83,7 @@ public class LoginRepository {
                     try {
                         if (response.errorBody() != null) {
                             String errorBody = response.errorBody().string();
-                            String error = Constant.parseErrorBodyofRetrofit(errorBody, context);
+                            String error = Constant.parseErrorBodyofRetrofit(errorBody);
                             loginInterface.onFailed(error);
                         } else {
                             loginInterface.onFailed(Constant.Server_ERROR);

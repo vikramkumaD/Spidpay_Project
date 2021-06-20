@@ -26,7 +26,7 @@ public class RegisterRepository {
 
     public MutableLiveData<RegisterResponse> getRegisterResponse(RegisterRequest registerRequest) {
         MutableLiveData<RegisterResponse> responseMutableLiveData = new MutableLiveData<>();
-        RetrofitInterface retrofitInterface = RetrofitClient.GetRetrofitClient(context).create(RetrofitInterface.class);
+        RetrofitInterface retrofitInterface = RetrofitClient.GetRetrofitClient(context, Constant.USER).create(RetrofitInterface.class);
         Call<RegisterResponse> call = retrofitInterface.user_onBoarding(registerRequest);
         call.enqueue(new Callback<RegisterResponse>() {
             @Override
@@ -37,7 +37,7 @@ public class RegisterRepository {
                     try {
                         if (response.errorBody() != null) {
                             String errorBody = response.errorBody().string();
-                            String error = Constant.parseErrorBodyofRetrofit(errorBody, context);
+                            String error = Constant.parseErrorBodyofRetrofit(errorBody);
                             registerInterface.onFailed(error);
                         } else {
                             registerInterface.onFailed(Constant.Server_ERROR);

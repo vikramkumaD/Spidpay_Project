@@ -12,7 +12,6 @@ import com.example.spidpay.data.request.UpdateCompanyRequest;
 import com.example.spidpay.data.request.UpdateKYCRequest;
 import com.example.spidpay.data.response.BankDetailsResponse;
 import com.example.spidpay.data.response.CompanyReponse;
-import com.example.spidpay.data.response.CompanyType;
 import com.example.spidpay.data.response.KYCResponse;
 import com.example.spidpay.data.response.MyAddressResponse;
 import com.example.spidpay.data.response.MyProfileResponse;
@@ -55,7 +54,7 @@ public class MyProfileRepository {
 
     public MutableLiveData<MyProfileResponse> getMyProfile(String userid) {
         MutableLiveData<MyProfileResponse> myProfileResponseMutableLiveData = new MutableLiveData<>();
-        RetrofitInterface retrofitInterface = RetrofitClient.GetRetrofitClient(context).create(RetrofitInterface.class);
+        RetrofitInterface retrofitInterface = RetrofitClient.GetRetrofitClient(context, Constant.USER).create(RetrofitInterface.class);
         Call<MyProfileResponse> myProfileResponseCall = retrofitInterface.getUserProfile(userid);
         myProfileResponseCall.enqueue(new Callback<MyProfileResponse>() {
             @Override
@@ -66,7 +65,7 @@ public class MyProfileRepository {
                     try {
                         if (response.errorBody() != null) {
                             String errorBody = response.errorBody().string();
-                            String error = Constant.parseErrorBodyofRetrofit(errorBody, context);
+                            String error = Constant.parseErrorBodyofRetrofit(errorBody);
                             myProfileInterface.onFailed(error);
                         } else {
                             myProfileInterface.onFailed(Constant.Server_ERROR);
@@ -95,7 +94,7 @@ public class MyProfileRepository {
 
     public MutableLiveData<MyAddressResponse> getMyAddress(String userid) {
         MutableLiveData<MyAddressResponse> myAddressResponseMutableLiveData = new MutableLiveData<>();
-        RetrofitInterface retrofitInterface = RetrofitClient.GetRetrofitClient(context).create(RetrofitInterface.class);
+        RetrofitInterface retrofitInterface = RetrofitClient.GetRetrofitClient(context, Constant.USER).create(RetrofitInterface.class);
         Call<MyAddressResponse> myProfileResponseCall = retrofitInterface.getUserAddress(userid, "address");
         myProfileResponseCall.enqueue(new Callback<MyAddressResponse>() {
             @Override
@@ -106,7 +105,7 @@ public class MyProfileRepository {
                     try {
                         if (response.errorBody() != null) {
                             String errorBody = response.errorBody().string();
-                            String error = Constant.parseErrorBodyofRetrofit(errorBody, context);
+                            String error = Constant.parseErrorBodyofRetrofit(errorBody);
                             myProfileInterface.onFailed(error);
                         } else {
                             myProfileInterface.onFailed(Constant.Server_ERROR);
@@ -132,7 +131,7 @@ public class MyProfileRepository {
 
     public MutableLiveData<KYCResponse> getKYCInfo(String userid) {
         MutableLiveData<KYCResponse> kycResponseMutableLiveData = new MutableLiveData<>();
-        RetrofitInterface retrofitInterface = RetrofitClient.GetRetrofitClient(context).create(RetrofitInterface.class);
+        RetrofitInterface retrofitInterface = RetrofitClient.GetRetrofitClient(context, Constant.USER).create(RetrofitInterface.class);
         Call<KYCResponse> myProfileResponseCall = retrofitInterface.getKYCInfo(userid, "kyc-info");
         myProfileResponseCall.enqueue(new Callback<KYCResponse>() {
             @Override
@@ -143,7 +142,7 @@ public class MyProfileRepository {
                     try {
                         if (response.errorBody() != null) {
                             String errorBody = response.errorBody().string();
-                            String error = Constant.parseErrorBodyofRetrofit(errorBody, context);
+                            String error = Constant.parseErrorBodyofRetrofit(errorBody);
                             kycInterface.onFailed(error);
                         } else {
                             kycInterface.onFailed(Constant.Server_ERROR);
@@ -169,7 +168,7 @@ public class MyProfileRepository {
 
     public MutableLiveData<CompanyReponse> getCompanyInfo(String userid) {
         MutableLiveData<CompanyReponse> kycResponseMutableLiveData = new MutableLiveData<>();
-        RetrofitInterface retrofitInterface = RetrofitClient.GetRetrofitClient(context).create(RetrofitInterface.class);
+        RetrofitInterface retrofitInterface = RetrofitClient.GetRetrofitClient(context, Constant.USER).create(RetrofitInterface.class);
         Call<CompanyReponse> myProfileResponseCall = retrofitInterface.getCompany(userid, "company-info");
         myProfileResponseCall.enqueue(new Callback<CompanyReponse>() {
             @Override
@@ -180,7 +179,7 @@ public class MyProfileRepository {
                     try {
                         if (response.errorBody() != null) {
                             String errorBody = response.errorBody().string();
-                            String error = Constant.parseErrorBodyofRetrofit(errorBody, context);
+                            String error = Constant.parseErrorBodyofRetrofit(errorBody);
                             kycInterface.onFailed(error);
                         } else {
                             kycInterface.onFailed(Constant.Server_ERROR);
@@ -206,7 +205,7 @@ public class MyProfileRepository {
 
     public MutableLiveData<UpdateResponse> updateAddress(UpdateAddressRequest updateAddressRequest) {
         MutableLiveData<UpdateResponse> myAddressResponseMutableLiveData = new MutableLiveData<>();
-        RetrofitInterface retrofitInterface = RetrofitClient.GetRetrofitClient(context).create(RetrofitInterface.class);
+        RetrofitInterface retrofitInterface = RetrofitClient.GetRetrofitClient(context, Constant.USER).create(RetrofitInterface.class);
         Call<UpdateResponse> myProfileResponseCall = retrofitInterface.updateAddress(updateAddressRequest);
         myProfileResponseCall.enqueue(new Callback<UpdateResponse>() {
             @Override
@@ -217,7 +216,7 @@ public class MyProfileRepository {
                     try {
                         if (response.errorBody() != null) {
                             String errorBody = response.errorBody().string();
-                            String error = Constant.parseErrorBodyofRetrofit(errorBody, context);
+                            String error = Constant.parseErrorBodyofRetrofit(errorBody);
                             myProfileInterface.onFailed(error);
                         } else {
                             myProfileInterface.onFailed(Constant.Server_ERROR);
@@ -243,7 +242,7 @@ public class MyProfileRepository {
 
     public MutableLiveData<UpdateResponse> updateKYC(UpdateKYCRequest updateKYCRequest) {
         MutableLiveData<UpdateResponse> myAddressResponseMutableLiveData = new MutableLiveData<>();
-        RetrofitInterface retrofitInterface = RetrofitClient.GetRetrofitClient(context).create(RetrofitInterface.class);
+        RetrofitInterface retrofitInterface = RetrofitClient.GetRetrofitClient(context, Constant.USER).create(RetrofitInterface.class);
         Call<UpdateResponse> myProfileResponseCall = retrofitInterface.updateKYC(updateKYCRequest);
         myProfileResponseCall.enqueue(new Callback<UpdateResponse>() {
             @Override
@@ -254,7 +253,7 @@ public class MyProfileRepository {
                     try {
                         if (response.errorBody() != null) {
                             String errorBody = response.errorBody().string();
-                            String error = Constant.parseErrorBodyofRetrofit(errorBody, context);
+                            String error = Constant.parseErrorBodyofRetrofit(errorBody);
                             kycInterface.onFailed(error);
                         } else {
                             kycInterface.onFailed(Constant.Server_ERROR);
@@ -280,7 +279,7 @@ public class MyProfileRepository {
 
     public MutableLiveData<UpdateResponse> updateCompany(UpdateCompanyRequest updateKYCRequest) {
         MutableLiveData<UpdateResponse> myAddressResponseMutableLiveData = new MutableLiveData<>();
-        RetrofitInterface retrofitInterface = RetrofitClient.GetRetrofitClient(context).create(RetrofitInterface.class);
+        RetrofitInterface retrofitInterface = RetrofitClient.GetRetrofitClient(context, Constant.USER).create(RetrofitInterface.class);
         Call<UpdateResponse> myProfileResponseCall = retrofitInterface.updateCompany(updateKYCRequest);
         myProfileResponseCall.enqueue(new Callback<UpdateResponse>() {
             @Override
@@ -291,7 +290,7 @@ public class MyProfileRepository {
                     try {
                         if (response.errorBody() != null) {
                             String errorBody = response.errorBody().string();
-                            String error = Constant.parseErrorBodyofRetrofit(errorBody, context);
+                            String error = Constant.parseErrorBodyofRetrofit(errorBody);
                             kycInterface.onFailed(error);
                         } else {
                             kycInterface.onFailed(Constant.Server_ERROR);
@@ -317,7 +316,7 @@ public class MyProfileRepository {
 
     public MutableLiveData<BankDetailsResponse> getBankDetail(String userid) {
         MutableLiveData<BankDetailsResponse> detailsResponseMutableLiveData = new MutableLiveData<>();
-        RetrofitInterface retrofitInterface = RetrofitClient.GetRetrofitClient(context).create(RetrofitInterface.class);
+        RetrofitInterface retrofitInterface = RetrofitClient.GetRetrofitClient(context, Constant.USER).create(RetrofitInterface.class);
         Call<BankDetailsResponse> myProfileResponseCall = retrofitInterface.getBankInfo(userid, "bank-info");
         myProfileResponseCall.enqueue(new Callback<BankDetailsResponse>() {
             @Override
@@ -328,7 +327,7 @@ public class MyProfileRepository {
                     try {
                         if (response.errorBody() != null) {
                             String errorBody = response.errorBody().string();
-                            String error = Constant.parseErrorBodyofRetrofit(errorBody, context);
+                            String error = Constant.parseErrorBodyofRetrofit(errorBody);
                             bankInteface.onFailed(error);
                         } else {
                             bankInteface.onFailed(Constant.Server_ERROR);
@@ -355,7 +354,7 @@ public class MyProfileRepository {
 
     public MutableLiveData<UpdateResponse> updateBankInfo(UpdateBankInfoRequest updateKYCRequest) {
         MutableLiveData<UpdateResponse> myAddressResponseMutableLiveData = new MutableLiveData<>();
-        RetrofitInterface retrofitInterface = RetrofitClient.GetRetrofitClient(context).create(RetrofitInterface.class);
+        RetrofitInterface retrofitInterface = RetrofitClient.GetRetrofitClient(context, Constant.USER).create(RetrofitInterface.class);
         Call<UpdateResponse> myProfileResponseCall = retrofitInterface.updateBankInfo(updateKYCRequest);
         myProfileResponseCall.enqueue(new Callback<UpdateResponse>() {
             @Override
@@ -366,7 +365,7 @@ public class MyProfileRepository {
                     try {
                         if (response.errorBody() != null) {
                             String errorBody = response.errorBody().string();
-                            String error = Constant.parseErrorBodyofRetrofit(errorBody, context);
+                            String error = Constant.parseErrorBodyofRetrofit(errorBody);
                             bankInteface.onFailed(error);
                         } else {
                             bankInteface.onFailed(Constant.Server_ERROR);

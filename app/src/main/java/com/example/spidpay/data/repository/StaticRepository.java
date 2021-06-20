@@ -31,7 +31,7 @@ public class StaticRepository {
 
     public MutableLiveData<List<InterrestedforResponse>> getStaticData(String cat, String role) {
         MutableLiveData<List<InterrestedforResponse>> listMutableLiveData = new MutableLiveData<>();
-        RetrofitInterface retrofitInterface = RetrofitClient.GetRetrofitClient(context).create(RetrofitInterface.class);
+        RetrofitInterface retrofitInterface = RetrofitClient.GetRetrofitClient(context, Constant.USER).create(RetrofitInterface.class);
         Call<List<InterrestedforResponse>> call = retrofitInterface.getstaticdata(cat, role);
         call.enqueue(new Callback<List<InterrestedforResponse>>() {
             @Override
@@ -42,7 +42,7 @@ public class StaticRepository {
                     try {
                         if (response.errorBody() != null) {
                             String errorBody = response.errorBody().string();
-                            String error = Constant.parseErrorBodyofRetrofit(errorBody, context);
+                            String error = Constant.parseErrorBodyofRetrofit(errorBody);
                             staticInterface.onStaticFailed(error);
                         } else {
                             staticInterface.onStaticFailed(Constant.Server_ERROR);
