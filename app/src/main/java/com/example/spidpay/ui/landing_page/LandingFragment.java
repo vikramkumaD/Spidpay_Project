@@ -3,6 +3,10 @@ package com.example.spidpay.ui.landing_page;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.LiveData;
+import androidx.lifecycle.Observer;
+import androidx.lifecycle.ViewModel;
+import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.NavController;
 import androidx.navigation.fragment.NavHostFragment;
 
@@ -14,28 +18,40 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.spidpay.R;
+import com.example.spidpay.data.repository.LandinRepository;
+import com.example.spidpay.data.response.WalletResponse;
+import com.example.spidpay.interfaces.LandingInterface;
 import com.example.spidpay.util.Constant;
 import com.example.spidpay.databinding.LandingfragmentBinding;
 import com.example.spidpay.interfaces.ChangeTitlenandIconInterface;
 import com.example.spidpay.interfaces.UpdateBottomView;
+import com.example.spidpay.util.PrefManager;
 import com.google.android.material.bottomsheet.BottomSheetDialog;
 
 import org.jetbrains.annotations.NotNull;
 
+import java.util.List;
 
-public class LandingFragment extends Fragment {
+
+public class LandingFragment extends Fragment implements LandingInterface {
     BottomSheetDialog main_wallet_popup, trade_wallet_popup;
     private LandingfragmentBinding landingfragmentBinding;
     ChangeTitlenandIconInterface changeTitlenandIconInterface;
     UpdateBottomView updateBottomView;
 
+    LandingViewModel landingViewModel;
+    LandinRepository landinRepository;
+    LandingInterface landingInterface;
+
     @Override
     public void onAttach(@NonNull @NotNull Context context) {
         super.onAttach(context);
         changeTitlenandIconInterface = (ChangeTitlenandIconInterface) context;
-        updateBottomView=(UpdateBottomView)context;
+        updateBottomView = (UpdateBottomView) context;
+        landingInterface = (LandingInterface) LandingFragment.this;
     }
 
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -46,21 +62,33 @@ public class LandingFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull @NotNull View view, @Nullable @org.jetbrains.annotations.Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        landingfragmentBinding.imgMainwalletPopoup.setOnClickListener(v -> showMainWalletPopup());
-        landingfragmentBinding.imgTradewalletPopoup.setOnClickListener(v -> showTradeWalletPopup());
 
+   /*     landingfragmentBinding.imgMainwalletPopoup.setOnClickListener(v -> showMainWalletPopup());
+        landingfragmentBinding.imgTradewalletPopoup.setOnClickListener(v -> showTradeWalletPopup());
+*/
 
         landingfragmentBinding.relativeAeps.setOnClickListener(v -> {
             NavController navController = NavHostFragment.findNavController(this);
             navController.navigate(R.id.AEPS_Dashboard_Fragment);
         });
+
+        landinRepository = new LandinRepository(requireActivity(), landingInterface);
+        landingViewModel = new ViewModelProvider(this).get(LandingViewModel.class);
+        landingViewModel.landingInterface = landingInterface;
+        landingViewModel.landinRepository = landinRepository;
+        landingfragmentBinding.setLandingviewmodel(landingViewModel);
+        landingViewModel.getWalletResponse(new PrefManager(requireActivity()).getUserID());
+
+
     }
 
     @Override
     public void onResume() {
         super.onResume();
+        new PrefManager(requireActivity()).setIsLandingPageOpen(true);
         changeTitlenandIconInterface.changeTitlenadIcon("", false);
         updateBottomView.bottomViewId(Constant.BOTTOM_HOME);
+
     }
 
     @Override
@@ -110,7 +138,7 @@ public class LandingFragment extends Fragment {
         trade_wallet_popup.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
         trade_wallet_popup.show();
 
-        TextView tv_trade_trasnfertobank=view.findViewById(R.id.tv_trade_trasnfertobank);
+        TextView tv_trade_trasnfertobank = view.findViewById(R.id.tv_trade_trasnfertobank);
         tv_trade_trasnfertobank.setOnClickListener(v -> {
             trade_wallet_popup.dismiss();
             NavController navController = NavHostFragment.findNavController(this);
@@ -125,4 +153,24 @@ public class LandingFragment extends Fragment {
         });
     }
 
+    @Override
+    public void onSuccess(LiveData<List<WalletResponse>> listLiveData) {
+        listLiveData.observe(this, walletResponses -> {
+            Constant.START_TOUCH(requireActivity());
+            landingfragmentBinding.pbLandingpage.setVisibility(View.GONE);
+            landingfragmentBinding.setWallet(walletResponses);
+        });
+    }
+
+    @Override
+    public void onServiceStart() {
+        Constant.START_TOUCH(requireActivity());
+        landingfragmentBinding.pbLandingpage.setVisibility(View.VISIBLE);
+    }
+
+    @Override
+    public void onFailed(String msg) {
+        Constant.START_TOUCH(requireActivity());
+        landingfragmentBinding.pbLandingpage.setVisibility(View.GONE);
+    }
 }

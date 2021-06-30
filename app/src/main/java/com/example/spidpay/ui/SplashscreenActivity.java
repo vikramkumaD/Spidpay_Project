@@ -13,7 +13,10 @@ import android.view.WindowManager;
 
 import com.example.spidpay.R;
 import com.example.spidpay.databinding.SplashscreenBinding;
+import com.example.spidpay.util.Constant;
 import com.example.spidpay.util.PrefManager;
+
+import java.text.ParseException;
 
 public class SplashscreenActivity extends AppCompatActivity {
 
@@ -34,7 +37,13 @@ public class SplashscreenActivity extends AppCompatActivity {
             try {
                 Thread.sleep(2000);
                 if (new PrefManager(SplashscreenActivity.this).getIsFirstTime()) {
-                    startActivity(new Intent(SplashscreenActivity.this, DashboardActivity.class));
+
+                    if (new PrefManager(SplashscreenActivity.this).getIsLandingPageOpen()) {
+                        startActivity(new Intent(SplashscreenActivity.this, HostActivity.class));
+                    } else {
+                        startActivity(new Intent(SplashscreenActivity.this, DashboardActivity.class));
+                    }
+
                 } else {
                     startActivity(new Intent(SplashscreenActivity.this, WelcomeActivity.class));
                 }

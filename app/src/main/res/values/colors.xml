@@ -10,6 +10,7 @@
     <color name="approval_text_color">#777071</color>
     <color name="approval_bg">#F8F6F6</color>
     <color name="white">#FFFFFFFF</color>
+    <color name="add_monye_txt_color">#BFBFEC</color>
     <color name="unselecttabcolor">#B3EDD2</color>
     <color name="botton_nav_inactive_color">#4E4E4E</color>
     <color name="termsncondtion">#4483EE</color>
@@ -19,7 +20,7 @@
     <color name="lightgrey">#D1D1D1</color>
     <color name="border_color">#50D1D1D1</color>
     <color name="shadeslightgrey">#30DCDCDC</color>
-    <color name="add_money_hint_color">#DEE4E5</color>
+    <color name="add_money_hint_color">#A5A5A7</color>
     <color name="green">#2AC052</color>
     <color name="navitem_color">#7E7776</color>
     <color name="seagreen">#28B463</color>

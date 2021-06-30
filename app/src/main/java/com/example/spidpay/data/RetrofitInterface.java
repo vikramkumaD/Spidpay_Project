@@ -3,12 +3,15 @@ package com.example.spidpay.data;
 import com.example.spidpay.data.request.ChangePasswordRequest;
 import com.example.spidpay.data.request.LoginRequest;
 import com.example.spidpay.data.request.RegisterRequest;
+import com.example.spidpay.data.request.ResetPassword;
 import com.example.spidpay.data.request.UpdateAddressRequest;
 import com.example.spidpay.data.request.UpdateBankInfoRequest;
 import com.example.spidpay.data.request.UpdateCompanyRequest;
 import com.example.spidpay.data.request.UpdateKYCRequest;
 import com.example.spidpay.data.request.VerifyOTPReqest;
+import com.example.spidpay.data.response.AllTransactionResponse;
 import com.example.spidpay.data.response.BankDetailsResponse;
+import com.example.spidpay.data.response.BooleanResponse;
 import com.example.spidpay.data.response.CommonResponse;
 import com.example.spidpay.data.response.CompanyReponse;
 import com.example.spidpay.data.response.InterrestedforResponse;
@@ -45,11 +48,16 @@ public interface RetrofitInterface {
     @GET("static-data/v1/{category}")
     Call<List<InterrestedforResponse>> getstaticdata(@Path("category") String user, @Query("role") String role);
 
-    @GET("change-password/v1")
+    @Headers({"Content-Type:application/json"})
+    @POST("change-password/v1")
     Call<CommonResponse> changepassword(@Body ChangePasswordRequest changePasswordRequest);
 
+    @Headers({"Content-Type:application/json"})
     @POST("reset-password/v1")
-    Call<CommonResponse> resetPass(@Body ChangePasswordRequest changePasswordRequest);
+    Call<CommonResponse> resetPass(@Body ResetPassword changePasswordRequest);
+
+    @GET("reset-password/v1/{userName}")
+    Call<BooleanResponse> verifyUsername(@Path("userName") String userName);
 
     @POST("otp/v1/verify-mobile-otp")
     Call<VerifyOTPResponse> verifyOTP(@Body VerifyOTPReqest verifyOTPReqest);
@@ -87,5 +95,8 @@ public interface RetrofitInterface {
 
     @GET("v1/{userId}")
     Call<List<WalletResponse>> getWalletResponse(@Path("userId") String userId);
+
+    @GET("v1/wallet/{walletId}")
+    Call<List<AllTransactionResponse>> getAllTransaction(@Path("walletId") String walletId, @Query("pageNumber") String pageNumber, @Query("pageSize") String pageSize);
 
 }

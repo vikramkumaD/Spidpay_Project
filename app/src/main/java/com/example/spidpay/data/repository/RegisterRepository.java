@@ -26,7 +26,7 @@ public class RegisterRepository {
 
     public MutableLiveData<RegisterResponse> getRegisterResponse(RegisterRequest registerRequest) {
         MutableLiveData<RegisterResponse> responseMutableLiveData = new MutableLiveData<>();
-        RetrofitInterface retrofitInterface = RetrofitClient.GetRetrofitClient(context, Constant.USER).create(RetrofitInterface.class);
+        RetrofitInterface retrofitInterface = RetrofitClient.GetRetrofitClient(context, Constant.USER_API).create(RetrofitInterface.class);
         Call<RegisterResponse> call = retrofitInterface.user_onBoarding(registerRequest);
         call.enqueue(new Callback<RegisterResponse>() {
             @Override
@@ -50,7 +50,7 @@ public class RegisterRepository {
             }
 
             @Override
-            public void onFailure(Call<RegisterResponse> call, Throwable t) {
+            public void onFailure(@NotNull Call<RegisterResponse> call, @NotNull Throwable t) {
                 if (t instanceof NoInternetException) {
                     registerInterface.onFailed("No Internet");
                 } else {

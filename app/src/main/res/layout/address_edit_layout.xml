@@ -39,6 +39,7 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <EditText
+            android:maxLength="100"
             android:id="@+id/edt_edit_address1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -59,6 +60,7 @@
 
         <EditText
 
+            android:maxLength="100"
             android:id="@+id/edt_edit_address2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -78,7 +80,7 @@
             app:layout_constraintTop_toBottomOf="@+id/edt_edit_address1" />
 
         <EditText
-
+            android:maxLength="50"
             android:id="@+id/edt_edit_address_city"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -98,7 +100,7 @@
             app:layout_constraintTop_toBottomOf="@+id/edt_edit_address2" />
 
         <EditText
-
+            android:maxLength="7"
             android:id="@+id/edt_edit_address_picode"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -119,7 +121,7 @@
 
 
         <EditText
-
+            android:maxLength="40"
             android:id="@+id/edt_edit_address_state"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

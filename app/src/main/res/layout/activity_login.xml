@@ -169,6 +169,7 @@
                 android:background="@drawable/edittext_shadow"
                 android:gravity="center_vertical"
                 android:hint="@string/password"
+                android:maxLength="20"
                 android:inputType="text"
                 android:paddingStart="@dimen/marign15dp"
                 android:paddingEnd="@dimen/marign10dp"

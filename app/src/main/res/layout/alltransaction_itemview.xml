@@ -1,27 +1,35 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:tools="http://schemas.android.com/tools"
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
 
     <data>
 
+        <variable
+            name="alltransactionviewmodel"
+            type="com.example.spidpay.ui.alltransaction.AllTransactionViewModel" />
+
+        <import type="com.example.spidpay.util.Constant" />
+
+        <variable
+            name="alltransaction"
+            type="com.example.spidpay.data.response.AllTransactionResponse" />
     </data>
 
+
     <androidx.cardview.widget.CardView
-        android:elevation="@dimen/marign10dp"
-        app:cardElevation="@dimen/marign10dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         tools:targetApi="lollipop">
 
 
         <androidx.constraintlayout.widget.ConstraintLayout
-            android:paddingEnd="@dimen/marign10dp"
-            android:paddingStart="@dimen/marign10dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@drawable/dialogwith_whiteborder"
+            android:paddingStart="@dimen/marign10dp"
             android:paddingTop="@dimen/marign10dp"
+            android:paddingEnd="@dimen/marign10dp"
             android:paddingBottom="@dimen/marign10dp">
 
 
@@ -30,7 +38,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/lato_bold"
-                android:text="@string/Aeps"
+                android:text="@{alltransaction.transactionCategory}"
                 android:textColor="@color/black"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
@@ -40,32 +48,52 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/lato_bold"
-                android:text="Transaction id: sp0001"
+                android:text="@{`Transaction Id: `+alltransaction.transactionId}"
                 android:textColor="@color/black"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/tv_all_tramsaction_name" />
+
+
+            <ImageView
+                android:id="@+id/img_transactiontype"
+                app:change="@{alltransaction.transactionType}"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:layout_marginEnd="@dimen/marign70dp"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
 
             <TextView
                 android:id="@+id/tv_all_tramsaction_amount"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/marign3dp"
                 android:layout_marginEnd="@dimen/marign20dp"
                 android:fontFamily="@font/lato_bold"
-                android:text="130000"
+                android:text="@{alltransaction.amount}"
                 android:textColor="@color/light_green"
-                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintLeft_toRightOf="@+id/img_transactiontype"
                 app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
                 android:id="@+id/tv_all_tramsaction_date"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/marign20dp"
+                android:layout_marginTop="@dimen/marign5dp"
                 android:fontFamily="@font/lato_bold"
-                android:text="May 20 2021 8:10pm"
+                android:text="@{alltransaction.retrunDate(alltransaction.creationTime)}"
                 android:textColor="@color/light_green"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/tv_all_tramsaction_id" />
+
+
+            <View
+                android:layout_marginTop="@dimen/marign5dp"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/lightgrey"
+                app:layout_constraintTop_toBottomOf="@+id/tv_all_tramsaction_date" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 

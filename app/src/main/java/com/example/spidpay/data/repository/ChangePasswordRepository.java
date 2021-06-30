@@ -13,6 +13,10 @@ import com.example.spidpay.interfaces.ChangePasswordInterface;
 import com.example.spidpay.util.Constant;
 import com.example.spidpay.util.NoInternetException;
 
+import org.jetbrains.annotations.NotNull;
+
+import java.io.IOException;
+
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -29,20 +33,31 @@ public class ChangePasswordRepository {
 
     public MutableLiveData<CommonResponse> changePassword(ChangePasswordRequest changePasswordRequest) {
         MutableLiveData<CommonResponse> responseMutableLiveData = new MutableLiveData<>();
-        RetrofitInterface retrofitInterface = RetrofitClient.GetRetrofitClient(context, Constant.USER).create(RetrofitInterface.class);
+        RetrofitInterface retrofitInterface = RetrofitClient.GetRetrofitClient(context, Constant.USER_API).create(RetrofitInterface.class);
         Call<CommonResponse> call = retrofitInterface.changepassword(changePasswordRequest);
         call.enqueue(new Callback<CommonResponse>() {
             @Override
-            public void onResponse(Call<CommonResponse> call, Response<CommonResponse> response) {
+            public void onResponse(@NotNull Call<CommonResponse> call, @NotNull Response<CommonResponse> response) {
                 if (response.isSuccessful() && response.body() != null) {
                     responseMutableLiveData.postValue(response.body());
                 } else {
-                    changePasswordInterface.onFailed("Server error!");
+                    try {
+                        if (response.errorBody() != null) {
+                            String errorBody = response.errorBody().string();
+                            String error = Constant.parseErrorBodyofRetrofit(errorBody);
+                            changePasswordInterface.onFailed(error);
+                        } else {
+                            changePasswordInterface.onFailed(Constant.Server_ERROR);
+                        }
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                        changePasswordInterface.onFailed(e.toString());
+                    }
                 }
             }
 
             @Override
-            public void onFailure(Call<CommonResponse> call, Throwable t) {
+            public void onFailure(@NotNull Call<CommonResponse> call, @NotNull Throwable t) {
                 if (t instanceof NoInternetException) {
                     changePasswordInterface.onFailed("No Internet");
                 } else {

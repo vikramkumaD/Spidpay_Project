@@ -108,6 +108,15 @@ public class RegisterViewModel extends ViewModel {
             return;
         }
 
+        if (password.length() <= 8) {
+            registerInterface.onFailed(view.getContext().getResources().getString(R.string.passworderror2));
+            return;
+        }
+        if (!Constant.isValidPassword(password)) {
+            registerInterface.onFailed(view.getContext().getResources().getString(R.string.passworderror3));
+            return;
+        }
+
         if (!password.equals(confirm_password)) {
             registerInterface.onFailed(view.getResources().getString(R.string.passwordnotmatch));
             return;

@@ -14,6 +14,8 @@ import com.example.spidpay.interfaces.VerifyOTPInterface;
 import com.example.spidpay.util.Constant;
 import com.example.spidpay.util.NoInternetException;
 
+import org.jetbrains.annotations.NotNull;
+
 import java.io.IOException;
 
 import retrofit2.Call;
@@ -32,11 +34,11 @@ public class VerifyOTPRepository {
 
     public MutableLiveData<VerifyOTPResponse> getVerifyOTP(VerifyOTPReqest loginRequest) {
         MutableLiveData<VerifyOTPResponse> responseMutableLiveData = new MutableLiveData<>();
-        RetrofitInterface retrofitInterface = RetrofitClient.GetRetrofitClient(context, Constant.USER).create(RetrofitInterface.class);
+        RetrofitInterface retrofitInterface = RetrofitClient.GetRetrofitClient(context, Constant.USER_API).create(RetrofitInterface.class);
         Call<VerifyOTPResponse> call = retrofitInterface.verifyOTP(loginRequest);
         call.enqueue(new Callback<VerifyOTPResponse>() {
             @Override
-            public void onResponse(Call<VerifyOTPResponse> call, Response<VerifyOTPResponse> response) {
+            public void onResponse(@NotNull Call<VerifyOTPResponse> call, @NotNull Response<VerifyOTPResponse> response) {
                 if (response.isSuccessful() && response.body() != null) {
                     responseMutableLiveData.postValue(response.body());
                 } else {
@@ -55,7 +57,7 @@ public class VerifyOTPRepository {
                 }
             }
             @Override
-            public void onFailure(Call<VerifyOTPResponse> call, Throwable t) {
+            public void onFailure(@NotNull Call<VerifyOTPResponse> call, @NotNull Throwable t) {
                 if (t instanceof NoInternetException) {
                     verifyOTPInterface.onFailed("No Internet");
                 } else {

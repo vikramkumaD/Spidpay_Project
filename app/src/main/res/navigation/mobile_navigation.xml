@@ -27,7 +27,7 @@
         tools:layout="@layout/fragment_change_password" />
     <fragment
         android:id="@+id/addMoneyFragment"
-        android:name="com.example.spidpay.ui.addmoney.AddMoneyFragment"
+        android:name="com.example.spidpay.ui.addmoney.AddMoneyActivity"
         android:label="fragment_add_money"
         tools:layout="@layout/fragment_add_money" >
 
@@ -39,7 +39,7 @@
         tools:layout="@layout/fragment_available_online_balance" />
     <fragment
         android:id="@+id/cash_Desposit_Fragment"
-        android:name="com.example.spidpay.ui.addmoney.Cash_Desposit_Fragment"
+        android:name="com.example.spidpay.ui.addmoney.CashDesposit_Activity"
         android:label="fragment_cash_deposit"
         tools:layout="@layout/fragment_cash_deposit" />
     <fragment

@@ -78,16 +78,21 @@ public class MyProfileViewModel extends ViewModel {
     }
 
     public void validate_KYC(View view, KYCResponse kycResponse) {
-       /* if (kycResponse == null) {
-            kycInterface.onServiceStart();
-            updateKYCInfo(kycResponse);
+
+        if (kycResponse.panNo == null || kycResponse.panNo.equals("") || kycResponse.aadharNo == null || kycResponse.aadharNo.equals("") || kycResponse.idNo == null || kycResponse.idNo.equals("")) {
+            kycInterface.onFailed(view.getResources().getString(R.string.filedcannotbeblank));
             return;
-        } else {
-            if (kycResponse.panNo == null || kycResponse.panNo.equals("") || kycResponse.aadharNo == null || kycResponse.equals("") || kycResponse.idNo == null || kycResponse.idNo.equals("")) {
-                kycInterface.onFailed(view.getResources().getString(R.string.filedcannotbeblank));
-                return;
-            }
-        }*/
+        }
+
+        if (!Constant.isValidPanCardNo(kycResponse.panNo)) {
+            kycInterface.onFailed(view.getContext().getResources().getString(R.string.validpan));
+            return;
+        }
+
+        if (!Constant.isValidAadharNumber(kycResponse.aadharNo)) {
+            kycInterface.onFailed(view.getContext().getResources().getString(R.string.validaadhar));
+            return;
+        }
 
         kycInterface.onServiceStart();
         updateKYCInfo(kycResponse);
@@ -113,7 +118,8 @@ public class MyProfileViewModel extends ViewModel {
         kycInterface.onCompanySuccess(liveData);
     }
 
-    public void validate_compnay(View view, CompanyReponse companyReponse) {/*if (companyReponse.companyName == null || companyReponse.companyName.equals("") ||
+    public void validate_compnay(View view, CompanyReponse companyReponse) {
+        /*if (companyReponse.companyName == null || companyReponse.companyName.equals("") ||
                 companyReponse.companyType.description == null || companyReponse.companyType.description.equals("") ||
                 companyReponse.coi == null || companyReponse.coi.equals("") || companyReponse.declaration == null || companyReponse.declaration.equals("") ||
                 companyReponse.gstNO == null || companyReponse.gstNO.equals("") || companyReponse.moa == null || companyReponse.moa.equals("") ||
@@ -121,8 +127,12 @@ public class MyProfileViewModel extends ViewModel {
                 companyReponse.udyogAadhar == null || companyReponse.udyogAadhar.equals("")) {
             kycInterface.onFailed(view.getResources().getString(R.string.filedcannotbeblank));
             return;
+        }*/
+
+        if (!Constant.isValidGSTNo(companyReponse.gstNO)) {
+            kycInterface.onFailed(view.getContext().getResources().getString(R.string.entervalidgstno));
+            return;
         }
-        */
 
         kycInterface.onServiceStart();
         updateCompanyDeatil(companyReponse);
@@ -153,11 +163,29 @@ public class MyProfileViewModel extends ViewModel {
     }
 
     public void validate_BankInfo(View view, BankDetailsResponse bankDetailsResponse) {
-        /*if (bankDetailsResponse==null || bankDetailsResponse.accountHolderName == null || bankDetailsResponse.accountHolderName.equals("") || bankDetailsResponse.accountNo == 0 || bankDetailsResponse.ifscCode == null || bankDetailsResponse.ifscCode.equals("")) {
+        if (bankDetailsResponse.accountHolderName == null || bankDetailsResponse.accountNo == null || bankDetailsResponse.ifscCode == null || code == null) {
             bankInteface.onFailed(view.getResources().getString(R.string.filedcannotbeblank));
             return;
         }
-*/
+
+
+        if (bankDetailsResponse.accountHolderName.equals("") && bankDetailsResponse.accountNo.equals("") && code.equals("") && bankDetailsResponse.ifscCode.equals("")) {
+            bankInteface.onFailed(view.getContext().getResources().getString(R.string.filedcannotbeblank));
+            return;
+        }
+
+        if (bankDetailsResponse.accountNo.length() <= 8) {
+            bankInteface.onFailed(view.getContext().getResources().getString(R.string.enterproperaccno));
+            return;
+        }
+
+
+        if (!Constant.isValidIFSCode(bankDetailsResponse.ifscCode)) {
+            bankInteface.onFailed(view.getContext().getResources().getString(R.string.validifsc));
+            return;
+        }
+
+
         bankInteface.onServiceStart();
         updateBankInfo(bankDetailsResponse);
     }

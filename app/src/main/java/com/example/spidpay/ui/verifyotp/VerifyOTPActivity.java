@@ -3,9 +3,7 @@ package com.example.spidpay.ui.verifyotp;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.DataBindingUtil;
 import androidx.lifecycle.LiveData;
-import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -17,7 +15,6 @@ import com.example.spidpay.data.response.VerifyOTPResponse;
 import com.example.spidpay.databinding.ActivityVerifyOTPBinding;
 import com.example.spidpay.interfaces.VerifyOTPInterface;
 import com.example.spidpay.ui.HostActivity;
-import com.example.spidpay.ui.signup.RegisterActivity;
 import com.example.spidpay.util.Constant;
 
 public class VerifyOTPActivity extends AppCompatActivity implements VerifyOTPInterface {

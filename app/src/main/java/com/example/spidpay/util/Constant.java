@@ -2,6 +2,7 @@ package com.example.spidpay.util;
 
 import android.app.Activity;
 import android.content.Context;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.WindowManager;
 import android.view.inputmethod.InputMethodManager;
@@ -10,22 +11,31 @@ import android.widget.Toast;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Locale;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class Constant {
 
+    //http://45.79.120.79:6500/spidpay-identity/api/
+
     public static final String USER_API = "http://45.79.120.79:6500/spidpay-identity/api/";
-
     public static final String WALLET_API = "http://45.79.120.79:6700/spidpay-wallet/";
+    public static final String TRANSACTION_API = "http://45.79.120.79:6600/spidpay-txnactivity/";
 
+
+    public static final String PASSWORD_PATTERN = "((?=.*\\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%]).{9,20})";
 
     public static final String Server_ERROR = "Server error!";
     public static final String BANK = "bank";
     public static final String COMPANY = "company";
     public static final String USER = "user";
     public static final String ROLE_INTERRESTEDFOR = "SP_EXT_WHITE_LABLE";
-
+    public static final String NO_INTERNET = "no internet";
+    public static final String CREDIT = "CREDIT";
     public static final String Success = "Success";
 
     public static final int BOTTOM_HOME = 1;
@@ -33,13 +43,68 @@ public class Constant {
     public static final int BOTTOM_NOTIFICATION = 3;
     public static final int BOTTOM_HISTORY = 4;
 
+
+    public static boolean isValidPassword(final String password) {
+        Pattern pattern;
+        Matcher matcher;
+        final String PASSWORD_PATTERN = "^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&+=])(?=\\S+$).{9,20}$";
+        pattern = Pattern.compile(PASSWORD_PATTERN);
+        matcher = pattern.matcher(password);
+        return matcher.matches();
+
+    }
+
+    public static boolean isValidIFSCode(String str) {
+        String regex = "^[A-Z]{4}0[A-Z0-9]{6}$";
+        Pattern p = Pattern.compile(regex);
+        if (str == null) {
+            return false;
+        }
+        Matcher m = p.matcher(str);
+        return m.matches();
+    }
+
+    public static boolean isValidGSTNo(String str) {
+        String regex = "^[0-9]{2}[A-Z]{5}[0-9]{4}" + "[A-Z]{1}[1-9A-Z]{1}" + "Z[0-9A-Z]{1}$";
+
+        Pattern p = Pattern.compile(regex);
+
+        if (str == null) {
+            return false;
+        }
+
+        Matcher m = p.matcher(str);
+
+        return m.matches();
+    }
+
+    public static boolean isValidPanCardNo(String panCardNo) {
+        String regex = "[A-Z]{5}[0-9]{4}[A-Z]{1}";
+        Pattern p = Pattern.compile(regex);
+        if (panCardNo == null) {
+            return false;
+        }
+        Matcher m = p.matcher(panCardNo);
+        return m.matches();
+    }
+
+
+    public static boolean isValidAadharNumber(String str) {
+        final String pattern = "^[2-9]{1}[0-9]{3}[0-9]{4}[0-9]{4}$";
+        Pattern p = Pattern.compile(pattern);
+        if (str == null) {
+            return false;
+        }
+        Matcher m = p.matcher(str);
+        return m.matches();
+    }
+
     public static String parseErrorBodyofRetrofit(String errorbody) {
         JSONObject jsonObject1;
         try {
             jsonObject1 = new JSONObject(errorbody);
             JSONObject jsonObject = jsonObject1.getJSONObject("error");
-            String message = jsonObject.getString("message");
-            return message;
+            return jsonObject.getString("message");
         } catch (JSONException e) {
             e.printStackTrace();
             return e.toString();
@@ -62,7 +127,7 @@ public class Constant {
     }
 
     public static void showToast(Context context, String msg) {
-        Toast toast = Toast.makeText(context, msg, Toast.LENGTH_LONG);
+        Toast toast = Toast.makeText(context, msg, Toast.LENGTH_SHORT);
         toast.setGravity(Gravity.CENTER_VERTICAL, 0, 0);
         toast.show();
     }
@@ -102,5 +167,13 @@ public class Constant {
 
         // Convert the char array to equivalent String
         return new String(ch);
+    }
+
+    public static String convertDate(String Date) throws ParseException {
+        DateFormat inputFormat = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss", Locale.US);
+        DateFormat outputFormat = new SimpleDateFormat("MMMM dd yyyy, hh:mm:ss a", Locale.ENGLISH);
+        java.util.Date date = inputFormat.parse(Date);
+        assert date != null;
+        return outputFormat.format(date);
     }
 }

@@ -42,6 +42,7 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <EditText
+            android:maxLength="18"
             android:id="@+id/edt_user_acc_number"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -108,6 +109,7 @@
             android:layout_weight="1"
             android:background="@drawable/edittext_shadow"
             android:hint="@string/ifsccode"
+            android:maxLength="11"
             android:inputType="text"
             android:paddingLeft="@dimen/marign10dp"
             android:paddingTop="@dimen/marign10dp"

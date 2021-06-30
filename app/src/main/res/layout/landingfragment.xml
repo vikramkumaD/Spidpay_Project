@@ -1,5 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout>
+
+    <data>
+
+        <variable
+            name="landingviewmodel"
+            type="com.example.spidpay.ui.landing_page.LandingViewModel" />
+
+        <variable
+            name="wallet"
+            type="java.util.List&lt;com.example.spidpay.data.response.WalletResponse>" />
+    </data>
+
     <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
@@ -55,7 +67,7 @@
                             android:fontFamily="@font/lato"
                             android:paddingStart="@dimen/marign10dp"
                             android:paddingEnd="@dimen/marign10dp"
-                            android:text="@string/mainwallet"
+                            android:text="@{wallet.get(1).walletType}"
                             android:textColor="@color/white"
                             android:textStyle="bold" />
 
@@ -68,7 +80,7 @@
                             android:fontFamily="@font/lato"
                             android:paddingStart="@dimen/marign10dp"
                             android:paddingEnd="@dimen/marign10dp"
-                            android:text="Rs. 10000.20"
+                            android:text="@{wallet.get(1).walletBalance}"
                             android:textColor="@color/white" />
 
 
@@ -79,7 +91,9 @@
                         android:layout_width="@dimen/marign20dp"
                         android:layout_height="@dimen/marign20dp"
                         android:layout_alignParentEnd="true"
-                        android:src="@drawable/ic_baseline_more_vert_24" />
+                        android:layout_alignParentBottom="true"
+                        android:onClick="@{(v)->landingviewmodel.openAllTransactionAcivity(v,wallet.get(1).walletId,wallet.get(1).walletBalance)}"
+                        android:src="@drawable/ic_baseline_east_24" />
 
 
                 </RelativeLayout>
@@ -105,10 +119,9 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:fontFamily="@font/lato"
-
                             android:paddingStart="@dimen/marign10dp"
                             android:paddingEnd="@dimen/marign10dp"
-                            android:text="@string/tradewallet"
+                            android:text="@{wallet.get(0).walletType}"
                             android:textColor="@color/white"
                             android:textStyle="bold" />
 
@@ -121,18 +134,20 @@
                             android:fontFamily="@font/lato"
                             android:paddingLeft="@dimen/marign10dp"
                             android:paddingEnd="@dimen/marign10dp"
-                            android:text="Rs. 20000.20"
+                            android:text="@{wallet.get(0).walletBalance}"
                             android:textColor="@color/white" />
 
 
                     </RelativeLayout>
 
                     <ImageView
+                        android:onClick="@{(v)->landingviewmodel.openAllTransactionAcivity(v,wallet.get(0).walletId,wallet.get(0).walletBalance)}"
                         android:id="@+id/img_tradewallet_popoup"
                         android:layout_width="@dimen/marign20dp"
                         android:layout_height="@dimen/marign20dp"
                         android:layout_alignParentEnd="true"
-                        android:src="@drawable/ic_baseline_more_vert_24" />
+                        android:layout_alignParentBottom="true"
+                        android:src="@drawable/ic_baseline_east_24" />
 
                 </RelativeLayout>
 
@@ -536,6 +551,13 @@
                     </RelativeLayout>
                 </LinearLayout>
             </RelativeLayout>
+
+            <ProgressBar
+                android:id="@+id/pb_landingpage"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:visibility="gone" />
         </RelativeLayout>
     </ScrollView>
 

@@ -31,7 +31,7 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class MyProfileRepository {
-    Context context;
+    final Context context;
     KYCInterface kycInterface;
     MyProfileInterface myProfileInterface;
     BankInteface bankInteface;
@@ -54,11 +54,11 @@ public class MyProfileRepository {
 
     public MutableLiveData<MyProfileResponse> getMyProfile(String userid) {
         MutableLiveData<MyProfileResponse> myProfileResponseMutableLiveData = new MutableLiveData<>();
-        RetrofitInterface retrofitInterface = RetrofitClient.GetRetrofitClient(context, Constant.USER).create(RetrofitInterface.class);
+        RetrofitInterface retrofitInterface = RetrofitClient.GetRetrofitClient(context, Constant.USER_API).create(RetrofitInterface.class);
         Call<MyProfileResponse> myProfileResponseCall = retrofitInterface.getUserProfile(userid);
         myProfileResponseCall.enqueue(new Callback<MyProfileResponse>() {
             @Override
-            public void onResponse(Call<MyProfileResponse> call, Response<MyProfileResponse> response) {
+            public void onResponse(@NotNull Call<MyProfileResponse> call, @NotNull Response<MyProfileResponse> response) {
                 if (response.isSuccessful() && response.body() != null) {
                     myProfileResponseMutableLiveData.postValue(response.body());
                 } else {
@@ -78,7 +78,7 @@ public class MyProfileRepository {
             }
 
             @Override
-            public void onFailure(Call<MyProfileResponse> call, Throwable t) {
+            public void onFailure(@NotNull Call<MyProfileResponse> call, @NotNull Throwable t) {
                 if (t instanceof NoInternetException) {
                     myProfileInterface.onFailed("No Internet");
                 } else {
@@ -94,11 +94,11 @@ public class MyProfileRepository {
 
     public MutableLiveData<MyAddressResponse> getMyAddress(String userid) {
         MutableLiveData<MyAddressResponse> myAddressResponseMutableLiveData = new MutableLiveData<>();
-        RetrofitInterface retrofitInterface = RetrofitClient.GetRetrofitClient(context, Constant.USER).create(RetrofitInterface.class);
+        RetrofitInterface retrofitInterface = RetrofitClient.GetRetrofitClient(context, Constant.USER_API).create(RetrofitInterface.class);
         Call<MyAddressResponse> myProfileResponseCall = retrofitInterface.getUserAddress(userid, "address");
         myProfileResponseCall.enqueue(new Callback<MyAddressResponse>() {
             @Override
-            public void onResponse(Call<MyAddressResponse> call, Response<MyAddressResponse> response) {
+            public void onResponse(@NotNull Call<MyAddressResponse> call, @NotNull Response<MyAddressResponse> response) {
                 if (response.isSuccessful() && response.body() != null) {
                     myAddressResponseMutableLiveData.postValue(response.body());
                 } else {
@@ -118,7 +118,7 @@ public class MyProfileRepository {
             }
 
             @Override
-            public void onFailure(Call<MyAddressResponse> call, Throwable t) {
+            public void onFailure(@NotNull Call<MyAddressResponse> call, @NotNull Throwable t) {
                 if (t instanceof NoInternetException) {
                     myProfileInterface.onFailed("No Internet");
                 } else {
@@ -131,11 +131,11 @@ public class MyProfileRepository {
 
     public MutableLiveData<KYCResponse> getKYCInfo(String userid) {
         MutableLiveData<KYCResponse> kycResponseMutableLiveData = new MutableLiveData<>();
-        RetrofitInterface retrofitInterface = RetrofitClient.GetRetrofitClient(context, Constant.USER).create(RetrofitInterface.class);
+        RetrofitInterface retrofitInterface = RetrofitClient.GetRetrofitClient(context, Constant.USER_API).create(RetrofitInterface.class);
         Call<KYCResponse> myProfileResponseCall = retrofitInterface.getKYCInfo(userid, "kyc-info");
         myProfileResponseCall.enqueue(new Callback<KYCResponse>() {
             @Override
-            public void onResponse(Call<KYCResponse> call, Response<KYCResponse> response) {
+            public void onResponse(@NotNull Call<KYCResponse> call, @NotNull Response<KYCResponse> response) {
                 if (response.isSuccessful() && response.body() != null) {
                     kycResponseMutableLiveData.postValue(response.body());
                 } else {
@@ -155,7 +155,7 @@ public class MyProfileRepository {
             }
 
             @Override
-            public void onFailure(Call<KYCResponse> call, Throwable t) {
+            public void onFailure(@NotNull Call<KYCResponse> call, @NotNull Throwable t) {
                 if (t instanceof NoInternetException) {
                     kycInterface.onFailed("No Internet");
                 } else {
@@ -168,11 +168,11 @@ public class MyProfileRepository {
 
     public MutableLiveData<CompanyReponse> getCompanyInfo(String userid) {
         MutableLiveData<CompanyReponse> kycResponseMutableLiveData = new MutableLiveData<>();
-        RetrofitInterface retrofitInterface = RetrofitClient.GetRetrofitClient(context, Constant.USER).create(RetrofitInterface.class);
+        RetrofitInterface retrofitInterface = RetrofitClient.GetRetrofitClient(context, Constant.USER_API).create(RetrofitInterface.class);
         Call<CompanyReponse> myProfileResponseCall = retrofitInterface.getCompany(userid, "company-info");
         myProfileResponseCall.enqueue(new Callback<CompanyReponse>() {
             @Override
-            public void onResponse(Call<CompanyReponse> call, Response<CompanyReponse> response) {
+            public void onResponse(@NotNull Call<CompanyReponse> call, @NotNull Response<CompanyReponse> response) {
                 if (response.isSuccessful() && response.body() != null) {
                     kycResponseMutableLiveData.postValue(response.body());
                 } else {
@@ -192,7 +192,7 @@ public class MyProfileRepository {
             }
 
             @Override
-            public void onFailure(Call<CompanyReponse> call, Throwable t) {
+            public void onFailure(@NotNull Call<CompanyReponse> call, @NotNull Throwable t) {
                 if (t instanceof NoInternetException) {
                     kycInterface.onFailed("No Internet");
                 } else {
@@ -205,11 +205,11 @@ public class MyProfileRepository {
 
     public MutableLiveData<UpdateResponse> updateAddress(UpdateAddressRequest updateAddressRequest) {
         MutableLiveData<UpdateResponse> myAddressResponseMutableLiveData = new MutableLiveData<>();
-        RetrofitInterface retrofitInterface = RetrofitClient.GetRetrofitClient(context, Constant.USER).create(RetrofitInterface.class);
+        RetrofitInterface retrofitInterface = RetrofitClient.GetRetrofitClient(context, Constant.USER_API).create(RetrofitInterface.class);
         Call<UpdateResponse> myProfileResponseCall = retrofitInterface.updateAddress(updateAddressRequest);
         myProfileResponseCall.enqueue(new Callback<UpdateResponse>() {
             @Override
-            public void onResponse(Call<UpdateResponse> call, Response<UpdateResponse> response) {
+            public void onResponse(@NotNull Call<UpdateResponse> call, @NotNull Response<UpdateResponse> response) {
                 if (response.isSuccessful() && response.body() != null) {
                     myAddressResponseMutableLiveData.postValue(response.body());
                 } else {
@@ -229,7 +229,7 @@ public class MyProfileRepository {
             }
 
             @Override
-            public void onFailure(Call<UpdateResponse> call, Throwable t) {
+            public void onFailure(@NotNull Call<UpdateResponse> call, @NotNull Throwable t) {
                 if (t instanceof NoInternetException) {
                     myProfileInterface.onFailed("No Internet");
                 } else {
@@ -242,11 +242,11 @@ public class MyProfileRepository {
 
     public MutableLiveData<UpdateResponse> updateKYC(UpdateKYCRequest updateKYCRequest) {
         MutableLiveData<UpdateResponse> myAddressResponseMutableLiveData = new MutableLiveData<>();
-        RetrofitInterface retrofitInterface = RetrofitClient.GetRetrofitClient(context, Constant.USER).create(RetrofitInterface.class);
+        RetrofitInterface retrofitInterface = RetrofitClient.GetRetrofitClient(context, Constant.USER_API).create(RetrofitInterface.class);
         Call<UpdateResponse> myProfileResponseCall = retrofitInterface.updateKYC(updateKYCRequest);
         myProfileResponseCall.enqueue(new Callback<UpdateResponse>() {
             @Override
-            public void onResponse(Call<UpdateResponse> call, Response<UpdateResponse> response) {
+            public void onResponse(@NotNull Call<UpdateResponse> call, @NotNull Response<UpdateResponse> response) {
                 if (response.isSuccessful() && response.body() != null) {
                     myAddressResponseMutableLiveData.postValue(response.body());
                 } else {
@@ -266,7 +266,7 @@ public class MyProfileRepository {
             }
 
             @Override
-            public void onFailure(Call<UpdateResponse> call, Throwable t) {
+            public void onFailure(@NotNull Call<UpdateResponse> call, @NotNull Throwable t) {
                 if (t instanceof NoInternetException) {
                     kycInterface.onFailed("No Internet");
                 } else {
@@ -279,11 +279,11 @@ public class MyProfileRepository {
 
     public MutableLiveData<UpdateResponse> updateCompany(UpdateCompanyRequest updateKYCRequest) {
         MutableLiveData<UpdateResponse> myAddressResponseMutableLiveData = new MutableLiveData<>();
-        RetrofitInterface retrofitInterface = RetrofitClient.GetRetrofitClient(context, Constant.USER).create(RetrofitInterface.class);
+        RetrofitInterface retrofitInterface = RetrofitClient.GetRetrofitClient(context, Constant.USER_API).create(RetrofitInterface.class);
         Call<UpdateResponse> myProfileResponseCall = retrofitInterface.updateCompany(updateKYCRequest);
         myProfileResponseCall.enqueue(new Callback<UpdateResponse>() {
             @Override
-            public void onResponse(Call<UpdateResponse> call, Response<UpdateResponse> response) {
+            public void onResponse(@NotNull Call<UpdateResponse> call, @NotNull Response<UpdateResponse> response) {
                 if (response.isSuccessful() && response.body() != null) {
                     myAddressResponseMutableLiveData.postValue(response.body());
                 } else {
@@ -303,7 +303,7 @@ public class MyProfileRepository {
             }
 
             @Override
-            public void onFailure(Call<UpdateResponse> call, Throwable t) {
+            public void onFailure(@NotNull Call<UpdateResponse> call, @NotNull Throwable t) {
                 if (t instanceof NoInternetException) {
                     kycInterface.onFailed("No Internet");
                 } else {
@@ -316,11 +316,11 @@ public class MyProfileRepository {
 
     public MutableLiveData<BankDetailsResponse> getBankDetail(String userid) {
         MutableLiveData<BankDetailsResponse> detailsResponseMutableLiveData = new MutableLiveData<>();
-        RetrofitInterface retrofitInterface = RetrofitClient.GetRetrofitClient(context, Constant.USER).create(RetrofitInterface.class);
+        RetrofitInterface retrofitInterface = RetrofitClient.GetRetrofitClient(context, Constant.USER_API).create(RetrofitInterface.class);
         Call<BankDetailsResponse> myProfileResponseCall = retrofitInterface.getBankInfo(userid, "bank-info");
         myProfileResponseCall.enqueue(new Callback<BankDetailsResponse>() {
             @Override
-            public void onResponse(Call<BankDetailsResponse> call, Response<BankDetailsResponse> response) {
+            public void onResponse(@NotNull Call<BankDetailsResponse> call, @NotNull Response<BankDetailsResponse> response) {
                 if (response.isSuccessful() && response.body() != null) {
                     detailsResponseMutableLiveData.postValue(response.body());
                 } else {
@@ -340,7 +340,7 @@ public class MyProfileRepository {
             }
 
             @Override
-            public void onFailure(Call<BankDetailsResponse> call, Throwable t) {
+            public void onFailure(@NotNull Call<BankDetailsResponse> call, @NotNull Throwable t) {
                 if (t instanceof NoInternetException) {
                     bankInteface.onFailed("No Internet");
                 } else {
@@ -354,7 +354,7 @@ public class MyProfileRepository {
 
     public MutableLiveData<UpdateResponse> updateBankInfo(UpdateBankInfoRequest updateKYCRequest) {
         MutableLiveData<UpdateResponse> myAddressResponseMutableLiveData = new MutableLiveData<>();
-        RetrofitInterface retrofitInterface = RetrofitClient.GetRetrofitClient(context, Constant.USER).create(RetrofitInterface.class);
+        RetrofitInterface retrofitInterface = RetrofitClient.GetRetrofitClient(context, Constant.USER_API).create(RetrofitInterface.class);
         Call<UpdateResponse> myProfileResponseCall = retrofitInterface.updateBankInfo(updateKYCRequest);
         myProfileResponseCall.enqueue(new Callback<UpdateResponse>() {
             @Override
@@ -378,7 +378,7 @@ public class MyProfileRepository {
             }
 
             @Override
-            public void onFailure(@NotNull Call<UpdateResponse> call, Throwable t) {
+            public void onFailure(@NotNull Call<UpdateResponse> call, @NotNull Throwable t) {
                 if (t instanceof NoInternetException) {
                     bankInteface.onFailed("No Internet");
                 } else {

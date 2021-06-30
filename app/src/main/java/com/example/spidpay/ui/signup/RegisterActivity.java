@@ -132,6 +132,7 @@ public class RegisterActivity extends AppCompatActivity implements RegisterInter
                 registerViewModel.update_email_Address(s.toString());
             }
         });
+
     }
 
     @Override

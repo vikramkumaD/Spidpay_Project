@@ -35,4 +35,14 @@ public class PrefManager {
         return pref.getBoolean("IsFirstTime", false);
     }
 
+
+    public void setIsLandingPageOpen(boolean isFirstTime) {
+        editor.putBoolean("Islanding", isFirstTime);
+        editor.commit();
+    }
+
+    public boolean getIsLandingPageOpen() {
+        return pref.getBoolean("Islanding", false);
+    }
+
 }

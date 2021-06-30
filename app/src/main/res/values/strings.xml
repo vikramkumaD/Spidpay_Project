@@ -152,7 +152,7 @@
     <string name="mobilenoerror1">Enter mobile number!</string>
     <string name="mobilenoerror2">Mobile number must be 10 digit!</string>
     <string name="passworderror1">Enter password!</string>
-    <string name="passworderror2">Create 6 digit Password!</string>
+    <string name="passworderror2">Password min length is 9!</string>
     <string name="filedcannotbeblank">Field cannot be blank!</string>
     <string name="notification">Notification</string>
     <string name="requestedmt">Requested Amount:</string>
@@ -218,4 +218,23 @@
     <string name="updatebankdeatil">Update Bank Deatil</string>
     <string name="ifsccode">IFSC Code</string>
     <string name="companyname">Company Name</string>
+    <string name="balance">Balance</string>
+    <string name="requestparent">Request Parent</string>
+    <string name="selectoneoptin">Select one option!</string>
+    <string name="notes">Note(Optional)</string>
+    <string name="tenth">10,000</string>
+    <string name="twenth">20,000</string>
+    <string name="thirty">30,000</string>
+    <string name="passworderror3">One capital letter,One number,One spcial character</string>
+    <string name="enterproperaccno">Enter valid Account Number!</string>
+    <string name="validifsc">Enter Valid IFSC Code!</string>
+    <string name="entervalidgstno">Enter Valid GSTIN number!</string>
+    <string name="validpan">Enter Valid PAN NUMBER!</string>
+    <string name="validaadhar">Enter Valid AADHAR Number!</string>
+    <string name="turnongps">Please turn on GPS</string>
+    <string name="rechargesuccessfull">Recharge Successfull</string>
+    <string name="walletrechargesuccess">Wallet Recharge Successful</string>
+    <string name="paymentstatus">Success</string>
+    <string name="rechargeamt">Recharge Amount</string>
+    <string name="backtohome">Back to Home</string>
 </resources>
