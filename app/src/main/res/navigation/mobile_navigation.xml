@@ -39,7 +39,7 @@
         tools:layout="@layout/fragment_available_online_balance" />
     <fragment
         android:id="@+id/cash_Desposit_Fragment"
-        android:name="com.example.spidpay.ui.addmoney.CashDesposit_Activity"
+        android:name="com.example.spidpay.ui.addmoney.cashdeposite.CashDesposit_Activity"
         android:label="fragment_cash_deposit"
         tools:layout="@layout/fragment_cash_deposit" />
     <fragment

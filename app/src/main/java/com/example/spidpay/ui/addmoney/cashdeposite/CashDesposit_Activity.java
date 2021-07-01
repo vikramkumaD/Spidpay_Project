@@ -1,4 +1,4 @@
-package com.example.spidpay.ui.addmoney;
+package com.example.spidpay.ui.addmoney.cashdeposite;
 
 import android.os.Bundle;
 
@@ -22,6 +22,8 @@ public class CashDesposit_Activity extends AppCompatActivity {
         fragmentCashDepositBinding = FragmentCashDepositBinding.inflate(getLayoutInflater());
         setContentView(fragmentCashDepositBinding.getRoot());
 
+
+        fragmentCashDepositBinding.imgBackpress.setOnClickListener(v -> finish());
     }
 
 }

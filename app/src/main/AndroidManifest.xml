@@ -15,7 +15,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Design.Light.NoActionBar"
         android:usesCleartextTraffic="true">
-        <activity android:name=".ui.addmoney.CashDesposit_Activity"/>
+        <activity android:name=".ui.addmoney.cashdeposite.CashDesposit_Activity"/>
         <activity android:name=".ui.addmoney.PaymentSuccessfulActivity"/>
         <activity android:name=".ui.addmoney.online.OnlineActivity" />
         <activity android:name=".ui.addmoney.AddMoneyActivity" />
