@@ -3,27 +3,21 @@ package com.example.spidpay.ui.addmoney.cashdeposite;
 import android.os.Bundle;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.Fragment;
 
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-
-import com.example.spidpay.R;
-import com.example.spidpay.databinding.FragmentCashDepositBinding;
+import com.example.spidpay.databinding.CashDepositeActivityBinding;
 
 
 public class CashDesposit_Activity extends AppCompatActivity {
-    FragmentCashDepositBinding fragmentCashDepositBinding;
+    CashDepositeActivityBinding cashDepositeActivityBinding;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        fragmentCashDepositBinding = FragmentCashDepositBinding.inflate(getLayoutInflater());
-        setContentView(fragmentCashDepositBinding.getRoot());
+        cashDepositeActivityBinding = CashDepositeActivityBinding.inflate(getLayoutInflater());
+        setContentView(cashDepositeActivityBinding.getRoot());
 
 
-        fragmentCashDepositBinding.imgBackpress.setOnClickListener(v -> finish());
+        cashDepositeActivityBinding.imgBackpress.setOnClickListener(v -> finish());
     }
 
 }

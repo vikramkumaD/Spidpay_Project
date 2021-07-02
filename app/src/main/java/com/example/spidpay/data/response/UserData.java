@@ -1,18 +1,17 @@
 package com.example.spidpay.data.response;
 
+import androidx.annotation.NonNull;
 import androidx.room.Entity;
 import androidx.room.Ignore;
 import androidx.room.PrimaryKey;
 
 import com.google.gson.annotations.SerializedName;
 
-import org.jetbrains.annotations.NotNull;
-
 import java.util.List;
 
 @Entity
 public class UserData {
-    @NotNull
+    @NonNull
     @PrimaryKey
     public String userId;
 

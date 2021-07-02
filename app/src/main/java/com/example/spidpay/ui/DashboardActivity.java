@@ -7,7 +7,6 @@ import android.os.Bundle;
 import android.text.SpannableString;
 import android.text.Spanned;
 import android.text.style.ForegroundColorSpan;
-import android.view.View;
 import android.view.WindowManager;
 import android.widget.TextView;
 

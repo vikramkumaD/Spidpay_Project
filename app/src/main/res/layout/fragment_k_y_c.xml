@@ -40,7 +40,8 @@
             android:layout_marginEnd="@dimen/marign20dp"
             android:src="@drawable/ic_baseline_edit_24"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/tv_contact_detail" />
+            app:layout_constraintTop_toTopOf="@+id/tv_contact_detail"
+            android:contentDescription="TODO" />
 
         <TextView
             android:id="@+id/tv_user_pan_number"
@@ -138,7 +139,8 @@
             android:layout_marginEnd="@dimen/marign20dp"
             android:src="@drawable/ic_baseline_edit_24"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/tv_company_deatils" />
+            app:layout_constraintTop_toTopOf="@+id/tv_company_deatils"
+            android:contentDescription="TODO" />
 
 
         <TextView

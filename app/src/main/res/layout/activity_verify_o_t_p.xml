@@ -84,7 +84,8 @@
                 android:paddingBottom="@dimen/marign10dp"
                 android:singleLine="true"
                 android:textColorHint="@color/lightgrey"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toTopOf="parent"
+                android:importantForAutofill="no" />
 
             <ImageView
                 android:id="@+id/img_cleare_login_mobilenumber"
@@ -97,7 +98,8 @@
                 android:src="@drawable/clear_field"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toTopOf="parent"
+                android:contentDescription="TODO" />
         </androidx.constraintlayout.widget.ConstraintLayout>
 
 

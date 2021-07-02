@@ -23,9 +23,9 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class RegisterRepository {
-    Context context;
-    RegisterInterface registerInterface;
-    UserDao userDao;
+    final Context context;
+    final RegisterInterface registerInterface;
+    final UserDao userDao;
 
     public RegisterRepository(Context context, RegisterInterface registerInterface, UserDao userDao) {
         this.context = context;

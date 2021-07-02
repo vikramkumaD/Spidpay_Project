@@ -72,7 +72,8 @@
                     android:paddingTop="@dimen/marign10dp"
                     android:paddingRight="@dimen/marign10dp"
                     android:paddingBottom="@dimen/marign10dp"
-                    android:textColorHint="@color/lightgrey" />
+                    android:textColorHint="@color/lightgrey"
+                    android:importantForAutofill="no" />
 
 
             </LinearLayout>
@@ -104,7 +105,8 @@
                     android:paddingRight="@dimen/marign10dp"
                     android:paddingBottom="@dimen/marign10dp"
                     android:text="@{register_viewmodel.string_register_first_name}"
-                    android:textColorHint="@color/lightgrey" />
+                    android:textColorHint="@color/lightgrey"
+                    android:importantForAutofill="no" />
 
                 <ImageView
                     android:id="@+id/img_clear_register_firstname"
@@ -118,7 +120,8 @@
                     android:visibility="@{register_viewmodel.string_register_first_name.length()>0 ? View.VISIBLE : View.GONE}"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
+                    app:layout_constraintTop_toTopOf="parent"
+                    android:contentDescription="TODO" />
 
 
             </LinearLayout>
@@ -149,7 +152,8 @@
                     android:paddingRight="@dimen/marign10dp"
                     android:paddingBottom="@dimen/marign10dp"
                     android:text="@{register_viewmodel.string_register_last_name}"
-                    android:textColorHint="@color/lightgrey" />
+                    android:textColorHint="@color/lightgrey"
+                    android:importantForAutofill="no" />
 
                 <ImageView
                     android:id="@+id/img_clear_register_lastname"
@@ -163,7 +167,8 @@
                     android:visibility="@{register_viewmodel.string_register_last_name.length()>0 ? View.VISIBLE : View.GONE}"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
+                    app:layout_constraintTop_toTopOf="parent"
+                    android:contentDescription="TODO" />
 
 
             </LinearLayout>
@@ -194,7 +199,8 @@
                     android:paddingRight="@dimen/marign10dp"
                     android:paddingBottom="@dimen/marign10dp"
                     android:text="@={register_viewmodel.string_register_mobile_number}"
-                    android:textColorHint="@color/lightgrey" />
+                    android:textColorHint="@color/lightgrey"
+                    android:importantForAutofill="no" />
 
 
                 <ImageView
@@ -208,7 +214,8 @@
                     android:src="@drawable/clear_field"
                     android:visibility="@{register_viewmodel.string_register_mobile_number.length()>0 ? View.VISIBLE : View.GONE}"
                     app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent" />
+                    app:layout_constraintEnd_toEndOf="parent"
+                    android:contentDescription="TODO" />
 
             </LinearLayout>
 
@@ -237,7 +244,8 @@
                     android:paddingRight="@dimen/marign10dp"
                     android:paddingBottom="@dimen/marign10dp"
                     android:text="@={register_viewmodel.string_register_email_Address}"
-                    android:textColorHint="@color/lightgrey" />
+                    android:textColorHint="@color/lightgrey"
+                    android:importantForAutofill="no" />
 
 
                 <ImageView
@@ -251,7 +259,8 @@
                     android:src="@drawable/clear_field"
                     android:visibility="@{register_viewmodel.string_register_email_Address.length()>0 ? View.VISIBLE : View.GONE}"
                     app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent" />
+                    app:layout_constraintEnd_toEndOf="parent"
+                    android:contentDescription="TODO" />
 
             </LinearLayout>
 

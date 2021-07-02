@@ -98,7 +98,8 @@
                     android:paddingBottom="@dimen/marign10dp"
                     android:text="@string/indiacountrycode"
                     android:textColor="@color/purple_200"
-                    android:textColorHint="@color/lightgrey" />
+                    android:textColorHint="@color/lightgrey"
+                    android:importantForAutofill="no" />
 
 
             </LinearLayout>
@@ -125,7 +126,8 @@
                     android:singleLine="true"
                     android:text="@={login_viewmodel.mobile_number}"
                     android:textColorHint="@color/lightgrey"
-                    app:layout_constraintTop_toTopOf="parent" />
+                    app:layout_constraintTop_toTopOf="parent"
+                    android:importantForAutofill="no" />
 
                 <ImageView
                     android:id="@+id/img_cleare_login_mobilenumber"
@@ -141,7 +143,8 @@
                     android:visibility="@{login_viewmodel.mboolean_mobile_number ? View.VISIBLE : View.GONE}"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
+                    app:layout_constraintTop_toTopOf="parent"
+                    android:contentDescription="TODO" />
             </androidx.constraintlayout.widget.ConstraintLayout>
 
 

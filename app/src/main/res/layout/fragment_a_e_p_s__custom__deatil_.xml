@@ -21,7 +21,6 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <EditText
-            android:id="@+id/edt_aeps_customer_number"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -33,10 +32,10 @@
             android:paddingTop="@dimen/marign10dp"
             android:paddingRight="@dimen/marign10dp"
             android:paddingBottom="@dimen/marign10dp"
-            android:textColorHint="@color/lightgrey" />
+            android:textColorHint="@color/lightgrey"
+            android:importantForAutofill="no" />
 
         <ImageView
-            android:id="@+id/img_aeps_customer_number"
             android:layout_width="@dimen/marign20dp"
             android:layout_height="@dimen/marign20dp"
             android:layout_gravity="center"
@@ -45,7 +44,8 @@
             android:src="@drawable/clear_field"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            android:contentDescription="TODO" />
 
 
     </LinearLayout>
@@ -63,7 +63,6 @@
         app:layout_constraintTop_toBottomOf="@+id/linear_aeps_customer_phone_number">
 
         <EditText
-            android:id="@+id/edt_aeps_customer_name"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -75,10 +74,10 @@
             android:paddingTop="@dimen/marign10dp"
             android:paddingRight="@dimen/marign10dp"
             android:paddingBottom="@dimen/marign10dp"
-            android:textColorHint="@color/lightgrey" />
+            android:textColorHint="@color/lightgrey"
+            android:importantForAutofill="no" />
 
         <ImageView
-            android:id="@+id/img_aeps_customer_name"
             android:layout_width="@dimen/marign20dp"
             android:layout_height="@dimen/marign20dp"
             android:layout_gravity="center"
@@ -87,7 +86,8 @@
             android:src="@drawable/clear_field"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            android:contentDescription="TODO" />
 
 
     </LinearLayout>
@@ -105,7 +105,6 @@
         app:layout_constraintTop_toBottomOf="@+id/linear_aeps_customer_name">
 
         <EditText
-            android:id="@+id/edt_aeps_customer_bank"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -118,7 +117,8 @@
             android:paddingTop="@dimen/marign10dp"
             android:paddingRight="@dimen/marign10dp"
             android:paddingBottom="@dimen/marign10dp"
-            android:textColorHint="@color/lightgrey" />
+            android:textColorHint="@color/lightgrey"
+            android:importantForAutofill="no" />
 
 
     </LinearLayout>
@@ -136,7 +136,6 @@
         app:layout_constraintTop_toBottomOf="@+id/linear_aeps_customer_bank">
 
         <EditText
-            android:id="@+id/edt_aeps_customer_addhar"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -148,10 +147,10 @@
             android:paddingTop="@dimen/marign10dp"
             android:paddingRight="@dimen/marign10dp"
             android:paddingBottom="@dimen/marign10dp"
-            android:textColorHint="@color/lightgrey" />
+            android:textColorHint="@color/lightgrey"
+            android:importantForAutofill="no" />
 
         <ImageView
-            android:id="@+id/img_aeps_customer_addhar"
             android:layout_width="@dimen/marign20dp"
             android:layout_height="@dimen/marign20dp"
             android:layout_gravity="center"
@@ -160,7 +159,8 @@
             android:src="@drawable/clear_field"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            android:contentDescription="TODO" />
 
     </LinearLayout>
 

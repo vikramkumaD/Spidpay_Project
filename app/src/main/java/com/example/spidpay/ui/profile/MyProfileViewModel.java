@@ -7,7 +7,6 @@ import androidx.lifecycle.ViewModel;
 
 import com.example.spidpay.R;
 import com.example.spidpay.data.repository.MyProfileRepository;
-import com.example.spidpay.data.repository.RegisterRepository;
 import com.example.spidpay.data.repository.StaticRepository;
 import com.example.spidpay.data.request.UpdateAddressRequest;
 import com.example.spidpay.data.request.UpdateBankInfoRequest;
@@ -54,7 +53,7 @@ public class MyProfileViewModel extends ViewModel {
     public void validate_edit_Address(View view, MyAddressResponse myAddressResponse) {
         if (myAddressResponse.address1 == null || myAddressResponse.address1.equals("") || myAddressResponse.address2 == null || myAddressResponse.address2.equals("")
                 || myAddressResponse.address3 == null || myAddressResponse.address3.equals("") || myAddressResponse.pinCode == null || myAddressResponse.pinCode.equals("") ||
-                myAddressResponse.state == null || myAddressResponse.state.equals("") || myAddressResponse.country == null || myAddressResponse.equals("")) {
+                myAddressResponse.state == null || myAddressResponse.state.equals("") || myAddressResponse.country == null || myAddressResponse.country.equals("")) {
             myProfileInterface.onFailed(view.getResources().getString(R.string.filedcannotbeblank));
             return;
         }
@@ -208,8 +207,7 @@ public class MyProfileViewModel extends ViewModel {
 
     public LiveData<List<InterrestedforResponse>> getStaticData() {
         staticInterface.onStaticStart();
-        LiveData<List<InterrestedforResponse>> interrestedforliveData = staticRepository.getStaticData(static_value, Constant.ROLE_INTERRESTEDFOR);
-        return interrestedforliveData;
+        return staticRepository.getStaticData(static_value, Constant.ROLE_INTERRESTEDFOR);
     }
 
 }

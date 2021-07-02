@@ -18,6 +18,8 @@ import android.widget.TextView;
 
 import com.example.spidpay.R;
 
+import org.jetbrains.annotations.NotNull;
+
 public class WelcomeActivity extends AppCompatActivity {
     private ViewPager viewPager;
     private MyViewPagerAdapter myViewPagerAdapter;
@@ -46,7 +48,7 @@ public class WelcomeActivity extends AppCompatActivity {
         });
 
         btnNext.setOnClickListener(v -> {
-            int current = getItem(+1);
+            int current = getItem();
             if (current < layouts.length) {
                 viewPager.setCurrentItem(current);
             } else {
@@ -75,12 +77,12 @@ public class WelcomeActivity extends AppCompatActivity {
             dots[currentPage].setTextColor(colorsActive[currentPage]);
     }
 
-    private int getItem(int i) {
-        return viewPager.getCurrentItem() + i;
+    private int getItem() {
+        return viewPager.getCurrentItem() + 1;
     }
 
 
-    ViewPager.OnPageChangeListener viewPagerPageChangeListener = new ViewPager.OnPageChangeListener() {
+    final ViewPager.OnPageChangeListener viewPagerPageChangeListener = new ViewPager.OnPageChangeListener() {
 
         @Override
         public void onPageSelected(int position) {
@@ -116,8 +118,9 @@ public class WelcomeActivity extends AppCompatActivity {
         public MyViewPagerAdapter() {
         }
 
+        @NotNull
         @Override
-        public Object instantiateItem(ViewGroup container, int position) {
+        public Object instantiateItem(@NotNull ViewGroup container, int position) {
             layoutInflater = (LayoutInflater) getSystemService(Context.LAYOUT_INFLATER_SERVICE);
             View view = layoutInflater.inflate(layouts[position], container, false);
             container.addView(view);
@@ -130,13 +133,13 @@ public class WelcomeActivity extends AppCompatActivity {
         }
 
         @Override
-        public boolean isViewFromObject(View view, Object obj) {
+        public boolean isViewFromObject(@NotNull View view, @NotNull Object obj) {
             return view == obj;
         }
 
 
         @Override
-        public void destroyItem(ViewGroup container, int position, Object object) {
+        public void destroyItem(ViewGroup container, int position, @NotNull Object object) {
             View view = (View) object;
             container.removeView(view);
         }

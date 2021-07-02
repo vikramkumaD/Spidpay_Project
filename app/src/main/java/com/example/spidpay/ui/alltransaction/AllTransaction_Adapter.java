@@ -32,7 +32,7 @@ public class AllTransaction_Adapter extends RecyclerView.Adapter<AllTransaction_
     }
 
     public static class AllTransactionViewHolder extends RecyclerView.ViewHolder {
-        AlltransactionItemviewBinding alltransactionItemviewBinding;
+        final AlltransactionItemviewBinding alltransactionItemviewBinding;
         public AllTransactionViewHolder(@NonNull @NotNull AlltransactionItemviewBinding itemView) {
             super(itemView.getRoot());
             this.alltransactionItemviewBinding=itemView;

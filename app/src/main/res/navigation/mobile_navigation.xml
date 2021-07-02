@@ -2,7 +2,6 @@
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/mobile_navigation"
     app:startDestination="@+id/landingFragment">
 
     <fragment
@@ -32,16 +31,6 @@
         tools:layout="@layout/fragment_add_money" >
 
     </fragment>
-    <fragment
-        android:id="@+id/available_Online_Balance_Fragment"
-        android:name="com.example.spidpay.ui.addmoney.Available_Online_Balance_Fragment"
-        android:label="fragment_available_online_balance"
-        tools:layout="@layout/fragment_available_online_balance" />
-    <fragment
-        android:id="@+id/cash_Desposit_Fragment"
-        android:name="com.example.spidpay.ui.addmoney.cashdeposite.CashDesposit_Activity"
-        android:label="fragment_cash_deposit"
-        tools:layout="@layout/fragment_cash_deposit" />
     <fragment
         android:id="@+id/allTransactionFragment"
         android:name="com.example.spidpay.ui.alltransaction.AllTransactionFragment"

@@ -27,7 +27,8 @@
         android:textAllCaps="false"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toLeftOf="@+id/guideline"
-        app:layout_constraintTop_toBottomOf="@+id/tv_select_device" />
+        app:layout_constraintTop_toBottomOf="@+id/tv_select_device"
+        android:contentDescription="TODO" />
 
 
     <TextView
@@ -53,7 +54,8 @@
         android:textAllCaps="false"
         app:layout_constraintLeft_toRightOf="@+id/guideline"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv_select_device" />
+        app:layout_constraintTop_toBottomOf="@+id/tv_select_device"
+        android:contentDescription="TODO" />
 
     <TextView
         android:id="@+id/tv_morpho"
@@ -78,11 +80,11 @@
         android:textAllCaps="false"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toLeftOf="@+id/guideline"
-        app:layout_constraintTop_toBottomOf="@+id/tv_mantra" />
+        app:layout_constraintTop_toBottomOf="@+id/tv_mantra"
+        android:contentDescription="TODO" />
 
 
     <TextView
-        android:id="@+id/tv_startech"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/marign20dp"
@@ -103,10 +105,10 @@
         android:textAllCaps="false"
         app:layout_constraintLeft_toRightOf="@+id/guideline"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv_morpho" />
+        app:layout_constraintTop_toBottomOf="@+id/tv_morpho"
+        android:contentDescription="TODO" />
 
     <TextView
-        android:id="@+id/tv_precision"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/marign20dp"

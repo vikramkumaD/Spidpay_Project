@@ -11,6 +11,8 @@ import com.example.spidpay.interfaces.LandingInterface;
 import com.example.spidpay.util.Constant;
 import com.example.spidpay.util.NoInternetException;
 
+import org.jetbrains.annotations.NotNull;
+
 import java.io.IOException;
 import java.util.List;
 
@@ -19,8 +21,8 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class LandingRepository {
-    Context context;
-    LandingInterface landingInterface;
+    final Context context;
+    final LandingInterface landingInterface;
 
     public LandingRepository(Context context, LandingInterface landingInterface) {
         this.context = context;
@@ -33,7 +35,7 @@ public class LandingRepository {
         Call<List<WalletResponse>> call = retrofitInterface.getWalletResponse(userid);
         call.enqueue(new Callback<List<WalletResponse>>() {
             @Override
-            public void onResponse(Call<List<WalletResponse>> call, Response<List<WalletResponse>> response) {
+            public void onResponse(@NotNull Call<List<WalletResponse>> call, @NotNull Response<List<WalletResponse>> response) {
                 if (response.isSuccessful() && response.body() != null) {
                     listMutableLiveData.postValue(response.body());
                 } else {
@@ -53,7 +55,7 @@ public class LandingRepository {
             }
 
             @Override
-            public void onFailure(Call<List<WalletResponse>> call, Throwable t) {
+            public void onFailure(@NotNull Call<List<WalletResponse>> call, @NotNull Throwable t) {
                 if (t instanceof NoInternetException) {
                     landingInterface.onFailed("No Internet");
                 } else {

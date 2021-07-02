@@ -8,11 +8,9 @@
             android:icon="@drawable/calender"
             android:title="@string/profile" />
         <item
-            android:id="@+id/nav_gallery"
             android:icon="@drawable/mynetwork"
             android:title="@string/mynetwork" />
         <item
-            android:id="@+id/nav_slideshow"
             android:icon="@drawable/commisionstructure"
             android:title="@string/commisionstructure" />
         <item
@@ -31,7 +29,7 @@
             android:title="@string/bydevice" />
     </group>
 
-    <group android:id="@+id/grp2">
+    <group>
         <item
             android:icon="@drawable/user_green"
             android:title="@string/setting" />

@@ -21,8 +21,8 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class StaticRepository {
-    public Context context;
-    public StaticInterface staticInterface;
+    public final Context context;
+    public final StaticInterface staticInterface;
 
     public StaticRepository(Context context, StaticInterface staticInterface) {
         this.context = context;

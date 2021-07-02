@@ -19,6 +19,8 @@ import com.example.spidpay.interfaces.ChangeTitlenandIconInterface;
 
 import org.jetbrains.annotations.NotNull;
 
+import java.util.Objects;
+
 
 public class AllTransactionFragment extends Fragment {
     FragmentAllTransactionBinding fragmentAllTransactionBinding;
@@ -57,17 +59,16 @@ public class AllTransactionFragment extends Fragment {
     }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+    public View onCreateView(@NotNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         fragmentAllTransactionBinding = FragmentAllTransactionBinding.inflate(inflater, container, false);
-        View root = fragmentAllTransactionBinding.getRoot();
-        return root;
+        return fragmentAllTransactionBinding.getRoot();
     }
 
     @Override
     public void onViewCreated(@NonNull @NotNull View view, @Nullable @org.jetbrains.annotations.Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         AllTransaction_Adapter allTransaction_adapter = new AllTransaction_Adapter();
-        ItemOffsetDecoration itemOffsetDecoration=new ItemOffsetDecoration(getActivity(),R.dimen.marign10dp);
+        ItemOffsetDecoration itemOffsetDecoration=new ItemOffsetDecoration(requireActivity(),R.dimen.marign10dp);
         fragmentAllTransactionBinding.rvAllTransaction.addItemDecoration(itemOffsetDecoration);
         fragmentAllTransactionBinding.rvAllTransaction.setLayoutManager(new LinearLayoutManager(getActivity()));
         fragmentAllTransactionBinding.rvAllTransaction.setAdapter(allTransaction_adapter);

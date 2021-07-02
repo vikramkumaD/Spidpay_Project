@@ -68,7 +68,7 @@
 
             </RelativeLayout>
 
-            <fragment
+            <androidx.fragment.app.FragmentContainerView
                 android:id="@+id/nav_host_fragment_content_host"
                 android:name="androidx.navigation.fragment.NavHostFragment"
                 android:layout_width="match_parent"
@@ -146,7 +146,8 @@
                             android:layout_height="@dimen/marign30dp"
                             android:layout_centerHorizontal="true"
                             android:layout_gravity="center"
-                            android:src="@drawable/commission" />
+                            android:src="@drawable/commission"
+                            android:contentDescription="TODO" />
 
                         <TextView
                             android:layout_width="wrap_content"
@@ -183,7 +184,8 @@
                             android:layout_width="@dimen/marign30dp"
                             android:layout_height="@dimen/marign30dp"
                             android:layout_gravity="center"
-                            android:src="@drawable/notificatioin" />
+                            android:src="@drawable/notificatioin"
+                            android:contentDescription="TODO" />
 
                         <TextView
                             android:layout_width="wrap_content"
@@ -219,7 +221,8 @@
                             android:layout_width="@dimen/marign30dp"
                             android:layout_height="@dimen/marign30dp"
                             android:layout_gravity="center"
-                            android:src="@drawable/history" />
+                            android:src="@drawable/history"
+                            android:contentDescription="TODO" />
 
                         <TextView
                             android:layout_width="wrap_content"

@@ -25,10 +25,10 @@ public class RegisterViewModel extends ViewModel {
     StaticRepository staticRepository;
     RegisterInterface registerInterface;
     public String password, confirm_password, code;
-    public MutableLiveData<String> string_register_first_name = new MutableLiveData<>();
-    public MutableLiveData<String> string_register_last_name = new MutableLiveData<>();
-    public MutableLiveData<String> string_register_mobile_number = new MutableLiveData<>();
-    public MutableLiveData<String> string_register_email_Address = new MutableLiveData<>();
+    public final MutableLiveData<String> string_register_first_name = new MutableLiveData<>();
+    public final MutableLiveData<String> string_register_last_name = new MutableLiveData<>();
+    public final MutableLiveData<String> string_register_mobile_number = new MutableLiveData<>();
+    public final MutableLiveData<String> string_register_email_Address = new MutableLiveData<>();
 
     RegisterRepository registerRepository;
 
@@ -112,7 +112,7 @@ public class RegisterViewModel extends ViewModel {
             registerInterface.onFailed(view.getContext().getResources().getString(R.string.passworderror2));
             return;
         }
-        if (!Constant.isValidPassword(password)) {
+        if (Constant.isValidPassword(password)) {
             registerInterface.onFailed(view.getContext().getResources().getString(R.string.passworderror3));
             return;
         }
@@ -153,8 +153,7 @@ public class RegisterViewModel extends ViewModel {
 
     public LiveData<List<InterrestedforResponse>> getInterrestedFor() {
         staticInterface.onStaticStart();
-        LiveData<List<InterrestedforResponse>> interrestedforliveData = staticRepository.getStaticData(Constant.USER,Constant.ROLE_INTERRESTEDFOR);
-        return interrestedforliveData;
+        return staticRepository.getStaticData(Constant.USER,Constant.ROLE_INTERRESTEDFOR);
     }
 
 }

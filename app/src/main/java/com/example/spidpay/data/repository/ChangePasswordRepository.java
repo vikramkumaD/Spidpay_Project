@@ -8,7 +8,6 @@ import com.example.spidpay.data.RetrofitClient;
 import com.example.spidpay.data.RetrofitInterface;
 import com.example.spidpay.data.request.ChangePasswordRequest;
 import com.example.spidpay.data.response.CommonResponse;
-import com.example.spidpay.data.response.LoginResponse;
 import com.example.spidpay.interfaces.ChangePasswordInterface;
 import com.example.spidpay.util.Constant;
 import com.example.spidpay.util.NoInternetException;
@@ -22,8 +21,8 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class ChangePasswordRepository {
-    Context context;
-    ChangePasswordInterface changePasswordInterface;
+    final Context context;
+    final ChangePasswordInterface changePasswordInterface;
 
     public ChangePasswordRepository(Context context, ChangePasswordInterface changePasswordInterface) {
         this.context = context;

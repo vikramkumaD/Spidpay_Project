@@ -25,10 +25,10 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class LoginRepository {
-    Context context;
-    LoginInterface loginInterface;
-    ForgotPassInterface forgotPassInterface;
-    UserDao userDao;
+    final Context context;
+    final LoginInterface loginInterface;
+    final ForgotPassInterface forgotPassInterface;
+    final UserDao userDao;
 
 
 
@@ -194,6 +194,5 @@ public class LoginRepository {
        long l= userDao.insertUser(userData);
         Log.e("ok",String.valueOf(l));
     }
-
 
 }

@@ -14,8 +14,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Design.Light.NoActionBar"
-        android:usesCleartextTraffic="true">
-        <activity android:name=".ui.addmoney.requestparent.TranferMoneyActivity"></activity>
+        android:usesCleartextTraffic="true"
+        android:fullBackupContent="@xml/backup_descriptor">
+        <activity android:name=".ui.addmoney.requestparent.TranferMoneyActivity" />
         <activity android:name=".ui.addmoney.cashdeposite.CashDesposit_Activity" />
         <activity android:name=".ui.addmoney.PaymentSuccessfulActivity" />
         <activity android:name=".ui.addmoney.online.OnlineActivity" />

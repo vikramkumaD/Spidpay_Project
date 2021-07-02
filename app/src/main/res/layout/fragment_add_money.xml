@@ -47,7 +47,8 @@
 
                     android:src="@drawable/ic_baseline_arrow_back_ios_24"
                     app:layout_constraintLeft_toLeftOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
+                    app:layout_constraintTop_toTopOf="parent"
+                    android:contentDescription="TODO" />
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -179,7 +180,8 @@
             android:paddingBottom="@dimen/marign15dp"
             android:textColorHint="@color/lightgrey"
             android:visibility="@{addmoneyviewmodel.requestparent ? View.VISIBLE : View.GONE,default=gone}"
-            app:layout_constraintTop_toBottomOf="@+id/tv_addmoney_requestparent" />
+            app:layout_constraintTop_toBottomOf="@+id/tv_addmoney_requestparent"
+            android:importantForAutofill="no" />
 
 
         <Button

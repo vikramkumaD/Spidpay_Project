@@ -1,11 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <color name="purple_200">#021477</color>
-    <color name="purple_500">#021477</color>
-    <color name="purple_700">#021477</color>
     <color name="welcome_txt_color">#586F8F</color>
-    <color name="teal_200">#FF03DAC5</color>
-    <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
     <color name="approval_text_color">#777071</color>
     <color name="approval_bg">#F8F6F6</color>
@@ -14,9 +10,7 @@
     <color name="unselecttabcolor">#B3EDD2</color>
     <color name="botton_nav_inactive_color">#4E4E4E</color>
     <color name="termsncondtion">#4483EE</color>
-    <color name="blackshades">#90000000</color>
     <color name="darkgrey">#A9A9A9</color>
-    <color name="darkgrey1">#808080</color>
     <color name="lightgrey">#D1D1D1</color>
     <color name="border_color">#50D1D1D1</color>
     <color name="shadeslightgrey">#30DCDCDC</color>
@@ -25,13 +19,11 @@
     <color name="navitem_color">#7E7776</color>
     <color name="seagreen">#28B463</color>
     <color name="dark_blue">#1A1662</color>
-    <color name="light_blue">#95638AF7</color>
     <color name="light_green">#2CC053</color>
     <color name="welcome_green_1">#D3FFDF</color>
     <color name="welcome_green_2">#2AC052</color>
     <color name="forgot_password_Txtcolor">#2869AA</color>
     <color name="page_heading_color">#181461</color>
-    <color name="close_icon">#D6D6D6</color>
     <color name="password_eye_color">#B5B5B5</color>
     <!-- dots inactive colors -->
     <color name="dot_dark_screen1">#A9A9A9</color>

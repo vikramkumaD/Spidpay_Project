@@ -11,7 +11,6 @@ import com.example.spidpay.interfaces.UpdateBottomView;
 import com.google.android.material.navigation.NavigationView;
 
 import androidx.core.view.GravityCompat;
-import androidx.databinding.DataBindingUtil;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;

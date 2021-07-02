@@ -1,7 +1,6 @@
 package com.example.spidpay.ui.notification.approvals;
 
 import android.view.LayoutInflater;
-import android.view.View;
 import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
@@ -37,7 +36,7 @@ public class Noti_Approval_Adapter extends RecyclerView.Adapter<Noti_Approval_Ad
     }
 
     public static class NotiApprovalViewHolder extends RecyclerView.ViewHolder {
-        NotiApprovalsItemviewBinding notiApprovalsItemviewBinding;
+        final NotiApprovalsItemviewBinding notiApprovalsItemviewBinding;
         public NotiApprovalViewHolder(NotiApprovalsItemviewBinding itemView) {
             super(itemView.getRoot());
             this.notiApprovalsItemviewBinding=itemView;

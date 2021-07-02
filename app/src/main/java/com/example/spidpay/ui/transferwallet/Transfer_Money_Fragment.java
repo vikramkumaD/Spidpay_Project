@@ -64,7 +64,7 @@ public class Transfer_Money_Fragment extends Fragment {
     }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+    public View onCreateView(@NotNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         fragmentTransferMoneyBinding = FragmentTransferMoneyBinding.inflate(inflater, container, false);
         return fragmentTransferMoneyBinding.getRoot();
     }
