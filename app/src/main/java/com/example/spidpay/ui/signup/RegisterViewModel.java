@@ -12,7 +12,7 @@ import com.example.spidpay.data.repository.StaticRepository;
 import com.example.spidpay.data.request.RegisterRequest;
 import com.example.spidpay.data.request.Register_UserInfo;
 import com.example.spidpay.data.response.InterrestedforResponse;
-import com.example.spidpay.data.response.RegisterResponse;
+import com.example.spidpay.data.response.UserData;
 import com.example.spidpay.interfaces.RegisterInterface;
 import com.example.spidpay.interfaces.StaticInterface;
 import com.example.spidpay.util.Constant;
@@ -144,7 +144,7 @@ public class RegisterViewModel extends ViewModel {
 
         registerRequest.register_userInfo = register_userInfo;
 
-        LiveData<RegisterResponse> registerResponseLiveData = registerRepository.getRegisterResponse(registerRequest);
+        LiveData<UserData> registerResponseLiveData = registerRepository.getRegisterResponse(registerRequest);
 
         registerInterface.onSuccess(registerResponseLiveData);
 

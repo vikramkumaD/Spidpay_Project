@@ -6,6 +6,7 @@ import androidx.lifecycle.LiveData;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.room.Room;
 
 import android.content.Intent;
 import android.graphics.Color;
@@ -19,13 +20,14 @@ import android.text.style.ForegroundColorSpan;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.WindowManager;
-import android.widget.Toast;
 
 import com.example.spidpay.R;
 import com.example.spidpay.data.repository.RegisterRepository;
 import com.example.spidpay.data.repository.StaticRepository;
-import com.example.spidpay.data.response.RegisterResponse;
+import com.example.spidpay.data.response.UserData;
 import com.example.spidpay.databinding.ActivityRegisterBinding;
+import com.example.spidpay.db.AppDatabase;
+import com.example.spidpay.db.UserDao;
 import com.example.spidpay.interfaces.OnStaticClickIterface;
 import com.example.spidpay.interfaces.RegisterInterface;
 import com.example.spidpay.interfaces.StaticInterface;
@@ -53,13 +55,16 @@ public class RegisterActivity extends AppCompatActivity implements RegisterInter
         activityRegisterBinding = DataBindingUtil.setContentView(this, R.layout.activity_register);
         registerInterface = this;
         onStaticClickIterface = this;
-        staticInterface = (StaticInterface) this;
+        staticInterface = this;
         SpannableString spannableString = new SpannableString(getResources().getString(R.string.dashboard_txt3));
         ForegroundColorSpan foregroundColorSpanCyan = new ForegroundColorSpan(getResources().getColor(R.color.termsncondtion));
         spannableString.setSpan(foregroundColorSpanCyan, 29, 48, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
         activityRegisterBinding.tvTermsncondtion.setText(spannableString);
         staticRepository = new StaticRepository(RegisterActivity.this, staticInterface);
-        RegisterRepository registerRepository = new RegisterRepository(RegisterActivity.this, registerInterface);
+        AppDatabase appDatabase = Room.databaseBuilder(getApplicationContext(), AppDatabase.class, "spidpay_db").build();
+        UserDao userDao = appDatabase.getUserDao();
+        RegisterRepository registerRepository = new RegisterRepository(RegisterActivity.this, registerInterface, userDao);
+
         registerViewModel = new ViewModelProvider(this).get(RegisterViewModel.class);
         registerViewModel.registerInterface = registerInterface;
         registerViewModel.staticRepository = staticRepository;
@@ -133,6 +138,11 @@ public class RegisterActivity extends AppCompatActivity implements RegisterInter
             }
         });
 
+        activityRegisterBinding.tvLogin.setOnClickListener(v -> {
+            Intent intent=new Intent(RegisterActivity.this,LoginActivity.class);
+            intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP|Intent.FLAG_ACTIVITY_SINGLE_TOP);
+            startActivity(intent);
+        });
     }
 
     @Override
@@ -146,12 +156,12 @@ public class RegisterActivity extends AppCompatActivity implements RegisterInter
     public void onFailed(String msg) {
         Constant.START_TOUCH(RegisterActivity.this);
         activityRegisterBinding.pbLogin.setVisibility(View.GONE);
-        Constant.showToast(RegisterActivity.this,msg);
+        Constant.showToast(RegisterActivity.this, msg);
     }
 
 
     @Override
-    public void onSuccess(LiveData<RegisterResponse> responseLiveData) {
+    public void onSuccess(LiveData<UserData> responseLiveData) {
         responseLiveData.observe(this, registerResponse -> {
             if (registerResponse.username != null && !registerResponse.username.equals("")) {
                 Constant.START_TOUCH(RegisterActivity.this);

@@ -30,7 +30,8 @@
             android:elevation="8dp"
             app:layout_constraintTop_toTopOf="parent"
             card_view:cardElevation="10dp"
-            card_view:cardPreventCornerOverlap="false">
+            card_view:cardPreventCornerOverlap="false"
+            tools:targetApi="lollipop">
 
             <RelativeLayout
                 android:layout_width="match_parent"

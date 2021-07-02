@@ -7,6 +7,7 @@ import androidx.core.app.ActivityCompat;
 import androidx.databinding.DataBindingUtil;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.ViewModelProvider;
+import androidx.room.Room;
 
 import android.Manifest;
 import android.annotation.SuppressLint;
@@ -41,6 +42,8 @@ import com.example.spidpay.databinding.ActivityLoginBinding;
 import com.example.spidpay.databinding.ForgotpasswordlayoutBinding;
 import com.example.spidpay.databinding.VerifyOtpDialogBinding;
 import com.example.spidpay.databinding.VerifyusernameBinding;
+import com.example.spidpay.db.AppDatabase;
+import com.example.spidpay.db.UserDao;
 import com.example.spidpay.interfaces.ForgotPassInterface;
 import com.example.spidpay.interfaces.LoginInterface;
 
@@ -96,7 +99,9 @@ public class LoginActivity extends AppCompatActivity implements LoginInterface, 
         tv_signup = findViewById(R.id.tv_signup);
         tv_signup.setText(spannableString);
 
-        LoginRepository loginRepository = new LoginRepository(LoginActivity.this, loginInterface, forgotPassInterface);
+        AppDatabase appDatabase = Room.databaseBuilder(getApplicationContext(), AppDatabase.class, "spidpay_db").build();
+        UserDao userDao = appDatabase.getUserDao();
+        LoginRepository loginRepository = new LoginRepository(LoginActivity.this, loginInterface, forgotPassInterface,userDao);
         loginViewModel = new ViewModelProvider(this).get(LoginViewModel.class);
         loginViewModel.loginInterface = loginInterface;
         loginViewModel.forgotPassInterface = forgotPassInterface;
@@ -225,9 +230,9 @@ public class LoginActivity extends AppCompatActivity implements LoginInterface, 
             if (loginResponse.status.equals(Constant.Success)) {
                 Constant.START_TOUCH(LoginActivity.this);
                 activityLoginBinding.pbLogin.setVisibility(View.GONE);
-                new PrefManager(LoginActivity.this).setUserID(loginResponse.loginUserData.userId);
+                new PrefManager(LoginActivity.this).setUserID(loginResponse.userData.userId);
                 Intent intent = new Intent(LoginActivity.this, VerifyOTPActivity.class);
-                intent.putExtra("username", loginResponse.loginUserData.username);
+                intent.putExtra("username", loginResponse.userData.username);
                 startActivity(intent);
                 finish();
             }

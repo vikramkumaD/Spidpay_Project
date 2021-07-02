@@ -18,9 +18,9 @@ import com.example.spidpay.data.response.InterrestedforResponse;
 import com.example.spidpay.data.response.KYCResponse;
 import com.example.spidpay.data.response.LoginResponse;
 import com.example.spidpay.data.response.MyAddressResponse;
-import com.example.spidpay.data.response.RegisterResponse;
 import com.example.spidpay.data.response.MyProfileResponse;
 import com.example.spidpay.data.response.UpdateResponse;
+import com.example.spidpay.data.response.UserData;
 import com.example.spidpay.data.response.VerifyOTPResponse;
 import com.example.spidpay.data.response.WalletResponse;
 
@@ -43,7 +43,7 @@ public interface RetrofitInterface {
 
     @Headers({"Content-Type:application/json"})
     @POST("user/v1/onBoarding")
-    Call<RegisterResponse> user_onBoarding(@Body RegisterRequest loginRequest);
+    Call<UserData> user_onBoarding(@Body RegisterRequest loginRequest);
 
     @GET("static-data/v1/{category}")
     Call<List<InterrestedforResponse>> getstaticdata(@Path("category") String user, @Query("role") String role);
