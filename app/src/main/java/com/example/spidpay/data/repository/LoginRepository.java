@@ -2,7 +2,9 @@ package com.example.spidpay.data.repository;
 
 import android.content.Context;
 import android.util.Log;
+
 import androidx.lifecycle.MutableLiveData;
+
 import com.example.spidpay.data.RetrofitClient;
 import com.example.spidpay.data.RetrofitInterface;
 import com.example.spidpay.data.request.LoginRequest;
@@ -18,8 +20,12 @@ import com.example.spidpay.interfaces.ForgotPassInterface;
 import com.example.spidpay.interfaces.LoginInterface;
 import com.example.spidpay.util.Constant;
 import com.example.spidpay.util.NoInternetException;
+
 import org.jetbrains.annotations.NotNull;
+
 import java.io.IOException;
+import java.util.logging.Handler;
+
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -190,9 +196,14 @@ public class LoginRepository {
         return responseMutableLiveData;
     }
 
+
     public void insertUserData(UserData userData) {
-       long l= userDao.insertUser(userData);
-        Log.e("ok",String.valueOf(l));
+
+        Thread thread = new Thread(() -> {
+            long l = userDao.insertUser(userData);
+            Log.e("ok", String.valueOf(l));
+        });
+        thread.start();
     }
 
 }

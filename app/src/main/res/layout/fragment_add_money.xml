@@ -6,6 +6,10 @@
 
     <data>
 
+        <variable
+            name="balance"
+            type="String" />
+
         <import type="android.view.View" />
 
         <variable
@@ -193,7 +197,7 @@
             android:layout_marginEnd="@dimen/marign20dp"
             android:background="@drawable/button_bg_green"
             android:fontFamily="@font/lato"
-            android:onClick="@{(v)->addmoneyviewmodel.onButtonContinueClick(v)}"
+            android:onClick="@{(v)->addmoneyviewmodel.onButtonContinueClick(v,balance)}"
             android:text="@string/txtcontinue"
             android:textColor="@color/white"
             app:layout_constraintEnd_toEndOf="parent"

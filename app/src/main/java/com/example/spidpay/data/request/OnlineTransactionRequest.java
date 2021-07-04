@@ -1,6 +1,5 @@
 package com.example.spidpay.data.request;
 
-public class OnlineTransaction {
-
+public class OnlineTransactionRequest {
     public String email, firstName, lastName, phone;
 }

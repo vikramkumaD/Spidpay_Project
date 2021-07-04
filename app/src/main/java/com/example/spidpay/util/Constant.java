@@ -18,10 +18,15 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class Constant {
+
+
     public static final String USER_API = "http://45.79.120.79:6500/spidpay-identity/api/";
     public static final String WALLET_API = "http://45.79.120.79:6700/spidpay-wallet/";
     public static final String TRANSACTION_API = "http://45.79.120.79:6600/spidpay-txnactivity/";
 
+
+    public static final String DOMAIN_NAME="SPIDPAY";
+    public static final String TRANSACTION_CATEGORY_ONLINE="PAYU_ONLINE";
     public static final String Server_ERROR = "Server error!";
     public static final String BANK = "bank";
     public static final String COMPANY = "company";
@@ -121,7 +126,7 @@ public class Constant {
 
     public static void showToast(Context context, String msg) {
         Toast toast = Toast.makeText(context, msg, Toast.LENGTH_SHORT);
-        toast.setGravity(Gravity.CENTER_VERTICAL, 0, 0);
+        toast.setGravity(Gravity.CENTER, 0, 0);
         toast.show();
     }
 

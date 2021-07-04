@@ -205,4 +205,5 @@
     <string name="paymentstatus">Success</string>
     <string name="rechargeamt">Recharge Amount</string>
     <string name="backtohome">Back to Home</string>
+    <string name="norecordfound">No Record Found!</string>
 </resources>

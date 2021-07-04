@@ -1,5 +1,5 @@
 package com.example.spidpay.data.request;
 
-public class WalletTransfer {
+public class WalletTransferRequest {
     public String firstName, lastName, otherUserFirstName, otherUserId, otherUserLastName, partyType, targetWalletId, userId;
 }

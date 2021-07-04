@@ -43,7 +43,6 @@ public class UserData {
     @SerializedName("permissions")
     public List<String> permissions;
 
-
     @Ignore
     @SerializedName("parentUser")
     ParentUser parentUser;

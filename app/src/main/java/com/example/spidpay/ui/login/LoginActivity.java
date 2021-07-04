@@ -58,7 +58,9 @@ import com.google.android.gms.location.LocationRequest;
 import com.google.android.gms.location.LocationResult;
 import com.google.android.gms.location.LocationServices;
 import com.google.android.material.bottomsheet.BottomSheetDialog;
+
 import org.jetbrains.annotations.NotNull;
+
 import java.io.IOException;
 import java.util.List;
 import java.util.Locale;
@@ -101,7 +103,8 @@ public class LoginActivity extends AppCompatActivity implements LoginInterface, 
 
         AppDatabase appDatabase = Room.databaseBuilder(getApplicationContext(), AppDatabase.class, "spidpay_db").build();
         UserDao userDao = appDatabase.getUserDao();
-        LoginRepository loginRepository = new LoginRepository(LoginActivity.this, loginInterface, forgotPassInterface,userDao);
+
+        LoginRepository loginRepository = new LoginRepository(LoginActivity.this, loginInterface, forgotPassInterface, userDao);
         loginViewModel = new ViewModelProvider(this).get(LoginViewModel.class);
         loginViewModel.loginInterface = loginInterface;
         loginViewModel.forgotPassInterface = forgotPassInterface;
@@ -334,6 +337,7 @@ public class LoginActivity extends AppCompatActivity implements LoginInterface, 
             city = addresses.get(0).getLocality();
         } catch (IOException e) {
             e.printStackTrace();
+            Log.e("error: ", e.toString());
             getLocation();
         }
         loginViewModel.latitude = String.valueOf(location.getLatitude());
@@ -347,7 +351,6 @@ public class LoginActivity extends AppCompatActivity implements LoginInterface, 
         if (ActivityCompat.checkSelfPermission(LoginActivity.this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(LoginActivity.this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
             ActivityCompat.requestPermissions(LoginActivity.this, new String[]{Manifest.permission.ACCESS_FINE_LOCATION, Manifest.permission.ACCESS_COARSE_LOCATION}, 1000);
         } else {
-
             fusedLocationProviderClient.getLastLocation().addOnSuccessListener(LoginActivity.this, location -> {
                 if (location != null) {
                     getAddress(location);

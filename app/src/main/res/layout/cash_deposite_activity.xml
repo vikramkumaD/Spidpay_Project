@@ -5,6 +5,9 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
+        <variable
+            name="addmoneyviewmodel"
+            type="com.example.spidpay.ui.addmoney.AddMoneyViewModel" />
 
     </data>
 
@@ -12,7 +15,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:paddingBottom="@dimen/marign100dp"
-        tools:context=".ui.addmoney.cashdeposite.CashDesposit_Activity">
+        tools:context=".ui.addmoney.cashdeposite.CashDespositActivity">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
@@ -88,7 +91,7 @@
                 android:layout_marginStart="@dimen/marign20dp"
                 android:layout_marginTop="@dimen/marign20dp"
                 android:fontFamily="@font/lato_bold"
-                android:text="Rs 60000"
+                android:id="@+id/tv_cashdeposite_balance"
                 android:textColor="@color/light_green"
                 app:layout_constraintLeft_toRightOf="@+id/tv_add_money_to_wallet"
                 app:layout_constraintTop_toBottomOf="@+id/carview_header" />
@@ -105,6 +108,7 @@
                 app:layout_constraintTop_toBottomOf="@+id/tv_add_money_to_wallet">
 
                 <EditText
+                    android:text="@={addmoneyviewmodel.online_money}"
                     android:id="@+id/edt_cash_deposit_amount"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
@@ -132,10 +136,12 @@
                 app:layout_constraintTop_toBottomOf="@+id/linear_enteramount">
 
                 <EditText
-                    android:id="@+id/edt_availbleonlinebalance"
+                    android:id="@+id/edt_bank_list"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
+                    android:focusable="false"
+                    android:cursorVisible="false"
                     android:background="@android:color/transparent"
                     android:drawableEnd="@drawable/ic_baseline_keyboard_arrow_down_24"
                     android:hint="@string/selectbank"
@@ -246,6 +252,16 @@
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintRight_toRightOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/tv_upload_txt" />
+
+            <ProgressBar
+                android:visibility="gone"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                android:id="@+id/pb_cashdeposit"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>

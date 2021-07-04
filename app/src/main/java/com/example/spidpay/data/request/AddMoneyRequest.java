@@ -7,11 +7,11 @@ public class AddMoneyRequest {
     public String amount, domain, notes, userId, walletType, transactionCategory;
 
     @SerializedName("cashTransaction")
-    public CashTransaction cashTransaction;
+    public CashTransactionRequest cashTransactionRequest;
 
     @SerializedName("payuTransaction")
-    public OnlineTransaction onlineTransaction;
+    public OnlineTransactionRequest onlineTransactionRequest;
 
     @SerializedName("walletTransfer")
-    public WalletTransfer walletTransfer;
+    public WalletTransferRequest walletTransferRequest;
 }

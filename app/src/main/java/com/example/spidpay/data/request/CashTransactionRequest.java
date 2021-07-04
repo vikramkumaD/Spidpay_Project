@@ -1,6 +1,6 @@
 package com.example.spidpay.data.request;
 
-public class CashTransaction {
+public class CashTransactionRequest {
     public String bankName, bankReferenceId, dateTime, imageRef, transferMode;
 
 }
