@@ -26,7 +26,6 @@
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@drawable/dialogwith_whiteborder"
             android:paddingStart="@dimen/marign10dp"
             android:paddingTop="@dimen/marign10dp"
             android:paddingEnd="@dimen/marign10dp"

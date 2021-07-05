@@ -13,6 +13,7 @@ import org.json.JSONObject;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.Locale;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -25,8 +26,10 @@ public class Constant {
     public static final String TRANSACTION_API = "http://45.79.120.79:6600/spidpay-txnactivity/";
 
 
-    public static final String DOMAIN_NAME="SPIDPAY";
-    public static final String TRANSACTION_CATEGORY_ONLINE="PAYU_ONLINE";
+    public static final String DOMAIN_NAME = "SPIDPAY";
+    public static final String TRANSACTION_CATEGORY_ONLINE = "PAYU_ONLINE";
+    public static final String TRANSACTION_CATEGORY_CASHDEPOSITE = "CASH_TRANSACTION";
+
     public static final String Server_ERROR = "Server error!";
     public static final String BANK = "bank";
     public static final String COMPANY = "company";
@@ -173,5 +176,10 @@ public class Constant {
         java.util.Date date = inputFormat.parse(Date);
         assert date != null;
         return outputFormat.format(date);
+    }
+
+    public static String getCurrentDateTime() {
+        SimpleDateFormat sdf = new SimpleDateFormat("dd-mm-yyyy hh:mm");
+        return sdf.format(new Date());
     }
 }

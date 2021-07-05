@@ -5,6 +5,11 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
+
+        <variable
+            name="user"
+            type="com.example.spidpay.data.response.UserData" />
+
         <variable
             name="addmoneyviewmodel"
             type="com.example.spidpay.ui.addmoney.AddMoneyViewModel" />
@@ -115,7 +120,7 @@
                     android:layout_weight="1"
                     android:background="@android:color/transparent"
                     android:hint="@string/enteramount"
-                    android:inputType="textPassword"
+                    android:inputType="number"
                     android:paddingLeft="@dimen/marign10dp"
                     android:paddingTop="@dimen/marign15dp"
                     android:paddingRight="@dimen/marign10dp"
@@ -207,6 +212,26 @@
 
             </LinearLayout>
 
+            <EditText
+                android:id="@+id/edt_cashdeposite_notes"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/marign20dp"
+                android:layout_marginTop="@dimen/marign10dp"
+                android:layout_marginEnd="@dimen/marign20dp"
+                android:layout_weight="1"
+                android:text="@={addmoneyviewmodel.online_notes}"
+                android:background="@drawable/edittext_shadow"
+                android:hint="@string/notes"
+                android:importantForAutofill="no"
+                android:paddingLeft="@dimen/marign10dp"
+                android:inputType="text"
+                android:paddingTop="@dimen/marign15dp"
+                android:paddingRight="@dimen/marign10dp"
+                android:paddingBottom="@dimen/marign15dp"
+                android:textColorHint="@color/lightgrey"
+                app:layout_constraintTop_toBottomOf="@+id/linear_bankrefid" />
+
 
             <ImageView
                 android:id="@+id/img_upload_reciept"
@@ -218,7 +243,7 @@
                 android:visibility="gone"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintRight_toRightOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/linear_bankrefid" />
+                app:layout_constraintTop_toBottomOf="@+id/edt_cashdeposite_notes" />
 
 
             <TextView
@@ -237,6 +262,7 @@
 
 
             <Button
+                android:onClick="@{(v)->addmoneyviewmodel.validate_CashDeposite_Filed(v,user)}"
                 android:id="@+id/btn_request_money"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
