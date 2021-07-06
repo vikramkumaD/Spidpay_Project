@@ -5,6 +5,7 @@ import androidx.room.Insert;
 import androidx.room.OnConflictStrategy;
 import androidx.room.Query;
 
+import com.example.spidpay.data.response.ParentUser;
 import com.example.spidpay.data.response.UserData;
 
 import java.util.List;
@@ -12,9 +13,14 @@ import java.util.List;
 @Dao
 public interface UserDao {
     @Insert(onConflict = OnConflictStrategy.IGNORE)
-     long insertUser(UserData userData);
+    long insertUser(UserData userData);
 
+    @Insert(onConflict = OnConflictStrategy.IGNORE)
+    long insertParent(ParentUser parentUser);
 
     @Query("SELECT * FROM UserData")
-    UserData getAll();
+    UserData getUser();
+
+    @Query("select * from ParentUser")
+    ParentUser getParent();
 }

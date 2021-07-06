@@ -24,12 +24,12 @@ public class LandingViewModel extends ViewModel {
         landingInterface.onSuccess(liveData);
     }
 
-    public void openAllTransactionAcivity(View view,String walletid,String balance) {
+    public void openAllTransactionAcivity(View view, String walletid, String balance, String wallettype) {
         Intent intent = new Intent(view.getContext(), AllTransactionByWalletIdAcivity.class);
-        intent.putExtra("walletId",walletid);
-        intent.putExtra("balance",balance);
+        intent.putExtra("walletId", walletid);
+        intent.putExtra("balance", balance);
+        intent.putExtra("SP", wallettype);
         view.getContext().startActivity(intent);
     }
-
 
 }

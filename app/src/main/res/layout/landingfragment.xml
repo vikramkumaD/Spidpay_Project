@@ -92,7 +92,7 @@
                         android:layout_height="@dimen/marign20dp"
                         android:layout_alignParentEnd="true"
                         android:layout_alignParentBottom="true"
-                        android:onClick="@{(v)->landingviewmodel.openAllTransactionAcivity(v,wallet.get(1).walletId,wallet.get(1).walletBalance)}"
+                        android:onClick="@{(v)->landingviewmodel.openAllTransactionAcivity(v,wallet.get(1).walletId,wallet.get(1).walletBalance,`SP`)}"
                         android:src="@drawable/ic_baseline_east_24"
                         android:contentDescription="TODO" />
 
@@ -142,7 +142,7 @@
                     </RelativeLayout>
 
                     <ImageView
-                        android:onClick="@{(v)->landingviewmodel.openAllTransactionAcivity(v,wallet.get(0).walletId,wallet.get(0).walletBalance)}"
+                        android:onClick="@{(v)->landingviewmodel.openAllTransactionAcivity(v,wallet.get(0).walletId,wallet.get(0).walletBalance,`Trade`)}"
                         android:id="@+id/img_tradewallet_popoup"
                         android:layout_width="@dimen/marign20dp"
                         android:layout_height="@dimen/marign20dp"

@@ -8,4 +8,6 @@ public class LoginResponse {
 
     @SerializedName("userData")
     public UserData userData;
+
+
 }

@@ -10,6 +10,9 @@ import com.example.spidpay.data.response.AddMoneyResponse;
 import com.example.spidpay.interfaces.AddMoneyInterface;
 import com.example.spidpay.util.Constant;
 import com.example.spidpay.util.NoInternetException;
+
+import org.jetbrains.annotations.NotNull;
+
 import java.io.IOException;
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -31,7 +34,7 @@ public class AddMoneyRepository {
         Call<AddMoneyResponse> call = retrofitInterface.addMoney(addMoneyRequest);
         call.enqueue(new Callback<AddMoneyResponse>() {
             @Override
-            public void onResponse(Call<AddMoneyResponse> call, Response<AddMoneyResponse> response) {
+            public void onResponse(@NotNull Call<AddMoneyResponse> call, @NotNull Response<AddMoneyResponse> response) {
                 if (response.isSuccessful() && response.body() != null) {
                     addMoneyResponseMutableLiveData.setValue(response.body());
                 } else {

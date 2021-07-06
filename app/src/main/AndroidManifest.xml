@@ -16,11 +16,11 @@
         android:theme="@style/Theme.Design.Light.NoActionBar"
         android:usesCleartextTraffic="true"
         android:fullBackupContent="@xml/backup_descriptor">
-        <activity android:name=".ui.addmoney.requestparent.TranferMoneyActivity" />
-        <activity android:name=".ui.addmoney.cashdeposite.CashDespositActivity" />
-        <activity android:name=".ui.addmoney.PaymentSuccessfulActivity" />
-        <activity android:name=".ui.addmoney.online.OnlineActivity" />
-        <activity android:name=".ui.addmoney.AddMoneyActivity" />
+        <activity android:name=".ui.tradewallet.TransferMoneyActivity" />
+        <activity android:name=".ui.spwallet.cashdeposite.CashDespositActivity" />
+        <activity android:name=".ui.spwallet.PaymentSuccessfulActivity" />
+        <activity android:name=".ui.spwallet.online.OnlineActivity" />
+        <activity android:name=".ui.spwallet.AddMoneyActivity" />
         <activity android:name=".ui.alltransaction.AllTransactionByWalletIdAcivity" />
         <activity
             android:name=".ui.HostActivity"

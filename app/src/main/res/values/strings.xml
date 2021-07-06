@@ -201,9 +201,11 @@
     <string name="validaadhar">Enter Valid AADHAR Number!</string>
     <string name="turnongps">Please turn on GPS</string>
     <string name="rechargesuccessfull">Recharge Successfull</string>
-    <string name="walletrechargesuccess">Wallet Recharge Successful</string>
+    <string name="walletrechargesuccess">Wallet Recharge Successfull</string>
     <string name="paymentstatus">Success</string>
     <string name="rechargeamt">Recharge Amount</string>
     <string name="backtohome">Back to Home</string>
     <string name="norecordfound">No Record Found!</string>
+    <string name="transfermoney">Transfer Money</string>
+    <string name="chooseoption">Choose your preferred option</string>
 </resources>

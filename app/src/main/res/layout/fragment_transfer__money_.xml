@@ -11,7 +11,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".ui.addmoney.Available_Online_Balance_Fragment">
+        tools:context=".ui.spwallet.Available_Online_Balance_Fragment">
 
         <TextView
             android:id="@+id/tv_available_online_balance"

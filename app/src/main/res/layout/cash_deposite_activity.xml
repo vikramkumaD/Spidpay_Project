@@ -12,7 +12,7 @@
 
         <variable
             name="addmoneyviewmodel"
-            type="com.example.spidpay.ui.addmoney.AddMoneyViewModel" />
+            type="com.example.spidpay.ui.spwallet.AddMoneyViewModel" />
 
     </data>
 
@@ -20,7 +20,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:paddingBottom="@dimen/marign100dp"
-        tools:context=".ui.addmoney.cashdeposite.CashDespositActivity">
+        tools:context=".ui.spwallet.cashdeposite.CashDespositActivity">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"

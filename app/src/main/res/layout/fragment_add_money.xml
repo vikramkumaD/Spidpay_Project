@@ -14,7 +14,7 @@
 
         <variable
             name="addmoneyviewmodel"
-            type="com.example.spidpay.ui.addmoney.AddMoneyViewModel" />
+            type="com.example.spidpay.ui.spwallet.AddMoneyViewModel" />
 
     </data>
 
@@ -143,7 +143,6 @@
         <RadioButton
             android:id="@+id/rb_requestparent"
             android:layout_width="wrap_content"
-
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/marign20dp"
             android:layout_marginTop="@dimen/marign20dp"
@@ -182,10 +181,35 @@
             android:paddingTop="@dimen/marign15dp"
             android:paddingRight="@dimen/marign10dp"
             android:paddingBottom="@dimen/marign15dp"
+            android:text="@={addmoneyviewmodel.online_money}"
             android:textColorHint="@color/lightgrey"
             android:visibility="@{addmoneyviewmodel.requestparent ? View.VISIBLE : View.GONE,default=gone}"
             app:layout_constraintTop_toBottomOf="@+id/tv_addmoney_requestparent"
             android:importantForAutofill="no" />
+
+
+
+        <EditText
+            android:id="@+id/edt_request_parent_notes"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/marign20dp"
+            android:layout_marginTop="@dimen/marign20dp"
+            android:layout_marginEnd="@dimen/marign20dp"
+            android:layout_weight="1"
+            android:background="@drawable/edittext_shadow"
+            android:hint="@string/notes"
+            android:inputType="text"
+            android:paddingLeft="@dimen/marign10dp"
+            android:paddingTop="@dimen/marign15dp"
+            android:paddingRight="@dimen/marign10dp"
+            android:paddingBottom="@dimen/marign15dp"
+            android:text="@={addmoneyviewmodel.online_notes}"
+            android:textColorHint="@color/lightgrey"
+            android:visibility="@{addmoneyviewmodel.requestparent ? View.VISIBLE : View.GONE,default=gone}"
+            app:layout_constraintTop_toBottomOf="@+id/edt_request_parent"
+            android:importantForAutofill="no" />
+
 
 
         <Button
@@ -202,7 +226,18 @@
             android:textColor="@color/white"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/edt_request_parent" />
+            app:layout_constraintTop_toBottomOf="@+id/edt_request_parent_notes" />
+
+
+        <ProgressBar
+            android:visibility="gone"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:id="@+id/pbrequestparent"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

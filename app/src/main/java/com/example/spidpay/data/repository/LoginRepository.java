@@ -13,6 +13,7 @@ import com.example.spidpay.data.request.VerifyOTPReqest;
 import com.example.spidpay.data.response.BooleanResponse;
 import com.example.spidpay.data.response.CommonResponse;
 import com.example.spidpay.data.response.LoginResponse;
+import com.example.spidpay.data.response.ParentUser;
 import com.example.spidpay.data.response.UserData;
 import com.example.spidpay.data.response.VerifyOTPResponse;
 import com.example.spidpay.db.UserDao;
@@ -35,7 +36,6 @@ public class LoginRepository {
     final LoginInterface loginInterface;
     final ForgotPassInterface forgotPassInterface;
     final UserDao userDao;
-
 
 
     public LoginRepository(Context context, LoginInterface loginInterface, ForgotPassInterface forgotPassInterface, UserDao userDao) {
@@ -200,8 +200,10 @@ public class LoginRepository {
     public void insertUserData(UserData userData) {
 
         Thread thread = new Thread(() -> {
-            long l = userDao.insertUser(userData);
-            Log.e("ok", String.valueOf(l));
+            long u = userDao.insertUser(userData);
+            long p = userDao.insertParent(userData.parentUser);
+            Log.e("user ", String.valueOf(u));
+            Log.e("parent ", String.valueOf(p));
         });
         thread.start();
     }

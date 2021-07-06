@@ -1,4 +1,4 @@
-package com.example.spidpay.ui.addmoney.cashdeposite;
+package com.example.spidpay.ui.spwallet.cashdeposite;
 
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
@@ -8,7 +8,6 @@ import android.view.View;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.LiveData;
-import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -24,7 +23,7 @@ import com.example.spidpay.db.UserDao;
 import com.example.spidpay.interfaces.AddMoneyInterface;
 import com.example.spidpay.interfaces.OnStaticClickIterface;
 import com.example.spidpay.interfaces.StaticInterface;
-import com.example.spidpay.ui.addmoney.AddMoneyViewModel;
+import com.example.spidpay.ui.spwallet.AddMoneyViewModel;
 import com.example.spidpay.ui.signup.InterrestedforAdapter;
 import com.example.spidpay.util.Constant;
 import com.example.spidpay.util.ItemOffsetDecoration;
@@ -65,7 +64,7 @@ public class CashDespositActivity extends AppCompatActivity implements OnStaticC
         cashDepositeActivityBinding.setAddmoneyviewmodel(addMoneyViewModel);
         cashDepositeActivityBinding.tvCashdepositeBalance.setText(balance);
 
-        new Thread(() -> cashDepositeActivityBinding.setUser(userDao.getAll())).start();
+        new Thread(() -> cashDepositeActivityBinding.setUser(userDao.getUser())).start();
 
 
         cashDepositeActivityBinding.executePendingBindings();

@@ -68,8 +68,10 @@ public class RegisterRepository {
 
     public void insertUserData(UserData userData) {
         new Thread(() -> {
-            long l = userDao.insertUser(userData);
-            Log.e("ok", String.valueOf(l));
+            long u = userDao.insertUser(userData);
+            long p = userDao.insertParent(userData.parentUser);
+            Log.e("user ", String.valueOf(u));
+            Log.e("parent ", String.valueOf(p));
         }).start();
     }
 }

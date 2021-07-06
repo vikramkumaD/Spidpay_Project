@@ -45,7 +45,7 @@ public class UserData {
 
     @Ignore
     @SerializedName("parentUser")
-    ParentUser parentUser;
+    public ParentUser parentUser;
 
 }
 

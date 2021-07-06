@@ -26,7 +26,7 @@
         tools:layout="@layout/fragment_change_password" />
     <fragment
         android:id="@+id/addMoneyFragment"
-        android:name="com.example.spidpay.ui.addmoney.AddMoneyActivity"
+        android:name="com.example.spidpay.ui.spwallet.AddMoneyActivity"
         android:label="fragment_add_money"
         tools:layout="@layout/fragment_add_money" >
 

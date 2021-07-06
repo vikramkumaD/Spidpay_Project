@@ -28,6 +28,7 @@ public class Constant {
 
     public static final String DOMAIN_NAME = "SPIDPAY";
     public static final String TRANSACTION_CATEGORY_ONLINE = "PAYU_ONLINE";
+    public static final String TRANSACTION_CATEGORY_WALLET_TRANSFER = "WALLET_TRANSFER";
     public static final String TRANSACTION_CATEGORY_CASHDEPOSITE = "CASH_TRANSACTION";
 
     public static final String Server_ERROR = "Server error!";
