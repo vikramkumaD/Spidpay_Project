@@ -29,8 +29,6 @@
 
             <androidx.cardview.widget.CardView
                 android:id="@+id/carview_header"
-                card_view:cardElevation="10dp"
-                card_view:cardPreventCornerOverlap="false"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:clipChildren="false"
@@ -38,34 +36,36 @@
                 android:divider="@android:color/transparent"
                 android:dividerHeight="0.0px"
                 android:elevation="8dp"
-                app:layout_constraintTop_toTopOf="parent">
+                app:layout_constraintTop_toTopOf="parent"
+                card_view:cardElevation="10dp"
+                card_view:cardPreventCornerOverlap="false">
 
                 <RelativeLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:paddingTop="@dimen/marign5dp"
-                    android:paddingBottom="@dimen/marign5dp">
+                    android:paddingTop="@dimen/marign10dp"
+                    android:paddingBottom="@dimen/marign10dp">
 
                     <ImageView
                         android:id="@+id/img_backpress"
-                        android:layout_width="30dp"
-                        android:layout_height="30dp"
+                        android:layout_width="24dp"
+                        android:layout_height="24dp"
                         android:layout_marginStart="@dimen/marign10dp"
-
+                        android:contentDescription="TODO"
                         android:src="@drawable/ic_baseline_arrow_back_ios_24"
                         app:layout_constraintLeft_toLeftOf="parent"
-                        app:layout_constraintTop_toTopOf="parent"
-                        android:contentDescription="TODO" />
+                        app:layout_constraintTop_toTopOf="parent" />
 
                     <TextView
+                        android:id="@+id/tv_transaction_headername"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_centerVertical="true"
                         android:layout_toRightOf="@+id/img_backpress"
                         android:fontFamily="@font/lato_bold"
-                        android:text="@string/addmoney"
+                        android:text="@string/spidpaywallet"
                         android:textColor="@color/page_heading_color"
-                        android:textSize="@dimen/marign16sp"
+                        android:textSize="@dimen/marign18sp"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintLeft_toRightOf="@+id/img_backpress"
                         app:layout_constraintTop_toTopOf="parent" />
@@ -91,12 +91,12 @@
 
 
             <TextView
+                android:id="@+id/tv_cashdeposite_balance"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/marign20dp"
                 android:layout_marginTop="@dimen/marign20dp"
                 android:fontFamily="@font/lato_bold"
-                android:id="@+id/tv_cashdeposite_balance"
                 android:textColor="@color/light_green"
                 app:layout_constraintLeft_toRightOf="@+id/tv_add_money_to_wallet"
                 app:layout_constraintTop_toBottomOf="@+id/carview_header" />
@@ -113,7 +113,6 @@
                 app:layout_constraintTop_toBottomOf="@+id/tv_add_money_to_wallet">
 
                 <EditText
-                    android:text="@={addmoneyviewmodel.online_money}"
                     android:id="@+id/edt_cash_deposit_amount"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
@@ -125,6 +124,7 @@
                     android:paddingTop="@dimen/marign15dp"
                     android:paddingRight="@dimen/marign10dp"
                     android:paddingBottom="@dimen/marign15dp"
+                    android:text="@={addmoneyviewmodel.online_money}"
                     android:textColorHint="@color/lightgrey" />
 
             </LinearLayout>
@@ -145,10 +145,10 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:focusable="false"
-                    android:cursorVisible="false"
                     android:background="@android:color/transparent"
+                    android:cursorVisible="false"
                     android:drawableEnd="@drawable/ic_baseline_keyboard_arrow_down_24"
+                    android:focusable="false"
                     android:hint="@string/selectbank"
                     android:inputType="text"
                     android:paddingLeft="@dimen/marign10dp"
@@ -171,6 +171,8 @@
                 app:layout_constraintTop_toBottomOf="@+id/linear_selectbank">
 
                 <EditText
+                    android:focusable="false"
+                    android:cursorVisible="false"
                     android:id="@+id/edt_cashdeposit_transctiontype"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
@@ -220,15 +222,15 @@
                 android:layout_marginTop="@dimen/marign10dp"
                 android:layout_marginEnd="@dimen/marign20dp"
                 android:layout_weight="1"
-                android:text="@={addmoneyviewmodel.online_notes}"
                 android:background="@drawable/edittext_shadow"
                 android:hint="@string/notes"
                 android:importantForAutofill="no"
-                android:paddingLeft="@dimen/marign10dp"
                 android:inputType="text"
+                android:paddingLeft="@dimen/marign10dp"
                 android:paddingTop="@dimen/marign15dp"
                 android:paddingRight="@dimen/marign10dp"
                 android:paddingBottom="@dimen/marign15dp"
+                android:text="@={addmoneyviewmodel.online_notes}"
                 android:textColorHint="@color/lightgrey"
                 app:layout_constraintTop_toBottomOf="@+id/linear_bankrefid" />
 
@@ -262,7 +264,6 @@
 
 
             <Button
-                android:onClick="@{(v)->addmoneyviewmodel.validate_CashDeposite_Filed(v,user)}"
                 android:id="@+id/btn_request_money"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -271,6 +272,7 @@
                 android:layout_marginRight="@dimen/marign10dp"
                 android:background="@drawable/button_bg_green"
                 android:fontFamily="@font/lato"
+                android:onClick="@{(v)->addmoneyviewmodel.validate_CashDeposite_Filed(v,user)}"
                 android:text="@string/reqestmoney"
                 android:textAllCaps="false"
                 android:textColor="@color/white"
@@ -280,14 +282,14 @@
                 app:layout_constraintTop_toBottomOf="@+id/tv_upload_txt" />
 
             <ProgressBar
-                android:visibility="gone"
-                app:layout_constraintRight_toRightOf="parent"
-                app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintBottom_toBottomOf="parent"
                 android:id="@+id/pb_cashdeposit"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"/>
+                android:layout_height="wrap_content"
+                android:visibility="gone"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>

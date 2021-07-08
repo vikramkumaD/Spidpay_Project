@@ -12,10 +12,10 @@ import java.util.List;
 
 @Dao
 public interface UserDao {
-    @Insert(onConflict = OnConflictStrategy.IGNORE)
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
     long insertUser(UserData userData);
 
-    @Insert(onConflict = OnConflictStrategy.IGNORE)
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
     long insertParent(ParentUser parentUser);
 
     @Query("SELECT * FROM UserData")

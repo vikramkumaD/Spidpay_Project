@@ -1,8 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android">
-
     <data>
-
         <variable
             name="landingviewmodel"
             type="com.example.spidpay.ui.landing_page.LandingViewModel" />
@@ -67,7 +65,7 @@
                             android:fontFamily="@font/lato"
                             android:paddingStart="@dimen/marign10dp"
                             android:paddingEnd="@dimen/marign10dp"
-                            android:text="@{wallet.get(1).walletType}"
+                            android:text="@string/spidpaywallet"
                             android:textColor="@color/white"
                             android:textStyle="bold" />
 
@@ -80,7 +78,7 @@
                             android:fontFamily="@font/lato"
                             android:paddingStart="@dimen/marign10dp"
                             android:paddingEnd="@dimen/marign10dp"
-                            android:text="@{wallet.get(1).walletBalance}"
+                            android:text="@{`₹ `+wallet.get(1).walletBalance}"
                             android:textColor="@color/white" />
 
 
@@ -122,7 +120,7 @@
                             android:fontFamily="@font/lato"
                             android:paddingStart="@dimen/marign10dp"
                             android:paddingEnd="@dimen/marign10dp"
-                            android:text="@{wallet.get(0).walletType}"
+                            android:text="@string/tradewallet"
                             android:textColor="@color/white"
                             android:textStyle="bold" />
 
@@ -135,7 +133,7 @@
                             android:fontFamily="@font/lato"
                             android:paddingLeft="@dimen/marign10dp"
                             android:paddingEnd="@dimen/marign10dp"
-                            android:text="@{wallet.get(0).walletBalance}"
+                            android:text="@{`₹ `+wallet.get(0).walletBalance}"
                             android:textColor="@color/white" />
 
 

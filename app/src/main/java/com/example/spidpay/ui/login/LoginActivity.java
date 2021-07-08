@@ -48,6 +48,7 @@ import com.example.spidpay.interfaces.ForgotPassInterface;
 import com.example.spidpay.interfaces.LoginInterface;
 
 import com.example.spidpay.location.GpsUtils;
+import com.example.spidpay.ui.DashboardActivity;
 import com.example.spidpay.ui.signup.RegisterActivity;
 import com.example.spidpay.ui.verifyotp.VerifyOTPActivity;
 import com.example.spidpay.util.Constant;
@@ -90,6 +91,7 @@ public class LoginActivity extends AppCompatActivity implements LoginInterface, 
         activityLoginBinding = DataBindingUtil.setContentView(this, R.layout.activity_login);
         loginInterface = this;
         forgotPassInterface = this;
+        new PrefManager(LoginActivity.this).setIsFirstTime(true);
         intliazeView();
     }
 
@@ -137,8 +139,8 @@ public class LoginActivity extends AppCompatActivity implements LoginInterface, 
         fusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(this);
         locationRequest = LocationRequest.create();
         locationRequest.setPriority(LocationRequest.PRIORITY_HIGH_ACCURACY);
-        locationRequest.setInterval(10 * 1000); // 10 seconds
-        locationRequest.setFastestInterval(5 * 1000); // 5 seconds
+        locationRequest.setInterval(10 * 10000); // 10 seconds
+        locationRequest.setFastestInterval(5 * 10000); // 5 seconds
 
         locationCallback = new LocationCallback() {
             @Override

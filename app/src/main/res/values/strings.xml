@@ -57,7 +57,7 @@
     <string name="logout">Logout</string>
 
     <string name="image">TODO</string>
-    <string name="welcomescreentext12">Money Transfer | Aeps | mATM</string>
+    <string name="welcomescreentext12">DMT | AEPS | MATM</string>
     <string name="forgotpassword_txt">Forgot Password</string>
     <string name="title_activity_host">HostActivity</string>
     <string name="nav_header_title">Android Studio</string>
@@ -86,7 +86,7 @@
     <string name="usingpaymentgetway">Using Payment Getway</string>
     <string name="cashdeposit">Cash Deposit</string>
     <string name="requiredvalidation">Requires the Validation of upload transaction slip</string>
-    <string name="available_balance">Available Wallet Balance</string>
+    <string name="available_balance">Available Trade Balance</string>
     <string name="enteramount">Enter Amount</string>
     <string name="proceed">Proceed</string>
     <string name="moneyaddedtowallet">Money will be added to Wallet</string>
@@ -208,4 +208,7 @@
     <string name="norecordfound">No Record Found!</string>
     <string name="transfermoney">Transfer Money</string>
     <string name="chooseoption">Choose your preferred option</string>
+    <string name="spidpaywallet">Spid Wallet</string>
+    <string name="tradewallet">Trade Wallet</string>
+    <string name="rupess">"₹ "</string>
 </resources>

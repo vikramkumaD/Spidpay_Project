@@ -18,11 +18,11 @@
     <color name="green">#2AC052</color>
     <color name="navitem_color">#7E7776</color>
     <color name="seagreen">#28B463</color>
-    <color name="dark_blue">#1A1662</color>
+    <color name="dark_blue">#542DC0</color>
     <color name="light_green">#2CC053</color>
     <color name="welcome_green_1">#D3FFDF</color>
     <color name="welcome_green_2">#2AC052</color>
-    <color name="forgot_password_Txtcolor">#2869AA</color>
+    <color name="forgot_password_Txtcolor">#6D51C3</color>
     <color name="page_heading_color">#181461</color>
     <color name="password_eye_color">#B5B5B5</color>
     <!-- dots inactive colors -->

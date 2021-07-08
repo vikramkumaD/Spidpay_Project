@@ -40,12 +40,13 @@ public class CashDespositActivity extends AppCompatActivity implements OnStaticC
     StaticRepository staticRepository;
     AddMoneyInterface addMoneyInterface;
     AddMoneyRepository addMoneyRepository;
+    private boolean isbanklistcalled = false;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         onStaticClickIterface = this;
-        addMoneyInterface=this;
+        addMoneyInterface = this;
         staticInterface = CashDespositActivity.this;
         cashDepositeActivityBinding = CashDepositeActivityBinding.inflate(getLayoutInflater());
         setContentView(cashDepositeActivityBinding.getRoot());
@@ -54,13 +55,13 @@ public class CashDespositActivity extends AppCompatActivity implements OnStaticC
 
         AppDatabase appDatabase = Room.databaseBuilder(getApplicationContext(), AppDatabase.class, "spidpay_db").build();
         UserDao userDao = appDatabase.getUserDao();
-        addMoneyRepository=new AddMoneyRepository(CashDespositActivity.this,addMoneyInterface);
+        addMoneyRepository = new AddMoneyRepository(CashDespositActivity.this, addMoneyInterface);
         staticRepository = new StaticRepository(CashDespositActivity.this, staticInterface);
         addMoneyViewModel = new ViewModelProvider(this).get(AddMoneyViewModel.class);
-        addMoneyViewModel.addMoneyRepository=addMoneyRepository;
+        addMoneyViewModel.addMoneyRepository = addMoneyRepository;
         addMoneyViewModel.staticInterface = staticInterface;
         addMoneyViewModel.staticRepository = staticRepository;
-        addMoneyViewModel.addMoneyInterface=addMoneyInterface;
+        addMoneyViewModel.addMoneyInterface = addMoneyInterface;
         cashDepositeActivityBinding.setAddmoneyviewmodel(addMoneyViewModel);
         cashDepositeActivityBinding.tvCashdepositeBalance.setText(balance);
 
@@ -69,7 +70,14 @@ public class CashDespositActivity extends AppCompatActivity implements OnStaticC
 
         cashDepositeActivityBinding.executePendingBindings();
         cashDepositeActivityBinding.setLifecycleOwner(this);
-        cashDepositeActivityBinding.edtBankList.setOnClickListener(v -> getBanKList());
+        cashDepositeActivityBinding.edtBankList.setOnClickListener(v -> {
+            isbanklistcalled = false;
+            getBanKList();
+        });
+        cashDepositeActivityBinding.edtCashdepositTransctiontype.setOnClickListener(v -> {
+            isbanklistcalled = true;
+            getTransactionType();
+        });
     }
 
     public void getBanKList() {
@@ -83,7 +91,30 @@ public class CashDespositActivity extends AppCompatActivity implements OnStaticC
         ItemOffsetDecoration itemOffsetDecoration = new ItemOffsetDecoration(CashDespositActivity.this, R.dimen.marign10dp);
         rv_interreseted_for.addItemDecoration(itemOffsetDecoration);
 
+
         addMoneyViewModel.getStaticData().observe(this, interrestedforResponses -> {
+            cashDepositeActivityBinding.pbCashdeposit.setVisibility(View.GONE);
+            Constant.START_TOUCH(CashDespositActivity.this);
+            InterrestedforAdapter interrestedforAdapter = new InterrestedforAdapter(interrestedforResponses, onStaticClickIterface);
+            rv_interreseted_for.setAdapter(interrestedforAdapter);
+            interrestedfor_bottomsheet.show();
+        });
+
+    }
+
+    public void getTransactionType() {
+        addMoneyViewModel.static_value = Constant.BANK;
+        View view = LayoutInflater.from(CashDespositActivity.this).inflate(R.layout.interrestedfor_bottomsheet, null);
+        interrestedfor_bottomsheet = new BottomSheetDialog(CashDespositActivity.this);
+        interrestedfor_bottomsheet.setContentView(view);
+        interrestedfor_bottomsheet.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+        RecyclerView rv_interreseted_for = view.findViewById(R.id.rv_interreseted_for);
+        rv_interreseted_for.setLayoutManager(new LinearLayoutManager(CashDespositActivity.this));
+        ItemOffsetDecoration itemOffsetDecoration = new ItemOffsetDecoration(CashDespositActivity.this, R.dimen.marign10dp);
+        rv_interreseted_for.addItemDecoration(itemOffsetDecoration);
+
+
+        addMoneyViewModel.getTransactionType().observe(this, interrestedforResponses -> {
             cashDepositeActivityBinding.pbCashdeposit.setVisibility(View.GONE);
             Constant.START_TOUCH(CashDespositActivity.this);
             InterrestedforAdapter interrestedforAdapter = new InterrestedforAdapter(interrestedforResponses, onStaticClickIterface);
@@ -95,9 +126,15 @@ public class CashDespositActivity extends AppCompatActivity implements OnStaticC
 
     @Override
     public void onItemClick(String code, String description) {
-        addMoneyViewModel.bankcode = code;
-        addMoneyViewModel.bankname = description;
-        cashDepositeActivityBinding.edtBankList.setText(description);
+        if (isbanklistcalled) {
+            addMoneyViewModel.transactiontype = code;
+            addMoneyViewModel.transactiontype = description;
+            cashDepositeActivityBinding.edtCashdepositTransctiontype.setText(description);
+        } else {
+            addMoneyViewModel.bankcode = code;
+            addMoneyViewModel.bankname = description;
+            cashDepositeActivityBinding.edtBankList.setText(description);
+        }
         interrestedfor_bottomsheet.dismiss();
     }
 
@@ -129,9 +166,9 @@ public class CashDespositActivity extends AppCompatActivity implements OnStaticC
 
     @Override
     public void onFailed(String msg) {
-
         Constant.START_TOUCH(CashDespositActivity.this);
         cashDepositeActivityBinding.pbCashdeposit.setVisibility(View.GONE);
         Constant.showToast(CashDespositActivity.this, msg);
     }
+
 }

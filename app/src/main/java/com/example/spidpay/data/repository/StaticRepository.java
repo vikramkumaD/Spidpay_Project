@@ -14,6 +14,7 @@ import com.example.spidpay.util.NoInternetException;
 import org.jetbrains.annotations.NotNull;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 import retrofit2.Call;
@@ -66,4 +67,18 @@ public class StaticRepository {
         return listMutableLiveData;
 
     }
+
+    public MutableLiveData<List<InterrestedforResponse>> getTransactionType() {
+
+        MutableLiveData<List<InterrestedforResponse>> listMutableLiveData = new MutableLiveData<>();
+        List<InterrestedforResponse> stringList = new ArrayList<>();
+        stringList.add(new InterrestedforResponse("IMPS", "IMPS"));
+        stringList.add(new InterrestedforResponse("NEFT", "NEFT"));
+        stringList.add(new InterrestedforResponse("OTHERS", "OTHERS"));
+        stringList.add(new InterrestedforResponse("RTGS", "RTGS"));
+        stringList.add(new InterrestedforResponse("UPI", "UPI"));
+        listMutableLiveData.setValue(stringList);
+        return listMutableLiveData;
+    }
+
 }

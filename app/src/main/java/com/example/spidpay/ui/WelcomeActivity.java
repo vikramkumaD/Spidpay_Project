@@ -17,6 +17,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.example.spidpay.R;
+import com.example.spidpay.ui.login.LoginActivity;
 
 import org.jetbrains.annotations.NotNull;
 
@@ -43,7 +44,7 @@ public class WelcomeActivity extends AppCompatActivity {
         viewPager.setAdapter(myViewPagerAdapter);
         viewPager.addOnPageChangeListener(viewPagerPageChangeListener);
         btnSkip.setOnClickListener(v -> {
-            startActivity(new Intent(WelcomeActivity.this, DashboardActivity.class));
+            startActivity(new Intent(WelcomeActivity.this, LoginActivity.class));
             finish();
         });
 
@@ -52,7 +53,7 @@ public class WelcomeActivity extends AppCompatActivity {
             if (current < layouts.length) {
                 viewPager.setCurrentItem(current);
             } else {
-                startActivity(new Intent(WelcomeActivity.this, DashboardActivity.class));
+                startActivity(new Intent(WelcomeActivity.this, LoginActivity.class));
                 finish();
             }
         });
