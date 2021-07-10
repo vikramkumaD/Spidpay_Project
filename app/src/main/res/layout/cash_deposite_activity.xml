@@ -19,7 +19,6 @@
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:paddingBottom="@dimen/marign100dp"
         tools:context=".ui.spwallet.cashdeposite.CashDespositActivity">
 
         <androidx.constraintlayout.widget.ConstraintLayout
@@ -200,6 +199,7 @@
                 app:layout_constraintTop_toBottomOf="@+id/linear_selecttransctiontype">
 
                 <EditText
+                    android:text="@={addmoneyviewmodel.bankrefid}"
                     android:id="@+id/edt_cashdeposit_bankrefid"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"

@@ -1,5 +1,6 @@
 package com.example.spidpay.ui.spwallet.cashdeposite;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
@@ -23,8 +24,10 @@ import com.example.spidpay.db.UserDao;
 import com.example.spidpay.interfaces.AddMoneyInterface;
 import com.example.spidpay.interfaces.OnStaticClickIterface;
 import com.example.spidpay.interfaces.StaticInterface;
+import com.example.spidpay.ui.spwallet.AddMoneyActivity;
 import com.example.spidpay.ui.spwallet.AddMoneyViewModel;
 import com.example.spidpay.ui.signup.InterrestedforAdapter;
+import com.example.spidpay.ui.spwallet.PaymentSuccessfulActivity;
 import com.example.spidpay.util.Constant;
 import com.example.spidpay.util.ItemOffsetDecoration;
 import com.google.android.material.bottomsheet.BottomSheetDialog;
@@ -131,9 +134,13 @@ public class CashDespositActivity extends AppCompatActivity implements OnStaticC
             addMoneyViewModel.transactiontype = description;
             cashDepositeActivityBinding.edtCashdepositTransctiontype.setText(description);
         } else {
-            addMoneyViewModel.bankcode = code;
-            addMoneyViewModel.bankname = description;
-            cashDepositeActivityBinding.edtBankList.setText(description);
+            if(!code.equals("9999"))
+            {
+                addMoneyViewModel.bankcode = code;
+                addMoneyViewModel.bankname = description;
+                cashDepositeActivityBinding.edtBankList.setText(description);
+            }
+
         }
         interrestedfor_bottomsheet.dismiss();
     }
@@ -155,6 +162,11 @@ public class CashDespositActivity extends AppCompatActivity implements OnStaticC
         addMoneyResponseLiveData.observe(this, addMoneyResponse -> {
             Constant.START_TOUCH(CashDespositActivity.this);
             cashDepositeActivityBinding.pbCashdeposit.setVisibility(View.GONE);
+            Intent intent=new Intent(CashDespositActivity.this, PaymentSuccessfulActivity.class);
+            intent.putExtra("amount",addMoneyResponse.amount);
+            intent.putExtra("datetime",addMoneyResponse.creationTime);
+            intent.putExtra("title",true);
+            startActivity(intent);
         });
     }
 

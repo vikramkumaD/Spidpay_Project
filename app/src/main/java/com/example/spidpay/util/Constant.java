@@ -179,6 +179,14 @@ public class Constant {
         return outputFormat.format(date);
     }
 
+    public static String convertDate2(String Date) throws ParseException {
+        DateFormat inputFormat = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss.mm", Locale.US);
+        DateFormat outputFormat = new SimpleDateFormat("dd/MM/yyyy hh:mm a", Locale.ENGLISH);
+        java.util.Date date = inputFormat.parse(Date);
+        assert date != null;
+        return outputFormat.format(date);
+    }
+
     public static String getCurrentDateTime() {
         SimpleDateFormat sdf = new SimpleDateFormat("dd-mm-yyyy hh:mm");
         return sdf.format(new Date());

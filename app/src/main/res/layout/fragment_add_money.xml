@@ -260,6 +260,7 @@
 
 
         <Button
+            android:textAllCaps="false"
             android:id="@+id/btn_chooseoptionformoney"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

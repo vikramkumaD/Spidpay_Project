@@ -211,4 +211,7 @@
     <string name="spidpaywallet">Spid Wallet</string>
     <string name="tradewallet">Trade Wallet</string>
     <string name="rupess">"₹ "</string>
+    <string name="cashdepositsuccesmsg1">Your request for adding money</string>
+    <string name="cashdepositsuccesmsg2">to your wallet has been sent successfully</string>
+    <string name="cashdepositsuccesmsg3">The amount will be credited to your wallet after it is approved.</string>
 </resources>
