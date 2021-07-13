@@ -12,6 +12,7 @@ import android.view.WindowManager;
 
 import com.example.spidpay.R;
 import com.example.spidpay.databinding.SplashscreenBinding;
+import com.example.spidpay.ui.login.LoginActivity;
 import com.example.spidpay.util.PrefManager;
 
 public class SplashscreenActivity extends AppCompatActivity {
@@ -37,7 +38,7 @@ public class SplashscreenActivity extends AppCompatActivity {
                     if (new PrefManager(SplashscreenActivity.this).getIsLandingPageOpen()) {
                         startActivity(new Intent(SplashscreenActivity.this, HostActivity.class));
                     } else {
-                        startActivity(new Intent(SplashscreenActivity.this, DashboardActivity.class));
+                        startActivity(new Intent(SplashscreenActivity.this, LoginActivity.class));
                     }
 
                 } else {

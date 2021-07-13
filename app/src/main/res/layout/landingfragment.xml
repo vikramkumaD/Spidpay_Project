@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android">
+
     <data>
+
         <variable
             name="landingviewmodel"
             type="com.example.spidpay.ui.landing_page.LandingViewModel" />
@@ -10,8 +12,7 @@
             type="java.util.List&lt;com.example.spidpay.data.response.WalletResponse>" />
     </data>
 
-    <ScrollView
-        xmlns:tools="http://schemas.android.com/tools"
+    <ScrollView xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="@dimen/marign100dp"
@@ -90,9 +91,9 @@
                         android:layout_height="@dimen/marign20dp"
                         android:layout_alignParentEnd="true"
                         android:layout_alignParentBottom="true"
+                        android:contentDescription="TODO"
                         android:onClick="@{(v)->landingviewmodel.openAllTransactionAcivity(v,wallet.get(1).walletId,wallet.get(1).walletBalance,`SP`)}"
-                        android:src="@drawable/ic_baseline_east_24"
-                        android:contentDescription="TODO" />
+                        android:src="@drawable/ic_baseline_east_24" />
 
 
                 </RelativeLayout>
@@ -140,14 +141,14 @@
                     </RelativeLayout>
 
                     <ImageView
-                        android:onClick="@{(v)->landingviewmodel.openAllTransactionAcivity(v,wallet.get(0).walletId,wallet.get(0).walletBalance,`Trade`)}"
                         android:id="@+id/img_tradewallet_popoup"
                         android:layout_width="@dimen/marign20dp"
                         android:layout_height="@dimen/marign20dp"
                         android:layout_alignParentEnd="true"
                         android:layout_alignParentBottom="true"
-                        android:src="@drawable/ic_baseline_east_24"
-                        android:contentDescription="TODO" />
+                        android:contentDescription="TODO"
+                        android:onClick="@{(v)->landingviewmodel.openAllTransactionAcivity(v,wallet.get(0).walletId,wallet.get(0).walletBalance,`Trade`)}"
+                        android:src="@drawable/ic_baseline_east_24" />
 
                 </RelativeLayout>
 
@@ -197,26 +198,26 @@
                             <RelativeLayout
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:layout_centerInParent="true">
+                                android:layout_centerInParent="true"
+                                android:layout_centerHorizontal="true">
 
                                 <ImageView
-                                    android:id="@+id/img_dmt"
-                                    android:layout_width="@dimen/marign40dp"
+                                    android:layout_width="@dimen/marign45dp"
                                     android:layout_height="53dp"
+                                    android:id="@+id/img_dmt"
                                     android:layout_gravity="center"
                                     android:contentDescription="@string/image"
                                     android:src="@drawable/dmt_icon" />
 
                                 <TextView
+                                    android:textSize="@dimen/marign18sp"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:layout_below="@+id/img_dmt"
-                                    android:layout_centerHorizontal="true"
-                                    android:layout_marginTop="@dimen/marign5dp"
+                                    android:layout_marginTop="@dimen/marign10dp"
                                     android:fontFamily="@font/lato_bold"
                                     android:text="@string/dmt"
-                                    android:textColor="@color/white"
-                                    android:textSize="@dimen/marign20sp" />
+                                    android:textColor="@color/white" />
 
                             </RelativeLayout>
 
@@ -227,7 +228,7 @@
                     <RelativeLayout
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="@dimen/marign10dp"
+
                         android:layout_weight="1">
 
                         <RelativeLayout
@@ -244,9 +245,9 @@
                                 android:layout_centerInParent="true">
 
                                 <ImageView
-                                    android:id="@+id/img_aadhar"
                                     android:layout_width="@dimen/marign45dp"
                                     android:layout_height="53dp"
+                                    android:id="@+id/img_aadhar"
                                     android:layout_centerHorizontal="true"
                                     android:contentDescription="@string/image"
                                     android:src="@drawable/aeps_icon" />
@@ -256,10 +257,11 @@
                                     android:layout_height="wrap_content"
                                     android:layout_below="@+id/img_aadhar"
                                     android:layout_centerHorizontal="true"
+                                    android:layout_marginTop="@dimen/marign10dp"
                                     android:fontFamily="@font/lato_bold"
                                     android:text="@string/Aeps"
-                                    android:textColor="@color/white"
-                                    android:textSize="@dimen/marign20sp" />
+                                    android:textSize="@dimen/marign18sp"
+                                    android:textColor="@color/white" />
 
                             </RelativeLayout>
                         </RelativeLayout>
@@ -269,7 +271,6 @@
                     <RelativeLayout
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="@dimen/marign10dp"
                         android:layout_marginEnd="@dimen/marign10dp"
                         android:layout_weight="1">
 
@@ -286,23 +287,23 @@
                                 android:layout_centerInParent="true">
 
                                 <ImageView
-                                    android:id="@+id/img_aatm"
                                     android:layout_width="88dp"
                                     android:layout_height="53dp"
+                                    android:id="@+id/img_aatm"
                                     android:layout_centerHorizontal="true"
                                     android:contentDescription="@string/image"
                                     android:src="@drawable/matm_icon" />
 
                                 <TextView
+                                    android:textSize="@dimen/marign18sp"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:layout_below="@+id/img_aatm"
                                     android:layout_centerHorizontal="true"
-                                    android:layout_marginTop="@dimen/marign5dp"
+                                    android:layout_marginTop="@dimen/marign10dp"
                                     android:fontFamily="@font/lato_bold"
                                     android:text="@string/mAtm"
-                                    android:textColor="@color/white"
-                                    android:textSize="@dimen/marign20sp" />
+                                    android:textColor="@color/white" />
 
 
                             </RelativeLayout>
@@ -336,101 +337,123 @@
                     android:paddingTop="@dimen/marign10dp"
                     android:paddingEnd="@dimen/marign10dp">
 
+
                     <RelativeLayout
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1">
+                        android:layout_width="@dimen/landing_page_bg_width"
+                        android:layout_height="@dimen/landing_page_bg_height"
+                        android:background="@drawable/ic_blue_circle_bg">
 
                         <RelativeLayout
-                            android:layout_width="@dimen/marign100dp"
-                            android:layout_height="@dimen/marign100dp"
-                            android:layout_centerInParent="true"
-                            android:background="@drawable/other_service_bg"
-                            android:orientation="vertical">
-
-                            <RelativeLayout
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_centerInParent="true">
-
-                                <ImageView
-                                    android:id="@+id/img_recharge"
-                                    android:layout_width="@dimen/marign60dp"
-                                    android:layout_height="@dimen/marign60dp"
-                                    android:layout_centerHorizontal="true"
-                                    android:src="@drawable/dth"
-                                    android:contentDescription="TODO" />
+                            android:id="@+id/relative_dth"
+                            android:layout_width="70dp"
+                            android:layout_height="70dp"
+                            android:layout_centerHorizontal="true"
+                            android:layout_marginTop="@dimen/marign15dp"
+                            android:background="@drawable/ic_grey_circle">
 
 
-                            </RelativeLayout>
+                            <ImageView
+                                android:id="@+id/img_recharge"
+                                android:layout_width="@dimen/marign20dp"
+                                android:layout_height="@dimen/marign30dp"
+                                android:layout_centerInParent="true"
+                                android:src="@drawable/ic_dth_recharge" />
+
+
                         </RelativeLayout>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@+id/relative_dth"
+                            android:layout_centerHorizontal="true"
+                            android:layout_marginBottom="@dimen/marign10dp"
+                            android:fontFamily="@font/lato_bold"
+                            android:text="@string/dthrecharge"
+                            android:textColor="@color/white"
+                            android:textSize="12sp" />
+
 
                     </RelativeLayout>
 
+
                     <RelativeLayout
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="@dimen/marign10dp"
-                        android:layout_weight="1">
+                        android:layout_width="@dimen/landing_page_bg_width"
+                        android:layout_height="@dimen/landing_page_bg_height"
+                        android:layout_centerInParent="true"
+                        android:background="@drawable/ic_blue_circle_bg">
 
                         <RelativeLayout
-                            android:layout_width="@dimen/marign100dp"
-                            android:layout_height="@dimen/marign100dp"
-                            android:layout_centerInParent="true"
-                            android:background="@drawable/other_service_bg"
-                            android:orientation="vertical">
+                            android:id="@+id/relative_electricity"
+                            android:layout_width="@dimen/grey_circle_height_width"
+                            android:layout_height="@dimen/grey_circle_height_width"
+                            android:layout_centerHorizontal="true"
+                            android:layout_marginTop="@dimen/marign15dp"
+                            android:background="@drawable/ic_grey_circle">
 
-                            <RelativeLayout
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_centerInParent="true">
-
-
-                                <ImageView
-
-                                    android:id="@+id/img_gasbill"
-                                    android:layout_width="@dimen/marign60dp"
-                                    android:layout_height="@dimen/marign60dp"
-                                    android:layout_centerHorizontal="true"
-                                    android:src="@drawable/electric"
-                                    android:contentDescription="TODO" />
+                            <ImageView
+                                android:id="@+id/img_gasbill"
+                                android:layout_width="@dimen/marign20dp"
+                                android:layout_height="@dimen/marign30dp"
+                                android:layout_centerInParent="true"
+                                android:contentDescription="TODO"
+                                android:src="@drawable/ic_electricity_icon" />
 
 
-                            </RelativeLayout>
                         </RelativeLayout>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@+id/relative_electricity"
+                            android:layout_centerHorizontal="true"
+                            android:layout_marginBottom="@dimen/marign10dp"
+                            android:fontFamily="@font/lato_bold"
+                            android:text="@string/electricity"
+                            android:textColor="@color/white"
+                            android:textSize="12sp" />
 
                     </RelativeLayout>
 
+
                     <RelativeLayout
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="@dimen/marign10dp"
-                        android:layout_weight="1">
+                        android:layout_width="@dimen/landing_page_bg_width"
+                        android:layout_height="@dimen/landing_page_bg_height"
+                        android:layout_centerInParent="true"
+                        android:background="@drawable/ic_blue_circle_bg">
 
                         <RelativeLayout
-                            android:layout_width="@dimen/marign100dp"
-                            android:layout_height="@dimen/marign100dp"
-                            android:layout_centerInParent="true"
-                            android:background="@drawable/other_service_bg"
-                            android:orientation="vertical">
+                            android:id="@+id/relative_gas"
+                            android:layout_width="@dimen/grey_circle_height_width"
+                            android:layout_height="@dimen/grey_circle_height_width"
+                            android:layout_centerHorizontal="true"
+                            android:layout_marginTop="@dimen/marign15dp"
+                            android:background="@drawable/ic_grey_circle">
 
-                            <RelativeLayout
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_centerInParent="true">
+                            <ImageView
+                                android:id="@+id/img_gas"
+                                android:layout_width="@dimen/marign20dp"
+                                android:layout_height="@dimen/marign30dp"
+                                android:layout_centerInParent="true"
+                                android:contentDescription="TODO"
+                                android:src="@drawable/ic_gas"
 
-                                <ImageView
-                                    android:id="@+id/img_electriccity"
-                                    android:layout_width="@dimen/marign60dp"
-                                    android:layout_height="@dimen/marign60dp"
-                                    android:layout_centerHorizontal="true"
-                                    android:src="@drawable/gas"
-                                    android:contentDescription="TODO" />
+                                />
 
 
-                            </RelativeLayout>
                         </RelativeLayout>
 
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@+id/relative_gas"
+                            android:layout_centerHorizontal="true"
+                            android:layout_marginBottom="@dimen/marign10dp"
+                            android:fontFamily="@font/lato_bold"
+                            android:text="@string/gas"
+                            android:textColor="@color/white"
+                            android:textSize="12sp" />
                     </RelativeLayout>
 
 
@@ -440,73 +463,88 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_below="@+id/linear_money2"
-                    android:layout_marginTop="@dimen/marign20dp"
                     android:paddingStart="@dimen/marign10dp"
                     android:paddingTop="@dimen/marign10dp"
                     android:paddingEnd="@dimen/marign10dp"
                     android:paddingBottom="@dimen/marign30dp">
 
+
                     <RelativeLayout
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1">
+                        android:layout_width="@dimen/landing_page_bg_width"
+                        android:layout_height="@dimen/landing_page_bg_height"
+                        android:background="@drawable/ic_blue_circle_bg">
 
                         <RelativeLayout
-                            android:layout_width="@dimen/marign100dp"
-                            android:layout_height="@dimen/marign100dp"
-                            android:layout_centerInParent="true"
-                            android:background="@drawable/other_service_bg"
-                            android:orientation="vertical">
+                            android:id="@+id/relative_water_bill"
+                            android:layout_width="@dimen/grey_circle_height_width"
+                            android:layout_height="@dimen/grey_circle_height_width"
+                            android:layout_centerHorizontal="true"
+                            android:layout_marginTop="@dimen/marign15dp"
+                            android:background="@drawable/ic_grey_circle">
 
-                            <RelativeLayout
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_centerInParent="true">
-
-                                <ImageView
-                                    android:id="@+id/img_waterbill"
-                                    android:layout_width="@dimen/marign60dp"
-                                    android:layout_height="@dimen/marign60dp"
-                                    android:layout_centerHorizontal="true"
-                                    android:src="@drawable/water_bill"
-                                    android:contentDescription="TODO" />
+                            <ImageView
+                                android:id="@+id/img_waterbill"
+                                android:layout_width="@dimen/marign30dp"
+                                android:layout_height="@dimen/marign30dp"
+                                android:layout_centerInParent="true"
+                                android:contentDescription="TODO"
+                                android:src="@drawable/ic_tap" />
 
 
-                            </RelativeLayout>
                         </RelativeLayout>
 
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@+id/relative_water_bill"
+                            android:layout_centerHorizontal="true"
+                            android:layout_marginBottom="@dimen/marign10dp"
+                            android:fontFamily="@font/lato_bold"
+                            android:text="@string/waterbill"
+                            android:textColor="@color/white"
+                            android:textSize="12sp" />
                     </RelativeLayout>
 
                     <RelativeLayout
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="@dimen/marign10dp"
-                        android:layout_weight="1">
+                        android:layout_width="@dimen/landing_page_bg_width"
+                        android:layout_height="@dimen/landing_page_bg_height"
+                        android:background="@drawable/ic_blue_circle_bg"
+                        android:orientation="vertical">
 
                         <RelativeLayout
-                            android:layout_width="@dimen/marign100dp"
-                            android:layout_height="@dimen/marign100dp"
-                            android:layout_centerInParent="true"
-                            android:background="@drawable/other_service_bg"
-                            android:orientation="vertical">
+                            android:id="@+id/relative_landline"
+                            android:layout_width="@dimen/grey_circle_height_width"
+                            android:layout_height="@dimen/grey_circle_height_width"
+                            android:layout_centerHorizontal="true"
+                            android:layout_marginTop="@dimen/marign15dp"
+                            android:background="@drawable/ic_grey_circle"
 
-                            <RelativeLayout
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_centerInParent="true">
-
-                                <ImageView
-                                    android:id="@+id/img_dthbill"
-                                    android:layout_width="@dimen/marign60dp"
-                                    android:layout_height="@dimen/marign60dp"
-                                    android:layout_centerHorizontal="true"
-                                    android:src="@drawable/landline"
-                                    android:contentDescription="TODO" />
+                            >
 
 
-                            </RelativeLayout>
+                            <ImageView
+                                android:id="@+id/img_dthbill"
+                                android:layout_width="@dimen/marign20dp"
+                                android:layout_height="@dimen/marign30dp"
+                                android:layout_centerInParent="true"
+                                android:contentDescription="TODO"
+                                android:src="@drawable/ic_landline" />
+
+
                         </RelativeLayout>
 
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@+id/relative_landline"
+                            android:layout_centerHorizontal="true"
+                            android:layout_marginBottom="@dimen/marign10dp"
+                            android:fontFamily="@font/lato_bold"
+                            android:text="@string/landline"
+                            android:textColor="@color/white"
+                            android:textSize="12sp" />
                     </RelativeLayout>
 
                     <RelativeLayout
@@ -536,28 +574,31 @@
                                     <ImageView
                                         android:layout_width="@dimen/marign10dp"
                                         android:layout_height="@dimen/marign10dp"
-                                        android:src="@drawable/circle_green"
-                                        android:contentDescription="TODO" />
+                                        android:contentDescription="TODO"
+                                        android:src="@drawable/circle_green" />
 
                                     <ImageView
                                         android:layout_width="@dimen/marign10dp"
                                         android:layout_height="@dimen/marign10dp"
                                         android:layout_marginStart="@dimen/marign3dp"
-                                        android:src="@drawable/circle_green"
-                                        android:contentDescription="TODO" />
+                                        android:contentDescription="TODO"
+                                        android:src="@drawable/circle_green" />
 
                                     <ImageView
                                         android:layout_width="@dimen/marign10dp"
                                         android:layout_height="@dimen/marign10dp"
                                         android:layout_marginStart="@dimen/marign3dp"
-                                        android:src="@drawable/circle_green"
-                                        android:contentDescription="TODO" />
+                                        android:contentDescription="TODO"
+                                        android:src="@drawable/circle_green" />
                                 </LinearLayout>
 
                             </RelativeLayout>
                         </RelativeLayout>
                     </RelativeLayout>
+
                 </LinearLayout>
+
+
             </RelativeLayout>
 
             <ProgressBar

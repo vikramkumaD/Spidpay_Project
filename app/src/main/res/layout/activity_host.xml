@@ -146,7 +146,7 @@
                             android:layout_height="@dimen/marign30dp"
                             android:layout_centerHorizontal="true"
                             android:layout_gravity="center"
-                            android:src="@drawable/commission"
+                            android:src="@drawable/ic_commision"
                             android:contentDescription="TODO" />
 
                         <TextView

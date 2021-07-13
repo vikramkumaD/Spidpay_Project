@@ -214,4 +214,9 @@
     <string name="cashdepositsuccesmsg1">Your request for adding money</string>
     <string name="cashdepositsuccesmsg2">to your wallet has been sent successfully</string>
     <string name="cashdepositsuccesmsg3">The amount will be credited to your wallet after it is approved.</string>
+    <string name="dthrecharge">DTH Recharge</string>
+    <string name="electricity">Electricity</string>
+    <string name="gas">Gas</string>
+    <string name="waterbill">Water Bill</string>
+    <string name="landline">Landline</string>
 </resources>
