@@ -27,6 +27,7 @@ import com.example.spidpay.interfaces.StaticInterface;
 import com.example.spidpay.ui.spwallet.AddMoneyActivity;
 import com.example.spidpay.ui.spwallet.AddMoneyViewModel;
 import com.example.spidpay.ui.signup.InterrestedforAdapter;
+import com.example.spidpay.ui.spwallet.PaymentFailedActivity;
 import com.example.spidpay.ui.spwallet.PaymentSuccessfulActivity;
 import com.example.spidpay.util.Constant;
 import com.example.spidpay.util.ItemOffsetDecoration;
@@ -117,6 +118,7 @@ public class CashDespositActivity extends AppCompatActivity implements OnStaticC
         rv_interreseted_for.addItemDecoration(itemOffsetDecoration);
 
 
+
         addMoneyViewModel.getTransactionType().observe(this, interrestedforResponses -> {
             cashDepositeActivityBinding.pbCashdeposit.setVisibility(View.GONE);
             Constant.START_TOUCH(CashDespositActivity.this);
@@ -167,6 +169,7 @@ public class CashDespositActivity extends AppCompatActivity implements OnStaticC
             intent.putExtra("datetime",addMoneyResponse.creationTime);
             intent.putExtra("title",true);
             startActivity(intent);
+            finish();
         });
     }
 
@@ -181,6 +184,8 @@ public class CashDespositActivity extends AppCompatActivity implements OnStaticC
         Constant.START_TOUCH(CashDespositActivity.this);
         cashDepositeActivityBinding.pbCashdeposit.setVisibility(View.GONE);
         Constant.showToast(CashDespositActivity.this, msg);
+        Intent intent=new Intent(CashDespositActivity.this, PaymentFailedActivity.class);
+        startActivity(intent);
     }
 
 }

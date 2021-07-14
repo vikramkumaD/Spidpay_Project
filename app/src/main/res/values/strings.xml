@@ -129,7 +129,7 @@
     <string name="btn_reject">Reject</string>
     <string name="successful">Successful</string>
     <string name="refund">Refund</string>
-    <string name="failed">Failed</string>
+    <string name="failed">Failed!</string>
     <string name="selecttrasctionperiod">Select transaction period</string>
     <string name="lastmonth">Last Month</string>
     <string name="last3month">Last 3 Month</string>
@@ -219,4 +219,5 @@
     <string name="gas">Gas</string>
     <string name="waterbill">Water Bill</string>
     <string name="landline">Landline</string>
+    <string name="transactionfailed">Your transaction is failed. try again!</string>
 </resources>
