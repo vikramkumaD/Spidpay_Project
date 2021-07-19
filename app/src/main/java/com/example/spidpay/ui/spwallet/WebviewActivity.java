@@ -10,6 +10,7 @@ import android.net.http.SslError;
 import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 import android.webkit.SslErrorHandler;
 import android.webkit.WebResourceError;
 import android.webkit.WebResourceRequest;
@@ -19,11 +20,12 @@ import android.webkit.WebViewClient;
 
 import com.example.spidpay.R;
 import com.example.spidpay.databinding.ActivityWebviewBinding;
+import com.example.spidpay.util.PrefManager;
 
 public class WebviewActivity extends AppCompatActivity {
     ActivityWebviewBinding activityWebviewBinding;
-    private String Url = "http://test.wlt.spidpay.in/spidpay-wallet#/pg-payu?txnId=";
-
+    private String Url = "http://test.wlt.spidpay.in/spidpay-wallet#/wlt-online-payment?userId=";
+    private String tempurl="http://test.wlt.spidpay.in/spidpay-wallet#/wlt-online-payment?userId=eaf02719-c928-42d5-86a8-7530933a44ca&walletId=1106621477978039";
     @SuppressLint("SetJavaScriptEnabled")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,8 +34,10 @@ public class WebviewActivity extends AppCompatActivity {
         setContentView(activityWebviewBinding.getRoot());
         activityWebviewBinding.view.getSettings().setJavaScriptEnabled(true);
         activityWebviewBinding.view.getSettings().setBuiltInZoomControls(true);
-        activityWebviewBinding.view.loadUrl(Url + getIntent().getStringExtra("txnid"));
+        Url = Url+new PrefManager(WebviewActivity.this).getUserID() + "&walletId="+ getIntent().getStringExtra("walletId");
+        activityWebviewBinding.view.loadUrl(tempurl);
         activityWebviewBinding.view.canGoBack();
+        activityWebviewBinding.imgBackpress.setOnClickListener(v -> finish());
         activityWebviewBinding.view.setWebViewClient(new WebViewClient() {
             @Override
             public boolean shouldOverrideUrlLoading(WebView view, String urlNewString) {

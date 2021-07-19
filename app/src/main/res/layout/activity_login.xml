@@ -162,8 +162,7 @@
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/linear_mobile_number"
             app:passwordToggleDrawable="@drawable/ic_baseline_remove_red_eye_24"
-
-            app:passwordToggleEnabled="true">
+            app:endIconMode="password_toggle">
 
             <androidx.appcompat.widget.AppCompatEditText
                 android:id="@+id/edt_loginpassword"
@@ -173,7 +172,7 @@
                 android:gravity="center_vertical"
                 android:hint="@string/password"
                 android:maxLength="20"
-                android:inputType="text"
+                android:inputType="textPassword"
                 android:paddingStart="@dimen/marign15dp"
                 android:paddingEnd="@dimen/marign10dp"
                 android:text="@={login_viewmodel.password}"
