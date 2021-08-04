@@ -7,6 +7,7 @@ import androidx.core.app.ActivityCompat;
 import androidx.databinding.DataBindingUtil;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.ViewModelProvider;
+import androidx.room.Room;
 
 import android.Manifest;
 import android.annotation.SuppressLint;
@@ -14,8 +15,6 @@ import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
-import android.location.Address;
-import android.location.Geocoder;
 import android.location.Location;
 import android.os.Build;
 import android.os.Bundle;
@@ -24,7 +23,6 @@ import android.text.SpannableString;
 import android.text.Spanned;
 import android.text.TextWatcher;
 import android.text.style.ForegroundColorSpan;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.WindowManager;
@@ -41,6 +39,8 @@ import com.example.spidpay.databinding.ActivityLoginBinding;
 import com.example.spidpay.databinding.ForgotpasswordlayoutBinding;
 import com.example.spidpay.databinding.VerifyotpdialogBinding;
 import com.example.spidpay.databinding.VerifyusernameBinding;
+import com.example.spidpay.db.AppDatabase;
+import com.example.spidpay.db.UserDao;
 import com.example.spidpay.interfaces.ForgotPassInterface;
 import com.example.spidpay.interfaces.LoginInterface;
 
@@ -55,10 +55,8 @@ import com.google.android.gms.location.LocationRequest;
 import com.google.android.gms.location.LocationResult;
 import com.google.android.gms.location.LocationServices;
 import com.google.android.material.bottomsheet.BottomSheetDialog;
+
 import org.jetbrains.annotations.NotNull;
-import java.io.IOException;
-import java.util.List;
-import java.util.Locale;
 
 public class LoginActivity extends AppCompatActivity implements LoginInterface, ForgotPassInterface {
     LoginViewModel loginViewModel;
@@ -74,7 +72,7 @@ public class LoginActivity extends AppCompatActivity implements LoginInterface, 
     private int forgot_dialog_counter = 0;
     LocationRequest locationRequest;
     FusedLocationProviderClient fusedLocationProviderClient;
-
+    UserDao userDao;
 
     @RequiresApi(api = Build.VERSION_CODES.M)
     @Override
@@ -103,6 +101,10 @@ public class LoginActivity extends AppCompatActivity implements LoginInterface, 
 
         activityLoginBinding.setLoginViewmodel(loginViewModel);
         activityLoginBinding.setLifecycleOwner(this);
+
+        AppDatabase db = Room.databaseBuilder(getApplicationContext(), AppDatabase.class, "database-name").build();
+        userDao = db.getUserDao();
+
 
         activityLoginBinding.edtLoginMobileNumber.addTextChangedListener(new TextWatcher() {
             @Override
@@ -224,11 +226,18 @@ public class LoginActivity extends AppCompatActivity implements LoginInterface, 
         responseLiveData.observe(this, loginResponse -> {
             if (loginResponse.status.equals(Constant.Success)) {
 
+
+                new Thread(() -> {
+                    userDao.insertUser(loginResponse.loginUserInfo);
+                    userDao.insertParent(loginResponse.loginUserInfo.parentUser);
+                }).start();
+
+
                 Constant.START_TOUCH(LoginActivity.this);
                 activityLoginBinding.pbLogin.setVisibility(View.GONE);
-                new PrefManager(LoginActivity.this).setUserID(loginResponse.loginUserData.userId);
+                new PrefManager(LoginActivity.this).setUserID(loginResponse.loginUserInfo.userId);
                 Intent intent = new Intent(LoginActivity.this, VerifyOTPActivity.class);
-                intent.putExtra("username", loginResponse.loginUserData.username);
+                intent.putExtra("username", loginResponse.loginUserInfo.username);
                 startActivity(intent);
                 finish();
             }

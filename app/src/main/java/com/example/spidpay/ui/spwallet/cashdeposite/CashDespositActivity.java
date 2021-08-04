@@ -8,6 +8,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.lifecycle.LiveData;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -16,6 +17,8 @@ import androidx.room.Room;
 import com.example.spidpay.R;
 import com.example.spidpay.data.repository.AddMoneyRepository;
 import com.example.spidpay.data.repository.StaticRepository;
+import com.example.spidpay.data.response.AddMoneyResponse;
+import com.example.spidpay.data.response.InterrestedforResponse;
 import com.example.spidpay.databinding.ActivityCashDepositeBinding;
 import com.example.spidpay.db.AppDatabase;
 import com.example.spidpay.db.UserDao;
@@ -24,10 +27,14 @@ import com.example.spidpay.interfaces.OnStaticClickIterface;
 import com.example.spidpay.interfaces.StaticInterface;
 import com.example.spidpay.ui.spwallet.AddMoneyViewModel;
 import com.example.spidpay.ui.signup.InterrestedforAdapter;
-import com.example.spidpay.ui.spwallet.PaymentFailedActivity;
+import com.example.spidpay.ui.spwallet.PaymentSuccessfulActivity;
 import com.example.spidpay.util.Constant;
 import com.example.spidpay.util.ItemOffsetDecoration;
+import com.example.spidpay.util.PrefManager;
 import com.google.android.material.bottomsheet.BottomSheetDialog;
+
+import java.util.ArrayList;
+import java.util.List;
 
 
 public class CashDespositActivity extends AppCompatActivity implements OnStaticClickIterface, StaticInterface, AddMoneyInterface {
@@ -113,9 +120,16 @@ public class CashDespositActivity extends AppCompatActivity implements OnStaticC
         ItemOffsetDecoration itemOffsetDecoration = new ItemOffsetDecoration(CashDespositActivity.this, R.dimen.marign10dp);
         rv_interreseted_for.addItemDecoration(itemOffsetDecoration);
 
+        List<InterrestedforResponse> list = new ArrayList<>();
+        list.add(new InterrestedforResponse("IMPS", "IMPS"));
+        list.add(new InterrestedforResponse("NEFT", "NEFT"));
+        list.add(new InterrestedforResponse("RTGS", "RTGS"));
+        list.add(new InterrestedforResponse("UPI", "UPI"));
+        InterrestedforAdapter interrestedforAdapter = new InterrestedforAdapter(list, onStaticClickIterface);
+        rv_interreseted_for.setAdapter(interrestedforAdapter);
+        interrestedfor_bottomsheet.show();
 
-
-        /*addMoneyViewModel.getTransactionType().observe(this, interrestedforResponses -> {
+       /* addMoneyViewModel.getTransactionType().observe(this, interrestedforResponses -> {
             cashDepositeActivityBinding.pbCashdeposit.setVisibility(View.GONE);
             Constant.START_TOUCH(CashDespositActivity.this);
             InterrestedforAdapter interrestedforAdapter = new InterrestedforAdapter(interrestedforResponses, onStaticClickIterface);
@@ -125,15 +139,14 @@ public class CashDespositActivity extends AppCompatActivity implements OnStaticC
 
     }
 
-   /* @Override
+    @Override
     public void onItemClick(String code, String description) {
         if (isbanklistcalled) {
             addMoneyViewModel.transactiontype = code;
             addMoneyViewModel.transactiontype = description;
             cashDepositeActivityBinding.edtCashdepositTransctiontype.setText(description);
         } else {
-            if(!code.equals("9999"))
-            {
+            if (!code.equals("9999")) {
                 addMoneyViewModel.bankcode = code;
                 addMoneyViewModel.bankname = description;
                 cashDepositeActivityBinding.edtBankList.setText(description);
@@ -141,7 +154,7 @@ public class CashDespositActivity extends AppCompatActivity implements OnStaticC
 
         }
         interrestedfor_bottomsheet.dismiss();
-    }*/
+    }
 
     @Override
     public void onStaticStart() {
@@ -153,26 +166,33 @@ public class CashDespositActivity extends AppCompatActivity implements OnStaticC
     public void onStaticFailed(String msg) {
         Constant.START_TOUCH(CashDespositActivity.this);
         cashDepositeActivityBinding.pbCashdeposit.setVisibility(View.GONE);
+        Constant.showToast(CashDespositActivity.this, msg);
+
     }
 
-  /*  @Override
+    @Override
     public void onOnlineSuccess(LiveData<AddMoneyResponse> addMoneyResponseLiveData) {
         addMoneyResponseLiveData.observe(this, addMoneyResponse -> {
-            Constant.START_TOUCH(CashDespositActivity.this);
-            cashDepositeActivityBinding.pbCashdeposit.setVisibility(View.GONE);
-            Intent intent=new Intent(CashDespositActivity.this, PaymentSuccessfulActivity.class);
-            intent.putExtra("amount",addMoneyResponse.amount);
-            intent.putExtra("datetime",addMoneyResponse.creationTime);
-            intent.putExtra("title",true);
-            startActivity(intent);
-            finish();
+            if(addMoneyResponse!=null && !addMoneyResponse.txnId.equals(""))
+            {
+                Constant.START_TOUCH(CashDespositActivity.this);
+                cashDepositeActivityBinding.pbCashdeposit.setVisibility(View.GONE);
+                Intent intent = new Intent(CashDespositActivity.this, PaymentSuccessfulActivity.class);
+                intent.putExtra("amount", addMoneyResponse.amount);
+                intent.putExtra("datetime", addMoneyResponse.creationTime);
+                intent.putExtra("title", true);
+                startActivity(intent);
+                finish();
+            }
         });
-    }*/
+    }
 
     @Override
     public void onServiceStart() {
         Constant.STOP_TOUCH(CashDespositActivity.this);
         cashDepositeActivityBinding.pbCashdeposit.setVisibility(View.VISIBLE);
+        addMoneyViewModel.getAddMoneyLiveDataofCashDeposite(new PrefManager(CashDespositActivity.this).getUserID());
+
     }
 
     @Override
@@ -180,12 +200,7 @@ public class CashDespositActivity extends AppCompatActivity implements OnStaticC
         Constant.START_TOUCH(CashDespositActivity.this);
         cashDepositeActivityBinding.pbCashdeposit.setVisibility(View.GONE);
         Constant.showToast(CashDespositActivity.this, msg);
-        Intent intent=new Intent(CashDespositActivity.this, PaymentFailedActivity.class);
-        startActivity(intent);
     }
 
-    @Override
-    public void onItemClick(String code, String description) {
 
-    }
 }

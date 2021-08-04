@@ -1,4 +1,4 @@
-package com.example.spidpay.ui.addmoney;
+package com.example.spidpay.ui.spwallet;
 
 import androidx.appcompat.app.AppCompatActivity;
 

@@ -9,6 +9,7 @@ import androidx.lifecycle.ViewModelProvider;
 import com.example.spidpay.databinding.ActivityAddMoneyBinding;
 import com.example.spidpay.interfaces.CommonInterface;
 import com.example.spidpay.util.Constant;
+import com.example.spidpay.util.PrefManager;
 
 public class AddMoneyActivity extends AppCompatActivity implements CommonInterface {
 
@@ -28,13 +29,14 @@ public class AddMoneyActivity extends AppCompatActivity implements CommonInterfa
         addMoneyViewModel.commonInterface = commonInterface;
         addmoneylayoutBinding.setAddmoneyviewmodel(addMoneyViewModel);
         addmoneylayoutBinding.executePendingBindings();
-        addmoneylayoutBinding.setBalance("");
-        addmoneylayoutBinding.setWalletid("");
+
     }
 
     @Override
     public void onServiceStart() {
         addmoneylayoutBinding.pbrequestparent.setVisibility(View.VISIBLE);
+
+        addMoneyViewModel.getAddMoneyLiveDataofParentRequest(new PrefManager(AddMoneyActivity.this).getUserID());
     }
 
     @Override

@@ -4,10 +4,10 @@ import androidx.room.Database;
 import androidx.room.RoomDatabase;
 
 import com.example.spidpay.data.response.ParentUser;
-import com.example.spidpay.data.response.UserData;
+import com.example.spidpay.data.response.UserInfo;
 
 
-@Database(entities = {UserData.class, ParentUser.class}, version = 1)
+@Database(entities = {UserInfo.class, ParentUser.class}, version = 1)
 public abstract class AppDatabase extends RoomDatabase {
     public abstract UserDao getUserDao();
 }
