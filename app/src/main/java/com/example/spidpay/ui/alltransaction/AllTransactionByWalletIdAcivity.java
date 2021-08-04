@@ -14,7 +14,7 @@ import com.example.spidpay.data.repository.AllTransactionRepositroy;
 import com.example.spidpay.data.response.AllTransactionResponse;
 import com.example.spidpay.databinding.ActivityGetAllTransactionByWalletIdBinding;
 import com.example.spidpay.interfaces.AllTransactionInterface;
-import com.example.spidpay.ui.addmoney.AddMoneyActivity;
+import com.example.spidpay.ui.spwallet.AddMoneyActivity;
 import com.example.spidpay.util.Constant;
 import com.example.spidpay.util.ItemOffsetDecoration;
 
@@ -40,15 +40,19 @@ public class AllTransactionByWalletIdAcivity extends AppCompatActivity implement
         ItemOffsetDecoration itemOffsetDecoration = new ItemOffsetDecoration(AllTransactionByWalletIdAcivity.this, R.dimen.marign10dp);
         activityGetAllTransactionByWalletIdBinding.rvAllTransaction.addItemDecoration(itemOffsetDecoration);
         allTransactionViewModel.getAllTransactionList(getIntent().getStringExtra("walletId"), "1", "10");
-        activityGetAllTransactionByWalletIdBinding.tvWalletBalanceAmount.setText(getIntent().getStringExtra("balance"));
+        activityGetAllTransactionByWalletIdBinding.tvWalletBalanceAmount.setText(getResources().getString(R.string.rupess)+getIntent().getStringExtra("balance"));
     }
 
     @Override
     protected void onResume() {
         super.onResume();
+
+        activityGetAllTransactionByWalletIdBinding.imgBackpress.setOnClickListener(v -> finish());
         activityGetAllTransactionByWalletIdBinding.linearAddmoney.setOnClickListener(v -> {
             startActivity(new Intent(AllTransactionByWalletIdAcivity.this, AddMoneyActivity.class));
         });
+
+
     }
 
     @Override

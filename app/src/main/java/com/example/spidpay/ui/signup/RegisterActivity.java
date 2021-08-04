@@ -6,11 +6,13 @@ import androidx.lifecycle.LiveData;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.room.Room;
 
 import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
+import android.service.autofill.UserData;
 import android.text.Editable;
 import android.text.SpannableString;
 import android.text.Spanned;
@@ -25,7 +27,10 @@ import com.example.spidpay.R;
 import com.example.spidpay.data.repository.RegisterRepository;
 import com.example.spidpay.data.repository.StaticRepository;
 import com.example.spidpay.data.response.RegisterResponse;
+import com.example.spidpay.data.response.UserInfo;
 import com.example.spidpay.databinding.ActivityRegisterBinding;
+import com.example.spidpay.db.AppDatabase;
+import com.example.spidpay.db.UserDao;
 import com.example.spidpay.interfaces.OnStaticClickIterface;
 import com.example.spidpay.interfaces.RegisterInterface;
 import com.example.spidpay.interfaces.StaticInterface;
@@ -45,6 +50,7 @@ public class RegisterActivity extends AppCompatActivity implements RegisterInter
     OnStaticClickIterface onStaticClickIterface;
     StaticRepository staticRepository;
     StaticInterface staticInterface;
+    UserDao userDao;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -67,6 +73,10 @@ public class RegisterActivity extends AppCompatActivity implements RegisterInter
         registerViewModel.staticInterface = staticInterface;
         activityRegisterBinding.setRegisterViewmodel(registerViewModel);
         activityRegisterBinding.setLifecycleOwner(this);
+
+        AppDatabase db = Room.databaseBuilder(getApplicationContext(), AppDatabase.class, "database-name").build();
+        userDao = db.getUserDao();
+
         activityRegisterBinding.edtRegisterIntrestedFor.setOnClickListener(v -> showInterestedForDialog());
         activityRegisterBinding.edtRegisterFirstname.addTextChangedListener(new TextWatcher() {
             @Override
@@ -146,7 +156,7 @@ public class RegisterActivity extends AppCompatActivity implements RegisterInter
     public void onFailed(String msg) {
         Constant.START_TOUCH(RegisterActivity.this);
         activityRegisterBinding.pbLogin.setVisibility(View.GONE);
-        Constant.showToast(RegisterActivity.this,msg);
+        Constant.showToast(RegisterActivity.this, msg);
     }
 
 
@@ -154,6 +164,25 @@ public class RegisterActivity extends AppCompatActivity implements RegisterInter
     public void onSuccess(LiveData<RegisterResponse> responseLiveData) {
         responseLiveData.observe(this, registerResponse -> {
             if (registerResponse.username != null && !registerResponse.username.equals("")) {
+
+                new Thread(() -> {
+                    UserInfo userData = new UserInfo();
+                    userData.accountStatus = registerResponse.accountStatus;
+                    userData.domainCode = registerResponse.domainCode;
+                    userData.userId = registerResponse.userId;
+                    userData.firstName = registerResponse.firstName;
+                    userData.lastName = registerResponse.lastName;
+                    userData.domainCode = registerResponse.domainCode;
+                    userData.parentUserID = registerResponse.parentUser.userId;
+                    userData.username = registerResponse.username;
+                    userData.userScope = registerResponse.userScope;
+                    userData.whiteLabelUserID = registerResponse.whiteLabelUserID;
+                    userData.userType = registerResponse.userType;
+                    userDao.insertUser(userData);
+                    userDao.insertParent(registerResponse.parentUser);
+                }).start();
+
+
                 Constant.START_TOUCH(RegisterActivity.this);
                 activityRegisterBinding.pbLogin.setVisibility(View.GONE);
                 new PrefManager(RegisterActivity.this).setUserID(registerResponse.userId);

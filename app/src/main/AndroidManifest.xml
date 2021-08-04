@@ -16,9 +16,6 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Design.Light.NoActionBar"
         android:usesCleartextTraffic="true">
-        <activity
-            android:name=".ui.addmoney.CashDepositeActivity"
-            android:exported="true" />
         <activity android:name=".ui.spwallet.PaymentFailedActivity" />
         <activity android:name=".ui.spwallet.WebviewActivity" />
         <activity android:name=".ui.tradewallet.TransferMoneyActivity" />

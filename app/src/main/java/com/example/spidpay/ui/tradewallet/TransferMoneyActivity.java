@@ -4,7 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.ViewModelProvider;
 import android.os.Bundle;
 import com.example.spidpay.databinding.ActivityTranferMoneyBinding;
-import com.example.spidpay.ui.addmoney.AddMoneyViewModel;
+import com.example.spidpay.ui.spwallet.AddMoneyViewModel;
 
 
 public class TransferMoneyActivity extends AppCompatActivity {

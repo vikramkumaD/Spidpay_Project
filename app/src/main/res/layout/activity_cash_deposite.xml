@@ -8,11 +8,11 @@
 
         <variable
             name="user"
-            type="com.example.spidpay.data.response.UserData" />
+            type="com.example.spidpay.data.response.UserInfo" />
 
         <variable
             name="addmoneyviewmodel"
-            type="com.example.spidpay.ui.addmoney.AddMoneyViewModel" />
+            type="com.example.spidpay.ui.spwallet.AddMoneyViewModel" />
 
     </data>
 
@@ -272,7 +272,7 @@
                 android:layout_marginRight="@dimen/marign10dp"
                 android:background="@drawable/button_bg_green"
                 android:fontFamily="@font/lato"
-                android:onClick="@{(v)->addmoneyviewmodel.validate_CashDeposite_Filed(v,user)}"
+                android:onClick="@{(v)->addmoneyviewmodel.validate_CashDeposite_Filed(v)}"
                 android:text="@string/reqestmoney"
                 android:textAllCaps="false"
                 android:textColor="@color/white"

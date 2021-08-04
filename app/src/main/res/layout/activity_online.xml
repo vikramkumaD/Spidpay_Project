@@ -8,7 +8,7 @@
 
         <variable
             name="addmoneyviewmodel"
-            type="com.example.spidpay.ui.addmoney.AddMoneyViewModel" />
+            type="com.example.spidpay.ui.spwallet.AddMoneyViewModel" />
 
     </data>
 
@@ -87,7 +87,7 @@
 
 
         <Button
-            android:background="@drawable/add_money_bg"
+            android:background="@drawable/all_transaction_bg"
             android:textColor="@color/white"
             android:id="@+id/button"
             android:layout_width="wrap_content"
@@ -105,7 +105,7 @@
 
 
         <Button
-            android:background="@drawable/add_money_bg"
+            android:background="@drawable/all_transaction_bg"
             android:minHeight="0dp"
             android:paddingTop="@dimen/marign5dp"
             android:paddingBottom="@dimen/marign5dp"
@@ -122,7 +122,7 @@
             app:layout_constraintTop_toBottomOf="@+id/edt_online_notes" />
 
         <Button
-            android:background="@drawable/add_money_bg"
+            android:background="@drawable/all_transaction_bg"
             android:minHeight="0dp"
             android:paddingTop="@dimen/marign5dp"
             android:paddingBottom="@dimen/marign5dp"

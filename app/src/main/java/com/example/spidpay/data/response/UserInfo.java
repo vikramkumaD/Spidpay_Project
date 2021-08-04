@@ -10,7 +10,7 @@ import com.google.gson.annotations.SerializedName;
 import java.util.List;
 
 @Entity
-public class UserData {
+public class UserInfo {
     @NonNull
     @PrimaryKey
     public String userId;

@@ -30,20 +30,11 @@ public class HostActivity extends AppCompatActivity implements ChangeTitlenandIc
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
-        //  binding = DataBindingUtil.setContentView(this, R.layout.activity_host);
-
         binding = ActivityHostBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
-
         DrawerLayout drawer = binding.drawerLayout;
         NavigationView navigationView = binding.navView;
         navigationView.setItemIconTintList(null);
-
-
-        /*mAppBarConfiguration = new AppBarConfiguration.Builder(R.id.landingFragment)
-                .setDrawerLayout(drawer)
-                .build();*/
 
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_content_host);
         NavigationUI.setupWithNavController(navigationView, navController);
