@@ -1,13 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    >
+    xmlns:tools="http://schemas.android.com/tools">
 
     <data>
-
-        <variable
-            name="alltransactionviewmodel"
-            type="com.example.spidpay.ui.alltransaction.AllTransactionViewModel" />
 
         <import type="com.example.spidpay.util.Constant" />
 
@@ -19,12 +15,14 @@
 
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        tools:targetApi="lollipop">
 
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:background="@drawable/dialogwith_whiteborder"
             android:paddingStart="@dimen/marign10dp"
             android:paddingTop="@dimen/marign10dp"
             android:paddingEnd="@dimen/marign10dp"
@@ -42,7 +40,6 @@
                 app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
-
                 android:id="@+id/tv_all_tramsaction_id"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -54,15 +51,12 @@
 
 
             <ImageView
-                android:visibility="gone"
                 android:id="@+id/img_transactiontype"
                 android:layout_width="24dp"
                 android:layout_height="24dp"
                 android:layout_marginEnd="@dimen/marign70dp"
-                app:change="@{alltransaction.transactionType}"
                 app:layout_constraintRight_toRightOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                android:contentDescription="TODO" />
+                app:layout_constraintTop_toTopOf="parent" />
 
 
             <TextView
@@ -72,11 +66,10 @@
                 android:layout_marginTop="@dimen/marign3dp"
                 android:layout_marginEnd="@dimen/marign20dp"
                 android:fontFamily="@font/lato_bold"
-                android:text="@{`₹ `+alltransaction.amount}"
+                android:text="@{alltransaction.amount}"
                 android:textColor="@color/light_green"
-                app:layout_constraintRight_toRightOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-               />
+                app:layout_constraintLeft_toRightOf="@+id/img_transactiontype"
+                app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
                 android:id="@+id/tv_all_tramsaction_date"
@@ -91,10 +84,9 @@
 
 
             <View
-                android:visibility="gone"
+                android:layout_marginTop="@dimen/marign5dp"
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
-                android:layout_marginTop="@dimen/marign5dp"
                 android:background="@color/lightgrey"
                 app:layout_constraintTop_toBottomOf="@+id/tv_all_tramsaction_date" />
 

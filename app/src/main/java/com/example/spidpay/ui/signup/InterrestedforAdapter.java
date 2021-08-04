@@ -18,8 +18,8 @@ import java.util.List;
 
 public class InterrestedforAdapter extends RecyclerView.Adapter<InterrestedforAdapter.InterrestedforViewHolder> {
 
-    final OnStaticClickIterface onStaticClickIterface;
-    final List<InterrestedforResponse> list;
+    OnStaticClickIterface onStaticClickIterface;
+    List<InterrestedforResponse> list;
 
     public InterrestedforAdapter(List<InterrestedforResponse> list, OnStaticClickIterface onStaticClickIterface) {
         this.list = list;
@@ -47,7 +47,7 @@ public class InterrestedforAdapter extends RecyclerView.Adapter<InterrestedforAd
     }
 
     public static class InterrestedforViewHolder extends RecyclerView.ViewHolder {
-        final InterrestedforItemviewBinding interrestedforItemviewBinding;
+        InterrestedforItemviewBinding interrestedforItemviewBinding;
 
         public InterrestedforViewHolder(@NonNull @NotNull InterrestedforItemviewBinding itemView) {
             super(itemView.getRoot());

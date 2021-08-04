@@ -2,6 +2,7 @@ package com.example.spidpay.data;
 
 import android.content.Context;
 
+import com.example.spidpay.util.Constant;
 import com.example.spidpay.util.NetworkInterceptor;
 
 import java.util.concurrent.TimeUnit;

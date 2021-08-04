@@ -2,13 +2,10 @@ package com.example.spidpay.ui.tradewallet;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.ViewModelProvider;
-
 import android.os.Bundle;
-import android.view.View;
-
-import com.example.spidpay.R;
 import com.example.spidpay.databinding.ActivityTranferMoneyBinding;
-import com.example.spidpay.ui.spwallet.AddMoneyViewModel;
+import com.example.spidpay.ui.addmoney.AddMoneyViewModel;
+
 
 public class TransferMoneyActivity extends AppCompatActivity {
     ActivityTranferMoneyBinding activityTranferMoneyBinding;

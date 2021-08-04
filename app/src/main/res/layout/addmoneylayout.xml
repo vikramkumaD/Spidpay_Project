@@ -1,0 +1,297 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="balance"
+            type="String" />
+
+        <variable
+            name="walletid"
+            type="String" />
+
+        <import type="android.view.View" />
+
+        <variable
+            name="addmoneyviewmodel"
+            type="com.example.spidpay.ui.addmoney.AddMoneyViewModel" />
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".ui.profile.profile.MyProfileFragment">
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/carview_header"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:clipChildren="false"
+            android:clipToPadding="false"
+            android:divider="@android:color/transparent"
+            android:dividerHeight="0.0px"
+            android:elevation="8dp"
+            app:layout_constraintTop_toTopOf="parent"
+            card_view:cardElevation="10dp"
+            card_view:cardPreventCornerOverlap="false">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingTop="@dimen/marign10dp"
+                android:paddingBottom="@dimen/marign10dp">
+
+                <ImageView
+                    android:id="@+id/img_backpress"
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:layout_marginStart="@dimen/marign10dp"
+                    android:src="@drawable/ic_baseline_arrow_back_ios_24"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    android:contentDescription="TODO" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_toRightOf="@+id/img_backpress"
+                    android:fontFamily="@font/lato_bold"
+                    android:text="@string/addmoney"
+                    android:textColor="@color/page_heading_color"
+                    android:textSize="@dimen/marign18sp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintLeft_toRightOf="@+id/img_backpress"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+
+            </RelativeLayout>
+
+
+        </androidx.cardview.widget.CardView>
+
+
+        <TextView
+            android:id="@+id/tv_addmoney_preferedoption"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/marign20dp"
+            android:layout_marginTop="@dimen/marign40dp"
+            android:fontFamily="@font/lato_bold"
+            android:text="@string/prefoption"
+            android:textColor="@color/black"
+            android:textSize="@dimen/marign20sp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/carview_header" />
+
+
+        <RadioButton
+            android:buttonTint="@color/light_green"
+            android:id="@+id/rb_online"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/marign20dp"
+            android:layout_marginTop="@dimen/marign20dp"
+            android:checked="@{addmoneyviewmodel.online}"
+            android:onClick="@{()->addmoneyviewmodel.onOnlineClick()}"
+            android:textColor="@color/black"
+            android:textSize="@dimen/marign20sp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_addmoney_preferedoption" />
+
+
+        <TextView
+            android:onClick="@{()->addmoneyviewmodel.onOnlineClick()}"
+            android:id="@+id/tv_online"
+            android:textSize="@dimen/marign20sp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/marign25dp"
+            android:layout_marginStart="@dimen/marign5dp"
+            android:fontFamily="@font/lato_bold"
+            android:text="@string/online"
+            android:textColor="@color/black"
+            app:layout_constraintTop_toBottomOf="@+id/tv_addmoney_preferedoption"
+            app:layout_constraintLeft_toRightOf="@+id/rb_online"
+            />
+
+
+        <TextView
+            android:id="@+id/tv_addmoney_usingpaymentgetway"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/marign7dp"
+            android:fontFamily="@font/lato_bold"
+            android:text="@string/usingpaymentgetway"
+            android:textColor="@color/add_money_hint_color"
+            app:layout_constraintLeft_toRightOf="@+id/rb_online"
+            app:layout_constraintTop_toBottomOf="@+id/tv_online" />
+
+
+        <RadioButton
+            android:buttonTint="@color/light_green"
+            android:id="@+id/rb_cashdesposit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/marign20dp"
+            android:layout_marginTop="@dimen/marign25dp"
+            android:checked="@{addmoneyviewmodel.cashdeposite}"
+            android:onClick="@{()->addmoneyviewmodel.onDepositeCashClick()}"
+            android:textColor="@color/black"
+            android:textSize="@dimen/marign20sp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_addmoney_usingpaymentgetway" />
+
+        <TextView
+            android:onClick="@{()->addmoneyviewmodel.onDepositeCashClick()}"
+            android:id="@+id/tv_cashdeposite"
+            android:textSize="@dimen/marign20sp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/marign30dp"
+            android:layout_marginStart="@dimen/marign5dp"
+            android:fontFamily="@font/lato_bold"
+            android:text="@string/cashdeposit"
+            android:textColor="@color/black"
+            app:layout_constraintTop_toBottomOf="@+id/tv_addmoney_usingpaymentgetway"
+            app:layout_constraintLeft_toRightOf="@+id/rb_cashdesposit"
+            />
+
+
+        <TextView
+            android:layout_marginStart="@dimen/marign7dp"
+            app:layout_constraintLeft_toRightOf="@+id/rb_cashdesposit"
+            app:layout_constraintTop_toBottomOf="@+id/tv_cashdeposite"
+            android:id="@+id/tv_addmoney_requiredvalidation"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/lato_bold"
+            android:text="@string/requiredvalidation"
+            android:textColor="@color/add_money_hint_color"
+            />
+
+        <RadioButton
+            android:buttonTint="@color/light_green"
+            android:id="@+id/rb_requestparent"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/marign20dp"
+            android:layout_marginTop="@dimen/marign25dp"
+            android:checked="@{addmoneyviewmodel.requestparent}"
+            android:onClick="@{()->addmoneyviewmodel.onRequestParentClick()}"
+            android:textColor="@color/black"
+            android:textSize="@dimen/marign20sp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_addmoney_requiredvalidation" />
+
+
+        <TextView
+            android:text="@string/requestparent"
+            android:onClick="@{()->addmoneyviewmodel.onRequestParentClick()}"
+            android:id="@+id/tv_request_parent"
+            android:textSize="@dimen/marign20sp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/marign30dp"
+            android:layout_marginStart="@dimen/marign5dp"
+            android:fontFamily="@font/lato_bold"
+            android:textColor="@color/black"
+            app:layout_constraintTop_toBottomOf="@+id/tv_addmoney_requiredvalidation"
+            app:layout_constraintLeft_toRightOf="@+id/rb_requestparent"
+            />
+
+        <TextView
+            android:layout_marginStart="@dimen/marign7dp"
+            android:id="@+id/tv_addmoney_requestparent"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/lato_bold"
+            android:text="@string/immediateparent"
+            android:textColor="@color/add_money_hint_color"
+            app:layout_constraintLeft_toRightOf="@id/rb_requestparent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_request_parent" />
+
+
+        <EditText
+            android:id="@+id/edt_request_parent"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/marign20dp"
+            android:layout_marginTop="@dimen/marign25dp"
+            android:layout_marginEnd="@dimen/marign20dp"
+            android:layout_weight="1"
+            android:background="@drawable/edittext_shadow"
+            android:hint="@string/enteramount"
+            android:inputType="number"
+            android:paddingLeft="@dimen/marign10dp"
+            android:paddingTop="@dimen/marign15dp"
+            android:paddingRight="@dimen/marign10dp"
+            android:paddingBottom="@dimen/marign15dp"
+            android:text="@={addmoneyviewmodel.online_money}"
+            android:textColorHint="@color/lightgrey"
+            android:visibility="@{addmoneyviewmodel.requestparent ? View.VISIBLE : View.GONE,default=gone}"
+            app:layout_constraintTop_toBottomOf="@+id/tv_addmoney_requestparent"
+            android:importantForAutofill="no" />
+
+
+
+        <EditText
+            android:id="@+id/edt_request_parent_notes"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/marign20dp"
+            android:layout_marginTop="@dimen/marign25dp"
+            android:layout_marginEnd="@dimen/marign20dp"
+            android:layout_weight="1"
+            android:background="@drawable/edittext_shadow"
+            android:hint="@string/notes"
+            android:inputType="text"
+            android:paddingLeft="@dimen/marign10dp"
+            android:paddingTop="@dimen/marign15dp"
+            android:paddingRight="@dimen/marign10dp"
+            android:paddingBottom="@dimen/marign15dp"
+            android:text="@={addmoneyviewmodel.online_notes}"
+            android:textColorHint="@color/lightgrey"
+            android:visibility="@{addmoneyviewmodel.requestparent ? View.VISIBLE : View.GONE,default=gone}"
+            app:layout_constraintTop_toBottomOf="@+id/edt_request_parent"
+            android:importantForAutofill="no" />
+
+
+
+        <Button
+            android:textAllCaps="false"
+            android:id="@+id/btn_chooseoptionformoney"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/marign25dp"
+            android:layout_marginTop="@dimen/marign25dp"
+            android:layout_marginEnd="@dimen/marign25dp"
+            android:background="@drawable/button_bg_green"
+            android:fontFamily="@font/lato"
+            android:onClick="@{(v)->addmoneyviewmodel.onButtonContinueClick(v,balance,walletid)}"
+            android:text="@string/txtcontinue"
+            android:textColor="@color/white"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/edt_request_parent_notes" />
+
+
+        <ProgressBar
+            android:visibility="gone"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:id="@+id/pbrequestparent"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>

@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.DataBindingUtil;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.text.SpannableString;
 import android.text.Spanned;
@@ -12,8 +13,10 @@ import android.view.WindowManager;
 
 import com.example.spidpay.R;
 import com.example.spidpay.databinding.SplashscreenBinding;
-import com.example.spidpay.ui.login.LoginActivity;
+import com.example.spidpay.util.Constant;
 import com.example.spidpay.util.PrefManager;
+
+import java.text.ParseException;
 
 public class SplashscreenActivity extends AppCompatActivity {
 
@@ -38,7 +41,7 @@ public class SplashscreenActivity extends AppCompatActivity {
                     if (new PrefManager(SplashscreenActivity.this).getIsLandingPageOpen()) {
                         startActivity(new Intent(SplashscreenActivity.this, HostActivity.class));
                     } else {
-                        startActivity(new Intent(SplashscreenActivity.this, LoginActivity.class));
+                        startActivity(new Intent(SplashscreenActivity.this, DashboardActivity.class));
                     }
 
                 } else {

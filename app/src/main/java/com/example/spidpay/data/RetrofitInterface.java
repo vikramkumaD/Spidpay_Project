@@ -1,6 +1,5 @@
 package com.example.spidpay.data;
 
-import com.example.spidpay.data.request.AddMoneyRequest;
 import com.example.spidpay.data.request.ChangePasswordRequest;
 import com.example.spidpay.data.request.LoginRequest;
 import com.example.spidpay.data.request.RegisterRequest;
@@ -10,7 +9,6 @@ import com.example.spidpay.data.request.UpdateBankInfoRequest;
 import com.example.spidpay.data.request.UpdateCompanyRequest;
 import com.example.spidpay.data.request.UpdateKYCRequest;
 import com.example.spidpay.data.request.VerifyOTPReqest;
-import com.example.spidpay.data.response.AddMoneyResponse;
 import com.example.spidpay.data.response.AllTransactionResponse;
 import com.example.spidpay.data.response.BankDetailsResponse;
 import com.example.spidpay.data.response.BooleanResponse;
@@ -20,9 +18,9 @@ import com.example.spidpay.data.response.InterrestedforResponse;
 import com.example.spidpay.data.response.KYCResponse;
 import com.example.spidpay.data.response.LoginResponse;
 import com.example.spidpay.data.response.MyAddressResponse;
+import com.example.spidpay.data.response.RegisterResponse;
 import com.example.spidpay.data.response.MyProfileResponse;
 import com.example.spidpay.data.response.UpdateResponse;
-import com.example.spidpay.data.response.UserData;
 import com.example.spidpay.data.response.VerifyOTPResponse;
 import com.example.spidpay.data.response.WalletResponse;
 
@@ -45,7 +43,7 @@ public interface RetrofitInterface {
 
     @Headers({"Content-Type:application/json"})
     @POST("user/v1/onBoarding")
-    Call<UserData> user_onBoarding(@Body RegisterRequest loginRequest);
+    Call<RegisterResponse> user_onBoarding(@Body RegisterRequest loginRequest);
 
     @GET("static-data/v1/{category}")
     Call<List<InterrestedforResponse>> getstaticdata(@Path("category") String user, @Query("role") String role);
@@ -100,9 +98,5 @@ public interface RetrofitInterface {
 
     @GET("v1/wallet/{walletId}")
     Call<List<AllTransactionResponse>> getAllTransaction(@Path("walletId") String walletId, @Query("pageNumber") String pageNumber, @Query("pageSize") String pageSize);
-
-    @Headers({"Content-Type:application/json"})
-    @POST("v1/load-money")
-    Call<AddMoneyResponse> addMoney(@Body AddMoneyRequest addMoneyRequest);
 
 }

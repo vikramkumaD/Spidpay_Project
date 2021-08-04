@@ -1,5 +1,7 @@
 package com.example.spidpay.data.request;
 
+import com.example.spidpay.data.response.IDType;
+import com.example.spidpay.data.response.KYCResponse;
 import com.google.gson.annotations.SerializedName;
 
 public class UpdateKYCRequest {

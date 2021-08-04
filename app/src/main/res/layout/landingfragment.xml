@@ -93,7 +93,7 @@
                         android:layout_alignParentBottom="true"
                         android:contentDescription="TODO"
                         android:onClick="@{(v)->landingviewmodel.openAllTransactionAcivity(v,wallet.get(1).walletId,wallet.get(1).walletBalance,`SP`)}"
-                        android:src="@drawable/ic_baseline_east_24" />
+                        android:src="@drawable/ic_baseline_arrow_forward_24" />
 
 
                 </RelativeLayout>
@@ -148,7 +148,7 @@
                         android:layout_alignParentBottom="true"
                         android:contentDescription="TODO"
                         android:onClick="@{(v)->landingviewmodel.openAllTransactionAcivity(v,wallet.get(0).walletId,wallet.get(0).walletBalance,`Trade`)}"
-                        android:src="@drawable/ic_baseline_east_24" />
+                        android:src="@drawable/ic_baseline_arrow_forward_24" />
 
                 </RelativeLayout>
 

@@ -17,9 +17,6 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.example.spidpay.R;
-import com.example.spidpay.ui.login.LoginActivity;
-
-import org.jetbrains.annotations.NotNull;
 
 public class WelcomeActivity extends AppCompatActivity {
     private ViewPager viewPager;
@@ -44,16 +41,16 @@ public class WelcomeActivity extends AppCompatActivity {
         viewPager.setAdapter(myViewPagerAdapter);
         viewPager.addOnPageChangeListener(viewPagerPageChangeListener);
         btnSkip.setOnClickListener(v -> {
-            startActivity(new Intent(WelcomeActivity.this, LoginActivity.class));
+            startActivity(new Intent(WelcomeActivity.this, DashboardActivity.class));
             finish();
         });
 
         btnNext.setOnClickListener(v -> {
-            int current = getItem();
+            int current = getItem(+1);
             if (current < layouts.length) {
                 viewPager.setCurrentItem(current);
             } else {
-                startActivity(new Intent(WelcomeActivity.this, LoginActivity.class));
+                startActivity(new Intent(WelcomeActivity.this, DashboardActivity.class));
                 finish();
             }
         });
@@ -78,12 +75,12 @@ public class WelcomeActivity extends AppCompatActivity {
             dots[currentPage].setTextColor(colorsActive[currentPage]);
     }
 
-    private int getItem() {
-        return viewPager.getCurrentItem() + 1;
+    private int getItem(int i) {
+        return viewPager.getCurrentItem() + i;
     }
 
 
-    final ViewPager.OnPageChangeListener viewPagerPageChangeListener = new ViewPager.OnPageChangeListener() {
+    ViewPager.OnPageChangeListener viewPagerPageChangeListener = new ViewPager.OnPageChangeListener() {
 
         @Override
         public void onPageSelected(int position) {
@@ -119,9 +116,8 @@ public class WelcomeActivity extends AppCompatActivity {
         public MyViewPagerAdapter() {
         }
 
-        @NotNull
         @Override
-        public Object instantiateItem(@NotNull ViewGroup container, int position) {
+        public Object instantiateItem(ViewGroup container, int position) {
             layoutInflater = (LayoutInflater) getSystemService(Context.LAYOUT_INFLATER_SERVICE);
             View view = layoutInflater.inflate(layouts[position], container, false);
             container.addView(view);
@@ -134,13 +130,13 @@ public class WelcomeActivity extends AppCompatActivity {
         }
 
         @Override
-        public boolean isViewFromObject(@NotNull View view, @NotNull Object obj) {
+        public boolean isViewFromObject(View view, Object obj) {
             return view == obj;
         }
 
 
         @Override
-        public void destroyItem(ViewGroup container, int position, @NotNull Object object) {
+        public void destroyItem(ViewGroup container, int position, Object object) {
             View view = (View) object;
             container.removeView(view);
         }

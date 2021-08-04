@@ -1,5 +1,6 @@
 package com.example.spidpay.data.response;
 
+import androidx.databinding.InverseMethod;
 import com.google.gson.annotations.SerializedName;
 
 public class BankDetailsResponse {

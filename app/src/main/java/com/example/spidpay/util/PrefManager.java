@@ -5,9 +5,9 @@ import android.content.SharedPreferences;
 
 public class PrefManager {
 
-    final SharedPreferences pref;
-    final SharedPreferences.Editor editor;
-    final Context _context;
+    SharedPreferences pref;
+    SharedPreferences.Editor editor;
+    Context _context;
     private static final String PREF_NAME = "spidpay";
 
     public PrefManager(Context context) {

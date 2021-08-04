@@ -24,8 +24,8 @@ public class LoginViewModel extends ViewModel {
     LoginInterface loginInterface;
     ForgotPassInterface forgotPassInterface;
     public String mobile_number, password, latitude, longitude, city, verify_username, OTP, forgot_password, forgot_confirm_passwprd;
-    public final MutableLiveData<String> mstring_mobile_number = new MutableLiveData<>();
-    public final MutableLiveData<Boolean> mboolean_mobile_number = new MutableLiveData<>();
+    public MutableLiveData<String> mstring_mobile_number = new MutableLiveData<>();
+    public MutableLiveData<Boolean> mboolean_mobile_number = new MutableLiveData<>();
     LoginRepository loginRepository;
 
     public void check_mobile_number(String data) {
@@ -44,7 +44,7 @@ public class LoginViewModel extends ViewModel {
             loginInterface.onFailed(view.getContext().getResources().getString(R.string.mobilenoerror1));
             return;
         }
-        if (validate_Mobile_Number(mobile_number)) {
+        if (!validate_Mobile_Number(mobile_number)) {
             loginInterface.onFailed(view.getContext().getResources().getString(R.string.mobilenoerror2));
             return;
         }
@@ -58,7 +58,7 @@ public class LoginViewModel extends ViewModel {
             loginInterface.onFailed(view.getContext().getResources().getString(R.string.passworderror2));
             return;
         }
-        if (Constant.isValidPassword(password)) {
+        if (!Constant.isValidPassword(password)) {
             loginInterface.onFailed(view.getContext().getResources().getString(R.string.passworderror3));
             return;
         }
@@ -67,7 +67,7 @@ public class LoginViewModel extends ViewModel {
     }
 
     public boolean validate_Mobile_Number(String number) {
-        return number.length() <= 9;
+        return number.length() > 9;
     }
 
     public void getLoginResponse() {
@@ -102,7 +102,7 @@ public class LoginViewModel extends ViewModel {
             return;
         }
 
-        if (validate_Mobile_Number(verify_username)) {
+        if (!validate_Mobile_Number(verify_username)) {
             forgotPassInterface.onForgotFailed(view.getContext().getResources().getString(R.string.mobilenoerror2));
             return;
         }
@@ -133,7 +133,7 @@ public class LoginViewModel extends ViewModel {
             return;
         }
 
-        if (Constant.isValidPassword(forgot_password)) {
+        if (!Constant.isValidPassword(forgot_password)) {
             forgotPassInterface.onForgotFailed(view.getContext().getResources().getString(R.string.passworderror3));
             return;
         }

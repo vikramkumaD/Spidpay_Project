@@ -32,7 +32,7 @@ public class ChangePasswordViewModel extends ViewModel {
         }
 
 
-        if (Constant.isValidPassword(string_new_password)) {
+        if (!Constant.isValidPassword(string_new_password)) {
             changePasswordInterface.onFailed(view.getContext().getResources().getString(R.string.passworderror3));
             return;
         }

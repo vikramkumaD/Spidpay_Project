@@ -11,6 +11,7 @@ import com.example.spidpay.interfaces.UpdateBottomView;
 import com.google.android.material.navigation.NavigationView;
 
 import androidx.core.view.GravityCompat;
+import androidx.databinding.DataBindingUtil;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
@@ -30,6 +31,7 @@ public class HostActivity extends AppCompatActivity implements ChangeTitlenandIc
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
+        //  binding = DataBindingUtil.setContentView(this, R.layout.activity_host);
 
         binding = ActivityHostBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
@@ -38,6 +40,10 @@ public class HostActivity extends AppCompatActivity implements ChangeTitlenandIc
         NavigationView navigationView = binding.navView;
         navigationView.setItemIconTintList(null);
 
+
+        /*mAppBarConfiguration = new AppBarConfiguration.Builder(R.id.landingFragment)
+                .setDrawerLayout(drawer)
+                .build();*/
 
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_content_host);
         NavigationUI.setupWithNavController(navigationView, navController);

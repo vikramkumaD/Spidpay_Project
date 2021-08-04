@@ -12,7 +12,7 @@ import com.example.spidpay.data.repository.StaticRepository;
 import com.example.spidpay.data.request.RegisterRequest;
 import com.example.spidpay.data.request.Register_UserInfo;
 import com.example.spidpay.data.response.InterrestedforResponse;
-import com.example.spidpay.data.response.UserData;
+import com.example.spidpay.data.response.RegisterResponse;
 import com.example.spidpay.interfaces.RegisterInterface;
 import com.example.spidpay.interfaces.StaticInterface;
 import com.example.spidpay.util.Constant;
@@ -25,10 +25,10 @@ public class RegisterViewModel extends ViewModel {
     StaticRepository staticRepository;
     RegisterInterface registerInterface;
     public String password, confirm_password, code;
-    public final MutableLiveData<String> string_register_first_name = new MutableLiveData<>();
-    public final MutableLiveData<String> string_register_last_name = new MutableLiveData<>();
-    public final MutableLiveData<String> string_register_mobile_number = new MutableLiveData<>();
-    public final MutableLiveData<String> string_register_email_Address = new MutableLiveData<>();
+    public MutableLiveData<String> string_register_first_name = new MutableLiveData<>();
+    public MutableLiveData<String> string_register_last_name = new MutableLiveData<>();
+    public MutableLiveData<String> string_register_mobile_number = new MutableLiveData<>();
+    public MutableLiveData<String> string_register_email_Address = new MutableLiveData<>();
 
     RegisterRepository registerRepository;
 
@@ -112,7 +112,7 @@ public class RegisterViewModel extends ViewModel {
             registerInterface.onFailed(view.getContext().getResources().getString(R.string.passworderror2));
             return;
         }
-        if (Constant.isValidPassword(password)) {
+        if (!Constant.isValidPassword(password)) {
             registerInterface.onFailed(view.getContext().getResources().getString(R.string.passworderror3));
             return;
         }
@@ -144,7 +144,7 @@ public class RegisterViewModel extends ViewModel {
 
         registerRequest.register_userInfo = register_userInfo;
 
-        LiveData<UserData> registerResponseLiveData = registerRepository.getRegisterResponse(registerRequest);
+        LiveData<RegisterResponse> registerResponseLiveData = registerRepository.getRegisterResponse(registerRequest);
 
         registerInterface.onSuccess(registerResponseLiveData);
 
@@ -153,7 +153,8 @@ public class RegisterViewModel extends ViewModel {
 
     public LiveData<List<InterrestedforResponse>> getInterrestedFor() {
         staticInterface.onStaticStart();
-        return staticRepository.getStaticData(Constant.USER,Constant.ROLE_INTERRESTEDFOR);
+        LiveData<List<InterrestedforResponse>> interrestedforliveData = staticRepository.getStaticData(Constant.USER,Constant.ROLE_INTERRESTEDFOR);
+        return interrestedforliveData;
     }
 
 }

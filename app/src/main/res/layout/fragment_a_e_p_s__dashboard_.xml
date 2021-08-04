@@ -23,7 +23,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/marign40dp"
-        android:src="@drawable/mantra"
+
         android:textAllCaps="false"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toLeftOf="@+id/guideline"
@@ -50,7 +50,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/marign40dp"
-        android:src="@drawable/morpho"
+
         android:textAllCaps="false"
         app:layout_constraintLeft_toRightOf="@+id/guideline"
         app:layout_constraintRight_toRightOf="parent"
@@ -76,7 +76,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/marign40dp"
-        android:src="@drawable/startech"
+
         android:textAllCaps="false"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toLeftOf="@+id/guideline"
@@ -101,7 +101,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/marign40dp"
-        android:src="@drawable/precision"
+
         android:textAllCaps="false"
         app:layout_constraintLeft_toRightOf="@+id/guideline"
         app:layout_constraintRight_toRightOf="parent"

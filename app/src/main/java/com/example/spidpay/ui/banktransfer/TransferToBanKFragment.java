@@ -1,20 +1,24 @@
 package com.example.spidpay.ui.banktransfer;
 
 import android.content.Context;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.text.SpannableString;
 import android.text.Spanned;
 import android.text.style.ForegroundColorSpan;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.databinding.DataBindingUtil;
 import androidx.fragment.app.Fragment;
 
 import com.example.spidpay.R;
 import com.example.spidpay.databinding.FragmentTransferMoneyBinding;
+import com.example.spidpay.databinding.SplashscreenBinding;
 import com.example.spidpay.interfaces.ChangeTitlenandIconInterface;
 
 import org.jetbrains.annotations.NotNull;

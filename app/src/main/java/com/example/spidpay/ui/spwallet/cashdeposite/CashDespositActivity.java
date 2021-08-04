@@ -17,25 +17,22 @@ import androidx.room.Room;
 import com.example.spidpay.R;
 import com.example.spidpay.data.repository.AddMoneyRepository;
 import com.example.spidpay.data.repository.StaticRepository;
-import com.example.spidpay.data.response.AddMoneyResponse;
-import com.example.spidpay.databinding.CashDepositeActivityBinding;
+import com.example.spidpay.databinding.ActivityCashDepositeBinding;
 import com.example.spidpay.db.AppDatabase;
 import com.example.spidpay.db.UserDao;
 import com.example.spidpay.interfaces.AddMoneyInterface;
 import com.example.spidpay.interfaces.OnStaticClickIterface;
 import com.example.spidpay.interfaces.StaticInterface;
-import com.example.spidpay.ui.spwallet.AddMoneyActivity;
-import com.example.spidpay.ui.spwallet.AddMoneyViewModel;
+import com.example.spidpay.ui.addmoney.AddMoneyViewModel;
 import com.example.spidpay.ui.signup.InterrestedforAdapter;
 import com.example.spidpay.ui.spwallet.PaymentFailedActivity;
-import com.example.spidpay.ui.spwallet.PaymentSuccessfulActivity;
 import com.example.spidpay.util.Constant;
 import com.example.spidpay.util.ItemOffsetDecoration;
 import com.google.android.material.bottomsheet.BottomSheetDialog;
 
 
 public class CashDespositActivity extends AppCompatActivity implements OnStaticClickIterface, StaticInterface, AddMoneyInterface {
-    CashDepositeActivityBinding cashDepositeActivityBinding;
+    ActivityCashDepositeBinding cashDepositeActivityBinding;
     String balance;
     BottomSheetDialog interrestedfor_bottomsheet;
     AddMoneyViewModel addMoneyViewModel;
@@ -52,7 +49,7 @@ public class CashDespositActivity extends AppCompatActivity implements OnStaticC
         onStaticClickIterface = this;
         addMoneyInterface = this;
         staticInterface = CashDespositActivity.this;
-        cashDepositeActivityBinding = CashDepositeActivityBinding.inflate(getLayoutInflater());
+        cashDepositeActivityBinding = ActivityCashDepositeBinding.inflate(getLayoutInflater());
         setContentView(cashDepositeActivityBinding.getRoot());
         cashDepositeActivityBinding.imgBackpress.setOnClickListener(v -> finish());
         balance = getIntent().getStringExtra("balance");
@@ -119,17 +116,17 @@ public class CashDespositActivity extends AppCompatActivity implements OnStaticC
 
 
 
-        addMoneyViewModel.getTransactionType().observe(this, interrestedforResponses -> {
+        /*addMoneyViewModel.getTransactionType().observe(this, interrestedforResponses -> {
             cashDepositeActivityBinding.pbCashdeposit.setVisibility(View.GONE);
             Constant.START_TOUCH(CashDespositActivity.this);
             InterrestedforAdapter interrestedforAdapter = new InterrestedforAdapter(interrestedforResponses, onStaticClickIterface);
             rv_interreseted_for.setAdapter(interrestedforAdapter);
             interrestedfor_bottomsheet.show();
-        });
+        });*/
 
     }
 
-    @Override
+   /* @Override
     public void onItemClick(String code, String description) {
         if (isbanklistcalled) {
             addMoneyViewModel.transactiontype = code;
@@ -145,7 +142,7 @@ public class CashDespositActivity extends AppCompatActivity implements OnStaticC
 
         }
         interrestedfor_bottomsheet.dismiss();
-    }
+    }*/
 
     @Override
     public void onStaticStart() {
@@ -159,7 +156,7 @@ public class CashDespositActivity extends AppCompatActivity implements OnStaticC
         cashDepositeActivityBinding.pbCashdeposit.setVisibility(View.GONE);
     }
 
-    @Override
+  /*  @Override
     public void onOnlineSuccess(LiveData<AddMoneyResponse> addMoneyResponseLiveData) {
         addMoneyResponseLiveData.observe(this, addMoneyResponse -> {
             Constant.START_TOUCH(CashDespositActivity.this);
@@ -171,7 +168,7 @@ public class CashDespositActivity extends AppCompatActivity implements OnStaticC
             startActivity(intent);
             finish();
         });
-    }
+    }*/
 
     @Override
     public void onServiceStart() {
@@ -188,4 +185,8 @@ public class CashDespositActivity extends AppCompatActivity implements OnStaticC
         startActivity(intent);
     }
 
+    @Override
+    public void onItemClick(String code, String description) {
+
+    }
 }

@@ -19,7 +19,6 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class AddMoneyRepository {
-
     Context context;
     AddMoneyInterface addMoneyInterface;
 
@@ -28,6 +27,7 @@ public class AddMoneyRepository {
         this.addMoneyInterface = addMoneyInterface;
     }
 
+/*
     public MutableLiveData<AddMoneyResponse> getAddModenyResponse(AddMoneyRequest addMoneyRequest) {
         MutableLiveData<AddMoneyResponse> addMoneyResponseMutableLiveData = new MutableLiveData<>();
         RetrofitInterface retrofitInterface = RetrofitClient.GetRetrofitClient(context, Constant.WALLET_API).create(RetrofitInterface.class);
@@ -63,4 +63,6 @@ public class AddMoneyRepository {
         });
         return addMoneyResponseMutableLiveData;
     }
+*/
+
 }

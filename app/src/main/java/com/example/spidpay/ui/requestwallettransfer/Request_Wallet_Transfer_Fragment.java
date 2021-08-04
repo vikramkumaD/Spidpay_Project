@@ -76,7 +76,7 @@ public class Request_Wallet_Transfer_Fragment extends Fragment {
     }
 
     @Override
-    public View onCreateView(@NotNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         requestWalletTransferBinding = FragmentRequestWalletTransferBinding.inflate(inflater, container, false);
         return requestWalletTransferBinding.getRoot();
     }

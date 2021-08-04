@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="addmoneyviewmodel"
+            type="com.example.spidpay.ui.addmoney.AddMoneyViewModel" />
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".ui.addmoney.Available_Online_Balance_Fragment">
+
+        <TextView
+            android:id="@+id/tv_available_online_balance"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/marign20dp"
+            android:layout_marginTop="@dimen/marign40dp"
+            android:fontFamily="@font/lato_bold"
+            android:text="@string/available_balance"
+            android:textColor="@color/black"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/tv_addmoney_amount"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/marign20dp"
+            android:layout_marginTop="@dimen/marign10dp"
+            android:layout_marginEnd="@dimen/marign40dp"
+            android:fontFamily="@font/lato_bold"
+            android:text="Rs 600000"
+            android:textColor="@color/light_green"
+            android:textSize="@dimen/marign20sp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_available_online_balance" />
+
+
+        <EditText
+            android:text="@{addmoneyviewmodel.online_money}"
+            android:id="@+id/edt_online_amount"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/marign20dp"
+            android:layout_marginTop="@dimen/marign20dp"
+            android:layout_marginEnd="@dimen/marign20dp"
+            android:layout_weight="1"
+            android:background="@drawable/edittext_shadow"
+            android:hint="@string/enteramount"
+            android:importantForAutofill="no"
+            android:inputType="number"
+            android:paddingLeft="@dimen/marign10dp"
+            android:paddingTop="@dimen/marign15dp"
+            android:paddingRight="@dimen/marign10dp"
+            android:paddingBottom="@dimen/marign15dp"
+            android:textColorHint="@color/lightgrey"
+            app:layout_constraintTop_toBottomOf="@+id/tv_addmoney_amount" />
+
+
+        <EditText
+            android:id="@+id/edt_online_notes"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/marign20dp"
+            android:layout_marginTop="@dimen/marign10dp"
+            android:layout_marginEnd="@dimen/marign20dp"
+            android:layout_weight="1"
+            android:background="@drawable/edittext_shadow"
+            android:hint="@string/notes"
+            android:importantForAutofill="no"
+            android:paddingLeft="@dimen/marign10dp"
+            android:paddingTop="@dimen/marign15dp"
+            android:paddingRight="@dimen/marign10dp"
+            android:paddingBottom="@dimen/marign15dp"
+            android:textColorHint="@color/lightgrey"
+            app:layout_constraintTop_toBottomOf="@+id/edt_online_amount" />
+
+
+        <Button
+            android:background="@drawable/add_money_bg"
+            android:textColor="@color/white"
+            android:id="@+id/button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:minHeight="0dp"
+            android:onClick="@{(v)->addmoneyviewmodel.onTenThousandClick(v)}"
+            android:paddingTop="@dimen/marign5dp"
+            android:paddingBottom="@dimen/marign5dp"
+            android:text="@string/tenth"
+            app:layout_constraintBottom_toBottomOf="@+id/button2"
+            app:layout_constraintEnd_toStartOf="@+id/button2"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/button2" />
+
+
+        <Button
+            android:background="@drawable/add_money_bg"
+            android:minHeight="0dp"
+            android:paddingTop="@dimen/marign5dp"
+            android:paddingBottom="@dimen/marign5dp"
+            android:textColor="@color/white"
+            android:id="@+id/button2"
+            android:onClick="@{(v)->addmoneyviewmodel.onTwentyThousandClick(v)}"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/marign30dp"
+            android:text="@string/twenth"
+            app:layout_constraintEnd_toStartOf="@+id/button3"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/button"
+            app:layout_constraintTop_toBottomOf="@+id/edt_online_notes" />
+
+        <Button
+            android:background="@drawable/add_money_bg"
+            android:minHeight="0dp"
+            android:paddingTop="@dimen/marign5dp"
+            android:paddingBottom="@dimen/marign5dp"
+            android:textColor="@color/white"
+            android:id="@+id/button3"
+            android:onClick="@{(v)->addmoneyviewmodel.onThirtyThousandClick(v)}"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/thirty"
+            app:layout_constraintBottom_toBottomOf="@+id/button2"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/button2"
+            app:layout_constraintTop_toTopOf="@+id/button2" />
+
+
+        <TextView
+            android:id="@+id/tv_money_addedtomsg"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/marign40dp"
+            android:fontFamily="@font/lato_bold"
+            android:text="@string/moneyaddedtowallet"
+            android:textColor="@color/black"
+            android:textSize="@dimen/marign20sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+
+        <Button
+            android:id="@+id/btn_proceed"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/marign10dp"
+            android:layout_marginTop="@dimen/marign20dp"
+            android:layout_marginRight="@dimen/marign10dp"
+            android:background="@drawable/button_bg_green"
+            android:fontFamily="@font/lato"
+            android:text="@string/proceed"
+            android:textColor="@color/white"
+            android:textSize="@dimen/marign18sp"
+            app:layout_constraintTop_toBottomOf="@+id/tv_money_addedtomsg" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

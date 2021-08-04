@@ -21,6 +21,6 @@ public interface UserDao {
     @Query("SELECT * FROM UserData")
     UserData getUser();
 
-    @Query("select * from ParentUser")
-    ParentUser getParent();
+    /*@Query("select * from ParentUser")
+    ParentUser getParent();*/
 }

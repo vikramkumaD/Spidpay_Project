@@ -7,7 +7,6 @@ import androidx.core.app.ActivityCompat;
 import androidx.databinding.DataBindingUtil;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.ViewModelProvider;
-import androidx.room.Room;
 
 import android.Manifest;
 import android.annotation.SuppressLint;
@@ -40,15 +39,12 @@ import com.example.spidpay.data.response.LoginResponse;
 import com.example.spidpay.data.response.VerifyOTPResponse;
 import com.example.spidpay.databinding.ActivityLoginBinding;
 import com.example.spidpay.databinding.ForgotpasswordlayoutBinding;
-import com.example.spidpay.databinding.VerifyOtpDialogBinding;
+import com.example.spidpay.databinding.VerifyotpdialogBinding;
 import com.example.spidpay.databinding.VerifyusernameBinding;
-import com.example.spidpay.db.AppDatabase;
-import com.example.spidpay.db.UserDao;
 import com.example.spidpay.interfaces.ForgotPassInterface;
 import com.example.spidpay.interfaces.LoginInterface;
 
 import com.example.spidpay.location.GpsUtils;
-import com.example.spidpay.ui.DashboardActivity;
 import com.example.spidpay.ui.signup.RegisterActivity;
 import com.example.spidpay.ui.verifyotp.VerifyOTPActivity;
 import com.example.spidpay.util.Constant;
@@ -59,9 +55,7 @@ import com.google.android.gms.location.LocationRequest;
 import com.google.android.gms.location.LocationResult;
 import com.google.android.gms.location.LocationServices;
 import com.google.android.material.bottomsheet.BottomSheetDialog;
-
 import org.jetbrains.annotations.NotNull;
-
 import java.io.IOException;
 import java.util.List;
 import java.util.Locale;
@@ -75,7 +69,7 @@ public class LoginActivity extends AppCompatActivity implements LoginInterface, 
     ForgotPassInterface forgotPassInterface;
     BottomSheetDialog verify_username_bottomsheet, verify_OTP_bottomsheet;
     VerifyusernameBinding verifyusernameBinding;
-    VerifyOtpDialogBinding verifyOtpDialogBinding;
+    VerifyotpdialogBinding verifyOtpDialogBinding;
     ForgotpasswordlayoutBinding forgotpasswordlayoutBinding;
     private int forgot_dialog_counter = 0;
 
@@ -91,7 +85,6 @@ public class LoginActivity extends AppCompatActivity implements LoginInterface, 
         activityLoginBinding = DataBindingUtil.setContentView(this, R.layout.activity_login);
         loginInterface = this;
         forgotPassInterface = this;
-        new PrefManager(LoginActivity.this).setIsFirstTime(true);
         intliazeView();
     }
 
@@ -103,10 +96,7 @@ public class LoginActivity extends AppCompatActivity implements LoginInterface, 
         tv_signup = findViewById(R.id.tv_signup);
         tv_signup.setText(spannableString);
 
-        AppDatabase appDatabase = Room.databaseBuilder(getApplicationContext(), AppDatabase.class, "spidpay_db").build();
-        UserDao userDao = appDatabase.getUserDao();
-
-        LoginRepository loginRepository = new LoginRepository(LoginActivity.this, loginInterface, forgotPassInterface, userDao);
+        LoginRepository loginRepository = new LoginRepository(LoginActivity.this, loginInterface, forgotPassInterface);
         loginViewModel = new ViewModelProvider(this).get(LoginViewModel.class);
         loginViewModel.loginInterface = loginInterface;
         loginViewModel.forgotPassInterface = forgotPassInterface;
@@ -139,8 +129,8 @@ public class LoginActivity extends AppCompatActivity implements LoginInterface, 
         fusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(this);
         locationRequest = LocationRequest.create();
         locationRequest.setPriority(LocationRequest.PRIORITY_HIGH_ACCURACY);
-        locationRequest.setInterval(10 * 10000); // 10 seconds
-        locationRequest.setFastestInterval(5 * 10000); // 5 seconds
+        locationRequest.setInterval(10 * 1000); // 10 seconds
+        locationRequest.setFastestInterval(5 * 1000); // 5 seconds
 
         locationCallback = new LocationCallback() {
             @Override
@@ -200,7 +190,7 @@ public class LoginActivity extends AppCompatActivity implements LoginInterface, 
     public void verifyOTPDialog() {
         forgot_dialog_counter = 2;
         verify_OTP_bottomsheet = new BottomSheetDialog(LoginActivity.this);
-        verifyOtpDialogBinding = DataBindingUtil.inflate(LayoutInflater.from(LoginActivity.this), R.layout.verify_otp_dialog, null, false);
+        verifyOtpDialogBinding = DataBindingUtil.inflate(LayoutInflater.from(LoginActivity.this), R.layout.verifyotpdialog, null, false);
         verify_OTP_bottomsheet.setContentView(verifyOtpDialogBinding.getRoot());
         verifyOtpDialogBinding.setLoginviewmodel(loginViewModel);
         verifyOtpDialogBinding.setLifecycleOwner(this);
@@ -235,9 +225,9 @@ public class LoginActivity extends AppCompatActivity implements LoginInterface, 
             if (loginResponse.status.equals(Constant.Success)) {
                 Constant.START_TOUCH(LoginActivity.this);
                 activityLoginBinding.pbLogin.setVisibility(View.GONE);
-                new PrefManager(LoginActivity.this).setUserID(loginResponse.userData.userId);
+                new PrefManager(LoginActivity.this).setUserID(loginResponse.loginUserData.userId);
                 Intent intent = new Intent(LoginActivity.this, VerifyOTPActivity.class);
-                intent.putExtra("username", loginResponse.userData.username);
+                intent.putExtra("username", loginResponse.loginUserData.username);
                 startActivity(intent);
                 finish();
             }
@@ -339,7 +329,6 @@ public class LoginActivity extends AppCompatActivity implements LoginInterface, 
             city = addresses.get(0).getLocality();
         } catch (IOException e) {
             e.printStackTrace();
-            Log.e("error: ", e.toString());
             getLocation();
         }
         loginViewModel.latitude = String.valueOf(location.getLatitude());
@@ -353,6 +342,7 @@ public class LoginActivity extends AppCompatActivity implements LoginInterface, 
         if (ActivityCompat.checkSelfPermission(LoginActivity.this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(LoginActivity.this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
             ActivityCompat.requestPermissions(LoginActivity.this, new String[]{Manifest.permission.ACCESS_FINE_LOCATION, Manifest.permission.ACCESS_COARSE_LOCATION}, 1000);
         } else {
+
             fusedLocationProviderClient.getLastLocation().addOnSuccessListener(LoginActivity.this, location -> {
                 if (location != null) {
                     getAddress(location);

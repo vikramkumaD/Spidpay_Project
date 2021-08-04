@@ -1,6 +1,32 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="false" project-jdk-name="1.8" project-jdk-type="JavaSDK">
+  <component name="DesignSurface">
+    <option name="filePathToZoomLevelMap">
+      <map>
+        <entry key="..\:/Android Projcet/Spidpay_Project-master/app/src/main/res/drawable/add_money_bg.xml" value="0.21666666666666667" />
+        <entry key="..\:/Android Projcet/Spidpay_Project-master/app/src/main/res/drawable/all_transaction_bg.xml" value="0.14635416666666667" />
+        <entry key="..\:/Android Projcet/Spidpay_Project-master/app/src/main/res/drawable/ic_baseline_arrow_forward_24.xml" value="0.21666666666666667" />
+        <entry key="..\:/Android Projcet/Spidpay_Project-master/app/src/main/res/layout/activity_add_money.xml" value="0.2101851851851852" />
+        <entry key="..\:/Android Projcet/Spidpay_Project-master/app/src/main/res/layout/activity_cash_deposite.xml" value="0.25416666666666665" />
+        <entry key="..\:/Android Projcet/Spidpay_Project-master/app/src/main/res/layout/activity_get_all_transaction_by_wallet_id.xml" value="0.1" />
+        <entry key="..\:/Android Projcet/Spidpay_Project-master/app/src/main/res/layout/activity_login.xml" value="0.25416666666666665" />
+        <entry key="..\:/Android Projcet/Spidpay_Project-master/app/src/main/res/layout/activity_online.xml" value="0.25416666666666665" />
+        <entry key="..\:/Android Projcet/Spidpay_Project-master/app/src/main/res/layout/activity_payment_failed.xml" value="0.13020833333333334" />
+        <entry key="..\:/Android Projcet/Spidpay_Project-master/app/src/main/res/layout/activity_payment_successful.xml" value="0.25416666666666665" />
+        <entry key="..\:/Android Projcet/Spidpay_Project-master/app/src/main/res/layout/activity_tranfer_money.xml" value="0.25416666666666665" />
+        <entry key="..\:/Android Projcet/Spidpay_Project-master/app/src/main/res/layout/addmoneylayout.xml" value="0.25416666666666665" />
+        <entry key="..\:/Android Projcet/Spidpay_Project-master/app/src/main/res/layout/alltransaction_itemview.xml" value="0.25416666666666665" />
+        <entry key="..\:/Android Projcet/Spidpay_Project-master/app/src/main/res/layout/cash_deposite_activity.xml" value="0.25416666666666665" />
+        <entry key="..\:/Android Projcet/Spidpay_Project-master/app/src/main/res/layout/fragment_a_e_p_s__dashboard_.xml" value="0.13020833333333334" />
+        <entry key="..\:/Android Projcet/Spidpay_Project-master/app/src/main/res/layout/fragment_add_money.xml" value="0.25416666666666665" />
+        <entry key="..\:/Android Projcet/Spidpay_Project-master/app/src/main/res/layout/fragment_all_transaction.xml" value="0.25416666666666665" />
+        <entry key="..\:/Android Projcet/Spidpay_Project-master/app/src/main/res/layout/landingfragment.xml" value="0.25416666666666665" />
+        <entry key="..\:/Android Projcet/Spidpay_Project-master/app/src/main/res/layout/verifyotpdialog.xml" value="0.25416666666666665" />
+        <entry key="..\:/Android Projcet/Spidpay_Project-master/app/src/main/res/layout/verifyusername.xml" value="0.25416666666666665" />
+      </map>
+    </option>
+  </component>
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_1_8" default="true" project-jdk-name="1.8" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/build/classes" />
   </component>
   <component name="ProjectType">

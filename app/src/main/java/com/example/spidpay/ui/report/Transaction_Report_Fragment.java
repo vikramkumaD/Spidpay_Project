@@ -10,7 +10,9 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.CompoundButton;
 import android.widget.RadioButton;
+import android.widget.Toast;
 
 import com.example.spidpay.R;
 import com.example.spidpay.databinding.FragmentTransactionReportBinding;
@@ -55,7 +57,7 @@ public class Transaction_Report_Fragment extends Fragment {
     }
 
     @Override
-    public View onCreateView(@NotNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         fragmentTransactionReportBinding = FragmentTransactionReportBinding.inflate(inflater, container, false);
         return fragmentTransactionReportBinding.getRoot();
     }

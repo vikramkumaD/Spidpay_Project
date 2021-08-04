@@ -28,7 +28,7 @@
         android:id="@+id/addMoneyFragment"
         android:name="com.example.spidpay.ui.spwallet.AddMoneyActivity"
         android:label="fragment_add_money"
-        tools:layout="@layout/fragment_add_money" >
+        tools:layout="@layout/Activity_add_money" >
 
     </fragment>
     <fragment
