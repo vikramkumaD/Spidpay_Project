@@ -1,14 +1,12 @@
 package com.example.spidpay.ui.addmoney.online;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.databinding.DataBindingUtil;
-import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
 import android.os.Bundle;
 
 import com.example.spidpay.databinding.ActivityOnlineBinding;
-import com.example.spidpay.ui.addmoney.AddMoneyViewModel;
+import com.example.spidpay.ui.spwallet.AddMoneyViewModel;
 
 public class OnlineActivity extends AppCompatActivity {
     ActivityOnlineBinding activityOnlineBinding;

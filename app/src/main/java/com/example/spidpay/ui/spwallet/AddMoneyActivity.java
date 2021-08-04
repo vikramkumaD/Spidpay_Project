@@ -1,4 +1,4 @@
-package com.example.spidpay.ui.addmoney;
+package com.example.spidpay.ui.spwallet;
 
 import android.os.Bundle;
 import android.view.View;
@@ -7,7 +7,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.ViewModelProvider;
 
 import com.example.spidpay.databinding.ActivityAddMoneyBinding;
-import com.example.spidpay.databinding.AddmoneylayoutBinding;
 import com.example.spidpay.interfaces.CommonInterface;
 import com.example.spidpay.util.Constant;
 
@@ -31,7 +30,6 @@ public class AddMoneyActivity extends AppCompatActivity implements CommonInterfa
         addmoneylayoutBinding.executePendingBindings();
         addmoneylayoutBinding.setBalance("");
         addmoneylayoutBinding.setWalletid("");
-
     }
 
     @Override

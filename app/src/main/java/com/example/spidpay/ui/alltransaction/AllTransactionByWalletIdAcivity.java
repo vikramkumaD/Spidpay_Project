@@ -14,7 +14,7 @@ import com.example.spidpay.data.repository.AllTransactionRepositroy;
 import com.example.spidpay.data.response.AllTransactionResponse;
 import com.example.spidpay.databinding.ActivityGetAllTransactionByWalletIdBinding;
 import com.example.spidpay.interfaces.AllTransactionInterface;
-import com.example.spidpay.ui.addmoney.AddMoneyActivity;
+import com.example.spidpay.ui.spwallet.AddMoneyActivity;
 import com.example.spidpay.util.Constant;
 import com.example.spidpay.util.ItemOffsetDecoration;
 

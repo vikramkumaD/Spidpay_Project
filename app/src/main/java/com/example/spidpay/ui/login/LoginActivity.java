@@ -72,7 +72,6 @@ public class LoginActivity extends AppCompatActivity implements LoginInterface, 
     VerifyotpdialogBinding verifyOtpDialogBinding;
     ForgotpasswordlayoutBinding forgotpasswordlayoutBinding;
     private int forgot_dialog_counter = 0;
-
     LocationRequest locationRequest;
     FusedLocationProviderClient fusedLocationProviderClient;
 
@@ -124,8 +123,6 @@ public class LoginActivity extends AppCompatActivity implements LoginInterface, 
         loginViewModel.mstring_mobile_number.observe(this, s -> activityLoginBinding.edtLoginMobileNumber.setText(s));
         activityLoginBinding.tvSignup.setOnClickListener(v -> startActivity(new Intent(LoginActivity.this, RegisterActivity.class)));
         activityLoginBinding.tvLoginforgotpass.setOnClickListener(v -> verifyUserNameDialog());
-
-
         fusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(this);
         locationRequest = LocationRequest.create();
         locationRequest.setPriority(LocationRequest.PRIORITY_HIGH_ACCURACY);
@@ -137,7 +134,10 @@ public class LoginActivity extends AppCompatActivity implements LoginInterface, 
             public void onLocationResult(@NotNull LocationResult locationResult) {
                 for (Location location : locationResult.getLocations()) {
                     if (location != null) {
-                        Log.e("ok", location.getLongitude() + "--" + location.getLatitude());
+                        loginViewModel.latitude = String.valueOf(location.getLatitude());
+                        loginViewModel.longitude = String.valueOf(location.getLongitude());
+                        loginViewModel.city = "";
+                        loginViewModel.getLoginResponse();
                     }
                 }
             }
@@ -223,6 +223,7 @@ public class LoginActivity extends AppCompatActivity implements LoginInterface, 
     public void onSuccess(LiveData<LoginResponse> responseLiveData) {
         responseLiveData.observe(this, loginResponse -> {
             if (loginResponse.status.equals(Constant.Success)) {
+
                 Constant.START_TOUCH(LoginActivity.this);
                 activityLoginBinding.pbLogin.setVisibility(View.GONE);
                 new PrefManager(LoginActivity.this).setUserID(loginResponse.loginUserData.userId);
@@ -307,7 +308,11 @@ public class LoginActivity extends AppCompatActivity implements LoginInterface, 
         @Override
         public void onLocationResult(@NotNull LocationResult locationResult) {
             for (Location location : locationResult.getLocations()) {
-                getAddress(location);
+                loginViewModel.latitude = String.valueOf(location.getLatitude());
+                loginViewModel.longitude = String.valueOf(location.getLongitude());
+                loginViewModel.city = "";
+                loginViewModel.getLoginResponse();
+
             }
         }
     };
@@ -319,7 +324,7 @@ public class LoginActivity extends AppCompatActivity implements LoginInterface, 
         }
     }
 
-    public void getAddress(Location location) {
+   /* public void getAddress(Location location) {
         Geocoder geocoder;
         String city = "";
         List<Address> addresses;
@@ -336,7 +341,7 @@ public class LoginActivity extends AppCompatActivity implements LoginInterface, 
         loginViewModel.city = city;
         loginViewModel.getLoginResponse();
 
-    }
+    }*/
 
     private void getLocation() {
         if (ActivityCompat.checkSelfPermission(LoginActivity.this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(LoginActivity.this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
@@ -345,7 +350,10 @@ public class LoginActivity extends AppCompatActivity implements LoginInterface, 
 
             fusedLocationProviderClient.getLastLocation().addOnSuccessListener(LoginActivity.this, location -> {
                 if (location != null) {
-                    getAddress(location);
+                    loginViewModel.latitude = String.valueOf(location.getLatitude());
+                    loginViewModel.longitude = String.valueOf(location.getLongitude());
+                    loginViewModel.city = "";
+                    loginViewModel.getLoginResponse();
                 } else {
                     fusedLocationProviderClient.requestLocationUpdates(locationRequest, locationCallback, null);
                 }

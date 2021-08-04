@@ -8,7 +8,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.lifecycle.LiveData;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -23,7 +22,7 @@ import com.example.spidpay.db.UserDao;
 import com.example.spidpay.interfaces.AddMoneyInterface;
 import com.example.spidpay.interfaces.OnStaticClickIterface;
 import com.example.spidpay.interfaces.StaticInterface;
-import com.example.spidpay.ui.addmoney.AddMoneyViewModel;
+import com.example.spidpay.ui.spwallet.AddMoneyViewModel;
 import com.example.spidpay.ui.signup.InterrestedforAdapter;
 import com.example.spidpay.ui.spwallet.PaymentFailedActivity;
 import com.example.spidpay.util.Constant;

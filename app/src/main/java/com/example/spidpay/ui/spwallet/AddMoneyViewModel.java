@@ -1,4 +1,4 @@
-package com.example.spidpay.ui.addmoney;
+package com.example.spidpay.ui.spwallet;
 
 import android.content.Intent;
 import android.view.View;

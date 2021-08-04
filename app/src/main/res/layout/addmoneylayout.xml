@@ -18,7 +18,7 @@
 
         <variable
             name="addmoneyviewmodel"
-            type="com.example.spidpay.ui.addmoney.AddMoneyViewModel" />
+            type="com.example.spidpay.ui.spwallet.AddMoneyViewModel" />
 
     </data>
 

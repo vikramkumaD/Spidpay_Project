@@ -139,8 +139,8 @@ public class RegisterViewModel extends ViewModel {
         register_userInfo.mobileNo = string_register_mobile_number.getValue();
         register_userInfo.password = password;
         register_userInfo.userType = code;
-        register_userInfo.domainCode = "SPIDPAY";
-        register_userInfo.parentUserId = "d103f219-6e1c-4096-bc4b-8a4a1ce3b138";
+        register_userInfo.domainCode = Constant.DOMAIN_NAME;
+        register_userInfo.parentUserId = Constant.PARENT_ID;
 
         registerRequest.register_userInfo = register_userInfo;
 

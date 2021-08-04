@@ -3,6 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
+
         <variable
             name="loginviewmodel"
             type="com.example.spidpay.ui.login.LoginViewModel" />
@@ -11,7 +12,61 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="wrap_content"
+        android:background="@drawable/dialogwith_whiteborder"
+        android:paddingTop="@dimen/marign20dp"
+        android:paddingBottom="@dimen/marign20dp">
+
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/txtinput_forgot_username"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/marign20dp"
+            android:layout_marginTop="@dimen/marign15dp"
+            android:layout_marginEnd="@dimen/marign20dp"
+            app:hintEnabled="false"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+           >
+
+            <androidx.appcompat.widget.AppCompatEditText
+                android:id="@+id/edt_forgot_password"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/edittext_shadow"
+                android:hint="@string/username"
+                android:inputType="text"
+                android:maxLength="10"
+                android:paddingStart="@dimen/marign15dp"
+                android:paddingEnd="@dimen/marign10dp"
+                android:paddingTop="@dimen/marign15dp"
+                android:paddingBottom="@dimen/marign15dp"
+                android:text="@={loginviewmodel.verify_username}"
+                app:hintEnabled="false" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+
+
+
+        <Button
+            android:id="@+id/btn_continue"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/marign20dp"
+            android:layout_marginTop="@dimen/marign20dp"
+            android:layout_marginEnd="@dimen/marign20dp"
+            android:layout_marginBottom="@dimen/marign20dp"
+            android:background="@drawable/button_bg_green"
+            android:fontFamily="@font/lato"
+            android:onClick="@{(v)->loginviewmodel.validate_verifyUserName(v)}"
+            android:text="@string/txtcontinue"
+            android:textColor="@color/white"
+            android:textSize="@dimen/marign18sp"
+            app:layout_constraintTop_toBottomOf="@+id/txtinput_forgot_username" />
+
 
         <ProgressBar
             android:id="@+id/pb_forgot"
@@ -22,7 +77,6 @@
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
-
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
