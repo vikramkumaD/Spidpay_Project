@@ -45,6 +45,7 @@ public class Constant {
     public static final String DOMAIN_NAME="spidtail";
     public static final String PARENT_ID="eaf02719-c928-42d5-86a8-7530933a44ca";
     public static final String TRANSACTION_CATEGORY_CASHDEPOSITE="CASH_TRANSACTION";
+    public static final String TRANSACTION_CATEGORY_WALLETTRANSFER="WALLET_TRANSFER";
 
     public static final int BOTTOM_HOME = 1;
     public static final int BOTTOM_COMMISION = 2;
@@ -180,6 +181,15 @@ public class Constant {
     public static String convertDate(String Date) throws ParseException {
         DateFormat inputFormat = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss", Locale.US);
         DateFormat outputFormat = new SimpleDateFormat("MMMM dd yyyy, hh:mm:ss a", Locale.ENGLISH);
+        java.util.Date date = inputFormat.parse(Date);
+        assert date != null;
+        return outputFormat.format(date);
+    }
+
+
+    public static String convertDate2(String Date) throws ParseException {
+        DateFormat inputFormat = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss", Locale.US);
+        DateFormat outputFormat = new SimpleDateFormat("MMMM dd yyyy, hh:mm a", Locale.ENGLISH);
         java.util.Date date = inputFormat.parse(Date);
         assert date != null;
         return outputFormat.format(date);

@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
@@ -12,13 +13,192 @@
         android:layout_height="wrap_content"
         tools:context=".ui.spwallet.PaymentSuccessfulActivity">
 
-        <androidx.constraintlayout.widget.ConstraintLayout
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent"
+        <androidx.cardview.widget.CardView
+            android:id="@+id/carview_header"
+            card_view:cardElevation="10dp"
+            card_view:cardPreventCornerOverlap="false"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:clipChildren="false"
+            android:clipToPadding="false"
+            android:divider="@android:color/transparent"
+            android:dividerHeight="0.0px"
+            android:elevation="8dp"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingTop="@dimen/marign10dp"
+                android:paddingBottom="@dimen/marign10dp">
+
+                <ImageView
+                    android:id="@+id/img_backpress"
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:layout_marginStart="@dimen/marign10dp"
+                    android:contentDescription="TODO"
+                    android:src="@drawable/ic_baseline_arrow_back_ios_24"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_toRightOf="@+id/img_backpress"
+                    android:fontFamily="@font/lato_bold"
+                    android:text="@string/addmoney"
+                    android:textColor="@color/page_heading_color"
+                    android:textSize="@dimen/marign18sp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintLeft_toRightOf="@+id/img_backpress"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+
+            </RelativeLayout>
+
+
+        </androidx.cardview.widget.CardView>
+
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/payment_successful"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/marign30dp"
+            app:layout_constraintTop_toBottomOf="@+id/carview_header">
+
+            <ImageView
+                android:id="@+id/img_success"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_success"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/tv_request_successful"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/marign20dp"
+                android:gravity="center"
+                android:text="@string/walletrequestsuccessful"
+                android:textColor="@color/green"
+                android:textSize="@dimen/marign20sp"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/img_success" />
+
+            <TextView
+                android:id="@+id/tv_date"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/marign20dp"
+                android:textColor="@color/darkgrey"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tv_request_successful" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/constraint_layout_success_1"
+            android:layout_marginTop="@dimen/marign20dp"
+            android:paddingTop="@dimen/marign20dp"
+            android:paddingBottom="@dimen/marign20dp"
+            android:layout_marginLeft="@dimen/marign15dp"
+            android:layout_marginRight="@dimen/marign15dp"
+            app:layout_constraintTop_toBottomOf="@+id/payment_successful"
+            android:layout_width="match_parent"
+            android:background="@drawable/all_transaction_bg"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/tv_reqestmoney1"
+                android:fontFamily="@font/lato_bold"
+                android:textColor="@color/black"
+                android:textSize="@dimen/marign18sp"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintLeft_toLeftOf="parent"
+                android:layout_marginEnd="@dimen/marign20dp"
+                android:layout_marginStart="@dimen/marign20dp"
+                android:text="@string/reqestmoney1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+            <TextView
+                android:id="@+id/tv_reqestmoney2"
+                app:layout_constraintTop_toBottomOf="@+id/tv_reqestmoney1"
+                android:fontFamily="@font/lato_bold"
+                android:textColor="@color/green"
+                android:textSize="@dimen/marign18sp"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintLeft_toLeftOf="parent"
+                android:layout_marginEnd="@dimen/marign20dp"
+                android:layout_marginStart="@dimen/marign20dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+
+            <TextView
+                android:id="@+id/reqestmoney3"
+                app:layout_constraintTop_toBottomOf="@+id/tv_reqestmoney2"
+                android:fontFamily="@font/lato_bold"
+                android:textColor="@color/black"
+                android:textSize="@dimen/marign18sp"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintLeft_toLeftOf="parent"
+                android:layout_marginEnd="@dimen/marign20dp"
+                android:layout_marginStart="@dimen/marign20dp"
+                android:text="@string/reqestmoney2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+
+
+            <TextView
+                android:gravity="center"
+                android:paddingEnd="@dimen/marign20dp"
+                android:paddingStart="@dimen/marign20dp"
+                android:layout_marginTop="@dimen/marign20dp"
+                app:layout_constraintTop_toBottomOf="@+id/reqestmoney3"
+                android:fontFamily="@font/lato_bold"
+                android:textColor="@color/black"
+                android:textSize="@dimen/marign18sp"
+                android:layout_marginEnd="@dimen/marign20dp"
+                android:layout_marginStart="@dimen/marign20dp"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintLeft_toLeftOf="parent"
+                android:text="@string/reqestmoney3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <Button
+            android:textAllCaps="false"
+            app:layout_constraintTop_toBottomOf="@+id/constraint_layout_success_1"
+           android:id="@+id/btn_backtohome"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/marign20dp"
+            android:layout_marginTop="@dimen/marign20dp"
+            android:layout_marginEnd="@dimen/marign20dp"
+            android:layout_marginBottom="@dimen/marign20dp"
+            android:background="@drawable/button_bg_green"
+            android:fontFamily="@font/lato"
+            android:text="@string/backtohome"
+            android:textColor="@color/white"
+            android:textSize="@dimen/marign18sp"
+             />
+
+
+
+
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

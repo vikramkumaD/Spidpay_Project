@@ -128,15 +128,6 @@ public class CashDespositActivity extends AppCompatActivity implements OnStaticC
         InterrestedforAdapter interrestedforAdapter = new InterrestedforAdapter(list, onStaticClickIterface);
         rv_interreseted_for.setAdapter(interrestedforAdapter);
         interrestedfor_bottomsheet.show();
-
-       /* addMoneyViewModel.getTransactionType().observe(this, interrestedforResponses -> {
-            cashDepositeActivityBinding.pbCashdeposit.setVisibility(View.GONE);
-            Constant.START_TOUCH(CashDespositActivity.this);
-            InterrestedforAdapter interrestedforAdapter = new InterrestedforAdapter(interrestedforResponses, onStaticClickIterface);
-            rv_interreseted_for.setAdapter(interrestedforAdapter);
-            interrestedfor_bottomsheet.show();
-        });*/
-
     }
 
     @Override
