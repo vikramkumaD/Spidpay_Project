@@ -220,4 +220,8 @@
     <string name="waterbill">Water Bill</string>
     <string name="landline">Landline</string>
     <string name="transactionfailed">Your transaction is failed. try again!</string>
+    <string name="walletrequestsuccessful">REQUEST \nSUCCESSFUL</string>
+    <string name="reqestmoney1">Your request for adding money</string>
+    <string name="reqestmoney2">to your wallet has been sent successfully</string>
+    <string name="reqestmoney3">The amount will be credited to your wallet after it is approved</string>
 </resources>

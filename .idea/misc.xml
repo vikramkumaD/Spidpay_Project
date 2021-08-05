@@ -26,6 +26,7 @@
         <entry key="..\:/Android Projcet/Spidpay_final/Spidpay_Project/app/src/main/res/drawable/add_money_bg.xml" value="0.2657407407407407" />
         <entry key="..\:/Android Projcet/Spidpay_final/Spidpay_Project/app/src/main/res/drawable/all_transaction_bg.xml" value="0.2657407407407407" />
         <entry key="..\:/Android Projcet/Spidpay_final/Spidpay_Project/app/src/main/res/drawable/button_bg_blue.xml" value="0.2657407407407407" />
+        <entry key="..\:/Android Projcet/Spidpay_final/Spidpay_Project/app/src/main/res/drawable/ic_success.xml" value="0.2601851851851852" />
         <entry key="..\:/Android Projcet/Spidpay_final/Spidpay_Project/app/src/main/res/layout/activity_add_money.xml" value="0.25416666666666665" />
         <entry key="..\:/Android Projcet/Spidpay_final/Spidpay_Project/app/src/main/res/layout/activity_cash_deposite.xml" value="0.20185185185185187" />
         <entry key="..\:/Android Projcet/Spidpay_final/Spidpay_Project/app/src/main/res/layout/activity_get_all_transaction_by_wallet_id.xml" value="0.25416666666666665" />
@@ -34,6 +35,7 @@
         <entry key="..\:/Android Projcet/Spidpay_final/Spidpay_Project/app/src/main/res/layout/activity_online.xml" value="0.25416666666666665" />
         <entry key="..\:/Android Projcet/Spidpay_final/Spidpay_Project/app/src/main/res/layout/activity_payment_failed.xml" value="0.25416666666666665" />
         <entry key="..\:/Android Projcet/Spidpay_final/Spidpay_Project/app/src/main/res/layout/activity_payment_successful.xml" value="0.25416666666666665" />
+        <entry key="..\:/Android Projcet/Spidpay_final/Spidpay_Project/app/src/main/res/layout/activity_register.xml" value="0.25" />
         <entry key="..\:/Android Projcet/Spidpay_final/Spidpay_Project/app/src/main/res/layout/alltransaction_itemview.xml" value="0.25416666666666665" />
         <entry key="..\:/Android Projcet/Spidpay_final/Spidpay_Project/app/src/main/res/layout/cash_deposite_activity.xml" value="0.25416666666666665" />
         <entry key="..\:/Android Projcet/Spidpay_final/Spidpay_Project/app/src/main/res/layout/forgotpasswordlayout.xml" value="0.25416666666666665" />

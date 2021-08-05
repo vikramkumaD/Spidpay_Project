@@ -15,6 +15,8 @@ import com.example.spidpay.data.request.CashTransactionRequest;
 import com.example.spidpay.data.request.WalletTransferRequest;
 import com.example.spidpay.data.response.AddMoneyResponse;
 import com.example.spidpay.data.response.InterrestedforResponse;
+import com.example.spidpay.data.response.ParentUser;
+import com.example.spidpay.data.response.UserInfo;
 import com.example.spidpay.interfaces.AddMoneyInterface;
 import com.example.spidpay.interfaces.CommonInterface;
 import com.example.spidpay.interfaces.StaticInterface;
@@ -118,7 +120,7 @@ public class AddMoneyViewModel extends ViewModel {
         addMoneyRequest.amount = online_money.getValue();
         addMoneyRequest.domain = Constant.DOMAIN_NAME;
         addMoneyRequest.notes = online_notes.getValue();
-        addMoneyRequest.userId =userid;
+        addMoneyRequest.userId = userid;
         addMoneyRequest.walletType = "SP";
         addMoneyRequest.transactionCategory = Constant.TRANSACTION_CATEGORY_CASHDEPOSITE;
 
@@ -129,25 +131,32 @@ public class AddMoneyViewModel extends ViewModel {
         cashTransactionRequest.imageRef = "/abc";
         cashTransactionRequest.transferMode = transactiontype;
         addMoneyRequest.cashTransactionRequest = cashTransactionRequest;
-        LiveData<AddMoneyResponse> addMoneyResponseLiveData= addMoneyRepository.getAddModenyResponse(addMoneyRequest);
+        LiveData<AddMoneyResponse> addMoneyResponseLiveData = addMoneyRepository.getAddModenyResponse(addMoneyRequest);
         addMoneyInterface.onOnlineSuccess(addMoneyResponseLiveData);
     }
 
-    public void getAddMoneyLiveDataofParentRequest(String userid) {
+    public void getAddMoneyLiveDataofParentRequest(String userid, UserInfo userInfo, ParentUser parentUser) {
         AddMoneyRequest addMoneyRequest = new AddMoneyRequest();
         addMoneyRequest.amount = online_money.getValue();
         addMoneyRequest.domain = Constant.DOMAIN_NAME;
         addMoneyRequest.notes = online_notes.getValue();
-        addMoneyRequest.userId =userid;
+        addMoneyRequest.userId = userid;
         addMoneyRequest.walletType = "SP";
-        addMoneyRequest.transactionCategory = Constant.TRANSACTION_CATEGORY_CASHDEPOSITE;
+        addMoneyRequest.transactionCategory = Constant.TRANSACTION_CATEGORY_WALLETTRANSFER;
 
-        WalletTransferRequest walletTransferRequest=new WalletTransferRequest();
-        walletTransferRequest.targetWalletId="";
+        WalletTransferRequest walletTransferRequest = new WalletTransferRequest();
+        walletTransferRequest.targetWalletId = "";
+        walletTransferRequest.firstName = userInfo.firstName;
+        walletTransferRequest.lastName = userInfo.lastName;
+        walletTransferRequest.userId = userid;
+        walletTransferRequest.otherUserId = parentUser.userId;
+        walletTransferRequest.otherUserFirstName = parentUser.firstName;
+        walletTransferRequest.otherUserLastName = parentUser.lastName;
+        walletTransferRequest.partyType = "REQUESTER";
+        addMoneyRequest.walletTransferRequest=walletTransferRequest;
 
 
-
-        LiveData<AddMoneyResponse> addMoneyResponseLiveData= addMoneyRepository.getAddModenyResponse(addMoneyRequest);
+        LiveData<AddMoneyResponse> addMoneyResponseLiveData = addMoneyRepository.getAddModenyResponse(addMoneyRequest);
         addMoneyInterface.onOnlineSuccess(addMoneyResponseLiveData);
     }
 
