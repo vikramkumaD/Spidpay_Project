@@ -45,6 +45,7 @@ import com.example.spidpay.interfaces.ForgotPassInterface;
 import com.example.spidpay.interfaces.LoginInterface;
 
 import com.example.spidpay.location.GpsUtils;
+import com.example.spidpay.ui.DashboardActivity;
 import com.example.spidpay.ui.signup.RegisterActivity;
 import com.example.spidpay.ui.verifyotp.VerifyOTPActivity;
 import com.example.spidpay.util.Constant;
@@ -87,6 +88,7 @@ public class LoginActivity extends AppCompatActivity implements LoginInterface, 
 
     @RequiresApi(api = Build.VERSION_CODES.M)
     public void intliazeView() {
+        new PrefManager(LoginActivity.this).setIsFirstTime(true);
         SpannableString spannableString = new SpannableString(getResources().getString(R.string.signup_txt));
         ForegroundColorSpan foregroundColorSpanCyan = new ForegroundColorSpan(getResources().getColor(R.color.seagreen));
         spannableString.setSpan(foregroundColorSpanCyan, 22, 28, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);

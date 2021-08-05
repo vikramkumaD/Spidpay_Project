@@ -224,4 +224,6 @@
     <string name="reqestmoney1">Your request for adding money</string>
     <string name="reqestmoney2">to your wallet has been sent successfully</string>
     <string name="reqestmoney3">The amount will be credited to your wallet after it is approved</string>
+    <string name="dialog_title_auth">Enter Valid Input</string>
+    <string name="dialog_msg_auth">Enter Correct Pin Or Pattern to Proceed</string>
 </resources>
