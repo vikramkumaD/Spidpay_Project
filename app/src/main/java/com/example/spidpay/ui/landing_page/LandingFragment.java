@@ -97,61 +97,7 @@ public class LandingFragment extends Fragment implements LandingInterface {
         landingfragmentBinding = null;
     }
 
-    public void showMainWalletPopup() {
-        View view = LayoutInflater.from(getActivity()).inflate(R.layout.wallet_bottomsheet, null);
-        main_wallet_popup = new BottomSheetDialog(requireActivity());
-        main_wallet_popup.setContentView(view);
-        main_wallet_popup.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
-        main_wallet_popup.show();
-        TextView tv_wallet_addmoney = view.findViewById(R.id.tv_wallet_addmoney);
-        tv_wallet_addmoney.setOnClickListener(v -> {
-            main_wallet_popup.dismiss();
-            NavController navController = NavHostFragment.findNavController(this);
-            navController.navigate(R.id.addMoneyFragment);
-        });
-        TextView tv_wallet_viewalltrasaction = view.findViewById(R.id.tv_wallet_viewalltrasaction);
-        tv_wallet_viewalltrasaction.setOnClickListener(v -> {
-            main_wallet_popup.dismiss();
-            NavController navController = NavHostFragment.findNavController(this);
-            navController.navigate(R.id.allTransactionFragment);
-        });
-        TextView tv_wallet_requestwallet_transfer = view.findViewById(R.id.tv_wallet_requestwallet_transfer);
-        tv_wallet_requestwallet_transfer.setOnClickListener(v -> {
-            main_wallet_popup.dismiss();
-            NavController navController = NavHostFragment.findNavController(this);
-            navController.navigate(R.id.request_Wallet_Transfer_Fragment);
-        });
 
-        TextView tv_wallet_setlowbalancealert = view.findViewById(R.id.tv_wallet_setlowbalancealert);
-        tv_wallet_setlowbalancealert.setOnClickListener(v -> {
-            main_wallet_popup.dismiss();
-            NavController navController = NavHostFragment.findNavController(this);
-            navController.navigate(R.id.low_Balance_Fragment);
-        });
-
-    }
-
-    public void showTradeWalletPopup() {
-        View view = LayoutInflater.from(getActivity()).inflate(R.layout.trade_wallet_bottomsheet, null);
-        trade_wallet_popup = new BottomSheetDialog(requireActivity());
-        trade_wallet_popup.setContentView(view);
-        trade_wallet_popup.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
-        trade_wallet_popup.show();
-
-        TextView tv_trade_trasnfertobank = view.findViewById(R.id.tv_trade_trasnfertobank);
-        tv_trade_trasnfertobank.setOnClickListener(v -> {
-            trade_wallet_popup.dismiss();
-            NavController navController = NavHostFragment.findNavController(this);
-            navController.navigate(R.id.transferToBanKFragment);
-        });
-
-        TextView tv_wallet_viewalltrasaction = view.findViewById(R.id.tv_trade_viewalltransaction);
-        tv_wallet_viewalltrasaction.setOnClickListener(v -> {
-            trade_wallet_popup.dismiss();
-            NavController navController = NavHostFragment.findNavController(this);
-            navController.navigate(R.id.allTransactionFragment);
-        });
-    }
 
     @Override
     public void onSuccess(LiveData<List<WalletResponse>> listLiveData) {

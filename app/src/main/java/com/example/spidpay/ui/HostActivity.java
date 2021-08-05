@@ -1,15 +1,20 @@
 package com.example.spidpay.ui;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.Menu;
 
 import com.example.spidpay.R;
+import com.example.spidpay.ui.login.LoginActivity;
 import com.example.spidpay.util.Constant;
 import com.example.spidpay.interfaces.ChangeTitlenandIconInterface;
 import com.example.spidpay.interfaces.UpdateBottomView;
+import com.example.spidpay.util.PrefManager;
 import com.google.android.material.navigation.NavigationView;
 
+import androidx.annotation.NonNull;
 import androidx.core.view.GravityCompat;
 import androidx.databinding.DataBindingUtil;
 import androidx.navigation.NavController;
@@ -25,7 +30,7 @@ public class HostActivity extends AppCompatActivity implements ChangeTitlenandIc
 
     private AppBarConfiguration mAppBarConfiguration;
     private ActivityHostBinding binding;
-
+    NavController navController;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,7 +41,7 @@ public class HostActivity extends AppCompatActivity implements ChangeTitlenandIc
         NavigationView navigationView = binding.navView;
         navigationView.setItemIconTintList(null);
 
-        NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_content_host);
+        navController = Navigation.findNavController(this, R.id.nav_host_fragment_content_host);
         NavigationUI.setupWithNavController(navigationView, navController);
         binding.imgOpendrawer.setOnClickListener(v -> {
             if (drawer.isOpen())
@@ -49,12 +54,40 @@ public class HostActivity extends AppCompatActivity implements ChangeTitlenandIc
         binding.relativeNotification.setOnClickListener(v -> navController.navigate(R.id.notificationFragment));
         binding.relativeHome.setOnClickListener(v -> navController.navigate(R.id.landingFragment));
 
+        /*binding.navView.setNavigationItemSelectedListener(item -> {
+            if(item.getItemId()==R.id.logout)
+            {
+                NavigationUI.onNavDestinationSelected(item,navController);
+                new PrefManager(HostActivity.this).setIsLandingPageOpen(false);
+                Intent intent=new Intent(HostActivity.this, LoginActivity.class);
+                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK|Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                startActivity(intent);
+                finish();
+            }
+            return true;
+        });*/
     }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.host, menu);
+        getMenuInflater().inflate(R.menu.activity_main_drawer, menu);
         return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        //return super.onOptionsItemSelected(item);
+        if(item.getItemId()==R.id.logout)
+        {
+            NavigationUI.onNavDestinationSelected(item,navController);
+            new PrefManager(HostActivity.this).setIsLandingPageOpen(false);
+            Intent intent=new Intent(HostActivity.this, LoginActivity.class);
+            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK|Intent.FLAG_ACTIVITY_CLEAR_TASK);
+            startActivity(intent);
+            finish();
+        }
+        return NavigationUI.onNavDestinationSelected(item,navController);
+
     }
 
     @Override
