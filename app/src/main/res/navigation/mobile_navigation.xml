@@ -8,9 +8,7 @@
         android:id="@+id/landingFragment"
         android:name="com.example.spidpay.ui.landing_page.LandingFragment"
         android:label="Home" >
-        <action
-            android:id="@+id/action_landingFragment_to_addMoneyFragment"
-            app:destination="@id/addMoneyFragment" />
+
         <action
             android:id="@+id/action_landingFragment_to_notificationFragment"
             app:destination="@id/notificationFragment" />
@@ -24,17 +22,7 @@
         android:name="com.example.spidpay.ui.changepassword.ChangePasswordFragment"
         android:label="fragment_chanhe_password"
         tools:layout="@layout/fragment_change_password" />
-    <fragment
-        android:id="@+id/addMoneyFragment"
-        android:name="com.example.spidpay.ui.spwallet.AddMoneyActivity"
-        android:label="fragment_add_money"
-        tools:layout="@layout/Activity_add_money" >
 
-    </fragment>
-    <fragment
-        android:id="@+id/allTransactionFragment"
-        android:name="com.example.spidpay.ui.alltransaction.AllTransactionFragment"
-        android:label="AllTransactionFragment" />
     <fragment
         android:id="@+id/request_Wallet_Transfer_Fragment"
         android:name="com.example.spidpay.ui.requestwallettransfer.Request_Wallet_Transfer_Fragment"
@@ -75,5 +63,9 @@
         android:name="com.example.spidpay.ui.aeps.AEPS_Custom_Deatil_Fragment"
         android:label="fragment_a_e_p_s__custom__deatil_"
         tools:layout="@layout/fragment_a_e_p_s__custom__deatil_" />
+    <activity
+        android:id="@+id/logout"
+        android:name="com.example.spidpay.ui.login.LoginActivity"
+        android:label="LoginActivity" />
 
 </navigation>
