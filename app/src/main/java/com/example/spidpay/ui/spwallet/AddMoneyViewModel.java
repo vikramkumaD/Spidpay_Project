@@ -72,12 +72,16 @@ public class AddMoneyViewModel extends ViewModel {
             Intent intent = new Intent(view.getContext(), WebviewActivity.class);
             intent.putExtra("walletid", walletid);
             view.getContext().startActivity(intent);
+
+            return;
         }
         if (cashdeposite.getValue()) {
             Intent intent = new Intent(view.getContext(), CashDespositActivity.class);
             intent.putExtra("walletid", walletid);
             intent.putExtra("balance", balance);
             view.getContext().startActivity(intent);
+
+            return;
         }
 
         commonInterface.onServiceStart();
@@ -122,7 +126,8 @@ public class AddMoneyViewModel extends ViewModel {
         addMoneyRequest.notes = online_notes.getValue();
         addMoneyRequest.userId = userid;
         addMoneyRequest.walletType = "SP";
-        addMoneyRequest.transactionCategory = Constant.TRANSACTION_CATEGORY_CASHDEPOSITE;
+        //addMoneyRequest.transactionCategory = Constant.TRANSACTION_CATEGORY_CASHDEPOSITE;
+        addMoneyRequest.transactionCategory = Constant.TRANSACTION_CATEGORY_WALLETTRANSFER;
 
         CashTransactionRequest cashTransactionRequest = new CashTransactionRequest();
         cashTransactionRequest.bankName = bankname;

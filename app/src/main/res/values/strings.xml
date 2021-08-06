@@ -226,4 +226,10 @@
     <string name="reqestmoney3">The amount will be credited to your wallet after it is approved</string>
     <string name="dialog_title_auth">Enter Valid Input</string>
     <string name="dialog_msg_auth">Enter Correct Pin Or Pattern to Proceed</string>
+    <string name="totalbalnce">Total Balance</string>
+    <string name="transferto">Transfer To</string>
+    <string name="amoutdetail">Amount Details</string>
+    <string name="fullamount">Full Amount</string>
+    <string name="otheramount">Other Amount</string>
+    <string name="transfer_amount">Transfer Amout</string>
 </resources>
