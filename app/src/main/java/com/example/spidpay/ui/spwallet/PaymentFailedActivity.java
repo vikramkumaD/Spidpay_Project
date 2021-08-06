@@ -20,7 +20,12 @@ public class PaymentFailedActivity extends AppCompatActivity {
         activityPaymentFailedBinding = ActivityPaymentFailedBinding.inflate(getLayoutInflater());
         setContentView(activityPaymentFailedBinding.getRoot());
 
-        activityPaymentFailedBinding.imgBackpress.setOnClickListener(v -> finish());
+        activityPaymentFailedBinding.imgBackpress.setOnClickListener(v -> {
+            Intent intent = new Intent(PaymentFailedActivity.this, HostActivity.class);
+            intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_SINGLE_TOP);
+            startActivity(intent);
+            finish();
+        });
 
         activityPaymentFailedBinding.btnBacktohome.setOnClickListener(v -> {
             Intent intent = new Intent(PaymentFailedActivity.this, HostActivity.class);

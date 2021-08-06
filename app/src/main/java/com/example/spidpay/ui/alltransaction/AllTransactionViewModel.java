@@ -18,13 +18,4 @@ public class AllTransactionViewModel extends ViewModel {
         allTransactionInterface.onSuccess(listLiveData);
     }
 
-   /* @BindingAdapter("app:change")
-    public static void changeImage(ImageView imageView, String transactionType) {
-        if (transactionType.equals(Constant.CREDIT)) {
-            imageView.setImageResource(R.drawable.mynetwork);
-        } else {
-            //imageView.setImageResource(R.drawable.ic_baseline_horizontal_rule_24);
-        }
-    }*/
-
 }

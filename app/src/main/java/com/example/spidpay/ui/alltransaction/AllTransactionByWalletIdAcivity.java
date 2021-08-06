@@ -15,6 +15,7 @@ import com.example.spidpay.data.response.AllTransactionResponse;
 import com.example.spidpay.databinding.ActivityGetAllTransactionByWalletIdBinding;
 import com.example.spidpay.interfaces.AllTransactionInterface;
 import com.example.spidpay.ui.spwallet.AddMoneyActivity;
+import com.example.spidpay.ui.tradewallet.TransferMoneyActivity;
 import com.example.spidpay.util.Constant;
 import com.example.spidpay.util.ItemOffsetDecoration;
 
@@ -25,6 +26,8 @@ public class AllTransactionByWalletIdAcivity extends AppCompatActivity implement
     AllTransactionRepositroy allTransactionRepositroy;
     ActivityGetAllTransactionByWalletIdBinding activityGetAllTransactionByWalletIdBinding;
     AllTransactionViewModel allTransactionViewModel;
+
+    boolean flag = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,8 +42,13 @@ public class AllTransactionByWalletIdAcivity extends AppCompatActivity implement
         activityGetAllTransactionByWalletIdBinding.setLifecycleOwner(this);
         ItemOffsetDecoration itemOffsetDecoration = new ItemOffsetDecoration(AllTransactionByWalletIdAcivity.this, R.dimen.marign10dp);
         activityGetAllTransactionByWalletIdBinding.rvAllTransaction.addItemDecoration(itemOffsetDecoration);
+        flag=getIntent().getBooleanExtra("flag", false);
+        if(flag)
+        {
+            activityGetAllTransactionByWalletIdBinding.tvWalletAddmoney.setText("Transfer Money");
+        }
         allTransactionViewModel.getAllTransactionList(getIntent().getStringExtra("walletId"), "1", "10");
-        activityGetAllTransactionByWalletIdBinding.tvWalletBalanceAmount.setText(getResources().getString(R.string.rupess)+getIntent().getStringExtra("balance"));
+        activityGetAllTransactionByWalletIdBinding.tvWalletBalanceAmount.setText(getResources().getString(R.string.rupess) + getIntent().getStringExtra("balance"));
     }
 
     @Override
@@ -49,7 +57,10 @@ public class AllTransactionByWalletIdAcivity extends AppCompatActivity implement
 
         activityGetAllTransactionByWalletIdBinding.imgBackpress.setOnClickListener(v -> finish());
         activityGetAllTransactionByWalletIdBinding.linearAddmoney.setOnClickListener(v -> {
-            startActivity(new Intent(AllTransactionByWalletIdAcivity.this, AddMoneyActivity.class));
+            if (flag)
+                startActivity(new Intent(AllTransactionByWalletIdAcivity.this, TransferMoneyActivity.class));
+            else
+                startActivity(new Intent(AllTransactionByWalletIdAcivity.this, AddMoneyActivity.class));
         });
 
 

@@ -19,6 +19,7 @@ import com.example.spidpay.db.AppDatabase;
 import com.example.spidpay.db.UserDao;
 import com.example.spidpay.interfaces.AddMoneyInterface;
 import com.example.spidpay.interfaces.CommonInterface;
+import com.example.spidpay.ui.HostActivity;
 import com.example.spidpay.ui.spwallet.cashdeposite.CashDespositActivity;
 import com.example.spidpay.util.Constant;
 import com.example.spidpay.util.PrefManager;
@@ -83,6 +84,12 @@ public class AddMoneyActivity extends AppCompatActivity implements CommonInterfa
                 intent.putExtra("amount", addMoneyResponse.amount);
                 intent.putExtra("datetime", addMoneyResponse.creationTime);
                 intent.putExtra("title", true);
+                startActivity(intent);
+                finish();
+            }
+            else {
+                Intent intent = new Intent(AddMoneyActivity.this, HostActivity.class);
+                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_SINGLE_TOP);
                 startActivity(intent);
                 finish();
             }

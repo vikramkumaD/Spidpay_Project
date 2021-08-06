@@ -62,11 +62,6 @@ public class LandingFragment extends Fragment implements LandingInterface {
     @Override
     public void onViewCreated(@NonNull @NotNull View view, @Nullable @org.jetbrains.annotations.Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-
-   /*     landingfragmentBinding.imgMainwalletPopoup.setOnClickListener(v -> showMainWalletPopup());
-        landingfragmentBinding.imgTradewalletPopoup.setOnClickListener(v -> showTradeWalletPopup());
-*/
-
         landingfragmentBinding.relativeAeps.setOnClickListener(v -> {
             NavController navController = NavHostFragment.findNavController(this);
             navController.navigate(R.id.AEPS_Dashboard_Fragment);
