@@ -32,15 +32,12 @@ public class AddMoneyViewModel extends ViewModel {
     public MutableLiveData<String> online_money = new MutableLiveData<>();
     public MutableLiveData<String> online_notes = new MutableLiveData<>();
     public MutableLiveData<String> bankrefid = new MutableLiveData<>();
-
     CommonInterface commonInterface;
     public AddMoneyRepository addMoneyRepository;
     public StaticInterface staticInterface;
     public StaticRepository staticRepository;
     public AddMoneyInterface addMoneyInterface;
-
     public String static_value, transactiontype, bankcode, bankname;
-
 
     public void onDepositeCashClick() {
         online.setValue(false);
@@ -48,13 +45,11 @@ public class AddMoneyViewModel extends ViewModel {
         requestparent.setValue(false);
     }
 
-
     public void onOnlineClick() {
         online.setValue(true);
         cashdeposite.setValue(false);
         requestparent.setValue(false);
     }
-
 
     public void onRequestParentClick() {
         online.setValue(false);
@@ -87,24 +82,6 @@ public class AddMoneyViewModel extends ViewModel {
         commonInterface.onServiceStart();
     }
 
-    public void onTenThousandClick(View view) {
-        online_money.setValue("10000");
-    }
-
-    public void onTwentyThousandClick(View view) {
-        online_money.setValue("20000");
-    }
-
-    public void onThirtyThousandClick(View view) {
-        online_money.setValue("30000");
-    }
-
-    public void onTransferToSPClick() {
-
-    }
-
-    public void onTransferToBank() {
-    }
 
     public void validate_CashDeposite_Filed(View view) {
         if (online_notes.getValue() == null || online_notes.getValue().equals("") ||
@@ -126,9 +103,7 @@ public class AddMoneyViewModel extends ViewModel {
         addMoneyRequest.notes = online_notes.getValue();
         addMoneyRequest.userId = userid;
         addMoneyRequest.walletType = "SP";
-        //addMoneyRequest.transactionCategory = Constant.TRANSACTION_CATEGORY_CASHDEPOSITE;
-        addMoneyRequest.transactionCategory = Constant.TRANSACTION_CATEGORY_WALLETTRANSFER;
-
+        addMoneyRequest.transactionCategory = Constant.TRANSACTION_CATEGORY_CASHDEPOSITE;
         CashTransactionRequest cashTransactionRequest = new CashTransactionRequest();
         cashTransactionRequest.bankName = bankname;
         cashTransactionRequest.bankReferenceId = bankrefid.getValue();
@@ -158,7 +133,7 @@ public class AddMoneyViewModel extends ViewModel {
         walletTransferRequest.otherUserFirstName = parentUser.firstName;
         walletTransferRequest.otherUserLastName = parentUser.lastName;
         walletTransferRequest.partyType = "REQUESTER";
-        addMoneyRequest.walletTransferRequest=walletTransferRequest;
+        addMoneyRequest.walletTransferRequest = walletTransferRequest;
 
 
         LiveData<AddMoneyResponse> addMoneyResponseLiveData = addMoneyRepository.getAddModenyResponse(addMoneyRequest);

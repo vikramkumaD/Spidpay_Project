@@ -28,6 +28,7 @@ public class AllTransactionByWalletIdAcivity extends AppCompatActivity implement
     AllTransactionViewModel allTransactionViewModel;
 
     boolean flag = false;
+    String total_balance = "";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,13 +43,13 @@ public class AllTransactionByWalletIdAcivity extends AppCompatActivity implement
         activityGetAllTransactionByWalletIdBinding.setLifecycleOwner(this);
         ItemOffsetDecoration itemOffsetDecoration = new ItemOffsetDecoration(AllTransactionByWalletIdAcivity.this, R.dimen.marign10dp);
         activityGetAllTransactionByWalletIdBinding.rvAllTransaction.addItemDecoration(itemOffsetDecoration);
-        flag=getIntent().getBooleanExtra("flag", false);
-        if(flag)
-        {
+        flag = getIntent().getBooleanExtra("flag", false);
+        if (flag) {
             activityGetAllTransactionByWalletIdBinding.tvWalletAddmoney.setText("Transfer Money");
         }
         allTransactionViewModel.getAllTransactionList(getIntent().getStringExtra("walletId"), "1", "10");
-        activityGetAllTransactionByWalletIdBinding.tvWalletBalanceAmount.setText(getResources().getString(R.string.rupess) + getIntent().getStringExtra("balance"));
+        total_balance = getIntent().getStringExtra("balance");
+        activityGetAllTransactionByWalletIdBinding.tvWalletBalanceAmount.setText(getResources().getString(R.string.rupess) + total_balance);
     }
 
     @Override
@@ -57,10 +58,14 @@ public class AllTransactionByWalletIdAcivity extends AppCompatActivity implement
 
         activityGetAllTransactionByWalletIdBinding.imgBackpress.setOnClickListener(v -> finish());
         activityGetAllTransactionByWalletIdBinding.linearAddmoney.setOnClickListener(v -> {
-            if (flag)
-                startActivity(new Intent(AllTransactionByWalletIdAcivity.this, TransferMoneyActivity.class));
-            else
+            if (flag) {
+                Intent intent = new Intent(AllTransactionByWalletIdAcivity.this, TransferMoneyActivity.class);
+                intent.putExtra("balance",total_balance);
+                startActivity(intent);
+
+            } else {
                 startActivity(new Intent(AllTransactionByWalletIdAcivity.this, AddMoneyActivity.class));
+            }
         });
 
 

@@ -19,11 +19,11 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class Constant {
-/*
+
+    /*
     http://13.232.183.230:6700/spidpay-wallet/swagger-ui/
     http://3.108.193.164:6600/spidpay-txnactivity/swagger-ui/
     http://65.2.129.146:6500/spidpay-identity/swagger-ui/*/
-
 
 
     public static final String USER_API = "http://65.2.129.146:6500/spidpay-identity/api/";
@@ -46,6 +46,7 @@ public class Constant {
     public static final String PARENT_ID="eaf02719-c928-42d5-86a8-7530933a44ca";
     public static final String TRANSACTION_CATEGORY_CASHDEPOSITE="CASH_TRANSACTION";
     public static final String TRANSACTION_CATEGORY_WALLETTRANSFER="WALLET_TRANSFER";
+    public static final String TRADE_TRANSFER="TRADE_WALLET_TRANSFER";
 
     public static final int BOTTOM_HOME = 1;
     public static final int BOTTOM_COMMISION = 2;

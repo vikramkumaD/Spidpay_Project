@@ -5,6 +5,7 @@ import com.example.spidpay.data.request.ChangePasswordRequest;
 import com.example.spidpay.data.request.LoginRequest;
 import com.example.spidpay.data.request.RegisterRequest;
 import com.example.spidpay.data.request.ResetPassword;
+import com.example.spidpay.data.request.TransferMoneyRequest;
 import com.example.spidpay.data.request.UpdateAddressRequest;
 import com.example.spidpay.data.request.UpdateBankInfoRequest;
 import com.example.spidpay.data.request.UpdateCompanyRequest;
@@ -22,6 +23,7 @@ import com.example.spidpay.data.response.LoginResponse;
 import com.example.spidpay.data.response.MyAddressResponse;
 import com.example.spidpay.data.response.RegisterResponse;
 import com.example.spidpay.data.response.MyProfileResponse;
+import com.example.spidpay.data.response.TransferMoenyResponse;
 import com.example.spidpay.data.response.UpdateResponse;
 import com.example.spidpay.data.response.VerifyOTPResponse;
 import com.example.spidpay.data.response.WalletResponse;
@@ -104,4 +106,6 @@ public interface RetrofitInterface {
     @POST("v1/load-money")
     Call<AddMoneyResponse> addMoney(@Body AddMoneyRequest verifyOTPReqest);
 
+    @POST("v1/trade/payout")
+    Call<TransferMoenyResponse> getTransferResponse(@Body TransferMoneyRequest transferMoneyRequest);
 }
