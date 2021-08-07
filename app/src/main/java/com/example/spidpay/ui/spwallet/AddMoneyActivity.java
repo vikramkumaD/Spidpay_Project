@@ -41,14 +41,14 @@ public class AddMoneyActivity extends AppCompatActivity implements CommonInterfa
         addmoneylayoutBinding = ActivityAddMoneyBinding.inflate(getLayoutInflater());
         setContentView(addmoneylayoutBinding.getRoot());
         commonInterface = this;
-        addMoneyInterface=this;
+        addMoneyInterface = this;
         addMoneyRepository = new AddMoneyRepository(AddMoneyActivity.this, addMoneyInterface);
         addMoneyViewModel = new ViewModelProvider(this).get(AddMoneyViewModel.class);
         addmoneylayoutBinding.setLifecycleOwner(this);
         addmoneylayoutBinding.setAddmoneyviewmodel(addMoneyViewModel);
         addMoneyViewModel.commonInterface = commonInterface;
-        addMoneyViewModel.addMoneyRepository=addMoneyRepository;
-        addMoneyViewModel.addMoneyInterface=addMoneyInterface;
+        addMoneyViewModel.addMoneyRepository = addMoneyRepository;
+        addMoneyViewModel.addMoneyInterface = addMoneyInterface;
         addmoneylayoutBinding.setAddmoneyviewmodel(addMoneyViewModel);
         addmoneylayoutBinding.executePendingBindings();
         AppDatabase db = Room.databaseBuilder(getApplicationContext(), AppDatabase.class, "database-name").build();
@@ -57,6 +57,8 @@ public class AddMoneyActivity extends AppCompatActivity implements CommonInterfa
             userInfo = userDao.getUser();
             parentUser = userDao.getParent();
         }).start();
+
+        addmoneylayoutBinding.imgBackpress.setOnClickListener(v -> finish());
 
     }
 
@@ -76,18 +78,17 @@ public class AddMoneyActivity extends AppCompatActivity implements CommonInterfa
     @Override
     public void onOnlineSuccess(LiveData<AddMoneyResponse> addMoneyResponseLiveData) {
         addMoneyResponseLiveData.observe(this, addMoneyResponse -> {
-            if(addMoneyResponse!=null && !addMoneyResponse.txnId.equals(""))
-            {
+            if (addMoneyResponse != null && !addMoneyResponse.txnId.equals("")) {
                 Constant.START_TOUCH(AddMoneyActivity.this);
                 addmoneylayoutBinding.pbrequestparent.setVisibility(View.GONE);
                 Intent intent = new Intent(AddMoneyActivity.this, PaymentSuccessfulActivity.class);
                 intent.putExtra("amount", addMoneyResponse.amount);
+                intent.putExtra("wallet_flag", true);
                 intent.putExtra("datetime", addMoneyResponse.creationTime);
                 intent.putExtra("title", true);
                 startActivity(intent);
                 finish();
-            }
-            else {
+            } else {
                 Intent intent = new Intent(AddMoneyActivity.this, HostActivity.class);
                 intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_SINGLE_TOP);
                 startActivity(intent);
