@@ -232,4 +232,6 @@
     <string name="fullamount">Full Amount</string>
     <string name="otheramount">Other Amount</string>
     <string name="transfer_amount">Transfer Amout</string>
+    <string name="servicecharge">Service Charge</string>
+    <string name="enteramountcannot">Entered amount cannot be greater than total balance!</string>
 </resources>

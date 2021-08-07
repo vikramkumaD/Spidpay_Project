@@ -7,18 +7,16 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.LiveData;
-import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.example.spidpay.R;
 import com.example.spidpay.data.repository.ChangePasswordRepository;
 import com.example.spidpay.data.response.CommonResponse;
 import com.example.spidpay.databinding.FragmentChangePasswordBinding;
-import com.example.spidpay.databinding.FragmentTransferMoneyBinding;
+
 import com.example.spidpay.interfaces.ChangePasswordInterface;
 import com.example.spidpay.util.Constant;
 import com.example.spidpay.util.PrefManager;
