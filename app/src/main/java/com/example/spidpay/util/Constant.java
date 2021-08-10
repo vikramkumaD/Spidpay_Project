@@ -32,6 +32,10 @@ public class Constant {
 
 
 
+    public static final String PARTNERSHIP ="Partnership";
+    public static final String SOLE_OWNER ="Sole Owner";
+    public static final String PRIVATE_LIMITED ="Private Limited";
+
     public static final String ONLINE_SUCCESS="status=success";
     public static final String ONLINE_FAILED="status=failed";
     public static final String Server_ERROR = "Server error!";

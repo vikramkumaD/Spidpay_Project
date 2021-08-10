@@ -171,6 +171,7 @@ public class CashDespositActivity extends AppCompatActivity implements OnStaticC
                 cashDepositeActivityBinding.pbCashdeposit.setVisibility(View.GONE);
                 Intent intent = new Intent(CashDespositActivity.this, PaymentSuccessfulActivity.class);
                 intent.putExtra("amount", addMoneyResponse.amount);
+                intent.putExtra("wallet_flag",true);
                 intent.putExtra("datetime", addMoneyResponse.creationTime);
                 intent.putExtra("title", true);
                 startActivity(intent);

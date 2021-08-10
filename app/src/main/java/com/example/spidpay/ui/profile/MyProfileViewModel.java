@@ -36,7 +36,7 @@ public class MyProfileViewModel extends ViewModel {
     public BankInteface bankInteface;
     public StaticInterface staticInterface;
     public KYCInterface kycInterface;
-    public String userid, code, static_value;
+    public String userid, code, companytype_description, static_value;
 
 
     public void getMyProfile(String userid) {
@@ -119,15 +119,35 @@ public class MyProfileViewModel extends ViewModel {
     }
 
     public void validate_compnay(View view, CompanyReponse companyReponse) {
-        /*if (companyReponse.companyName == null || companyReponse.companyName.equals("") ||
-                companyReponse.companyType.description == null || companyReponse.companyType.description.equals("") ||
-                companyReponse.coi == null || companyReponse.coi.equals("") || companyReponse.declaration == null || companyReponse.declaration.equals("") ||
-                companyReponse.gstNO == null || companyReponse.gstNO.equals("") || companyReponse.moa == null || companyReponse.moa.equals("") ||
-                companyReponse.partnershipDeed == null || companyReponse.partnershipDeed.equals("") ||
-                companyReponse.udyogAadhar == null || companyReponse.udyogAadhar.equals("")) {
+        if (companyReponse.companyName == null || companyReponse.companyName.equals("") ||
+                code == null || code.equals("") ||
+                companyReponse.gstNO == null || companyReponse.gstNO.equals("")) {
             kycInterface.onFailed(view.getResources().getString(R.string.filedcannotbeblank));
             return;
-        }*/
+        }
+
+        if (companytype_description.equals(Constant.PRIVATE_LIMITED)) {
+            if (companyReponse.coi == null || companyReponse.coi.equals("")
+                    || companyReponse.moa == null || companyReponse.moa.equals("") ||
+                    companyReponse.declaration == null || companyReponse.declaration.equals("")) {
+                kycInterface.onFailed(view.getResources().getString(R.string.filedcannotbeblank));
+                return;
+            }
+        }
+
+        if (companytype_description.equals(Constant.SOLE_OWNER)) {
+            if (companyReponse.udyogAadhar == null || companyReponse.udyogAadhar.equals("")) {
+                kycInterface.onFailed(view.getResources().getString(R.string.filedcannotbeblank));
+                return;
+            }
+        }
+
+        if (companytype_description.equals(Constant.PARTNERSHIP)) {
+            if (companyReponse.partnershipDeed == null || companyReponse.partnershipDeed.equals("")) {
+                kycInterface.onFailed(view.getResources().getString(R.string.filedcannotbeblank));
+                return;
+            }
+        }
 
         if (!Constant.isValidGSTNo(companyReponse.gstNO)) {
             kycInterface.onFailed(view.getContext().getResources().getString(R.string.entervalidgstno));
@@ -163,6 +183,8 @@ public class MyProfileViewModel extends ViewModel {
     }
 
     public void validate_BankInfo(View view, BankDetailsResponse bankDetailsResponse) {
+
+
         if (bankDetailsResponse.accountHolderName == null || bankDetailsResponse.accountNo == null || bankDetailsResponse.ifscCode == null || code == null) {
             bankInteface.onFailed(view.getResources().getString(R.string.filedcannotbeblank));
             return;

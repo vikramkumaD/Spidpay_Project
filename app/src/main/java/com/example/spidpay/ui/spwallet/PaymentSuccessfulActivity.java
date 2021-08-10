@@ -23,12 +23,24 @@ public class PaymentSuccessfulActivity extends AppCompatActivity {
         activityPaymentSuccessfulBinding = ActivityPaymentSuccessfulBinding.inflate(getLayoutInflater());
         setContentView(activityPaymentSuccessfulBinding.getRoot());
 
-        activityPaymentSuccessfulBinding.tvReqestmoney2.setText(getResources().getString(R.string.rupess)+getIntent().getStringExtra("amount"));
+        if (getIntent().getBooleanExtra("wallet_flag", false)) {
+            activityPaymentSuccessfulBinding.constraintLayoutSuccess1.setVisibility(View.VISIBLE);
+            activityPaymentSuccessfulBinding.constraintLayoutTransferMoney.setVisibility(View.GONE);
+            activityPaymentSuccessfulBinding.tvRequestSuccessful.setText(getResources().getString(R.string.walletrequestsuccessful));
+            activityPaymentSuccessfulBinding.tvReqestmoney2.setText(getResources().getString(R.string.rupess) + getIntent().getStringExtra("amount"));
+        } else {
+            activityPaymentSuccessfulBinding.constraintLayoutSuccess1.setVisibility(View.GONE);
+            activityPaymentSuccessfulBinding.constraintLayoutTransferMoney.setVisibility(View.VISIBLE);
+            activityPaymentSuccessfulBinding.tvReqesttransfermoney2.setText(getResources().getString(R.string.rupess) + getIntent().getStringExtra("amount"));
+            activityPaymentSuccessfulBinding.tvRequestSuccessful.setText(getResources().getString(R.string.transferrequestsuccessful));
+        }
+
         try {
             activityPaymentSuccessfulBinding.tvDate.setText(Constant.convertDate2(getIntent().getStringExtra("datetime")));
         } catch (ParseException e) {
             e.printStackTrace();
         }
+
         activityPaymentSuccessfulBinding.btnBacktohome.setOnClickListener(v -> {
             Intent intent = new Intent(PaymentSuccessfulActivity.this, HostActivity.class);
             intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
