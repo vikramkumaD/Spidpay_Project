@@ -120,6 +120,7 @@ public class KYCFragment extends Fragment implements KYCInterface, OnStaticClick
                 Constant.START_TOUCH(requireActivity());
                 fragmentKYCBinding.pbKyc.setVisibility(View.GONE);
                 this.kycResponse = new KYCResponse();
+                myProfileViewModel.getCompanyInfo(new PrefManager(getContext()).getUserID());
             }
         });
     }
@@ -139,7 +140,6 @@ public class KYCFragment extends Fragment implements KYCInterface, OnStaticClick
 
     @Override
     public void onCompanySuccess(LiveData<CompanyReponse> companyReponseLiveData) {
-
         companyReponseLiveData.observe(this, companyReponse -> {
             if (companyReponse.companyName != null && !companyReponse.companyName.equals("")) {
                 fragmentKYCBinding.pbKyc.setVisibility(View.GONE);
@@ -231,10 +231,38 @@ public class KYCFragment extends Fragment implements KYCInterface, OnStaticClick
     @Override
     public void onItemClick(String code, String description) {
         myProfileViewModel.code = code;
+        myProfileViewModel.companytype_description=description;
         updateBankDetailBinding.edtEditComType.setText(description);
         interrestedfor_bottomsheet.dismiss();
-    }
+        if (Constant.PARTNERSHIP.equals(description)) {
+            updateBankDetailBinding.edtEditPartnership.setVisibility(View.VISIBLE);
 
+            updateBankDetailBinding.edtEditCoi.setVisibility(View.GONE);
+            updateBankDetailBinding.edtEditMoa.setVisibility(View.GONE);
+            updateBankDetailBinding.edtEditDeclration.setVisibility(View.GONE);
+
+            updateBankDetailBinding.edtEditUdyog.setVisibility(View.GONE);
+
+        } else if (Constant.SOLE_OWNER.equals(description)) {
+            updateBankDetailBinding.edtEditUdyog.setVisibility(View.VISIBLE);
+
+            updateBankDetailBinding.edtEditPartnership.setVisibility(View.GONE);
+
+            updateBankDetailBinding.edtEditCoi.setVisibility(View.GONE);
+            updateBankDetailBinding.edtEditMoa.setVisibility(View.GONE);
+            updateBankDetailBinding.edtEditDeclration.setVisibility(View.GONE);
+
+        } else if (Constant.PRIVATE_LIMITED.equals(description)) {
+            updateBankDetailBinding.edtEditCoi.setVisibility(View.VISIBLE);
+            updateBankDetailBinding.edtEditMoa.setVisibility(View.VISIBLE);
+            updateBankDetailBinding.edtEditDeclration.setVisibility(View.VISIBLE);
+
+
+            updateBankDetailBinding.edtEditPartnership.setVisibility(View.GONE);
+            updateBankDetailBinding.edtEditUdyog.setVisibility(View.GONE);
+        }
+
+    }
 
     @Override
     public void onStaticStart() {

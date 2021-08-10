@@ -135,7 +135,7 @@ public class RegisterViewModel extends ViewModel {
         Register_UserInfo register_userInfo = new Register_UserInfo();
         register_userInfo.email = string_register_email_Address.getValue();
         register_userInfo.firstName = string_register_first_name.getValue();
-        register_userInfo.lastName = string_register_first_name.getValue();
+        register_userInfo.lastName = string_register_last_name.getValue();
         register_userInfo.mobileNo = string_register_mobile_number.getValue();
         register_userInfo.password = password;
         register_userInfo.userType = code;

@@ -15,9 +15,9 @@
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:background="#05DCDCDC"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:background="#05DCDCDC"
         tools:context=".ui.profile.profile.MyProfileFragment">
 
         <TextView
@@ -162,10 +162,10 @@
             android:layout_height="24dp"
             android:layout_marginTop="@dimen/marign20dp"
             android:layout_marginEnd="@dimen/marign20dp"
+            android:contentDescription="TODO"
             android:src="@drawable/ic_baseline_edit_24"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tv_usercontactno"
-            android:contentDescription="TODO" />
+            app:layout_constraintTop_toBottomOf="@+id/tv_usercontactno" />
 
         <TextView
             android:id="@+id/tv_userflatno"
@@ -174,10 +174,22 @@
             android:layout_marginLeft="@dimen/marign20dp"
             android:layout_marginTop="@dimen/marign5dp"
             android:fontFamily="@font/lato_bold"
-            android:text="@{(useraddress.address1 !=null ? useraddress.address1 : ``).concat(` `).concat(useraddress.address2 !=null ? useraddress.address2 : ``)}"
+            android:text="@{(useraddress.address1 !=null ? useraddress.address1 : ``)}"
             android:textColor="@color/black"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tv_addresss" />
+
+        <TextView
+            android:id="@+id/tv_userlocalarea"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/marign20dp"
+            android:layout_marginTop="@dimen/marign5dp"
+            android:fontFamily="@font/lato_bold"
+            android:text="@{useraddress.address2 !=null ? useraddress.address2 : ``}"
+            android:textColor="@color/black"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_userflatno" />
 
 
         <TextView
@@ -190,7 +202,7 @@
             android:text="@{(useraddress.address3 !=null ? useraddress.address3 : ``).concat(` `).concat(useraddress.state !=null ? useraddress.state : ``)}"
             android:textColor="@color/black"
             app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tv_userflatno" />
+            app:layout_constraintTop_toBottomOf="@+id/tv_userlocalarea" />
 
         <TextView
             android:id="@+id/tv_usecontry"

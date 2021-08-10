@@ -5,6 +5,10 @@
 
     <data>
 
+        <import type="android.view.View" />
+
+        <import type="com.example.spidpay.util.Constant" />
+
         <variable
             name="kycinfo"
             type="com.example.spidpay.data.response.KYCResponse" />
@@ -38,10 +42,10 @@
             android:layout_width="24dp"
             android:layout_height="24dp"
             android:layout_marginEnd="@dimen/marign20dp"
+            android:contentDescription="TODO"
             android:src="@drawable/ic_baseline_edit_24"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/tv_contact_detail"
-            android:contentDescription="TODO" />
+            app:layout_constraintTop_toTopOf="@+id/tv_contact_detail" />
 
         <TextView
             android:id="@+id/tv_user_pan_number"
@@ -137,10 +141,10 @@
             android:layout_width="24dp"
             android:layout_height="24dp"
             android:layout_marginEnd="@dimen/marign20dp"
+            android:contentDescription="TODO"
             android:src="@drawable/ic_baseline_edit_24"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/tv_company_deatils"
-            android:contentDescription="TODO" />
+            app:layout_constraintTop_toTopOf="@+id/tv_company_deatils" />
 
 
         <TextView
@@ -202,6 +206,7 @@
             android:fontFamily="@font/lato_bold"
             android:text="@string/udyohaddhar"
             android:textColor="@color/black"
+            android:visibility="@{companyinfo.companyType.description.equals(Constant.SOLE_OWNER) ? View.VISIBLE : View.GONE , default=gone}"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tv_storetype" />
 
@@ -214,12 +219,14 @@
             android:fontFamily="@font/lato_bold"
             android:text="@={companyinfo.udyogAadhar}"
             android:textColor="@color/black"
+            android:visibility="@{companyinfo.companyType.description.equals(Constant.SOLE_OWNER) ? View.VISIBLE : View.GONE , default=gone}"
             app:layout_constraintLeft_toRightOf="@+id/tv_adyogaadhar"
             app:layout_constraintTop_toBottomOf="@+id/tv_storetype" />
 
 
         <TextView
             android:id="@+id/tv_partnershipdeed"
+
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/marign20dp"
@@ -227,12 +234,14 @@
             android:fontFamily="@font/lato_bold"
             android:text="@string/partnershipdeed"
             android:textColor="@color/black"
+            android:visibility="@{companyinfo.companyType.description.equals(Constant.PARTNERSHIP) ? View.VISIBLE : View.GONE , default=gone}"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tv_adyogaadhar" />
 
 
         <TextView
             android:id="@+id/tv_partnershipdeed_value"
+
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/marign20dp"
@@ -240,11 +249,13 @@
             android:fontFamily="@font/lato_bold"
             android:text="@={companyinfo.partnershipDeed}"
             android:textColor="@color/black"
+            android:visibility="@{companyinfo.companyType.description.equals(Constant.PARTNERSHIP) ? View.VISIBLE : View.GONE , default=gone}"
             app:layout_constraintLeft_toRightOf="@+id/tv_partnershipdeed"
             app:layout_constraintTop_toBottomOf="@+id/tv_adyogaadhar" />
 
         <TextView
             android:id="@+id/tv_moa_aoa"
+
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/marign20dp"
@@ -252,11 +263,13 @@
             android:fontFamily="@font/lato_bold"
             android:text="@string/moa"
             android:textColor="@color/black"
+            android:visibility="@{companyinfo.companyType.description.equals(Constant.PRIVATE_LIMITED) ? View.VISIBLE : View.GONE , default=gone}"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tv_partnershipdeed" />
 
         <TextView
             android:id="@+id/tv_moa_aoa_value"
+
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/marign20dp"
@@ -264,11 +277,13 @@
             android:fontFamily="@font/lato_bold"
             android:text="@={companyinfo.moa}"
             android:textColor="@color/black"
+            android:visibility="@{companyinfo.companyType.description.equals(Constant.PRIVATE_LIMITED) ? View.VISIBLE : View.GONE , default=gone}"
             app:layout_constraintLeft_toRightOf="@+id/tv_moa_aoa"
             app:layout_constraintTop_toBottomOf="@+id/tv_partnershipdeed" />
 
         <TextView
             android:id="@+id/tv_coi"
+
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/marign20dp"
@@ -276,11 +291,13 @@
             android:fontFamily="@font/lato_bold"
             android:text="@string/coi"
             android:textColor="@color/black"
+            android:visibility="@{companyinfo.companyType.description.equals(Constant.PRIVATE_LIMITED) ? View.VISIBLE : View.GONE , default=gone}"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tv_moa_aoa" />
 
         <TextView
             android:id="@+id/tv_coi_value"
+
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/marign20dp"
@@ -288,11 +305,13 @@
             android:fontFamily="@font/lato_bold"
             android:text="@={companyinfo.coi}"
             android:textColor="@color/black"
+            android:visibility="@{companyinfo.companyType.description.equals(Constant.PRIVATE_LIMITED) ? View.VISIBLE : View.GONE , default=gone}"
             app:layout_constraintLeft_toRightOf="@+id/tv_coi"
             app:layout_constraintTop_toBottomOf="@+id/tv_moa_aoa" />
 
         <TextView
             android:id="@+id/tv_declration"
+
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/marign20dp"
@@ -300,11 +319,13 @@
             android:fontFamily="@font/lato_bold"
             android:text="@string/declaration"
             android:textColor="@color/black"
+            android:visibility="@{companyinfo.companyType.description.equals(Constant.PRIVATE_LIMITED) ? View.VISIBLE : View.GONE , default=gone}"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tv_coi" />
 
         <TextView
             android:id="@+id/tv_declration_value"
+
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/marign20dp"
@@ -312,6 +333,7 @@
             android:fontFamily="@font/lato_bold"
             android:text="@={companyinfo.declaration}"
             android:textColor="@color/black"
+            android:visibility="@{companyinfo.companyType.description.equals(Constant.PRIVATE_LIMITED) ? View.VISIBLE : View.GONE , default=gone}"
             app:layout_constraintLeft_toRightOf="@+id/tv_declration"
             app:layout_constraintTop_toBottomOf="@+id/tv_coi" />
 

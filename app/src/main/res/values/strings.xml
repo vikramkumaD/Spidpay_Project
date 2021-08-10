@@ -185,6 +185,7 @@
     <string name="bankname">Bank Name:</string>
     <string name="updatebankdeatil">Update Bank Deatil</string>
     <string name="ifsccode">IFSC Code</string>
+    <string name="ifsccode1">IFSC Code:</string>
     <string name="companyname">Company Name</string>
     <string name="balance">Balance</string>
     <string name="requestparent">Request Parent</string>
