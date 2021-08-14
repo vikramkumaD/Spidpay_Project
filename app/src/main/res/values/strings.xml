@@ -155,7 +155,7 @@
     <string name="confirmpassword">Confirm Password</string>
     <string name="entervalidemail">Enter valid email-id!</string>
     <string name="passwordnotmatch">Password not matching!</string>
-    <string name="entermobilenumber">Enter Mobile Number!</string>
+    <string name="entermobilenumber">Enter Mobile Number</string>
     <string name="pleaseseletcinterestedfor">Please select Interested for!</string>
     <string name="enterotp">Enter OTP!</string>
     <string name="username">User Name</string>
@@ -239,4 +239,18 @@
     <string name="transfermoney1">Your request for transferring money </string>
     <string name="transfermoney2">to your Spid wallet has been complete successfully</string>
     <string name="comingsoon">Coming soon!</string>
+    <string name="sendermobilenumber">Sender Mobile Number</string>
+    <string name="registersender">Register Sender</string>
+    <string name="enterdob">Enter DOB(dd-mm-yyyy)</string>
+    <string name="enteraddress">Enter Address</string>
+    <string name="enterpincode">Enter Pincode</string>
+    <string name="verifyotp">Verify OTP</string>
+    <string name="verifysendermsg">Enter the OTP received on sender\'s mobile number to activate sender account</string>
+    <string name="addnewbeneficiry">Add New Beneficiary</string>
+    <string name="enterbeneficiaryname">Enter Beneficiary Name</string>
+    <string name="beneficiarymobilenumber">Enter Beneficiary Mobile Number</string>
+    <string name="confiraccountnumber">Confirm Account Number</string>
+    <string name="transfersuccess">TRANSFER \nSUCCESSFUL</string>
+    <string name="cashtobe">Cash to be collected</string>
+    <string name="moneytransferedamount">Money transferred amount</string>
 </resources>
