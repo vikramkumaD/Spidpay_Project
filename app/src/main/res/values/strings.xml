@@ -253,4 +253,5 @@
     <string name="transfersuccess">TRANSFER \nSUCCESSFUL</string>
     <string name="cashtobe">Cash to be collected</string>
     <string name="moneytransferedamount">Money transferred amount</string>
+    <string name="sendername">Sender Name</string>
 </resources>
