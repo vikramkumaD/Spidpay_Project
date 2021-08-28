@@ -8,6 +8,7 @@ import androidx.lifecycle.ViewModel;
 
 import com.example.spidpay.R;
 import com.example.spidpay.data.repository.AddMoneyRepository;
+import com.example.spidpay.data.request.BankTransferRequest;
 import com.example.spidpay.data.request.TransferMoneyRequest;
 import com.example.spidpay.data.response.TransferMoenyResponse;
 import com.example.spidpay.interfaces.TradeWalletInterface;
@@ -23,10 +24,44 @@ public class TradeTransferMoneyViewModel extends ViewModel {
     public MutableLiveData<Boolean> paytmwallet = new MutableLiveData<>();
     public MutableLiveData<Boolean> bank = new MutableLiveData<>();
 
+    public MutableLiveData<Boolean> imps = new MutableLiveData<>();
+    public MutableLiveData<Boolean> upi = new MutableLiveData<>();
+    public MutableLiveData<Boolean> neft = new MutableLiveData<>();
+    public MutableLiveData<Boolean> rtgs = new MutableLiveData<>();
+
+
     public MutableLiveData<String> notes = new MutableLiveData<>();
     public MutableLiveData<String> enteramount = new MutableLiveData<>();
     public double totalbalance;
 
+
+    public void onIMPSClick() {
+        imps.setValue(true);
+        rtgs.setValue(false);
+        upi.setValue(false);
+        neft.setValue(false);
+    }
+
+    public void onUPIClick() {
+        imps.setValue(false);
+        rtgs.setValue(false);
+        upi.setValue(true);
+        neft.setValue(false);
+    }
+
+    public void onRTGSClick() {
+        imps.setValue(false);
+        rtgs.setValue(true);
+        upi.setValue(false);
+        neft.setValue(false);
+    }
+
+    public void onNEFTClick() {
+        imps.setValue(false);
+        rtgs.setValue(false);
+        upi.setValue(false);
+        neft.setValue(true);
+    }
 
     public void onSpidPayWalletClick() {
         spidpaywallet.setValue(true);
@@ -72,10 +107,6 @@ public class TradeTransferMoneyViewModel extends ViewModel {
             return;
         }
 
-        if (bank.getValue() || paytmwallet.getValue()) {
-            tradeWalletInterface.onFailed(view.getResources().getString(R.string.comingsoon));
-            return;
-        }
 
         tradeWalletInterface.onServiceStart();
     }
@@ -90,9 +121,44 @@ public class TradeTransferMoneyViewModel extends ViewModel {
         transferMoneyRequest.notes = notes.getValue();
         transferMoneyRequest.userId = userId;
 
-
-        LiveData<TransferMoenyResponse> transferMoenyResponseLiveData = addMoneyRepository.getTransferMoenyResponse(transferMoneyRequest);
+        LiveData<TransferMoenyResponse> transferMoenyResponseLiveData = addMoneyRepository.getTradeToSpidWalletTransfer(transferMoneyRequest);
         tradeWalletInterface.onTransferSuccess(transferMoenyResponseLiveData);
     }
 
+    public void getBankTransferResponse(String userId) {
+        TransferMoneyRequest bankTransferRequest = new TransferMoneyRequest();
+        bankTransferRequest.amount = Integer.parseInt(enteramount.getValue());
+        bankTransferRequest.transactionCategory = Constant.BANK_TRANSFER;
+        bankTransferRequest.domain = Constant.DOMAIN_NAME;
+        bankTransferRequest.notes = notes.getValue();
+        bankTransferRequest.userId = userId;
+
+        BankTransferRequest bankTransfer = new BankTransferRequest();
+        bankTransfer.ifsc = "SBIN000067";
+        bankTransfer.accountNumber = "6736437647636";
+        bankTransfer.beneficiaryName = "Sanjeev Kumar";
+        bankTransfer.email = "info@spidpay.in";
+        bankTransfer.mobileNumber = "3333333333";
+        bankTransfer.serviceCharge = "10.00";
+        bankTransfer.transferMode = "IMPS";
+
+        bankTransferRequest.bankTransfer = bankTransfer;
+
+        LiveData<TransferMoenyResponse> transferMoenyResponseLiveData = addMoneyRepository.getTradeToSpidWalletTransfer(bankTransferRequest);
+        tradeWalletInterface.onTransferSuccess(transferMoenyResponseLiveData);
+
+
+    }
+
+    public void callMethodBasdedOnUserSelection(String userId)
+    {
+        if(spidpaywallet.getValue())
+        {
+            getTransferResponse(userId);
+        }
+        else {
+            getBankTransferResponse(userId);
+        }
+
+    }
 }

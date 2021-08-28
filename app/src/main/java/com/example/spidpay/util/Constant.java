@@ -51,6 +51,8 @@ public class Constant {
     public static final String TRANSACTION_CATEGORY_CASHDEPOSITE = "CASH_TRANSACTION";
     public static final String TRANSACTION_CATEGORY_WALLETTRANSFER = "WALLET_TRANSFER";
     public static final String TRADE_TRANSFER = "TRADE_WALLET_TRANSFER";
+    public static final String BANK_TRANSFER = "BANK_TRANSFER";
+    //
 
     public static final int BOTTOM_HOME = 1;
     public static final int BOTTOM_COMMISION = 2;

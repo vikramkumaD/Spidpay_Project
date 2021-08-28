@@ -1,6 +1,7 @@
 package com.example.spidpay.data;
 
 import com.example.spidpay.data.request.AddMoneyRequest;
+import com.example.spidpay.data.request.BankTransferRequest;
 import com.example.spidpay.data.request.ChangePasswordRequest;
 import com.example.spidpay.data.request.LoginRequest;
 import com.example.spidpay.data.request.RegisterRequest;
@@ -109,8 +110,7 @@ public interface RetrofitInterface {
     @POST("v1/trade/payout")
     Call<TransferMoenyResponse> getTransferResponse(@Body TransferMoneyRequest transferMoneyRequest);
 
+    @POST("v1/trade/payout")
+    Call<TransferMoenyResponse> getTransferResponse(@Body BankTransferRequest transferMoneyRequest);
 
-
-
-    // /spidpay-product/configuration/service-charge?amount=47789.00&product=PAYOUTS&txnCategory=BANK
 }
