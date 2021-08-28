@@ -69,7 +69,7 @@ public class TransferMoneyActivity extends AppCompatActivity implements TradeWal
                 Intent intent = new Intent(TransferMoneyActivity.this, PaymentSuccessfulActivity.class);
                 intent.putExtra("amount", transferMoenyResponse.amount);
                 intent.putExtra("wallet_flag", false);
-                intent.putExtra("datetime", "2021-08-10 10:20:12");
+                intent.putExtra("datetime", Constant.getCurrentDateTime());
                 intent.putExtra("title", true);
                 startActivity(intent);
                 finish();

@@ -23,6 +23,7 @@ public class TradeTransferMoneyViewModel extends ViewModel {
     public MutableLiveData<Boolean> paytmwallet = new MutableLiveData<>();
     public MutableLiveData<Boolean> bank = new MutableLiveData<>();
 
+    public MutableLiveData<String> notes = new MutableLiveData<>();
     public MutableLiveData<String> enteramount = new MutableLiveData<>();
     public double totalbalance;
 
@@ -57,7 +58,6 @@ public class TradeTransferMoneyViewModel extends ViewModel {
         total_amount.setValue(false);
         other_amount.setValue(true);
         enteramount.setValue("");
-        ;
 
     }
 
@@ -87,7 +87,7 @@ public class TradeTransferMoneyViewModel extends ViewModel {
         transferMoneyRequest.amount = Integer.parseInt(enteramount.getValue());
         transferMoneyRequest.transactionCategory = Constant.TRADE_TRANSFER;
         transferMoneyRequest.domain = Constant.DOMAIN_NAME;
-        transferMoneyRequest.notes = "";
+        transferMoneyRequest.notes = notes.getValue();
         transferMoneyRequest.userId = userId;
 
 

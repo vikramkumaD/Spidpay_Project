@@ -108,4 +108,9 @@ public interface RetrofitInterface {
 
     @POST("v1/trade/payout")
     Call<TransferMoenyResponse> getTransferResponse(@Body TransferMoneyRequest transferMoneyRequest);
+
+
+
+
+    // /spidpay-product/configuration/service-charge?amount=47789.00&product=PAYOUTS&txnCategory=BANK
 }

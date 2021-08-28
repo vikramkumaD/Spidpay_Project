@@ -254,4 +254,5 @@
     <string name="cashtobe">Cash to be collected</string>
     <string name="moneytransferedamount">Money transferred amount</string>
     <string name="sendername">Sender Name</string>
+    <string name="transfermode">TransferMode</string>
 </resources>
