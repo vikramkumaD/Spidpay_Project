@@ -133,13 +133,14 @@ public class TradeTransferMoneyViewModel extends ViewModel {
         bankTransferRequest.notes = notes.getValue();
         bankTransferRequest.userId = userId;
 
+
         BankTransferRequest bankTransfer = new BankTransferRequest();
-        bankTransfer.ifsc = "SBIN000067";
-        bankTransfer.accountNumber = "6736437647636";
-        bankTransfer.beneficiaryName = "Sanjeev Kumar";
-        bankTransfer.email = "info@spidpay.in";
-        bankTransfer.mobileNumber = "3333333333";
-        bankTransfer.serviceCharge = "10.00";
+        bankTransfer.ifsc = "HDFC0000543";
+        bankTransfer.accountNumber = "9767462028484";
+        bankTransfer.beneficiaryName = "Asis Jain";
+        bankTransfer.email = "Test1@gmail.com";
+        bankTransfer.mobileNumber = "9663811455";
+        bankTransfer.serviceCharge = "5.00";
         bankTransfer.transferMode = "IMPS";
 
         bankTransferRequest.bankTransfer = bankTransfer;
