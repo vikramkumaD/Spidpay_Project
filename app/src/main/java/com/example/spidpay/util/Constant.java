@@ -50,7 +50,7 @@ public class Constant {
     public static final String PARENT_ID = "eaf02719-c928-42d5-86a8-7530933a44ca";
     public static final String TRANSACTION_CATEGORY_CASHDEPOSITE = "CASH_TRANSACTION";
     public static final String TRANSACTION_CATEGORY_WALLETTRANSFER = "WALLET_TRANSFER";
-    public static final String TRADE_TRANSFER = "TRADE_WALLET_TRANSFER";
+    public static final String TRADE_TRANSFER = "WALLET_TRANSFER";
     public static final String BANK_TRANSFER = "BANK_TRANSFER";
     //
 

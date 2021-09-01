@@ -112,7 +112,8 @@ public class TradeTransferMoneyViewModel extends ViewModel {
     }
 
 
-    public void getTransferResponse(String userId) {
+    public void getTradeToSPWallet(String userId) {
+
 
         TransferMoneyRequest transferMoneyRequest = new TransferMoneyRequest();
         transferMoneyRequest.amount = Integer.parseInt(enteramount.getValue());
@@ -132,7 +133,6 @@ public class TradeTransferMoneyViewModel extends ViewModel {
         bankTransferRequest.domain = Constant.DOMAIN_NAME;
         bankTransferRequest.notes = notes.getValue();
         bankTransferRequest.userId = userId;
-
 
         BankTransferRequest bankTransfer = new BankTransferRequest();
         bankTransfer.ifsc = "HDFC0000543";
@@ -155,7 +155,7 @@ public class TradeTransferMoneyViewModel extends ViewModel {
     {
         if(spidpaywallet.getValue())
         {
-            getTransferResponse(userId);
+            getTradeToSPWallet(userId);
         }
         else {
             getBankTransferResponse(userId);
