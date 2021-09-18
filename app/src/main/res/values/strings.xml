@@ -260,5 +260,6 @@
     <string name="district">District*</string>
     <string name="branchname">Branch Name:</string>
     <string name="branchname1">Branch Name</string>
+    <string name="status">Status:</string>
 
 </resources>
