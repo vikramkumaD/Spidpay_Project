@@ -340,6 +340,7 @@
                 android:fontFamily="@font/lato"
                 android:onClick="@{(v)->register_viewmodel.validate_signupView(v)}"
                 android:text="@string/register"
+                android:textAllCaps="false"
                 android:textColor="@color/white"
                 android:textSize="@dimen/marign18sp"
                 app:layout_constraintTop_toBottomOf="@+id/linear_signup_confirm_password" />

@@ -23,9 +23,9 @@ public class Constant {
 
     //public static final String BASE_URL=" http://spidpay-api-565132133.ap-south-1.elb.amazonaws.com/";
 
-    public static final String USER_URL = "http://65.2.129.146:6500/spidpay-identity/api/";
-    public static final String WALLET_URL = "http://13.232.183.230:6700/spidpay-wallet/";
-    public static final String TXN_URL = "http://3.108.193.164:6600/spidpay-txnactivity/";
+    public static final String USER_URL = "http://spidpay-api-565132133.ap-south-1.elb.amazonaws.com/spidpay-identity/api/";
+    public static final String TXN_URL = "http://spidpay-api-565132133.ap-south-1.elb.amazonaws.com/spidpay-txnactivity/";
+    public static final String WALLET_URL = "http://spidpay-api-565132133.ap-south-1.elb.amazonaws.com/spidpay-wallet/";
 
 
     public static final String PARTNERSHIP = "Partnership";

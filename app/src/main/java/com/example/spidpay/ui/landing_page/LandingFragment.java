@@ -45,7 +45,7 @@ public class LandingFragment extends Fragment implements LandingInterface {
         super.onAttach(context);
         changeTitlenandIconInterface = (ChangeTitlenandIconInterface) context;
         updateBottomView = (UpdateBottomView) context;
-        landingInterface = (LandingInterface) LandingFragment.this;
+        landingInterface = LandingFragment.this;
     }
 
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {

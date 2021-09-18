@@ -204,6 +204,7 @@ public class KYCFragment extends Fragment implements KYCInterface, OnStaticClick
         updateBankDetailBinding.imgDismissDialog.setOnClickListener(v -> bottomSheetDialog_company.dismiss());
         updateBankDetailBinding.edtEditComType.setOnClickListener(v -> {
             myProfileViewModel.static_value = Constant.COMPANY;
+            fragmentKYCBinding.pbKyc.setVisibility(View.VISIBLE);
             getCompayType();
         });
     }

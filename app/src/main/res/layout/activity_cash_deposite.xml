@@ -199,6 +199,7 @@
                 app:layout_constraintTop_toBottomOf="@+id/linear_selecttransctiontype">
 
                 <EditText
+                    android:digits="0123456789"
                     android:text="@={addmoneyviewmodel.bankrefid}"
                     android:id="@+id/edt_cashdeposit_bankrefid"
                     android:layout_width="0dp"

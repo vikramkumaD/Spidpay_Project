@@ -8,7 +8,6 @@ import androidx.lifecycle.MutableLiveData;
 import com.example.spidpay.data.RetrofitClient;
 import com.example.spidpay.data.RetrofitInterface;
 import com.example.spidpay.data.request.AddMoneyRequest;
-import com.example.spidpay.data.request.BankTransferRequest;
 import com.example.spidpay.data.request.TransferMoneyRequest;
 import com.example.spidpay.data.response.AddMoneyResponse;
 import com.example.spidpay.data.response.TransferMoenyResponse;
@@ -43,7 +42,7 @@ public class AddMoneyRepository {
 
     public MutableLiveData<AddMoneyResponse> getAddModenyResponse(AddMoneyRequest addMoneyRequest) {
         MutableLiveData<AddMoneyResponse> addMoneyResponseMutableLiveData = new MutableLiveData<>();
-        RetrofitInterface retrofitInterface = RetrofitClient.GetRetrofitClient(context, Constant.WALLET_URL).create(RetrofitInterface.class);
+        RetrofitInterface retrofitInterface = RetrofitClient.GetRetrofitClient(context, Constant.USER_URL).create(RetrofitInterface.class);
         Call<AddMoneyResponse> call = retrofitInterface.addMoney(addMoneyRequest);
         call.enqueue(new Callback<AddMoneyResponse>() {
             @Override
@@ -81,7 +80,7 @@ public class AddMoneyRepository {
 
     public MutableLiveData<TransferMoenyResponse> getTradeToSpidWalletTransfer(TransferMoneyRequest transferMoneyRequest) {
         MutableLiveData<TransferMoenyResponse> moenyResponseMutableLiveData = new MutableLiveData<>();
-        RetrofitInterface retrofitInterface = RetrofitClient.GetRetrofitClient(context, Constant.WALLET_URL).create(RetrofitInterface.class);
+        RetrofitInterface retrofitInterface = RetrofitClient.GetRetrofitClient(context, Constant.USER_URL).create(RetrofitInterface.class);
         Call<TransferMoenyResponse> call = retrofitInterface.getTransferResponse(transferMoneyRequest);
         call.enqueue(new Callback<TransferMoenyResponse>() {
             @Override

@@ -12,7 +12,7 @@
     <string name="Aeps">Aeps</string>
     <string name="mAtm">mATM</string>
     <string name="spidpaybasetext">One Platform, Many Services</string>
-
+    <string name="Empty_String"> </string>
     <string name="splashtxt">Spidpay provides wide range of banking and financial service that enable you to fulfill all your customer\'s requirement</string>
 
     <string name="next">Next</string>
@@ -20,7 +20,7 @@
     <string name="start">Start</string>
     <string name="welcomescreentext1">Planning for your</string>
     <string name="welcomescreentext2">next travel?</string>
-    <string name="welcomescreentext3">You can now book tickets      </string>
+    <string name="welcomescreentext3">You can now book tickets</string>
     <string name="welcomescreentext4">at your nearest</string>
     <string name="welcomescreentext8">Spidpay outlet</string>
     <string name="welcomescreentext5">No more standing</string>
@@ -183,6 +183,7 @@
     <string name="gstinnumber">GSTIN Number:</string>
     <string name="accname">A/C Holder Name:</string>
     <string name="bankname">Bank Name:</string>
+    <string name="bankname1">Bank Name</string>
     <string name="updatebankdeatil">Update Bank Deatil</string>
     <string name="ifsccode">IFSC Code</string>
     <string name="ifsccode1">IFSC Code:</string>
@@ -190,7 +191,7 @@
     <string name="balance">Balance</string>
     <string name="requestparent">Request Parent</string>
     <string name="selectoneoptin">Select one option!</string>
-    <string name="notes">Note(Optional)</string>
+    <string name="notes">Note</string>
     <string name="tenth">10,000</string>
     <string name="twenth">20,000</string>
     <string name="thirty">30,000</string>
@@ -253,11 +254,11 @@
     <string name="transfersuccess">TRANSFER \nSUCCESSFUL</string>
     <string name="cashtobe">Cash to be collected</string>
     <string name="moneytransferedamount">Money transferred amount</string>
-<<<<<<< HEAD
+
     <string name="sendername">Sender Name</string>
     <string name="transfermode">TransferMode(Service Charge)</string>
-=======
     <string name="district">District*</string>
-    <string name="branchname">Branch Name</string>
->>>>>>> 2a0782d516ed48923fd1a9b08f78303c3e231bb0
+    <string name="branchname">Branch Name:</string>
+    <string name="branchname1">Branch Name</string>
+
 </resources>

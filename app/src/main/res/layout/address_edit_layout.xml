@@ -112,7 +112,7 @@
             android:layout_weight="1"
             android:background="@drawable/edittext_shadow"
             android:hint="@string/district"
-            android:inputType="number"
+            android:inputType="text"
             android:paddingLeft="@dimen/marign10dp"
             android:paddingTop="@dimen/marign10dp"
             android:paddingRight="@dimen/marign10dp"

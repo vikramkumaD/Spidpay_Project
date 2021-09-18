@@ -96,7 +96,6 @@ public class BankGSTFragment extends Fragment implements BankInteface, StaticInt
     @Override
     public void onResume() {
         super.onResume();
-
         fragmentBankGSTBinding.imgEditCompany.setOnClickListener(v -> update_Bank_Deatil());
     }
 

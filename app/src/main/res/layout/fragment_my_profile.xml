@@ -5,6 +5,8 @@
 
     <data>
 
+        <import type="android.view.View"/>
+
         <variable
             name="userprofile"
             type="com.example.spidpay.data.response.MyProfileResponse" />
@@ -186,6 +188,7 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="@dimen/marign20dp"
             android:layout_marginTop="@dimen/marign5dp"
+            android:visibility="@{useraddress.landmark.equals(``) ? View.GONE : View.VISIBLE}"
             android:fontFamily="@font/lato_bold"
             android:text="@{useraddress.landmark !=null ? useraddress.landmark : ``}"
             android:textColor="@color/black"
