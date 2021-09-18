@@ -19,8 +19,8 @@
 
         <ImageView
             android:id="@+id/img_welcomebase"
-            android:layout_width="130dp"
-            android:layout_height="130dp"
+            android:layout_width="@dimen/marign100dp"
+            android:layout_height="@dimen/marign100dp"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="@dimen/marign30dp"
             android:contentDescription="@string/image"
@@ -34,9 +34,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:layout_marginTop="@dimen/marign20dp"
+            android:layout_marginTop="@dimen/marign40dp"
             android:fontFamily="@font/lato_bold"
-            android:text="@string/mobileno"
+            android:text="@string/welcome"
             android:textColor="@color/purple_200"
             android:textSize="@dimen/marign25sp"
             app:layout_constraintLeft_toLeftOf="parent"
@@ -217,34 +217,44 @@
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/btn_login" />
 
-        <View
-            android:id="@+id/login_view"
-            android:layout_width="140dp"
-            android:layout_height="1dp"
-            android:layout_gravity="center"
-            android:background="@color/forgot_password_Txtcolor"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tv_loginforgotpass" />
-
 
         <TextView
             android:id="@+id/tv_signup"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_marginTop="@dimen/marign30dp"
             android:fontFamily="@font/lato_bold"
             android:gravity="center"
-            android:paddingLeft="@dimen/marign15dp"
-            android:paddingRight="@dimen/marign15dp"
+            android:paddingStart="@dimen/marign40dp"
+            android:paddingEnd="@dimen/marign40dp"
             android:text="@string/signup_txt"
-            android:textColor="@color/dark_blue"
-            android:textSize="@dimen/marign20sp"
-            android:textStyle="bold"
+            android:textColor="@color/darkgrey2"
+            android:textSize="@dimen/marign18sp"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/login_view" />
+            app:layout_constraintTop_toBottomOf="@+id/tv_loginforgotpass" />
+
+        <TextView
+            android:id="@+id/tv_termsncondtion"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_gravity="center"
+            android:paddingBottom="@dimen/marign20dp"
+            android:layout_marginTop="@dimen/marign20dp"
+            android:layout_marginBottom="@dimen/marign15dp"
+            android:fontFamily="@font/lato_bold"
+            android:gravity="center"
+            android:paddingStart="@dimen/marign15dp"
+            android:paddingEnd="@dimen/marign15dp"
+            android:text="@string/dashboard_txt3"
+            android:textColor="@color/black"
+            android:textSize="@dimen/marign18sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent" />
+
 
         <ProgressBar
             android:id="@+id/pb_login"

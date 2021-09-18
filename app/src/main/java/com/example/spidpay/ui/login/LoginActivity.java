@@ -89,11 +89,17 @@ public class LoginActivity extends AppCompatActivity implements LoginInterface, 
     @RequiresApi(api = Build.VERSION_CODES.M)
     public void intliazeView() {
         new PrefManager(LoginActivity.this).setIsFirstTime(true);
-        SpannableString spannableString = new SpannableString(getResources().getString(R.string.signup_txt));
-        ForegroundColorSpan foregroundColorSpanCyan = new ForegroundColorSpan(getResources().getColor(R.color.seagreen));
-        spannableString.setSpan(foregroundColorSpanCyan, 22, 28, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+        SpannableString signupstr = new SpannableString(getResources().getString(R.string.signup_txt));
+        ForegroundColorSpan foregroundColorSpanCyan = new ForegroundColorSpan(getResources().getColor(R.color.dark_blue_extra));
+        signupstr.setSpan(foregroundColorSpanCyan, 22, 28, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
         tv_signup = findViewById(R.id.tv_signup);
-        tv_signup.setText(spannableString);
+        tv_signup.setText(signupstr);
+
+        SpannableString termnconditionstr = new SpannableString(getResources().getString(R.string.dashboard_txt3));
+        ForegroundColorSpan foregroundColorSpanCyan2 = new ForegroundColorSpan(getResources().getColor(R.color.forgot_password_Txtcolor));
+        termnconditionstr.setSpan(foregroundColorSpanCyan2, 29, 48, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+        activityLoginBinding.tvTermsncondtion.setText(termnconditionstr);
+
 
         LoginRepository loginRepository = new LoginRepository(LoginActivity.this, loginInterface, forgotPassInterface);
         loginViewModel = new ViewModelProvider(this).get(LoginViewModel.class);

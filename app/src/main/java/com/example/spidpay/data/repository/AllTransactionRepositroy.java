@@ -31,7 +31,7 @@ public class AllTransactionRepositroy {
 
     public MutableLiveData<List<AllTransactionResponse>> getAllTransaction(String walletid, String pageno, String pagesize) {
         MutableLiveData<List<AllTransactionResponse>> listMutableLiveData = new MutableLiveData<>();
-        RetrofitInterface retrofitInterface = RetrofitClient.GetRetrofitClient(context, Constant.TRANSACTION_API).create(RetrofitInterface.class);
+        RetrofitInterface retrofitInterface = RetrofitClient.GetRetrofitClient(context, Constant.TXN_URL).create(RetrofitInterface.class);
         Call<List<AllTransactionResponse>> call = retrofitInterface.getAllTransaction(walletid, pageno, pagesize);
         call.enqueue(new Callback<List<AllTransactionResponse>>() {
             @Override

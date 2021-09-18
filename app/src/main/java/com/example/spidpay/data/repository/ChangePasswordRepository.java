@@ -8,7 +8,6 @@ import com.example.spidpay.data.RetrofitClient;
 import com.example.spidpay.data.RetrofitInterface;
 import com.example.spidpay.data.request.ChangePasswordRequest;
 import com.example.spidpay.data.response.CommonResponse;
-import com.example.spidpay.data.response.LoginResponse;
 import com.example.spidpay.interfaces.ChangePasswordInterface;
 import com.example.spidpay.util.Constant;
 import com.example.spidpay.util.NoInternetException;
@@ -33,8 +32,8 @@ public class ChangePasswordRepository {
 
     public MutableLiveData<CommonResponse> changePassword(ChangePasswordRequest changePasswordRequest) {
         MutableLiveData<CommonResponse> responseMutableLiveData = new MutableLiveData<>();
-        RetrofitInterface retrofitInterface = RetrofitClient.GetRetrofitClient(context, Constant.USER_API).create(RetrofitInterface.class);
-        Call<CommonResponse> call = retrofitInterface.changepassword(changePasswordRequest);
+        RetrofitInterface retrofitInterface = RetrofitClient.GetRetrofitClient(context, Constant.USER_URL).create(RetrofitInterface.class);
+        Call<CommonResponse> call = retrofitInterface.changePassword(changePasswordRequest);
         call.enqueue(new Callback<CommonResponse>() {
             @Override
             public void onResponse(@NotNull Call<CommonResponse> call, @NotNull Response<CommonResponse> response) {

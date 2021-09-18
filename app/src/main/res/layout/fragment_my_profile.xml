@@ -38,6 +38,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="@dimen/marign20dp"
+            android:inputType="text"
             android:layout_marginTop="@dimen/marign20dp"
             android:fontFamily="@font/lato_bold"
             android:text="@string/username"
@@ -52,7 +53,7 @@
             android:layout_marginLeft="@dimen/marign20dp"
             android:layout_marginTop="@dimen/marign20dp"
             android:fontFamily="@font/lato_bold"
-            android:text="@{userprofile.firstName+userprofile.lastName}"
+            android:text="@{userprofile.firstName+` `+userprofile.lastName}"
             android:textColor="@color/black"
             app:layout_constraintLeft_toRightOf="@+id/tv_username"
             app:layout_constraintTop_toBottomOf="@+id/tv_contact_detail" />
@@ -174,7 +175,7 @@
             android:layout_marginLeft="@dimen/marign20dp"
             android:layout_marginTop="@dimen/marign5dp"
             android:fontFamily="@font/lato_bold"
-            android:text="@{(useraddress.address1 !=null ? useraddress.address1 : ``)}"
+            android:text="@{(useraddress.addressline !=null ? useraddress.addressline : ``)}"
             android:textColor="@color/black"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tv_addresss" />
@@ -186,7 +187,7 @@
             android:layout_marginLeft="@dimen/marign20dp"
             android:layout_marginTop="@dimen/marign5dp"
             android:fontFamily="@font/lato_bold"
-            android:text="@{useraddress.address2 !=null ? useraddress.address2 : ``}"
+            android:text="@{useraddress.landmark !=null ? useraddress.landmark : ``}"
             android:textColor="@color/black"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tv_userflatno" />
@@ -199,7 +200,7 @@
             android:layout_marginLeft="@dimen/marign20dp"
             android:layout_marginTop="@dimen/marign5dp"
             android:fontFamily="@font/lato_bold"
-            android:text="@{(useraddress.address3 !=null ? useraddress.address3 : ``).concat(` `).concat(useraddress.state !=null ? useraddress.state : ``)}"
+            android:text="@{(useraddress.city !=null ? useraddress.city : ``).concat(` `).concat(useraddress.state !=null ? useraddress.state : ``)}"
             android:textColor="@color/black"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tv_userlocalarea" />

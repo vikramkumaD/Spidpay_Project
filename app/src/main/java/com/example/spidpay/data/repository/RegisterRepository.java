@@ -26,7 +26,7 @@ public class RegisterRepository {
 
     public MutableLiveData<RegisterResponse> getRegisterResponse(RegisterRequest registerRequest) {
         MutableLiveData<RegisterResponse> responseMutableLiveData = new MutableLiveData<>();
-        RetrofitInterface retrofitInterface = RetrofitClient.GetRetrofitClient(context, Constant.USER_API).create(RetrofitInterface.class);
+        RetrofitInterface retrofitInterface = RetrofitClient.GetRetrofitClient(context, Constant.USER_URL).create(RetrofitInterface.class);
         Call<RegisterResponse> call = retrofitInterface.user_onBoarding(registerRequest);
         call.enqueue(new Callback<RegisterResponse>() {
             @Override
