@@ -59,9 +59,9 @@ public class RegisterActivity extends AppCompatActivity implements RegisterInter
         activityRegisterBinding = DataBindingUtil.setContentView(this, R.layout.activity_register);
         registerInterface = this;
         onStaticClickIterface = this;
-        staticInterface = (StaticInterface) this;
+        staticInterface = this;
         SpannableString spannableString = new SpannableString(getResources().getString(R.string.dashboard_txt3));
-        ForegroundColorSpan foregroundColorSpanCyan = new ForegroundColorSpan(getResources().getColor(R.color.termsncondtion));
+        ForegroundColorSpan foregroundColorSpanCyan = new ForegroundColorSpan(getResources().getColor(R.color.forgot_password_Txtcolor));
         spannableString.setSpan(foregroundColorSpanCyan, 29, 48, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
         activityRegisterBinding.tvTermsncondtion.setText(spannableString);
         staticRepository = new StaticRepository(RegisterActivity.this, staticInterface);

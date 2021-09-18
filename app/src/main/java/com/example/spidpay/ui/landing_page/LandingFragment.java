@@ -4,24 +4,18 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.LiveData;
-import androidx.lifecycle.Observer;
-import androidx.lifecycle.ViewModel;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.NavController;
 import androidx.navigation.fragment.NavHostFragment;
 
 import android.content.Context;
-import android.graphics.Color;
-import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
-import android.widget.Toast;
 
 import com.example.spidpay.R;
-import com.example.spidpay.data.repository.LandinRepository;
+import com.example.spidpay.data.repository.LandingRepository;
 import com.example.spidpay.data.response.WalletResponse;
 import com.example.spidpay.interfaces.LandingInterface;
 import com.example.spidpay.util.Constant;
@@ -43,7 +37,7 @@ public class LandingFragment extends Fragment implements LandingInterface {
     UpdateBottomView updateBottomView;
 
     LandingViewModel landingViewModel;
-    LandinRepository landinRepository;
+    LandingRepository landingRepository;
     LandingInterface landingInterface;
 
     @Override
@@ -67,10 +61,10 @@ public class LandingFragment extends Fragment implements LandingInterface {
             navController.navigate(R.id.AEPS_Dashboard_Fragment);
         });
 
-        landinRepository = new LandinRepository(requireActivity(), landingInterface);
+        landingRepository = new LandingRepository(requireActivity(), landingInterface);
         landingViewModel = new ViewModelProvider(this).get(LandingViewModel.class);
         landingViewModel.landingInterface = landingInterface;
-        landingViewModel.landinRepository = landinRepository;
+        landingViewModel.landingRepository = landingRepository;
         landingfragmentBinding.setLandingviewmodel(landingViewModel);
         landingViewModel.getWalletResponse(new PrefManager(requireActivity()).getUserID());
 

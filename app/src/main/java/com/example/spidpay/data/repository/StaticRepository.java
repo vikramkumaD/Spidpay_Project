@@ -31,8 +31,8 @@ public class StaticRepository {
 
     public MutableLiveData<List<InterrestedforResponse>> getStaticData(String cat, String role) {
         MutableLiveData<List<InterrestedforResponse>> listMutableLiveData = new MutableLiveData<>();
-        RetrofitInterface retrofitInterface = RetrofitClient.GetRetrofitClient(context, Constant.USER_API).create(RetrofitInterface.class);
-        Call<List<InterrestedforResponse>> call = retrofitInterface.getstaticdata(cat, role);
+        RetrofitInterface retrofitInterface = RetrofitClient.GetRetrofitClient(context, Constant.USER_URL).create(RetrofitInterface.class);
+        Call<List<InterrestedforResponse>> call = retrofitInterface.getStaticData(cat, role);
         call.enqueue(new Callback<List<InterrestedforResponse>>() {
             @Override
             public void onResponse(@NotNull Call<List<InterrestedforResponse>> call, @NotNull Response<List<InterrestedforResponse>> response) {

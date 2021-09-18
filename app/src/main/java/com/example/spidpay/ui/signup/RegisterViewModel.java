@@ -86,7 +86,6 @@ public class RegisterViewModel extends ViewModel {
         if (string_register_first_name.getValue() == null || string_register_first_name.getValue().equals("")
                 || string_register_last_name.getValue() == null || string_register_last_name.getValue().equals("")
                 || string_register_mobile_number.getValue() == null || string_register_mobile_number.getValue().equals("")
-                || string_register_email_Address.getValue() == null || string_register_email_Address.getValue().equals("")
                 || password == null || password.equals("")
                 || confirm_password == null || confirm_password.equals("")) {
             registerInterface.onFailed(view.getContext().getResources().getString(R.string.filedcannotbeblank));

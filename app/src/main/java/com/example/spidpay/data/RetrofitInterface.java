@@ -51,11 +51,11 @@ public interface RetrofitInterface {
     Call<RegisterResponse> user_onBoarding(@Body RegisterRequest loginRequest);
 
     @GET("static-data/v1/{category}")
-    Call<List<InterrestedforResponse>> getstaticdata(@Path("category") String user, @Query("role") String role);
+    Call<List<InterrestedforResponse>> getStaticData(@Path("category") String user, @Query("role") String role);
 
     @Headers({"Content-Type:application/json"})
     @POST("change-password/v1")
-    Call<CommonResponse> changepassword(@Body ChangePasswordRequest changePasswordRequest);
+    Call<CommonResponse> changePassword(@Body ChangePasswordRequest changePasswordRequest);
 
     @Headers({"Content-Type:application/json"})
     @POST("reset-password/v1")
@@ -78,7 +78,7 @@ public interface RetrofitInterface {
     Call<UpdateResponse> updateAddress(@Body UpdateAddressRequest updateAddressRequest);
 
     @GET("user/v1/{userId}/{kyc-info}")
-    Call<KYCResponse> getKYCInfo(@Path("userId") String user, @Path("kyc-info") String kycinfo);
+    Call<KYCResponse> getKYCInfo(@Path("userId") String user, @Path("kyc-info") String kycInfo);
 
     @Headers({"Content-Type:application/json"})
     @PUT("user/v1/update/kyc")
@@ -105,7 +105,7 @@ public interface RetrofitInterface {
     Call<List<AllTransactionResponse>> getAllTransaction(@Path("walletId") String walletId, @Query("pageNumber") String pageNumber, @Query("pageSize") String pageSize);
 
     @POST("v1/load-money")
-    Call<AddMoneyResponse> addMoney(@Body AddMoneyRequest verifyOTPReqest);
+    Call<AddMoneyResponse> addMoney(@Body AddMoneyRequest verifyOTPRequest);
 
     @POST("v1/trade/payout")
     Call<TransferMoenyResponse> getTransferResponse(@Body TransferMoneyRequest transferMoneyRequest);

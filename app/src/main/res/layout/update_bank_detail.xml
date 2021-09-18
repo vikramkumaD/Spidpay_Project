@@ -106,6 +106,28 @@
             android:importantForAutofill="no" />
 
         <EditText
+            android:focusable="false"
+            android:cursorVisible="false"
+            android:id="@+id/edt_user_branch_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/marign10dp"
+            android:layout_weight="1"
+            android:background="@drawable/edittext_shadow"
+            android:hint="@string/branchname"
+            android:inputType="text"
+            android:paddingLeft="@dimen/marign10dp"
+            android:paddingTop="@dimen/marign10dp"
+            android:paddingRight="@dimen/marign10dp"
+            android:paddingBottom="@dimen/marign10dp"
+            android:singleLine="true"
+            android:text="@={bank.branchName}"
+            android:textColorHint="@color/lightgrey"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/edt_user_bank_name"
+            android:importantForAutofill="no" />
+
+        <EditText
             android:id="@+id/edt_user_bank_ifsc"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -123,7 +145,7 @@
             android:text="@={bank.ifscCode}"
             android:textColorHint="@color/lightgrey"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/edt_user_bank_name"
+            app:layout_constraintTop_toBottomOf="@+id/edt_user_branch_name"
             android:importantForAutofill="no" />
 
 

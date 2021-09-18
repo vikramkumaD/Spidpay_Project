@@ -6,9 +6,7 @@ import androidx.lifecycle.MutableLiveData;
 
 import com.example.spidpay.data.RetrofitClient;
 import com.example.spidpay.data.RetrofitInterface;
-import com.example.spidpay.data.request.LoginRequest;
 import com.example.spidpay.data.request.VerifyOTPReqest;
-import com.example.spidpay.data.response.LoginResponse;
 import com.example.spidpay.data.response.VerifyOTPResponse;
 import com.example.spidpay.interfaces.VerifyOTPInterface;
 import com.example.spidpay.util.Constant;
@@ -34,7 +32,7 @@ public class VerifyOTPRepository {
 
     public MutableLiveData<VerifyOTPResponse> getVerifyOTP(VerifyOTPReqest loginRequest) {
         MutableLiveData<VerifyOTPResponse> responseMutableLiveData = new MutableLiveData<>();
-        RetrofitInterface retrofitInterface = RetrofitClient.GetRetrofitClient(context, Constant.USER_API).create(RetrofitInterface.class);
+        RetrofitInterface retrofitInterface = RetrofitClient.GetRetrofitClient(context, Constant.USER_URL).create(RetrofitInterface.class);
         Call<VerifyOTPResponse> call = retrofitInterface.verifyOTP(loginRequest);
         call.enqueue(new Callback<VerifyOTPResponse>() {
             @Override

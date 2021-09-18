@@ -54,7 +54,7 @@
             android:paddingRight="@dimen/marign10dp"
             android:paddingBottom="@dimen/marign10dp"
             android:singleLine="true"
-            android:text="@={address.address1}"
+            android:text="@={address.addressline}"
             android:textColorHint="@color/lightgrey"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tv_update_address"
@@ -76,7 +76,7 @@
             android:paddingRight="@dimen/marign10dp"
             android:paddingBottom="@dimen/marign10dp"
             android:singleLine="true"
-            android:text="@={address.address2}"
+            android:text="@={address.landmark}"
             android:textColorHint="@color/lightgrey"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/edt_edit_address1"
@@ -97,10 +97,31 @@
             android:paddingRight="@dimen/marign10dp"
             android:paddingBottom="@dimen/marign10dp"
             android:singleLine="true"
-            android:text="@={address.address3}"
+            android:text="@={address.city}"
             android:textColorHint="@color/lightgrey"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/edt_edit_address2"
+            android:importantForAutofill="no" />
+
+        <EditText
+            android:maxLength="7"
+            android:id="@+id/edt_edit_address_distric"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/marign10dp"
+            android:layout_weight="1"
+            android:background="@drawable/edittext_shadow"
+            android:hint="@string/district"
+            android:inputType="number"
+            android:paddingLeft="@dimen/marign10dp"
+            android:paddingTop="@dimen/marign10dp"
+            android:paddingRight="@dimen/marign10dp"
+            android:paddingBottom="@dimen/marign10dp"
+            android:singleLine="true"
+            android:text="@={address.district}"
+            android:textColorHint="@color/lightgrey"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/edt_edit_address_city"
             android:importantForAutofill="no" />
 
         <EditText
@@ -121,7 +142,7 @@
             android:text="@={address.pinCode}"
             android:textColorHint="@color/lightgrey"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/edt_edit_address_city"
+            app:layout_constraintTop_toBottomOf="@+id/edt_edit_address_distric"
             android:importantForAutofill="no" />
 
 
@@ -148,6 +169,7 @@
 
 
         <EditText
+            android:visibility="gone"
             android:id="@+id/edt_edit_address_country"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -179,6 +201,7 @@
             android:fontFamily="@font/lato"
             android:onClick="@{(v)->myprofileviewmodel.validate_edit_Address(v,address)}"
             android:text="@string/update"
+            android:textAllCaps="false"
             android:textColor="@color/white"
             android:textSize="@dimen/marign18sp"
             app:layout_constraintTop_toBottomOf="@+id/edt_edit_address_country" />

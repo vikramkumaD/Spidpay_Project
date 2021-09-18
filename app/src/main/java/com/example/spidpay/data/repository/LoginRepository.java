@@ -39,7 +39,7 @@ public class LoginRepository {
 
     public MutableLiveData<LoginResponse> getLoginResposne(LoginRequest loginRequest) {
         MutableLiveData<LoginResponse> responseMutableLiveData = new MutableLiveData<>();
-        RetrofitInterface retrofitInterface = RetrofitClient.GetRetrofitClient(context, Constant.USER_API).create(RetrofitInterface.class);
+        RetrofitInterface retrofitInterface = RetrofitClient.GetRetrofitClient(context, Constant.USER_URL).create(RetrofitInterface.class);
         Call<LoginResponse> call = retrofitInterface.user_login(loginRequest);
         call.enqueue(new Callback<LoginResponse>() {
             @Override
@@ -77,7 +77,7 @@ public class LoginRepository {
 
     public MutableLiveData<CommonResponse> getResetPass(ResetPassword changePasswordRequest) {
         MutableLiveData<CommonResponse> responseMutableLiveData = new MutableLiveData<>();
-        RetrofitInterface retrofitInterface = RetrofitClient.GetRetrofitClient(context, Constant.USER_API).create(RetrofitInterface.class);
+        RetrofitInterface retrofitInterface = RetrofitClient.GetRetrofitClient(context, Constant.USER_URL).create(RetrofitInterface.class);
         Call<CommonResponse> call = retrofitInterface.resetPass(changePasswordRequest);
         call.enqueue(new Callback<CommonResponse>() {
             @Override
@@ -113,7 +113,7 @@ public class LoginRepository {
 
     public MutableLiveData<BooleanResponse> verifyUserName(String username) {
         MutableLiveData<BooleanResponse> commonResponseMutableLiveData = new MutableLiveData<>();
-        RetrofitInterface retrofitInterface = RetrofitClient.GetRetrofitClient(context, Constant.USER_API).create(RetrofitInterface.class);
+        RetrofitInterface retrofitInterface = RetrofitClient.GetRetrofitClient(context, Constant.USER_URL).create(RetrofitInterface.class);
         Call<BooleanResponse> call = retrofitInterface.verifyUsername(username);
         call.enqueue(new Callback<BooleanResponse>() {
             @Override
@@ -150,7 +150,7 @@ public class LoginRepository {
 
     public MutableLiveData<VerifyOTPResponse> getVerifyOTP(VerifyOTPReqest loginRequest) {
         MutableLiveData<VerifyOTPResponse> responseMutableLiveData = new MutableLiveData<>();
-        RetrofitInterface retrofitInterface = RetrofitClient.GetRetrofitClient(context, Constant.USER_API).create(RetrofitInterface.class);
+        RetrofitInterface retrofitInterface = RetrofitClient.GetRetrofitClient(context, Constant.USER_URL).create(RetrofitInterface.class);
         Call<VerifyOTPResponse> call = retrofitInterface.verifyOTP(loginRequest);
         call.enqueue(new Callback<VerifyOTPResponse>() {
             @Override

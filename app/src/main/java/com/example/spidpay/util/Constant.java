@@ -21,15 +21,11 @@ import java.util.regex.Pattern;
 
 public class Constant {
 
-    /*
-    http://13.232.183.230:6700/spidpay-wallet/swagger-ui/
-    http://3.108.193.164:6600/spidpay-txnactivity/swagger-ui/
-    http://65.2.129.146:6500/spidpay-identity/swagger-ui/*/
+    //public static final String BASE_URL=" http://spidpay-api-565132133.ap-south-1.elb.amazonaws.com/";
 
-
-    public static final String USER_API = "http://65.2.129.146:6500/spidpay-identity/api/";
-    public static final String WALLET_API = "http://13.232.183.230:6700/spidpay-wallet/";
-    public static final String TRANSACTION_API = "http://3.108.193.164:6600/spidpay-txnactivity/";
+    public static final String USER_URL = "http://65.2.129.146:6500/spidpay-identity/api/";
+    public static final String WALLET_URL = "http://13.232.183.230:6700/spidpay-wallet/";
+    public static final String TXN_URL = "http://3.108.193.164:6600/spidpay-txnactivity/";
 
 
     public static final String PARTNERSHIP = "Partnership";
