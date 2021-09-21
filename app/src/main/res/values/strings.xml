@@ -159,12 +159,16 @@
     <string name="pleaseseletcinterestedfor">Please select Interested for!</string>
     <string name="enterotp">Enter OTP!</string>
     <string name="username">User Name</string>
+    <string name="username1">User Name:</string>
     <string name="usertype">User Type:</string>
     <string name="address1">Address Line*</string>
     <string name="address2">Landmark</string>
     <string name="city">City or Village*</string>
+    <string name="city1">City or Village:</string>
     <string name="pincode">Pin Code*</string>
+    <string name="pincode1">Pin Code:</string>
     <string name="state">State*</string>
+    <string name="state1">State:</string>
     <string name="country">Country</string>
     <string name="update">Update</string>
     <string name="updateaddress">Update Address</string>
@@ -258,8 +262,13 @@
     <string name="sendername">Sender Name</string>
     <string name="transfermode">TransferMode(Service Charge)</string>
     <string name="district">District*</string>
+    <string name="district1">District:</string>
     <string name="branchname">Branch Name:</string>
     <string name="branchname1">Branch Name</string>
     <string name="status">Status:</string>
+    <string name="accountStatus">Account Status:</string>
+    <string name="domaincode">Domain Code:</string>
+    <string name="addressline">Address Line:</string>
+    <string name="landmardk">Landmark:</string>
 
 </resources>

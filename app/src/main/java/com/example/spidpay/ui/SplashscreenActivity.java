@@ -1,15 +1,19 @@
 package com.example.spidpay.ui;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.biometric.BiometricPrompt;
 import androidx.core.content.ContextCompat;
+import androidx.core.hardware.fingerprint.FingerprintManagerCompat;
 import androidx.databinding.DataBindingUtil;
 
 import android.app.KeyguardManager;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.hardware.fingerprint.FingerprintManager;
+import android.os.Build;
 import android.os.Bundle;
 import android.text.SpannableString;
 import android.text.Spanned;
@@ -27,6 +31,7 @@ public class SplashscreenActivity extends AppCompatActivity {
     private Executor executor;
     private BiometricPrompt biometricPrompt;
     private BiometricPrompt.PromptInfo promptInfo;
+    @RequiresApi(api = Build.VERSION_CODES.M)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -73,7 +78,7 @@ public class SplashscreenActivity extends AppCompatActivity {
                     if (new PrefManager(SplashscreenActivity.this).getIsLandingPageOpen()) {
                         if (isAppHasSecurity()) {
 
-                            if(isAppHasBioMetricSupport())
+                            if(isFingerprintAvailable())
                             {
                                 runOnUiThread(() -> biometricPrompt.authenticate(promptInfo));
                             }
@@ -106,10 +111,24 @@ public class SplashscreenActivity extends AppCompatActivity {
         return keyguardManager.isKeyguardSecure();
     }
 
-    public boolean isAppHasBioMetricSupport()
+
+    @RequiresApi(api = Build.VERSION_CODES.M)
+    public Boolean isFingerprintAvailable()
     {
-        return getPackageManager().hasSystemFeature(PackageManager.FEATURE_FINGERPRINT);
+        FingerprintManager fingerprintManager=(FingerprintManager) getSystemService(Context.FINGERPRINT_SERVICE);
+        if (!fingerprintManager.isHardwareDetected()) {
+            // Device doesn't support fingerprint authentication
+            return  false;
+        } else if (!fingerprintManager.hasEnrolledFingerprints()) {
+            // User hasn't enrolled any fingerprints to authenticate with
+            return false;
+        } else {
+            // Everything is ready for fingerprint authentication
+            return  true;
+        }
+
     }
+
 
 
 

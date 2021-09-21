@@ -83,7 +83,7 @@
             android:importantForAutofill="no" />
 
         <EditText
-
+            android:visibility="gone"
             android:id="@+id/edt_edit_voter_id"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

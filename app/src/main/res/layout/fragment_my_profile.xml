@@ -43,7 +43,7 @@
             android:inputType="text"
             android:layout_marginTop="@dimen/marign20dp"
             android:fontFamily="@font/lato_bold"
-            android:text="@string/username"
+            android:text="@string/username1"
             android:textColor="@color/black"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tv_contact_detail" />
@@ -120,6 +120,7 @@
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tv_useremail" />
 
+
         <TextView
             android:id="@+id/tv_user_mobileno_value"
             android:layout_width="wrap_content"
@@ -133,6 +134,59 @@
             app:layout_constraintTop_toBottomOf="@+id/tv_useremail" />
 
         <TextView
+            android:id="@+id/tv_useraccountstatus"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/marign20dp"
+            android:layout_marginTop="@dimen/marign5dp"
+            android:fontFamily="@font/lato_bold"
+            android:text="@string/accountStatus"
+            android:textColor="@color/black"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_usermobileno" />
+
+
+        <TextView
+            android:id="@+id/tv_useraccountstatus_value"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/marign20dp"
+            android:layout_marginTop="@dimen/marign5dp"
+            android:fontFamily="@font/lato_bold"
+            android:text="@{userprofile.accountStatus}"
+            android:textColor="@color/black"
+            app:layout_constraintLeft_toRightOf="@+id/tv_useraccountstatus"
+            app:layout_constraintTop_toBottomOf="@+id/tv_usermobileno" />
+
+
+        <TextView
+            android:id="@+id/tv_userdomaincode"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/marign20dp"
+            android:layout_marginTop="@dimen/marign5dp"
+            android:fontFamily="@font/lato_bold"
+            android:text="@string/domaincode"
+            android:textColor="@color/black"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_useraccountstatus" />
+
+
+        <TextView
+            android:id="@+id/tv_userdomaincode_value"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/marign20dp"
+            android:layout_marginTop="@dimen/marign5dp"
+            android:fontFamily="@font/lato_bold"
+            android:text="@{userprofile.domainCode}"
+            android:textColor="@color/black"
+            app:layout_constraintLeft_toRightOf="@+id/tv_userdomaincode"
+            app:layout_constraintTop_toBottomOf="@+id/tv_useraccountstatus" />
+
+
+
+        <TextView
             android:id="@+id/tv_usercontactno"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -143,7 +197,7 @@
             android:textColor="@color/black"
             android:visibility="gone"
             app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tv_usermobileno" />
+            app:layout_constraintTop_toBottomOf="@+id/tv_userdomaincode" />
 
 
         <TextView
@@ -170,6 +224,19 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tv_usercontactno" />
 
+
+        <TextView
+            android:id="@+id/tv_useraddressline"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/marign20dp"
+            android:layout_marginTop="@dimen/marign5dp"
+            android:fontFamily="@font/lato_bold"
+            android:text="@string/addressline"
+            android:textColor="@color/black"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_addresss" />
+
         <TextView
             android:id="@+id/tv_userflatno"
             android:layout_width="wrap_content"
@@ -179,21 +246,35 @@
             android:fontFamily="@font/lato_bold"
             android:text="@{(useraddress.addressline !=null ? useraddress.addressline : ``)}"
             android:textColor="@color/black"
-            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintLeft_toRightOf="@+id/tv_useraddressline"
             app:layout_constraintTop_toBottomOf="@+id/tv_addresss" />
+
+        <TextView
+            android:id="@+id/tv_userladnmark"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/marign20dp"
+            android:layout_marginTop="@dimen/marign5dp"
+            android:fontFamily="@font/lato_bold"
+            android:text="@string/landmardk"
+            android:textColor="@color/black"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_userflatno" />
+
 
         <TextView
             android:id="@+id/tv_userlocalarea"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="@dimen/marign20dp"
+            android:layout_marginStart="@dimen/marign20dp"
             android:layout_marginTop="@dimen/marign5dp"
             android:visibility="@{useraddress.landmark.equals(``) ? View.GONE : View.VISIBLE}"
             android:fontFamily="@font/lato_bold"
             android:text="@{useraddress.landmark !=null ? useraddress.landmark : ``}"
             android:textColor="@color/black"
-            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintLeft_toRightOf="@+id/tv_userladnmark"
             app:layout_constraintTop_toBottomOf="@+id/tv_userflatno" />
+
 
 
         <TextView
@@ -203,22 +284,99 @@
             android:layout_marginLeft="@dimen/marign20dp"
             android:layout_marginTop="@dimen/marign5dp"
             android:fontFamily="@font/lato_bold"
-            android:text="@{(useraddress.city !=null ? useraddress.city : ``).concat(` `).concat(useraddress.state !=null ? useraddress.state : ``)}"
+            android:text="@string/city1"
             android:textColor="@color/black"
             app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tv_userlocalarea" />
+            app:layout_constraintTop_toBottomOf="@+id/tv_userladnmark" />
 
         <TextView
-            android:id="@+id/tv_usecontry"
+            android:id="@+id/tv_usercityvalue"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="@dimen/marign20dp"
             android:layout_marginTop="@dimen/marign5dp"
             android:fontFamily="@font/lato_bold"
-            android:text="@{(useraddress.country !=null ? useraddress.country : ``).concat(`-`).concat(useraddress.pinCode !=null ? useraddress.pinCode : ``)}"
+            android:text="@{useraddress.city}"
+            android:textColor="@color/black"
+            app:layout_constraintLeft_toRightOf="@+id/tv_usercity"
+            app:layout_constraintTop_toBottomOf="@+id/tv_userladnmark" />
+
+        <TextView
+            android:id="@+id/tv_userdistrict"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/marign20dp"
+            android:layout_marginTop="@dimen/marign5dp"
+            android:fontFamily="@font/lato_bold"
+            android:text="@string/district1"
             android:textColor="@color/black"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tv_usercity" />
+
+
+        <TextView
+            android:id="@+id/tv_userdistrict_value"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/marign20dp"
+            android:layout_marginTop="@dimen/marign5dp"
+            android:fontFamily="@font/lato_bold"
+            android:text="@{useraddress.district}"
+            android:textColor="@color/black"
+            app:layout_constraintLeft_toRightOf="@+id/tv_userdistrict"
+            app:layout_constraintTop_toBottomOf="@+id/tv_usercity" />
+
+        <TextView
+            android:id="@+id/tv_userstate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/marign20dp"
+            android:layout_marginTop="@dimen/marign5dp"
+            android:fontFamily="@font/lato_bold"
+            android:text="@string/state1"
+            android:textColor="@color/black"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_userdistrict" />
+
+
+        <TextView
+            android:id="@+id/tv_userstate_value"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/marign20dp"
+            android:layout_marginTop="@dimen/marign5dp"
+            android:fontFamily="@font/lato_bold"
+            android:text="@{useraddress.state}"
+            android:textColor="@color/black"
+           app:layout_constraintLeft_toRightOf="@+id/tv_userstate"
+            app:layout_constraintTop_toBottomOf="@+id/tv_userdistrict" />
+
+
+        <TextView
+            android:id="@+id/tv_userpincode"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/marign20dp"
+            android:layout_marginTop="@dimen/marign5dp"
+            android:fontFamily="@font/lato_bold"
+            android:text="@string/pincode1"
+            android:textColor="@color/black"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_userstate" />
+
+        <TextView
+            android:id="@+id/tv_userpincode_value"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/marign20dp"
+            android:layout_marginTop="@dimen/marign5dp"
+            android:fontFamily="@font/lato_bold"
+            android:text="@{useraddress.pinCode}"
+            android:textColor="@color/black"
+            app:layout_constraintLeft_toRightOf="@+id/tv_userpincode"
+            app:layout_constraintTop_toBottomOf="@+id/tv_userstate" />
+
+
 
         <ProgressBar
             android:id="@+id/pb_myprofile"

@@ -81,7 +81,7 @@ public class MyProfileViewModel extends ViewModel {
 
     public void validate_KYC(View view, KYCResponse kycResponse) {
 
-        if (kycResponse.panNo == null || kycResponse.panNo.equals("") || kycResponse.aadharNo == null || kycResponse.aadharNo.equals("") || kycResponse.idNo == null || kycResponse.idNo.equals("")) {
+        if (kycResponse.panNo == null || kycResponse.panNo.equals("") || kycResponse.aadharNo == null || kycResponse.aadharNo.equals("")) {
             kycInterface.onFailed(view.getResources().getString(R.string.filedcannotbeblank));
             return;
         }
