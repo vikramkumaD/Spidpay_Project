@@ -130,8 +130,6 @@ public class SplashscreenActivity extends AppCompatActivity {
     }
 
 
-
-
     public void openPinOrPatternScreen()
     {
         KeyguardManager km = (KeyguardManager) getSystemService(KEYGUARD_SERVICE);

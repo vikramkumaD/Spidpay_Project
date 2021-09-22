@@ -53,9 +53,10 @@ public class VerifyOTPActivity extends AppCompatActivity implements VerifyOTPInt
 
     @Override
     public void onSuccess(LiveData<VerifyOTPResponse> verifyOTPResponseLiveData) {
-        activityLoginBinding.pbVerifyOtp.setVisibility(View.GONE);
+
         verifyOTPResponseLiveData.observe(this, verifyOTPResponse -> {
             if (verifyOTPResponse.mobileOTPStatus) {
+                activityLoginBinding.pbVerifyOtp.setVisibility(View.GONE);
                 startActivity(new Intent(VerifyOTPActivity.this, HostActivity.class));
                 finish();
             }

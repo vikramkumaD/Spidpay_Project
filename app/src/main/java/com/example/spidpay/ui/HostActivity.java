@@ -54,41 +54,23 @@ public class HostActivity extends AppCompatActivity implements ChangeTitlenandIc
         binding.relativeNotification.setOnClickListener(v -> navController.navigate(R.id.notificationFragment));
         binding.relativeHome.setOnClickListener(v -> navController.navigate(R.id.landingFragment));
 
-        /*binding.navView.setNavigationItemSelectedListener(item -> {
-            if(item.getItemId()==R.id.logout)
-            {
-                NavigationUI.onNavDestinationSelected(item,navController);
-                new PrefManager(HostActivity.this).setIsLandingPageOpen(false);
-                Intent intent=new Intent(HostActivity.this, LoginActivity.class);
-                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK|Intent.FLAG_ACTIVITY_CLEAR_TASK);
-                startActivity(intent);
-                finish();
-            }
-            return true;
-        });*/
-    }
+        NavigationView navigationView1=findViewById(R.id.nav_view);
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.activity_main_drawer, menu);
-        return true;
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-        //return super.onOptionsItemSelected(item);
-        if(item.getItemId()==R.id.logout)
-        {
+        navigationView1.getMenu().findItem(R.id.logout).setOnMenuItemClickListener(item -> {
             NavigationUI.onNavDestinationSelected(item,navController);
             new PrefManager(HostActivity.this).setIsLandingPageOpen(false);
             Intent intent=new Intent(HostActivity.this, LoginActivity.class);
-            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK|Intent.FLAG_ACTIVITY_CLEAR_TASK);
+            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
+            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
             startActivity(intent);
             finish();
-        }
-        return NavigationUI.onNavDestinationSelected(item,navController);
+            return false;
+        });
 
     }
+
+
 
     @Override
     public boolean onSupportNavigateUp() {

@@ -112,11 +112,11 @@ public class Constant {
     }
 
     public static String parseErrorBodyofRetrofit(String errorbody) {
-        JSONObject jsonObject1;
+
         try {
-            jsonObject1 = new JSONObject(errorbody);
-            JSONObject jsonObject = jsonObject1.getJSONObject("error");
-            return jsonObject.getString("message");
+            JSONObject jsonObject1 = new JSONObject(errorbody);
+            //String jsonObject = jsonObject1.getString("error");
+            return jsonObject1.getString("error");
         } catch (JSONException e) {
             e.printStackTrace();
             return e.toString();

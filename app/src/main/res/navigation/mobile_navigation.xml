@@ -25,15 +25,12 @@
 
     <fragment
         android:id="@+id/request_Wallet_Transfer_Fragment"
-        android:name="com.example.spidpay.ui.requestwallettransfer.Request_Wallet_Transfer_Fragment"
         android:label="Request_Wallet_Transfer_Fragment" />
     <fragment
         android:id="@+id/low_Balance_Fragment"
-        android:name="com.example.spidpay.ui.lowbalance.Low_Balance_Fragment"
         android:label="Low_Balance_Fragment" />
     <fragment
         android:id="@+id/transfer_Money_Fragment"
-        android:name="com.example.spidpay.ui.transferwallet.Transfer_Money_Fragment"
         android:label="Transfer_Money_Fragment" />
     <fragment
         android:id="@+id/bankGSTFragment"
@@ -41,7 +38,6 @@
         android:label="BankGSTFragment" />
     <fragment
         android:id="@+id/transferToBanKFragment"
-        android:name="com.example.spidpay.ui.banktransfer.TransferToBanKFragment"
         android:label="TransferToBanKFragment" />
     <fragment
         android:id="@+id/notificationFragment"
@@ -63,9 +59,6 @@
         android:name="com.example.spidpay.ui.aeps.AEPS_Custom_Deatil_Fragment"
         android:label="fragment_a_e_p_s__custom__deatil_"
         tools:layout="@layout/fragment_a_e_p_s__custom__deatil_" />
-    <activity
-        android:id="@+id/logout"
-        android:name="com.example.spidpay.ui.login.LoginActivity"
-        android:label="LoginActivity" />
+
 
 </navigation>

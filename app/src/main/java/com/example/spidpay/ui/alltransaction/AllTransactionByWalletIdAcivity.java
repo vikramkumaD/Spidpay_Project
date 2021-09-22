@@ -26,7 +26,7 @@ public class AllTransactionByWalletIdAcivity extends AppCompatActivity implement
     AllTransactionRepositroy allTransactionRepositroy;
     ActivityGetAllTransactionByWalletIdBinding activityGetAllTransactionByWalletIdBinding;
     AllTransactionViewModel allTransactionViewModel;
-
+    private String CurrentWalletId="";
     boolean flag = false;
     String total_balance = "";
 
@@ -47,14 +47,16 @@ public class AllTransactionByWalletIdAcivity extends AppCompatActivity implement
         if (flag) {
             activityGetAllTransactionByWalletIdBinding.tvWalletAddmoney.setText("Transfer Money");
         }
-        allTransactionViewModel.getAllTransactionList(getIntent().getStringExtra("walletId"), "1", "10");
         total_balance = getIntent().getStringExtra("balance");
         activityGetAllTransactionByWalletIdBinding.tvWalletBalanceAmount.setText(getResources().getString(R.string.rupess) + total_balance);
+        CurrentWalletId=getIntent().getStringExtra("walletId");
     }
 
     @Override
     protected void onResume() {
         super.onResume();
+
+        allTransactionViewModel.getAllTransactionList(CurrentWalletId, "1", "10");
 
         activityGetAllTransactionByWalletIdBinding.imgBackpress.setOnClickListener(v -> finish());
         activityGetAllTransactionByWalletIdBinding.linearAddmoney.setOnClickListener(v -> {

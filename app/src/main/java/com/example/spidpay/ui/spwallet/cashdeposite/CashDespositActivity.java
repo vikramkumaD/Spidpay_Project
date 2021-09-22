@@ -26,7 +26,6 @@ import com.example.spidpay.interfaces.AddMoneyInterface;
 import com.example.spidpay.interfaces.OnStaticClickIterface;
 import com.example.spidpay.interfaces.StaticInterface;
 import com.example.spidpay.ui.HostActivity;
-import com.example.spidpay.ui.spwallet.AddMoneyActivity;
 import com.example.spidpay.ui.spwallet.AddMoneyViewModel;
 import com.example.spidpay.ui.signup.InterrestedforAdapter;
 import com.example.spidpay.ui.spwallet.PaymentSuccessfulActivity;
@@ -191,7 +190,7 @@ public class CashDespositActivity extends AppCompatActivity implements OnStaticC
     public void onServiceStart() {
         Constant.STOP_TOUCH(CashDespositActivity.this);
         cashDepositeActivityBinding.pbCashdeposit.setVisibility(View.VISIBLE);
-        addMoneyViewModel.getAddMoneyLiveDataofCashDeposite(new PrefManager(CashDespositActivity.this).getUserID());
+        addMoneyViewModel.getAddMoneyofCashDeposite(new PrefManager(CashDespositActivity.this).getUserID());
 
     }
 

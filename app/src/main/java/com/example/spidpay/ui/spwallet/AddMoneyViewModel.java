@@ -96,7 +96,7 @@ public class AddMoneyViewModel extends ViewModel {
         addMoneyInterface.onServiceStart();
     }
 
-    public void getAddMoneyLiveDataofCashDeposite(String userid) {
+    public void getAddMoneyofCashDeposite(String userid) {
         AddMoneyRequest addMoneyRequest = new AddMoneyRequest();
         addMoneyRequest.amount = online_money.getValue();
         addMoneyRequest.domain = Constant.DOMAIN_NAME;
@@ -107,7 +107,7 @@ public class AddMoneyViewModel extends ViewModel {
         CashTransactionRequest cashTransactionRequest = new CashTransactionRequest();
         cashTransactionRequest.bankName = bankname;
         cashTransactionRequest.bankReferenceId = bankrefid.getValue();
-        cashTransactionRequest.dateTime = Constant.getCurrentDateTime();
+        cashTransactionRequest.dateTime =Constant.getCurrentDateTime();
         cashTransactionRequest.imageRef = "/abc";
         cashTransactionRequest.transferMode = transactiontype;
         addMoneyRequest.cashTransactionRequest = cashTransactionRequest;

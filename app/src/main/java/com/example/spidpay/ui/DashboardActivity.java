@@ -25,8 +25,6 @@ public class DashboardActivity extends AppCompatActivity {
         this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_dashboard);
 
-
-
         findViewById(R.id.btn_dashboardlogin).setOnClickListener(v -> startActivity(new Intent(DashboardActivity.this, LoginActivity.class)));
         tv_signup = findViewById(R.id.tv_signup);
         SpannableString spannableString = new SpannableString(getResources().getString(R.string.signup_txt));
