@@ -11,6 +11,8 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 
@@ -66,6 +68,7 @@ public class TransferMoneyActivity extends AppCompatActivity implements TradeWal
         tradeTransferMoneyViewModel.totalbalance = Double.parseDouble(getIntent().getStringExtra("balance"));
 
         activityTranferMoneyBinding.btnSelectbank.setOnClickListener(v -> getBank());
+
     }
 
     @Override

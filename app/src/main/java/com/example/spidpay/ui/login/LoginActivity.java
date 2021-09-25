@@ -130,7 +130,10 @@ public class LoginActivity extends AppCompatActivity implements LoginInterface, 
                 loginViewModel.check_mobile_number(s.toString());
             }
         });
+
+
         loginViewModel.mstring_mobile_number.observe(this, s -> activityLoginBinding.edtLoginMobileNumber.setText(s));
+
         activityLoginBinding.tvSignup.setOnClickListener(v -> startActivity(new Intent(LoginActivity.this, RegisterActivity.class)));
         activityLoginBinding.tvLoginforgotpass.setOnClickListener(v -> verifyUserNameDialog());
         fusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(this);

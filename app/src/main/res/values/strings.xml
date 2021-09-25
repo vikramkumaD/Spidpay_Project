@@ -239,7 +239,7 @@
     <string name="otheramount">Other Amount</string>
     <string name="transfer_amount">Transfer Amout</string>
     <string name="servicecharge">Service Charge</string>
-    <string name="enteramountcannot">Entered amount cannot be greater than total balance!</string>
+    <string name="enteramountcannot">Entered amount cannot be 0 or greater than total balance!</string>
     <string name="transferrequestsuccessful">TRANSFER SUCCESSFUL</string>
     <string name="transfermoney1">Your request for transferring money </string>
     <string name="transfermoney2">to your Spid wallet has been complete successfully</string>
@@ -270,5 +270,8 @@
     <string name="domaincode">Domain Code:</string>
     <string name="addressline">Address Line:</string>
     <string name="landmardk">Landmark:</string>
+    <string name="spidwallet">Spid Wallet</string>
+    <string name="paytmwallet">Paytm Wallet</string>
+    <string name="banktransfer">Bank Transfer</string>
 
 </resources>

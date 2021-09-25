@@ -1,7 +1,9 @@
 package com.example.spidpay.ui.tradewallet;
 
 import android.view.View;
+import android.widget.EditText;
 
+import androidx.databinding.BindingAdapter;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
@@ -13,6 +15,8 @@ import com.example.spidpay.data.request.TransferMoneyRequest;
 import com.example.spidpay.data.response.TransferMoenyResponse;
 import com.example.spidpay.interfaces.TradeWalletInterface;
 import com.example.spidpay.util.Constant;
+
+import java.util.Objects;
 
 public class TradeTransferMoneyViewModel extends ViewModel {
 
@@ -97,16 +101,17 @@ public class TradeTransferMoneyViewModel extends ViewModel {
     }
 
     public void onSubmitClick(View view) {
-        if (enteramount == null && enteramount.equals("")) {
+        if (enteramount == null || enteramount.equals("")) {
             tradeWalletInterface.onFailed(view.getResources().getString(R.string.filedcannotbeblank));
             return;
         }
 
-        if (Integer.parseInt(enteramount.getValue()) == 0 || Integer.parseInt(enteramount.getValue()) > totalbalance) {
+        double amt=Double.parseDouble(enteramount.getValue());
+
+        if (amt == 0 || amt > totalbalance) {
             tradeWalletInterface.onFailed(view.getResources().getString(R.string.enteramountcannot));
             return;
         }
-
 
         tradeWalletInterface.onServiceStart();
     }
@@ -162,4 +167,6 @@ public class TradeTransferMoneyViewModel extends ViewModel {
         }
 
     }
+
+
 }

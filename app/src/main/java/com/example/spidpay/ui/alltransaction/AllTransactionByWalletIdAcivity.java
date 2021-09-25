@@ -45,6 +45,7 @@ public class AllTransactionByWalletIdAcivity extends AppCompatActivity implement
         activityGetAllTransactionByWalletIdBinding.rvAllTransaction.addItemDecoration(itemOffsetDecoration);
         flag = getIntent().getBooleanExtra("flag", false);
         if (flag) {
+            activityGetAllTransactionByWalletIdBinding.tvPageTitle.setText(getResources().getString(R.string.tradewallet));
             activityGetAllTransactionByWalletIdBinding.tvWalletAddmoney.setText("Transfer Money");
         }
         total_balance = getIntent().getStringExtra("balance");
@@ -64,7 +65,6 @@ public class AllTransactionByWalletIdAcivity extends AppCompatActivity implement
                 Intent intent = new Intent(AllTransactionByWalletIdAcivity.this, TransferMoneyActivity.class);
                 intent.putExtra("balance",total_balance);
                 startActivity(intent);
-
             } else {
                 startActivity(new Intent(AllTransactionByWalletIdAcivity.this, AddMoneyActivity.class));
             }

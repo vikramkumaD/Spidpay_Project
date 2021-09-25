@@ -7,7 +7,7 @@
         />
     <stroke
         android:width="2dp"
-        android:color="#ECF1FA" />
+        android:color="@color/tradewallet_grey" />
 
 
 </shape>
