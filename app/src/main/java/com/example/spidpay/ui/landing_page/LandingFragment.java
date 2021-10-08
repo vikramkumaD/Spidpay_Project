@@ -68,7 +68,6 @@ public class LandingFragment extends Fragment implements LandingInterface {
         landingfragmentBinding.setLandingviewmodel(landingViewModel);
         landingViewModel.getWalletResponse(new PrefManager(requireActivity()).getUserID());
 
-
     }
 
     @Override

@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:android="http://schemas.android.com/apk/res/android">
+<layout xmlns:tools="http://schemas.android.com/tools"
+    xmlns:android="http://schemas.android.com/apk/res/android">
 
     <data>
 
@@ -12,7 +13,7 @@
             type="java.util.List&lt;com.example.spidpay.data.response.WalletResponse>" />
     </data>
 
-    <ScrollView xmlns:tools="http://schemas.android.com/tools"
+    <ScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="@dimen/marign100dp"
@@ -189,10 +190,12 @@
                         android:layout_weight="1">
 
                         <RelativeLayout
+                            android:id="@+id/relative_dmt"
                             android:layout_width="@dimen/marign100dp"
                             android:layout_height="@dimen/marign100dp"
                             android:layout_centerInParent="true"
                             android:background="@drawable/landing_page_bg"
+                            android:onClick="@{(v)->landingviewmodel.openDMTScreen(v)}"
                             android:orientation="vertical">
 
                             <RelativeLayout

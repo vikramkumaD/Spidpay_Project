@@ -10,6 +10,8 @@ import com.example.spidpay.data.repository.LandingRepository;
 import com.example.spidpay.data.response.WalletResponse;
 import com.example.spidpay.interfaces.LandingInterface;
 import com.example.spidpay.ui.alltransaction.AllTransactionByWalletIdAcivity;
+import com.example.spidpay.ui.dmt.DMT_TrasferMoneyActivity;
+import com.example.spidpay.ui.tradewallet.TransferMoneyActivity;
 
 import java.util.List;
 
@@ -30,6 +32,13 @@ public class LandingViewModel extends ViewModel {
         intent.putExtra("balance", balance);
         intent.putExtra("flag", flag);
         view.getContext().startActivity(intent);
+    }
+
+    public void openDMTScreen(View view)
+    {
+            Intent intent=new Intent(view.getContext(), DMT_TrasferMoneyActivity    .class);
+            intent.putExtra("balance","100");
+            view.getContext().startActivity(intent);
     }
 
 
