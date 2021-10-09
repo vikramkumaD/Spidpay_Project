@@ -60,6 +60,7 @@ public class WebviewActivity extends AppCompatActivity {
 
                     if (url.contains(Constant.ONLINE_SUCCESS)) {
                         Intent intent = new Intent(WebviewActivity.this, PaymentSuccessfulActivity.class);
+                        intent.putExtra("datetime","");
                         startActivity(intent);
                     } else {
                         Intent intent = new Intent(WebviewActivity.this, PaymentFailedActivity.class);

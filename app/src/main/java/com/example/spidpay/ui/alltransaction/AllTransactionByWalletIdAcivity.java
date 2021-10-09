@@ -26,9 +26,9 @@ public class AllTransactionByWalletIdAcivity extends AppCompatActivity implement
     AllTransactionRepositroy allTransactionRepositroy;
     ActivityGetAllTransactionByWalletIdBinding activityGetAllTransactionByWalletIdBinding;
     AllTransactionViewModel allTransactionViewModel;
-    private String CurrentWalletId="";
+    private String currentWalletId ="",total_balance = "";
     boolean flag = false;
-    String total_balance = "";
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,24 +49,28 @@ public class AllTransactionByWalletIdAcivity extends AppCompatActivity implement
             activityGetAllTransactionByWalletIdBinding.tvWalletAddmoney.setText("Transfer Money");
         }
         total_balance = getIntent().getStringExtra("balance");
-        activityGetAllTransactionByWalletIdBinding.tvWalletBalanceAmount.setText(getResources().getString(R.string.rupess) + total_balance);
-        CurrentWalletId=getIntent().getStringExtra("walletId");
+        activityGetAllTransactionByWalletIdBinding.tvWalletBalanceAmount.setText(getResources().getString(R.string.rupees) + total_balance);
+        currentWalletId =getIntent().getStringExtra("walletId");
     }
 
     @Override
     protected void onResume() {
         super.onResume();
 
-        allTransactionViewModel.getAllTransactionList(CurrentWalletId, "1", "10");
+        allTransactionViewModel.getAllTransactionList(currentWalletId, "1", "10");
 
         activityGetAllTransactionByWalletIdBinding.imgBackpress.setOnClickListener(v -> finish());
         activityGetAllTransactionByWalletIdBinding.linearAddmoney.setOnClickListener(v -> {
             if (flag) {
                 Intent intent = new Intent(AllTransactionByWalletIdAcivity.this, TransferMoneyActivity.class);
                 intent.putExtra("balance",total_balance);
+                intent.putExtra("walletId", currentWalletId);
                 startActivity(intent);
             } else {
-                startActivity(new Intent(AllTransactionByWalletIdAcivity.this, AddMoneyActivity.class));
+                Intent intent = new Intent(AllTransactionByWalletIdAcivity.this, AddMoneyActivity.class);
+                intent.putExtra("balance",total_balance);
+                intent.putExtra("walletId",currentWalletId);
+                startActivity(intent);
             }
         });
 

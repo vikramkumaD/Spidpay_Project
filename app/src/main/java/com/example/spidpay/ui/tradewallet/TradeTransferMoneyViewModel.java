@@ -71,6 +71,8 @@ public class TradeTransferMoneyViewModel extends ViewModel {
         spidpaywallet.setValue(true);
         paytmwallet.setValue(false);
         bank.setValue(false);
+        enteramount.setValue("");
+        notes.setValue("");
     }
 
 
@@ -78,13 +80,18 @@ public class TradeTransferMoneyViewModel extends ViewModel {
         spidpaywallet.setValue(false);
         paytmwallet.setValue(true);
         bank.setValue(false);
+        enteramount.setValue("");
+        notes.setValue("");
     }
 
     public void onBankClick() {
         spidpaywallet.setValue(false);
         paytmwallet.setValue(false);
         bank.setValue(true);
+        enteramount.setValue("");
+        notes.setValue("");
     }
+
 
 
     public void onTotalAmountClick() {

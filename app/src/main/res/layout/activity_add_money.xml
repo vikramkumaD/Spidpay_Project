@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:card_view="http://schemas.android.com/apk/res-auto"
-    >
+    xmlns:card_view="http://schemas.android.com/apk/res-auto">
 
     <data>
 
@@ -212,26 +211,47 @@
             app:layout_constraintTop_toBottomOf="@+id/tv_request_parent" />
 
 
-        <EditText
-            android:id="@+id/edt_request_parent"
+        <LinearLayout
+            android:id="@+id/linear_request_parent"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/marign20dp"
-            android:layout_marginTop="@dimen/marign25dp"
+            android:layout_marginTop="@dimen/marign40dp"
             android:layout_marginEnd="@dimen/marign20dp"
-            android:layout_weight="1"
             android:background="@drawable/edittext_shadow"
-            android:hint="@string/enteramount"
-            android:importantForAutofill="no"
-            android:inputType="number"
-            android:paddingLeft="@dimen/marign10dp"
-            android:paddingTop="@dimen/marign15dp"
-            android:paddingRight="@dimen/marign10dp"
-            android:paddingBottom="@dimen/marign15dp"
-            android:text="@={addmoneyviewmodel.online_money}"
-            android:textColorHint="@color/lightgrey"
+            android:orientation="horizontal"
             android:visibility="@{addmoneyviewmodel.requestparent ? View.VISIBLE : View.GONE,default=gone}"
-            app:layout_constraintTop_toBottomOf="@+id/tv_addmoney_requestparent" />
+            app:layout_constraintTop_toBottomOf="@+id/tv_addmoney_requestparent">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginStart="@dimen/marign10dp"
+                android:fontFamily="@font/lato_bold"
+                android:text="@string/rupees"
+                android:textSize="@dimen/marign16sp" />
+
+            <EditText
+                android:id="@+id/edt_request_parent"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@android:color/transparent"
+                android:hint="@string/enteramount"
+                android:importantForAutofill="no"
+                android:inputType="number"
+                android:paddingLeft="@dimen/marign10dp"
+                android:paddingTop="@dimen/marign15dp"
+                android:paddingRight="@dimen/marign10dp"
+                android:paddingBottom="@dimen/marign15dp"
+                android:text="@={addmoneyviewmodel.online_money}"
+                android:textColorHint="@color/lightgrey"
+
+
+                />
+
+        </LinearLayout>
 
 
         <EditText
@@ -253,10 +273,11 @@
             android:text="@={addmoneyviewmodel.online_notes}"
             android:textColorHint="@color/lightgrey"
             android:visibility="@{addmoneyviewmodel.requestparent ? View.VISIBLE : View.GONE,default=gone}"
-            app:layout_constraintTop_toBottomOf="@+id/edt_request_parent" />
+            app:layout_constraintTop_toBottomOf="@+id/linear_request_parent" />
 
 
         <Button
+            android:textSize="@dimen/marign16sp"
             android:id="@+id/btn_chooseoptionformoney"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

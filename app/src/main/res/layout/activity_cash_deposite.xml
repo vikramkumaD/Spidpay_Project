@@ -111,6 +111,15 @@
                 android:orientation="horizontal"
                 app:layout_constraintTop_toBottomOf="@+id/tv_add_money_to_wallet">
 
+                <TextView
+                    android:fontFamily="@font/lato_bold"
+                    android:textSize="@dimen/marign16sp"
+                    android:layout_marginStart="@dimen/marign10dp"
+                    android:layout_centerVertical="true"
+                    android:text="@string/rupees"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+
                 <EditText
                     android:id="@+id/edt_cash_deposit_amount"
                     android:layout_width="0dp"

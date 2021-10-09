@@ -363,15 +363,15 @@
                             android:textSize="@dimen/marign16sp"
                             android:layout_marginStart="@dimen/marign10dp"
                             android:layout_centerVertical="true"
-                            android:text="@string/rupess"
+                            android:text="@string/rupees"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"/>
 
                         <EditText
-                            android:background="@null"
                             android:id="@+id/edt_tranfer_amount"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
+                            android:background="@null"
                             android:enabled="@{transfermoney.total_amount ? false : true}"
                             android:importantForAutofill="no"
                             android:inputType="number"

@@ -71,7 +71,7 @@ public class CashDespositActivity extends AppCompatActivity implements OnStaticC
         addMoneyViewModel.staticRepository = staticRepository;
         addMoneyViewModel.addMoneyInterface = addMoneyInterface;
         cashDepositeActivityBinding.setAddmoneyviewmodel(addMoneyViewModel);
-        cashDepositeActivityBinding.tvCashdepositeBalance.setText(balance);
+        cashDepositeActivityBinding.tvCashdepositeBalance.setText(getResources().getString(R.string.rupees).concat(balance));
 
         new Thread(() -> cashDepositeActivityBinding.setUser(userDao.getUser())).start();
 

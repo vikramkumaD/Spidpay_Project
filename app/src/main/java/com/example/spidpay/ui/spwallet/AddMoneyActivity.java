@@ -51,6 +51,8 @@ public class AddMoneyActivity extends AppCompatActivity implements CommonInterfa
         addMoneyViewModel.addMoneyInterface = addMoneyInterface;
         addmoneylayoutBinding.setAddmoneyviewmodel(addMoneyViewModel);
         addmoneylayoutBinding.executePendingBindings();
+        addmoneylayoutBinding.setWalletid(getIntent().getStringExtra("walletId"));
+        addmoneylayoutBinding.setBalance(getIntent().getStringExtra("balance"));
         AppDatabase db = Room.databaseBuilder(getApplicationContext(), AppDatabase.class, "database-name").build();
         userDao = db.getUserDao();
         new Thread(() -> {

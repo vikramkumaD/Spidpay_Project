@@ -195,7 +195,7 @@
     <string name="balance">Balance</string>
     <string name="requestparent">Request Parent</string>
     <string name="selectoneoptin">Select one option!</string>
-    <string name="notes">Note</string>
+    <string name="notes">Notes</string>
     <string name="tenth">10,000</string>
     <string name="twenth">20,000</string>
     <string name="thirty">30,000</string>
@@ -216,7 +216,7 @@
     <string name="chooseoption">Choose your preferred option</string>
     <string name="spidpaywallet">Spid Wallet</string>
     <string name="tradewallet">Trade Wallet</string>
-    <string name="rupess">"₹ "</string>
+    <string name="rupees">₹ </string>
     <string name="cashdepositsuccesmsg1">Your request for adding money</string>
     <string name="cashdepositsuccesmsg2">to your wallet has been sent successfully</string>
     <string name="cashdepositsuccesmsg3">The amount will be credited to your wallet after it is approved.</string>
@@ -260,7 +260,7 @@
     <string name="moneytransferedamount">Money transferred amount</string>
 
     <string name="sendername">Sender Name</string>
-    <string name="transfermode">TransferMode(Service Charge)</string>
+    <string name="transfermode">Transfer Mode(Service Charge)</string>
     <string name="district">District*</string>
     <string name="district1">District:</string>
     <string name="branchname">Branch Name:</string>

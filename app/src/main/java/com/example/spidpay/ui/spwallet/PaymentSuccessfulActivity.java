@@ -27,19 +27,23 @@ public class PaymentSuccessfulActivity extends AppCompatActivity {
             activityPaymentSuccessfulBinding.constraintLayoutSuccess1.setVisibility(View.VISIBLE);
             activityPaymentSuccessfulBinding.constraintLayoutTransferMoney.setVisibility(View.GONE);
             activityPaymentSuccessfulBinding.tvRequestSuccessful.setText(getResources().getString(R.string.walletrequestsuccessful));
-            activityPaymentSuccessfulBinding.tvReqestmoney2.setText(getResources().getString(R.string.rupess) + getIntent().getStringExtra("amount"));
+            activityPaymentSuccessfulBinding.tvReqestmoney2.setText(getResources().getString(R.string.rupees) + getIntent().getStringExtra("amount"));
         } else {
             activityPaymentSuccessfulBinding.constraintLayoutSuccess1.setVisibility(View.GONE);
             activityPaymentSuccessfulBinding.constraintLayoutTransferMoney.setVisibility(View.VISIBLE);
-            activityPaymentSuccessfulBinding.tvReqesttransfermoney2.setText(getResources().getString(R.string.rupess) + getIntent().getStringExtra("amount"));
+            activityPaymentSuccessfulBinding.tvReqesttransfermoney2.setText(getResources().getString(R.string.rupees) + getIntent().getStringExtra("amount"));
             activityPaymentSuccessfulBinding.tvRequestSuccessful.setText(getResources().getString(R.string.transferrequestsuccessful));
         }
 
-        try {
-            activityPaymentSuccessfulBinding.tvDate.setText(Constant.convertDate2(getIntent().getStringExtra("datetime")));
-        } catch (ParseException e) {
-            e.printStackTrace();
+        if(getIntent().getStringExtra("datetime")!=null && !getIntent().getStringExtra("datetime").equals(""))
+        {
+            try {
+                activityPaymentSuccessfulBinding.tvDate.setText(Constant.convertDate2(getIntent().getStringExtra("datetime")));
+            } catch (ParseException e) {
+                e.printStackTrace();
+            }
         }
+
 
         activityPaymentSuccessfulBinding.btnBacktohome.setOnClickListener(v -> {
             Intent intent = new Intent(PaymentSuccessfulActivity.this, HostActivity.class);
