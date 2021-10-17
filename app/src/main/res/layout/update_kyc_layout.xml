@@ -47,7 +47,7 @@
             android:layout_marginTop="@dimen/marign20dp"
             android:layout_weight="1"
             android:background="@drawable/edittext_shadow"
-            android:hint="@string/pannumber"
+            android:hint="@string/pannumber_1"
             android:inputType="text"
             android:paddingLeft="@dimen/marign10dp"
             android:paddingTop="@dimen/marign10dp"
@@ -69,7 +69,7 @@
             android:layout_marginTop="@dimen/marign10dp"
             android:layout_weight="1"
             android:background="@drawable/edittext_shadow"
-            android:hint="@string/aadharnumber"
+            android:hint="@string/aadharnumber_1"
             android:inputType="text"
             android:paddingLeft="@dimen/marign10dp"
             android:paddingTop="@dimen/marign10dp"
@@ -83,15 +83,16 @@
             android:importantForAutofill="no" />
 
         <EditText
-            android:visibility="gone"
-            android:id="@+id/edt_edit_voter_id"
+            android:id="@+id/edt_additional_id"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/marign10dp"
             android:layout_weight="1"
             android:background="@drawable/edittext_shadow"
-            android:hint="@string/voterid"
-            android:inputType="text"
+            android:hint="@string/voterid_1"
+            android:clickable="false"
+            android:cursorVisible="false"
+            android:focusable="false"
             android:paddingLeft="@dimen/marign10dp"
             android:paddingTop="@dimen/marign10dp"
             android:paddingRight="@dimen/marign10dp"
@@ -118,7 +119,7 @@
             android:text="@string/update"
             android:textColor="@color/white"
             android:textSize="@dimen/marign18sp"
-            app:layout_constraintTop_toBottomOf="@+id/edt_edit_voter_id" />
+            app:layout_constraintTop_toBottomOf="@+id/edt_additional_id" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

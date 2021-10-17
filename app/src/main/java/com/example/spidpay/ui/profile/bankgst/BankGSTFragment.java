@@ -17,6 +17,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ProgressBar;
 
 import com.example.spidpay.R;
 import com.example.spidpay.data.repository.MyProfileRepository;
@@ -38,7 +39,6 @@ import com.google.android.material.bottomsheet.BottomSheetDialog;
 import org.jetbrains.annotations.NotNull;
 
 public class BankGSTFragment extends Fragment implements BankInteface, StaticInterface, OnStaticClickIterface {
-
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
     FragmentBankGSTBinding fragmentBankGSTBinding;
@@ -51,7 +51,8 @@ public class BankGSTFragment extends Fragment implements BankInteface, StaticInt
     OnStaticClickIterface onStaticClickIterface;
     StaticInterface staticInterface;
     StaticRepository staticRepository;
-
+    ProgressBar progressBar_for_bottom_sheet;
+    private boolean is_pb_for_bottom_sheet = false;
 
     public BankGSTFragment() {
     }
@@ -88,7 +89,7 @@ public class BankGSTFragment extends Fragment implements BankInteface, StaticInt
         myProfileViewModel.bankInteface = bankInteface;
         myProfileViewModel.myProfileRepository = myProfileRepository;
         myProfileViewModel.staticRepository = staticRepository;
-        myProfileViewModel.staticInterface=staticInterface;
+        myProfileViewModel.staticInterface = staticInterface;
         myProfileViewModel.getBankInfo(new PrefManager(getContext()).getUserID());
         getViewLifecycleOwner();
     }
@@ -107,7 +108,7 @@ public class BankGSTFragment extends Fragment implements BankInteface, StaticInt
                 fragmentBankGSTBinding.pbBankinfo.setVisibility(View.GONE);
                 fragmentBankGSTBinding.setBankinfo(bankDetailsResponse);
                 this.bankDetailsResponse = bankDetailsResponse;
-                myProfileViewModel.code=bankDetailsResponse.companyType.code;
+                myProfileViewModel.code = bankDetailsResponse.companyType.code;
             } else {
                 Constant.START_TOUCH(requireActivity());
                 fragmentBankGSTBinding.pbBankinfo.setVisibility(View.GONE);
@@ -132,6 +133,7 @@ public class BankGSTFragment extends Fragment implements BankInteface, StaticInt
     public void onServiceStart() {
         Constant.STOP_TOUCH(requireActivity());
         fragmentBankGSTBinding.pbBankinfo.setVisibility(View.VISIBLE);
+        is_pb_for_bottom_sheet = false;
     }
 
     @Override
@@ -151,29 +153,35 @@ public class BankGSTFragment extends Fragment implements BankInteface, StaticInt
         updateBankDetailBinding.setLifecycleOwner(this);
         bottomSheetDialog_bankinfo.show();
         updateBankDetailBinding.imgDismissDialog.setOnClickListener(v -> bottomSheetDialog_bankinfo.dismiss());
-        updateBankDetailBinding.edtUserBankName.setOnClickListener(v -> getCompayType());
+        updateBankDetailBinding.edtUserBankName.setOnClickListener(v -> {
+            is_pb_for_bottom_sheet = true;
+            getBankList();
+        });
 
     }
 
-    public void getCompayType() {
+    public void getBankList() {
         myProfileViewModel.static_value = Constant.BANK;
         View view = LayoutInflater.from(requireActivity()).inflate(R.layout.interrestedfor_bottomsheet, null);
         interrestedfor_bottomsheet = new BottomSheetDialog(requireActivity());
         interrestedfor_bottomsheet.setContentView(view);
         interrestedfor_bottomsheet.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+        progressBar_for_bottom_sheet = view.findViewById(R.id.pb_for_bottomsheet);
+        progressBar_for_bottom_sheet.setVisibility(View.VISIBLE);
         RecyclerView rv_interreseted_for = view.findViewById(R.id.rv_interreseted_for);
         rv_interreseted_for.setLayoutManager(new LinearLayoutManager(requireActivity()));
         ItemOffsetDecoration itemOffsetDecoration = new ItemOffsetDecoration(requireActivity(), R.dimen.marign10dp);
         rv_interreseted_for.addItemDecoration(itemOffsetDecoration);
 
         myProfileViewModel.getStaticData().observe(this, interrestedforResponses -> {
-            fragmentBankGSTBinding.pbBankinfo.setVisibility(View.GONE);
-            Constant.START_TOUCH(requireActivity());
-            InterrestedforAdapter interrestedforAdapter = new InterrestedforAdapter(interrestedforResponses, onStaticClickIterface);
-            rv_interreseted_for.setAdapter(interrestedforAdapter);
-            interrestedfor_bottomsheet.show();
+            if (!interrestedforResponses.isEmpty()) {
+                progressBar_for_bottom_sheet.setVisibility(View.GONE);
+                Constant.START_TOUCH(requireActivity());
+                InterrestedforAdapter interrestedforAdapter = new InterrestedforAdapter(interrestedforResponses, onStaticClickIterface);
+                rv_interreseted_for.setAdapter(interrestedforAdapter);
+                interrestedfor_bottomsheet.show();
+            }
         });
-
     }
 
     @Override
@@ -186,13 +194,21 @@ public class BankGSTFragment extends Fragment implements BankInteface, StaticInt
     @Override
     public void onStaticStart() {
         Constant.STOP_TOUCH(requireActivity());
-        fragmentBankGSTBinding.pbBankinfo.setVisibility(View.VISIBLE);
+        if (is_pb_for_bottom_sheet) {
+            progressBar_for_bottom_sheet.setVisibility(View.VISIBLE);
+        } else {
+            fragmentBankGSTBinding.pbBankinfo.setVisibility(View.VISIBLE);
+        }
     }
 
     @Override
     public void onStaticFailed(String msg) {
         Constant.START_TOUCH(requireActivity());
         Constant.showToast(requireActivity(), msg);
-        fragmentBankGSTBinding.pbBankinfo.setVisibility(View.GONE);
+        if (is_pb_for_bottom_sheet) {
+            progressBar_for_bottom_sheet.setVisibility(View.GONE);
+        } else {
+            fragmentBankGSTBinding.pbBankinfo.setVisibility(View.GONE);
+        }
     }
 }

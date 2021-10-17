@@ -145,6 +145,7 @@
     <string name="custphonenumber">Customer Phone Number</string>
     <string name="custphonename">Customer Name</string>
     <string name="aadharnumber">Aadhar Number:</string>
+    <string name="aadharnumber_1">Aadhar Number *</string>
     <string name="aepstxt">Before pressing Next button, please read Terms and Condition</string>
     <string name="cashwithdrwal">Cash Withdrwal</string>
     <string name="balanceenquiry">Balance Enquiry</string>
@@ -173,7 +174,9 @@
     <string name="update">Update</string>
     <string name="updateaddress">Update Address</string>
     <string name="pannumber">Pan Number:</string>
+    <string name="pannumber_1">Pan Number *</string>
     <string name="voterid">Voter ID:</string>
+    <string name="voterid_1">Voter ID</string>
     <string name="updatekyc">Update KYC</string>
     <string name="accnumber">A/C Number:</string>
     <string name="storename">Store Name:</string>
@@ -273,5 +276,9 @@
     <string name="spidwallet">Spid Wallet</string>
     <string name="paytmwallet">Paytm Wallet</string>
     <string name="banktransfer">Bank Transfer</string>
+    <string name="additionalId">Additional ID</string>
+    <string name="select">Select</string>
+    <string name="drivinglicense">Driving License</string>
+    <string name="rationcard">Ration Card</string>
 
 </resources>
