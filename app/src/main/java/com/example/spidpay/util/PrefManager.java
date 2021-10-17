@@ -9,6 +9,7 @@ public class PrefManager {
     SharedPreferences.Editor editor;
     Context _context;
     private static final String PREF_NAME = "spidpay";
+    private static final String IS_KYC_PENDING = "kyc_pending";
 
     public PrefManager(Context context) {
         this._context = context;
@@ -26,8 +27,20 @@ public class PrefManager {
         return pref.getString("userid", "");
     }
 
-    public void setIsFirstTime(boolean isFirstTime) {
-        editor.putBoolean("IsFirstTime", isFirstTime);
+
+    public void setKYCPending(Boolean isFirstTime) {
+        editor.putBoolean(IS_KYC_PENDING, isFirstTime);
+        editor.commit();
+    }
+
+    public Boolean getKYCPending() {
+        return pref.getBoolean(IS_KYC_PENDING, false);
+    }
+
+
+
+    public void setIsFirstTime(boolean kyc) {
+        editor.putBoolean("IsFirstTime", kyc);
         editor.commit();
     }
 

@@ -237,11 +237,12 @@ public class LoginActivity extends AppCompatActivity implements LoginInterface, 
         responseLiveData.observe(this, loginResponse -> {
             if (loginResponse.status.equals(Constant.Success)) {
 
-
                 new Thread(() -> {
                     userDao.insertUser(loginResponse.loginUserInfo);
                     userDao.insertParent(loginResponse.loginUserInfo.parentUser);
                 }).start();
+
+                new PrefManager(LoginActivity.this).setKYCPending(!loginResponse.loginUserInfo.accountStatus.equals(Constant.ACCOUNT_STATUS));
 
 
                 Constant.START_TOUCH(LoginActivity.this);

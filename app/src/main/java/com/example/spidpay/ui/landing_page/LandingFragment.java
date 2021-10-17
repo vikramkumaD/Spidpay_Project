@@ -35,7 +35,6 @@ public class LandingFragment extends Fragment implements LandingInterface {
     public LandingfragmentBinding landingfragmentBinding;
     ChangeTitlenandIconInterface changeTitlenandIconInterface;
     UpdateBottomView updateBottomView;
-
     LandingViewModel landingViewModel;
     LandingRepository landingRepository;
     LandingInterface landingInterface;
