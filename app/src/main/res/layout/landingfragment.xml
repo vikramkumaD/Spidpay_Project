@@ -9,7 +9,8 @@
 
         <variable
             name="pref"
-            type="com.example.spidpay.util.PrefManager" />
+            type="java.lang.Boolean"
+            />
 
         <variable
             name="landingviewmodel"
@@ -95,7 +96,6 @@
 
                     <ImageView
                         android:id="@+id/img_mainwallet_popoup"
-
                         android:layout_width="@dimen/marign20dp"
                         android:layout_height="@dimen/marign20dp"
                         android:layout_alignParentEnd="true"
@@ -103,7 +103,7 @@
                         android:contentDescription="TODO"
                         android:onClick="@{(v)->landingviewmodel.openAllTransactionAcivity(v,wallet.get(1).walletId,wallet.get(1).walletBalance,`SP`,false)}"
                         android:src="@drawable/ic_baseline_arrow_forward_24"
-                        android:visibility="@{pref.getKYCPending() ? View.VISIBLE : View.GONE,default=gone}" />
+                        android:visibility="@{pref ? View.VISIBLE : View.GONE,default=gone}" />
 
 
                 </RelativeLayout>
@@ -159,7 +159,7 @@
                         android:contentDescription="TODO"
                         android:onClick="@{(v)->landingviewmodel.openAllTransactionAcivity(v,wallet.get(0).walletId,wallet.get(0).walletBalance,`Trade`,true)}"
                         android:src="@drawable/ic_baseline_arrow_forward_24"
-                        android:visibility="@{pref.getKYCPending() ? View.VISIBLE : View.GONE,default=gone}" />
+                        android:visibility="@{pref ? View.VISIBLE : View.GONE,default=gone}" />
 
                 </RelativeLayout>
 

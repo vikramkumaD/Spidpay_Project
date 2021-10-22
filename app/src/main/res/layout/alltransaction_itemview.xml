@@ -51,6 +51,7 @@
 
 
             <ImageView
+                android:src="@{alltransaction.transactionType.equals(`CREDIT`) ? @drawable/ic_baseline_add_24 : @drawable/ic_baseline_subtracat}"
                 android:id="@+id/img_transactiontype"
                 android:layout_width="24dp"
                 android:layout_height="24dp"
@@ -65,9 +66,10 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/marign3dp"
                 android:layout_marginEnd="@dimen/marign20dp"
+                android:textSize="@dimen/marign16sp"
                 android:fontFamily="@font/lato_bold"
-                android:text="@{alltransaction.amount}"
-                android:textColor="@color/light_green"
+                android:text="@{`₹ ` + alltransaction.amount}"
+                android:textColor="@{alltransaction.transactionType.equals(`CREDIT`) ? @color/credit_transaction_color : @color/debit_transaction_color}"
                 app:layout_constraintLeft_toRightOf="@+id/img_transactiontype"
                 app:layout_constraintTop_toTopOf="parent" />
 

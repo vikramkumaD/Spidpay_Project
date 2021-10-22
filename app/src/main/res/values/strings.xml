@@ -121,7 +121,7 @@
     <string name="mobilenoerror1">Enter mobile number!</string>
     <string name="mobilenoerror2">Mobile number must be 10 digit!</string>
     <string name="passworderror1">Enter password!</string>
-    <string name="passworderror2">Password min length is 9!</string>
+    <string name="passworderror2">Password min length is 8!</string>
     <string name="filedcannotbeblank">Field cannot be blank!</string>
     <string name="notification">Notification</string>
     <string name="requestedmt">Requested Amount:</string>

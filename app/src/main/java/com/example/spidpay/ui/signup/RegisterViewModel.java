@@ -102,7 +102,7 @@ public class RegisterViewModel extends ViewModel {
             return;
         }
 
-        if (!Constant.validate(string_register_email_Address.getValue())) {
+        if (string_register_email_Address.getValue()!=null && !string_register_email_Address.getValue().equals("") && !Constant.validate(string_register_email_Address.getValue())) {
             registerInterface.onFailed(view.getResources().getString(R.string.entervalidemail));
             return;
         }
@@ -120,9 +120,7 @@ public class RegisterViewModel extends ViewModel {
             registerInterface.onFailed(view.getResources().getString(R.string.passwordnotmatch));
             return;
         }
-
         registerInterface.onServiceStart();
-
     }
 
 

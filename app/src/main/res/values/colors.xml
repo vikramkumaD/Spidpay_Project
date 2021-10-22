@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <color name="credit_transaction_color">#9CBE5E</color>
+    <color name="debit_transaction_color">#FF3B55</color>
     <color name="purple_200">#271A61</color>
     <color name="welcome_txt_color">#586F8F</color>
     <color name="black">#FF000000</color>

@@ -242,7 +242,10 @@ public class LoginActivity extends AppCompatActivity implements LoginInterface, 
                     userDao.insertParent(loginResponse.loginUserInfo.parentUser);
                 }).start();
 
-                new PrefManager(LoginActivity.this).setKYCPending(!loginResponse.loginUserInfo.accountStatus.equals(Constant.ACCOUNT_STATUS));
+                if (loginResponse.loginUserInfo.accountStatus.equals(Constant.ACCOUNT_STATUS))
+                    new PrefManager(LoginActivity.this).setKYCPending(false);
+                else
+                    new PrefManager(LoginActivity.this).setKYCPending(true);
 
 
                 Constant.START_TOUCH(LoginActivity.this);
