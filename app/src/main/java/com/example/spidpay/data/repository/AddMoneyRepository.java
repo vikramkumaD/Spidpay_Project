@@ -42,7 +42,7 @@ public class AddMoneyRepository {
 
     public MutableLiveData<AddMoneyResponse> getAddModenyResponse(AddMoneyRequest addMoneyRequest) {
         MutableLiveData<AddMoneyResponse> addMoneyResponseMutableLiveData = new MutableLiveData<>();
-        RetrofitInterface retrofitInterface = RetrofitClient.GetRetrofitClient(context, Constant.USER_URL).create(RetrofitInterface.class);
+        RetrofitInterface retrofitInterface = RetrofitClient.GetRetrofitClient(context, Constant.WALLET_URL).create(RetrofitInterface.class);
         Call<AddMoneyResponse> call = retrofitInterface.addMoney(addMoneyRequest);
         call.enqueue(new Callback<AddMoneyResponse>() {
             @Override
@@ -80,7 +80,7 @@ public class AddMoneyRepository {
 
     public MutableLiveData<TransferMoenyResponse> getTradeToSpidWalletTransfer(TransferMoneyRequest transferMoneyRequest) {
         MutableLiveData<TransferMoenyResponse> moenyResponseMutableLiveData = new MutableLiveData<>();
-        RetrofitInterface retrofitInterface = RetrofitClient.GetRetrofitClient(context, Constant.USER_URL).create(RetrofitInterface.class);
+        RetrofitInterface retrofitInterface = RetrofitClient.GetRetrofitClient(context, Constant.WALLET_URL).create(RetrofitInterface.class);
         Call<TransferMoenyResponse> call = retrofitInterface.getTransferResponse(transferMoneyRequest);
         call.enqueue(new Callback<TransferMoenyResponse>() {
             @Override

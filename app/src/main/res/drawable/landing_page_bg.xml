@@ -3,7 +3,7 @@
     <solid android:color="@color/green" />
     <corners android:radius="10dp" />
     <size
-        android:height="@dimen/marign15dp"
-        android:width="@dimen/marign15dp" />
+        android:height="@dimen/margin15dp"
+        android:width="@dimen/margin15dp" />
 
 </shape>

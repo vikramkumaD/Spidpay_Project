@@ -35,7 +35,6 @@ public class LandingFragment extends Fragment implements LandingInterface {
     public LandingfragmentBinding landingfragmentBinding;
     ChangeTitlenandIconInterface changeTitlenandIconInterface;
     UpdateBottomView updateBottomView;
-
     LandingViewModel landingViewModel;
     LandingRepository landingRepository;
     LandingInterface landingInterface;
@@ -67,8 +66,7 @@ public class LandingFragment extends Fragment implements LandingInterface {
         landingViewModel.landingRepository = landingRepository;
         landingfragmentBinding.setLandingviewmodel(landingViewModel);
         landingViewModel.getWalletResponse(new PrefManager(requireActivity()).getUserID());
-
-
+        landingfragmentBinding.setPref(new PrefManager(getContext()).getKYCPending());
     }
 
     @Override

@@ -7,12 +7,12 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/approval_bg"
-        app:cardCornerRadius="@dimen/marign10dp">
+        app:cardCornerRadius="@dimen/margin10dp">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:padding="@dimen/marign15dp">
+            android:padding="@dimen/margin15dp">
 
             <TextView
                 android:id="@+id/tv_request_name"
@@ -28,7 +28,7 @@
                 android:id="@+id/tv_request_amont_label"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/marign5dp"
+                android:layout_marginTop="@dimen/margin5dp"
                 android:fontFamily="@font/lato"
                 android:text="@string/requestedmt"
                 android:textColor="@color/approval_text_color"
@@ -39,7 +39,7 @@
                 android:id="@+id/tv_request_amont_value"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/marign5dp"
+                android:layout_marginTop="@dimen/margin5dp"
                 android:fontFamily="@font/lato"
                 android:text="Rs 130000"
                 android:textColor="@color/light_green"
@@ -50,7 +50,7 @@
                 android:id="@+id/tv_request_description"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/marign5dp"
+                android:layout_marginTop="@dimen/margin5dp"
                 android:fontFamily="@font/lato"
                 android:text="Desc."
                 android:textColor="@color/approval_text_color"
@@ -59,11 +59,11 @@
 
 
             <Button
-                android:layout_marginTop="@dimen/marign20dp"
-                android:paddingStart="@dimen/marign20dp"
-                android:paddingEnd="@dimen/marign20dp"
-                android:paddingTop="@dimen/marign10dp"
-                android:paddingBottom="@dimen/marign10dp"
+                android:layout_marginTop="@dimen/margin20dp"
+                android:paddingStart="@dimen/margin20dp"
+                android:paddingEnd="@dimen/margin20dp"
+                android:paddingTop="@dimen/margin10dp"
+                android:paddingBottom="@dimen/margin10dp"
                 android:background="@drawable/button_bg_green"
                 android:minHeight="0dp"
                 android:minWidth="0dp"
@@ -82,16 +82,16 @@
                 android:gravity="center"
                 android:textAllCaps="false"
                 android:textColor="@color/white"
-                android:layout_marginTop="@dimen/marign20dp"
-                android:paddingStart="@dimen/marign30dp"
-                android:paddingEnd="@dimen/marign30dp"
+                android:layout_marginTop="@dimen/margin20dp"
+                android:paddingStart="@dimen/margin30dp"
+                android:paddingEnd="@dimen/margin30dp"
                 android:paddingTop="8dp"
                 android:paddingBottom="8dp"
                 android:background="@drawable/reject_btn_bg"
 
                 android:minHeight="0dp"
                 android:minWidth="0dp"
-                android:layout_marginStart="@dimen/marign10dp"
+                android:layout_marginStart="@dimen/margin10dp"
                 android:id="@+id/btn_reject"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"

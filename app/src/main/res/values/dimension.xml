@@ -1,33 +1,33 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <dimen name="marign60dp">60dp</dimen>
-    <dimen name="marign30dp">30dp</dimen>
-    <dimen name="marign10dp">10dp</dimen>
-    <dimen name="marign20dp">20dp</dimen>
-    <dimen name="marign40dp">40dp</dimen>
-    <dimen name="marign16sp">16sp</dimen>
-    <dimen name="marign18sp">18sp</dimen>
-    <dimen name="marign20sp">20sp</dimen>
-    <dimen name="marign5dp">5dp</dimen>
-    <dimen name="marign25sp">25sp</dimen>
-    <dimen name="marign35sp">35sp</dimen>
-    <dimen name="marign25dp">25dp</dimen>
-    <dimen name="marign50dp">50dp</dimen>
-    <dimen name="marign45dp">45dp</dimen>
-    <dimen name="marign70dp">70dp</dimen>
-    <dimen name="marign100dp">100dp</dimen>
-    <dimen name="marign120dp">120dp</dimen>
-    <dimen name="marign15dp">15dp</dimen>
-    <dimen name="marign130dp">130dp</dimen>
+    <dimen name="margin60dp">60dp</dimen>
+    <dimen name="margin30dp">30dp</dimen>
+    <dimen name="margin10dp">10dp</dimen>
+    <dimen name="margin20dp">20dp</dimen>
+    <dimen name="margin40dp">40dp</dimen>
+    <dimen name="margin16sp">16sp</dimen>
+    <dimen name="margin18sp">18sp</dimen>
+    <dimen name="margin20sp">20sp</dimen>
+    <dimen name="margin5dp">5dp</dimen>
+    <dimen name="margin25sp">25sp</dimen>
+    <dimen name="margin35sp">35sp</dimen>
+    <dimen name="margin25dp">25dp</dimen>
+    <dimen name="margin50dp">50dp</dimen>
+    <dimen name="margin45dp">45dp</dimen>
+    <dimen name="margin70dp">70dp</dimen>
+    <dimen name="margin100dp">100dp</dimen>
+    <dimen name="margin120dp">120dp</dimen>
+    <dimen name="margin15dp">15dp</dimen>
+    <dimen name="margin130dp">130dp</dimen>
 
     <dimen name="landing_page_bg_width">125dp</dimen>
     <dimen name="landing_page_bg_height">121dp</dimen>
-    <dimen name="marign7dp">7dp</dimen>
+    <dimen name="margin7dp">7dp</dimen>
     <dimen name="grey_circle_height_width">70dp</dimen>
 
     <!-- Default screen margins, per the Android Design guidelines. -->
     <dimen name="activity_horizontal_margin">16dp</dimen>
     <dimen name="activity_vertical_margin">16dp</dimen>
-    <dimen name="marign3dp">3dp</dimen>
+    <dimen name="margin3dp">3dp</dimen>
 
 </resources>

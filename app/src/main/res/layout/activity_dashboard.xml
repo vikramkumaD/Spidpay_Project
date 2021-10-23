@@ -10,7 +10,7 @@
         android:layout_width="130dp"
         android:layout_height="130dp"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="@dimen/marign30dp"
+        android:layout_marginTop="@dimen/margin30dp"
         android:contentDescription="@string/image"
         android:src="@drawable/spidpay_logo" />
 
@@ -28,46 +28,46 @@
             android:gravity="center"
             android:text="@string/dashboard_welcome"
             android:textColor="@color/dark_blue"
-            android:textSize="@dimen/marign25sp" />
+            android:textSize="@dimen/margin25sp" />
 
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:layout_marginTop="@dimen/marign15dp"
+            android:layout_marginTop="@dimen/margin15dp"
             android:fontFamily="@font/lato"
             android:gravity="center"
             android:text="@string/dashboard_txt1"
             android:textColor="@color/black"
-            android:textSize="@dimen/marign20sp" />
+            android:textSize="@dimen/margin20sp" />
 
         <Button
             android:id="@+id/btn_dashboardlogin"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="@dimen/marign20dp"
-            android:layout_marginTop="@dimen/marign30dp"
-            android:layout_marginRight="@dimen/marign20dp"
+            android:layout_marginLeft="@dimen/margin20dp"
+            android:layout_marginTop="@dimen/margin30dp"
+            android:layout_marginRight="@dimen/margin20dp"
             android:background="@drawable/button_bg_blue"
             android:fontFamily="@font/lato"
             android:text="@string/dashboard_txt2"
             android:textAllCaps="false"
             android:textColor="@color/white"
-            android:textSize="@dimen/marign18sp" />
+            android:textSize="@dimen/margin18sp" />
 
         <Button
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="@dimen/marign20dp"
-            android:layout_marginTop="@dimen/marign20dp"
-            android:layout_marginRight="@dimen/marign20dp"
+            android:layout_marginLeft="@dimen/margin20dp"
+            android:layout_marginTop="@dimen/margin20dp"
+            android:layout_marginRight="@dimen/margin20dp"
             android:background="@drawable/button_bg_green"
             android:fontFamily="@font/lato"
             android:text="@string/dashboard_txt5"
             android:textAllCaps="false"
             android:textColor="@color/white"
-            android:textSize="@dimen/marign20sp"
+            android:textSize="@dimen/margin20sp"
             android:visibility="gone" />
 
         <TextView
@@ -75,11 +75,11 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:layout_marginTop="@dimen/marign30dp"
+            android:layout_marginTop="@dimen/margin30dp"
             android:fontFamily="@font/lato_bold"
             android:gravity="center"
-            android:paddingLeft="@dimen/marign15dp"
-            android:paddingRight="@dimen/marign15dp"
+            android:paddingLeft="@dimen/margin15dp"
+            android:paddingRight="@dimen/margin15dp"
             android:text="@string/signup_txt"
             android:textColor="@color/dark_blue"
             android:textSize="22sp" />
@@ -91,12 +91,12 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android:layout_marginBottom="@dimen/marign15dp">
+        android:layout_marginBottom="@dimen/margin15dp">
 
 
         <TextView
-            android:paddingStart="@dimen/marign10dp"
-            android:paddingEnd="@dimen/marign10dp"
+            android:paddingStart="@dimen/margin10dp"
+            android:paddingEnd="@dimen/margin10dp"
             android:id="@+id/tv_termsncondtion"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -105,7 +105,7 @@
             android:gravity="center"
             android:text="@string/dashboard_txt3"
             android:textColor="@color/black"
-            android:textSize="@dimen/marign18sp" />
+            android:textSize="@dimen/margin18sp" />
 
 
     </RelativeLayout>

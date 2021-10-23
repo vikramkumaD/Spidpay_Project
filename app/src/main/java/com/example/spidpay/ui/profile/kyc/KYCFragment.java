@@ -18,6 +18,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ProgressBar;
 
 import com.example.spidpay.R;
 import com.example.spidpay.data.repository.MyProfileRepository;
@@ -57,6 +58,9 @@ public class KYCFragment extends Fragment implements KYCInterface, OnStaticClick
     OnStaticClickIterface onStaticClickIterface;
     StaticInterface staticInterface;
     StaticRepository staticRepository;
+    ProgressBar progressBar_for_bottom_sheet;
+    private boolean is_pb_for_bottom_sheet = false;
+    private boolean is_kyc_data_selection=true;
 
     public KYCFragment() {
 
@@ -94,7 +98,6 @@ public class KYCFragment extends Fragment implements KYCInterface, OnStaticClick
         myProfileViewModel.myProfileRepository = myProfileRepository;
         myProfileViewModel.kycInterface = kycInterface;
         myProfileViewModel.staticInterface = staticInterface;
-
         myProfileViewModel.staticRepository = staticRepository;
         myProfileViewModel.getKYCInfo(new PrefManager(requireContext()).getUserID());
         getViewLifecycleOwner();
@@ -110,7 +113,7 @@ public class KYCFragment extends Fragment implements KYCInterface, OnStaticClick
     @Override
     public void onKYCSuccess(LiveData<KYCResponse> kycResponseLiveData) {
         kycResponseLiveData.observe(this, kycResponse -> {
-            if (kycResponse.panNo != null && !kycResponse.panNo.equals("")) {
+            if(kycResponse.panNo != null && !kycResponse.panNo.equals("")) {
                 fragmentKYCBinding.pbKyc.setVisibility(View.GONE);
                 Constant.START_TOUCH(requireActivity());
                 fragmentKYCBinding.setKycinfo(kycResponse);
@@ -171,6 +174,7 @@ public class KYCFragment extends Fragment implements KYCInterface, OnStaticClick
     public void onServiceStart() {
         Constant.STOP_TOUCH(requireActivity());
         fragmentKYCBinding.pbKyc.setVisibility(View.VISIBLE);
+        is_pb_for_bottom_sheet=false;
     }
 
     @Override
@@ -190,6 +194,35 @@ public class KYCFragment extends Fragment implements KYCInterface, OnStaticClick
         updateKycLayoutBinding.setLifecycleOwner(this);
         bottomSheetDialog_kyc.show();
         updateKycLayoutBinding.imgDismissDialog.setOnClickListener(v -> bottomSheetDialog_kyc.dismiss());
+        updateKycLayoutBinding.edtAdditionalId.setOnClickListener(v -> {
+            is_pb_for_bottom_sheet=true;
+            getAdditionalIds();
+        });
+    }
+
+    private void getAdditionalIds() {
+        is_kyc_data_selection=true;
+        View view = LayoutInflater.from(requireActivity()).inflate(R.layout.interrestedfor_bottomsheet, null);
+        interrestedfor_bottomsheet = new BottomSheetDialog(requireActivity());
+        interrestedfor_bottomsheet.setContentView(view);
+        interrestedfor_bottomsheet.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+        progressBar_for_bottom_sheet = view.findViewById(R.id.pb_for_bottomsheet);
+        progressBar_for_bottom_sheet.setVisibility(View.VISIBLE);
+        RecyclerView rv_interreseted_for = view.findViewById(R.id.rv_interreseted_for);
+        rv_interreseted_for.setLayoutManager(new LinearLayoutManager(requireActivity()));
+        ItemOffsetDecoration itemOffsetDecoration = new ItemOffsetDecoration(requireActivity(), R.dimen.margin10dp);
+        rv_interreseted_for.addItemDecoration(itemOffsetDecoration);
+
+        myProfileViewModel.getStaticDataForAdditionalIds(requireContext()).observe(this, interrestedforResponses -> {
+            if (!interrestedforResponses.isEmpty()) {
+                Constant.START_TOUCH(requireActivity());
+                progressBar_for_bottom_sheet.setVisibility(View.GONE);
+                InterrestedforAdapter interrestedforAdapter = new InterrestedforAdapter(interrestedforResponses, onStaticClickIterface);
+                rv_interreseted_for.setAdapter(interrestedforAdapter);
+                interrestedfor_bottomsheet.show();
+            }
+        });
+
     }
 
     public void updateCompanyDetail() {
@@ -203,64 +236,84 @@ public class KYCFragment extends Fragment implements KYCInterface, OnStaticClick
         bottomSheetDialog_company.show();
         updateBankDetailBinding.imgDismissDialog.setOnClickListener(v -> bottomSheetDialog_company.dismiss());
         updateBankDetailBinding.edtEditComType.setOnClickListener(v -> {
+            is_pb_for_bottom_sheet=true;
             myProfileViewModel.static_value = Constant.COMPANY;
-            fragmentKYCBinding.pbKyc.setVisibility(View.VISIBLE);
             getCompayType();
         });
     }
 
     public void getCompayType() {
+        is_kyc_data_selection=false;
         View view = LayoutInflater.from(requireActivity()).inflate(R.layout.interrestedfor_bottomsheet, null);
         interrestedfor_bottomsheet = new BottomSheetDialog(requireActivity());
         interrestedfor_bottomsheet.setContentView(view);
         interrestedfor_bottomsheet.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+        progressBar_for_bottom_sheet = view.findViewById(R.id.pb_for_bottomsheet);
+        progressBar_for_bottom_sheet.setVisibility(View.VISIBLE);
         RecyclerView rv_interreseted_for = view.findViewById(R.id.rv_interreseted_for);
         rv_interreseted_for.setLayoutManager(new LinearLayoutManager(requireActivity()));
-        ItemOffsetDecoration itemOffsetDecoration = new ItemOffsetDecoration(requireActivity(), R.dimen.marign10dp);
+        ItemOffsetDecoration itemOffsetDecoration = new ItemOffsetDecoration(requireActivity(), R.dimen.margin10dp);
         rv_interreseted_for.addItemDecoration(itemOffsetDecoration);
 
         myProfileViewModel.getStaticData().observe(this, interrestedforResponses -> {
-            Constant.START_TOUCH(requireActivity());
-            fragmentKYCBinding.pbKyc.setVisibility(View.GONE);
-            InterrestedforAdapter interrestedforAdapter = new InterrestedforAdapter(interrestedforResponses, onStaticClickIterface);
-            rv_interreseted_for.setAdapter(interrestedforAdapter);
-            interrestedfor_bottomsheet.show();
+            if (!interrestedforResponses.isEmpty()) {
+                Constant.START_TOUCH(requireActivity());
+                progressBar_for_bottom_sheet.setVisibility(View.GONE);
+                InterrestedforAdapter interrestedforAdapter = new InterrestedforAdapter(interrestedforResponses, onStaticClickIterface);
+                rv_interreseted_for.setAdapter(interrestedforAdapter);
+                interrestedfor_bottomsheet.show();
+            }
         });
 
     }
 
     @Override
     public void onItemClick(String code, String description) {
-        myProfileViewModel.code = code;
-        myProfileViewModel.companytype_description=description;
-        updateBankDetailBinding.edtEditComType.setText(description);
-        interrestedfor_bottomsheet.dismiss();
-        if (Constant.PARTNERSHIP.equals(description)) {
-            updateBankDetailBinding.edtEditPartnership.setVisibility(View.VISIBLE);
+        if(!description.equals(getResources().getString(R.string.select)))
+        {
+            myProfileViewModel.code = code;
+            myProfileViewModel.companytype_description = description;
 
-            updateBankDetailBinding.edtEditCoi.setVisibility(View.GONE);
-            updateBankDetailBinding.edtEditMoa.setVisibility(View.GONE);
-            updateBankDetailBinding.edtEditDeclration.setVisibility(View.GONE);
+            if(!is_kyc_data_selection)
+            {
+                updateBankDetailBinding.edtEditComType.setText(description);
+                if (Constant.PARTNERSHIP.equals(description)) {
+                    updateBankDetailBinding.edtEditPartnership.setVisibility(View.VISIBLE);
 
-            updateBankDetailBinding.edtEditUdyog.setVisibility(View.GONE);
+                    updateBankDetailBinding.edtEditCoi.setVisibility(View.GONE);
+                    updateBankDetailBinding.edtEditMoa.setVisibility(View.GONE);
+                    updateBankDetailBinding.edtEditDeclration.setVisibility(View.GONE);
 
-        } else if (Constant.SOLE_OWNER.equals(description)) {
-            updateBankDetailBinding.edtEditUdyog.setVisibility(View.VISIBLE);
+                    updateBankDetailBinding.edtEditUdyog.setVisibility(View.GONE);
 
-            updateBankDetailBinding.edtEditPartnership.setVisibility(View.GONE);
+                } else if (Constant.SOLE_OWNER.equals(description)) {
+                    updateBankDetailBinding.edtEditUdyog.setVisibility(View.VISIBLE);
 
-            updateBankDetailBinding.edtEditCoi.setVisibility(View.GONE);
-            updateBankDetailBinding.edtEditMoa.setVisibility(View.GONE);
-            updateBankDetailBinding.edtEditDeclration.setVisibility(View.GONE);
+                    updateBankDetailBinding.edtEditPartnership.setVisibility(View.GONE);
 
-        } else if (Constant.PRIVATE_LIMITED.equals(description)) {
-            updateBankDetailBinding.edtEditCoi.setVisibility(View.VISIBLE);
-            updateBankDetailBinding.edtEditMoa.setVisibility(View.VISIBLE);
-            updateBankDetailBinding.edtEditDeclration.setVisibility(View.VISIBLE);
+                    updateBankDetailBinding.edtEditCoi.setVisibility(View.GONE);
+                    updateBankDetailBinding.edtEditMoa.setVisibility(View.GONE);
+                    updateBankDetailBinding.edtEditDeclration.setVisibility(View.GONE);
+
+                } else if (Constant.PRIVATE_LIMITED.equals(description)) {
+                    updateBankDetailBinding.edtEditCoi.setVisibility(View.VISIBLE);
+                    updateBankDetailBinding.edtEditMoa.setVisibility(View.VISIBLE);
+                    updateBankDetailBinding.edtEditDeclration.setVisibility(View.VISIBLE);
 
 
-            updateBankDetailBinding.edtEditPartnership.setVisibility(View.GONE);
-            updateBankDetailBinding.edtEditUdyog.setVisibility(View.GONE);
+                    updateBankDetailBinding.edtEditPartnership.setVisibility(View.GONE);
+                    updateBankDetailBinding.edtEditUdyog.setVisibility(View.GONE);
+                }
+            }
+            else {
+                updateKycLayoutBinding.edtAdditionalId.setText(description);
+            }
+
+            interrestedfor_bottomsheet.dismiss();
+        }
+        else
+        {
+            Constant.showToast(requireContext(),"Select one option");
         }
 
     }
@@ -268,13 +321,21 @@ public class KYCFragment extends Fragment implements KYCInterface, OnStaticClick
     @Override
     public void onStaticStart() {
         Constant.STOP_TOUCH(requireActivity());
-        fragmentKYCBinding.pbKyc.setVisibility(View.VISIBLE);
+        if (is_pb_for_bottom_sheet) {
+            progressBar_for_bottom_sheet.setVisibility(View.VISIBLE);
+        } else {
+            fragmentKYCBinding.pbKyc.setVisibility(View.VISIBLE);
+        }
     }
 
     @Override
     public void onStaticFailed(String msg) {
         Constant.START_TOUCH(requireActivity());
         Constant.showToast(requireActivity(), msg);
-        fragmentKYCBinding.pbKyc.setVisibility(View.GONE);
+        if (is_pb_for_bottom_sheet) {
+            progressBar_for_bottom_sheet.setVisibility(View.GONE);
+        } else {
+            fragmentKYCBinding.pbKyc.setVisibility(View.GONE);
+        }
     }
 }

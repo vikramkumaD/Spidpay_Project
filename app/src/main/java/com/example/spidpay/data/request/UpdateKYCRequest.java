@@ -12,6 +12,5 @@ public class UpdateKYCRequest {
 
     public static class KYCRequest {
         public String panNo, aadharNo, idNo, idType;
-
     }
 }

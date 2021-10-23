@@ -35,21 +35,21 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/img_spidpay"
                 android:layout_centerHorizontal="true"
-                android:layout_marginTop="@dimen/marign60dp"
+                android:layout_marginTop="@dimen/margin60dp"
                 android:fontFamily="@font/lato_bold"
                 android:gravity="center"
-                android:paddingLeft="@dimen/marign10dp"
-                android:paddingRight="@dimen/marign10dp"
+                android:paddingLeft="@dimen/margin10dp"
+                android:paddingRight="@dimen/margin10dp"
                 android:text="@string/spidpaybasetext"
                 android:textColor="@color/white"
-                android:textSize="@dimen/marign25sp" />
+                android:textSize="@dimen/margin25sp" />
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/tv_spidpaybasetext"
                 android:layout_centerHorizontal="true"
-                android:layout_marginTop="@dimen/marign25dp"
+                android:layout_marginTop="@dimen/margin25dp"
                 android:orientation="vertical">
 
 
@@ -61,11 +61,11 @@
                         android:layout_gravity="center"
                         android:fontFamily="@font/lato"
                         android:gravity="center"
-                        android:paddingLeft="@dimen/marign15dp"
-                        android:paddingRight="@dimen/marign15dp"
+                        android:paddingLeft="@dimen/margin15dp"
+                        android:paddingRight="@dimen/margin15dp"
                         android:text="@string/splashtxt"
                         android:textColor="@color/white"
-                        android:textSize="@dimen/marign18sp" />
+                        android:textSize="@dimen/margin18sp" />
 
 
 

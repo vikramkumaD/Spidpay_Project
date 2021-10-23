@@ -19,10 +19,10 @@
 
         <ImageView
             android:id="@+id/img_welcomebase"
-            android:layout_width="@dimen/marign100dp"
-            android:layout_height="@dimen/marign100dp"
+            android:layout_width="@dimen/margin100dp"
+            android:layout_height="@dimen/margin100dp"
             android:layout_centerHorizontal="true"
-            android:layout_marginTop="@dimen/marign30dp"
+            android:layout_marginTop="@dimen/margin30dp"
             android:contentDescription="@string/image"
             android:src="@drawable/spidpay_logo"
             app:layout_constraintLeft_toLeftOf="parent"
@@ -34,11 +34,11 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:layout_marginTop="@dimen/marign40dp"
+            android:layout_marginTop="@dimen/margin40dp"
             android:fontFamily="@font/lato_bold"
             android:text="@string/welcome"
             android:textColor="@color/purple_200"
-            android:textSize="@dimen/marign25sp"
+            android:textSize="@dimen/margin25sp"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/img_welcomebase" />
@@ -48,11 +48,11 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:layout_marginTop="@dimen/marign5dp"
+            android:layout_marginTop="@dimen/margin5dp"
             android:fontFamily="@font/lato"
             android:text="@string/otptxt"
             android:textColor="@color/black"
-            android:textSize="@dimen/marign18sp"
+            android:textSize="@dimen/margin18sp"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tv_loginemail" />
@@ -62,9 +62,9 @@
             android:id="@+id/linear_mobile_number"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/marign20dp"
-            android:layout_marginTop="@dimen/marign30dp"
-            android:layout_marginEnd="@dimen/marign20dp"
+            android:layout_marginStart="@dimen/margin20dp"
+            android:layout_marginTop="@dimen/margin30dp"
+            android:layout_marginEnd="@dimen/margin20dp"
             android:baselineAligned="false"
             android:orientation="horizontal"
             app:layout_constraintLeft_toLeftOf="parent"
@@ -75,7 +75,7 @@
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/marign15dp"
+                android:layout_marginTop="@dimen/margin15dp"
                 android:layout_weight="0"
                 android:background="@drawable/logincountrycode_bg">
 
@@ -90,16 +90,16 @@
                     android:drawableEnd="@drawable/country_code_arrow"
                     android:focusable="false"
                     android:gravity="center_vertical"
+                    android:importantForAutofill="no"
                     android:inputType="number"
                     android:maxLength="10"
-                    android:paddingLeft="@dimen/marign10dp"
-                    android:paddingTop="@dimen/marign10dp"
-                    android:paddingRight="@dimen/marign10dp"
-                    android:paddingBottom="@dimen/marign10dp"
+                    android:paddingLeft="@dimen/margin10dp"
+                    android:paddingTop="@dimen/margin10dp"
+                    android:paddingRight="@dimen/margin10dp"
+                    android:paddingBottom="@dimen/margin10dp"
                     android:text="@string/indiacountrycode"
                     android:textColor="@color/purple_200"
-                    android:textColorHint="@color/lightgrey"
-                    android:importantForAutofill="no" />
+                    android:textColorHint="@color/lightgrey" />
 
 
             </LinearLayout>
@@ -107,7 +107,7 @@
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/marign15dp"
+                android:layout_marginTop="@dimen/margin15dp"
                 android:background="@drawable/login_mobilenumber_bg"
                 android:orientation="horizontal">
 
@@ -117,34 +117,34 @@
                     android:layout_height="wrap_content"
                     android:background="@android:color/transparent"
                     android:hint="@string/mobileno"
+                    android:importantForAutofill="no"
                     android:inputType="number"
                     android:maxLength="10"
-                    android:paddingStart="@dimen/marign5dp"
-                    android:paddingTop="@dimen/marign10dp"
-                    android:paddingEnd="@dimen/marign10dp"
-                    android:paddingBottom="@dimen/marign10dp"
+                    android:paddingStart="@dimen/margin5dp"
+                    android:paddingTop="@dimen/margin10dp"
+                    android:paddingEnd="@dimen/margin10dp"
+                    android:paddingBottom="@dimen/margin10dp"
                     android:singleLine="true"
                     android:text="@={login_viewmodel.mobile_number}"
                     android:textColorHint="@color/lightgrey"
-                    app:layout_constraintTop_toTopOf="parent"
-                    android:importantForAutofill="no" />
+                    app:layout_constraintTop_toTopOf="parent" />
 
                 <ImageView
                     android:id="@+id/img_cleare_login_mobilenumber"
-                    android:layout_width="@dimen/marign20dp"
-                    android:layout_height="@dimen/marign20dp"
+                    android:layout_width="@dimen/margin20dp"
+                    android:layout_height="@dimen/margin20dp"
                     android:layout_alignParentEnd="true"
                     android:layout_centerVertical="true"
                     android:layout_gravity="center"
-                    android:layout_marginEnd="@dimen/marign10dp"
+                    android:layout_marginEnd="@dimen/margin10dp"
+                    android:contentDescription="TODO"
                     android:focusable="false"
                     android:onClick="@{()->login_viewmodel.update_mobile_number()}"
                     android:src="@drawable/clear_field"
                     android:visibility="@{login_viewmodel.mboolean_mobile_number ? View.VISIBLE : View.GONE}"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
-                    android:contentDescription="TODO" />
+                    app:layout_constraintTop_toTopOf="parent" />
             </androidx.constraintlayout.widget.ConstraintLayout>
 
 
@@ -154,15 +154,15 @@
             android:id="@+id/txtinput_login_password"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/marign20dp"
-            android:layout_marginTop="@dimen/marign15dp"
-            android:layout_marginEnd="@dimen/marign20dp"
+            android:layout_marginStart="@dimen/margin20dp"
+            android:layout_marginTop="@dimen/margin15dp"
+            android:layout_marginEnd="@dimen/margin20dp"
+            app:endIconMode="password_toggle"
             app:hintEnabled="false"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/linear_mobile_number"
-            app:passwordToggleDrawable="@drawable/ic_baseline_remove_red_eye_24"
-            app:endIconMode="password_toggle">
+            app:passwordToggleDrawable="@drawable/ic_baseline_remove_red_eye_24">
 
             <androidx.appcompat.widget.AppCompatEditText
                 android:id="@+id/edt_loginpassword"
@@ -171,10 +171,10 @@
                 android:background="@drawable/edittext_shadow"
                 android:gravity="center_vertical"
                 android:hint="@string/password"
-                android:maxLength="20"
                 android:inputType="textPassword"
-                android:paddingStart="@dimen/marign15dp"
-                android:paddingEnd="@dimen/marign10dp"
+                android:maxLength="20"
+                android:paddingStart="@dimen/margin15dp"
+                android:paddingEnd="@dimen/margin10dp"
                 android:text="@={login_viewmodel.password}"
                 app:hintEnabled="false" />
 
@@ -185,16 +185,16 @@
             android:id="@+id/btn_login"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/marign20dp"
-            android:layout_marginTop="@dimen/marign20dp"
-            android:layout_marginEnd="@dimen/marign20dp"
+            android:layout_marginStart="@dimen/margin20dp"
+            android:layout_marginTop="@dimen/margin20dp"
+            android:layout_marginEnd="@dimen/margin20dp"
             android:background="@drawable/button_bg_blue"
             android:fontFamily="@font/lato"
             android:onClick="@{(v)->login_viewmodel.validateLogin(v)}"
             android:text="@string/txtcontinue"
             android:textAllCaps="false"
             android:textColor="@color/white"
-            android:textSize="@dimen/marign18sp"
+            android:textSize="@dimen/margin18sp"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/txtinput_login_password" />
@@ -205,55 +205,68 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:layout_marginTop="@dimen/marign20dp"
+            android:layout_marginTop="@dimen/margin20dp"
             android:gravity="center"
-            android:paddingLeft="@dimen/marign15dp"
-            android:paddingRight="@dimen/marign15dp"
+            android:paddingLeft="@dimen/margin15dp"
+            android:paddingRight="@dimen/margin15dp"
             android:text="@string/forgotpassword_txt"
             android:textColor="@color/forgot_password_Txtcolor"
-            android:textSize="@dimen/marign18sp"
+            android:textSize="@dimen/margin18sp"
             android:textStyle="bold"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/btn_login" />
 
 
-        <TextView
-            android:id="@+id/tv_signup"
-            android:layout_width="wrap_content"
+        <RelativeLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginTop="@dimen/marign30dp"
-            android:fontFamily="@font/lato_bold"
-            android:gravity="center"
-            android:paddingStart="@dimen/marign40dp"
-            android:paddingEnd="@dimen/marign40dp"
-            android:text="@string/signup_txt"
-            android:textColor="@color/darkgrey2"
-            android:textSize="@dimen/marign18sp"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tv_loginforgotpass" />
+            app:layout_constraintTop_toBottomOf="@+id/tv_loginforgotpass">
 
-        <TextView
-            android:id="@+id/tv_termsncondtion"
-            android:layout_width="wrap_content"
+            <TextView
+                android:id="@+id/tv_signup"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginStart="@dimen/margin40dp"
+                android:layout_marginTop="@dimen/margin30dp"
+                android:layout_marginEnd="@dimen/margin40dp"
+                android:fontFamily="@font/lato_bold"
+                android:gravity="center"
+                android:text="@string/signup_txt"
+                android:textColor="@color/darkgrey2"
+                android:textSize="@dimen/margin18sp" />
+
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_marginTop="@dimen/margin20dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_centerHorizontal="true"
-            android:layout_gravity="center"
-            android:paddingBottom="@dimen/marign20dp"
-            android:layout_marginTop="@dimen/marign20dp"
-            android:layout_marginBottom="@dimen/marign15dp"
-            android:fontFamily="@font/lato_bold"
-            android:gravity="center"
-            android:paddingStart="@dimen/marign15dp"
-            android:paddingEnd="@dimen/marign15dp"
-            android:text="@string/dashboard_txt3"
-            android:textColor="@color/black"
-            android:textSize="@dimen/marign18sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent" />
+            app:layout_constraintRight_toRightOf="parent">
+
+            <TextView
+                android:id="@+id/tv_termsncondtion"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_marginBottom="@dimen/margin15dp"
+                android:fontFamily="@font/lato_bold"
+                android:gravity="center"
+                android:layout_marginStart="@dimen/margin30dp"
+                android:layout_marginEnd="@dimen/margin30dp"
+                android:paddingStart="@dimen/margin15dp"
+                android:paddingEnd="@dimen/margin15dp"
+                android:text="@string/dashboard_txt3"
+                android:textColor="@color/black"
+                android:textSize="@dimen/margin18sp" />
+
+        </RelativeLayout>
 
 
         <ProgressBar

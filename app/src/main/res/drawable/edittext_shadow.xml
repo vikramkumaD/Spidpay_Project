@@ -10,7 +10,7 @@
                 android:right="1dp"
                 android:top="1dp" />
 
-            <corners android:radius="@dimen/marign10dp" />
+            <corners android:radius="@dimen/margin10dp" />
 
             <solid android:color="#05DCDCDC" />
         </shape>
@@ -23,23 +23,7 @@
                 android:right="1dp"
                 android:top="1dp" />
 
-            <corners android:radius="@dimen/marign10dp" />
-
-            <solid android:color="#05DCDCDC" />
-
-
-        </shape>
-    </item>
-    <item>
-        <shape>
-            <padding
-                android:bottom="1dp"
-                android:left="1dp"
-                android:right="1dp"
-                android:top="1dp" />
-
-
-            <corners android:radius="@dimen/marign10dp" />
+            <corners android:radius="@dimen/margin10dp" />
 
             <solid android:color="#05DCDCDC" />
 
@@ -55,7 +39,7 @@
                 android:top="1dp" />
 
 
-            <corners android:radius="@dimen/marign10dp" />
+            <corners android:radius="@dimen/margin10dp" />
 
             <solid android:color="#05DCDCDC" />
 
@@ -70,7 +54,23 @@
                 android:right="1dp"
                 android:top="1dp" />
 
-            <corners android:radius="@dimen/marign10dp" />
+
+            <corners android:radius="@dimen/margin10dp" />
+
+            <solid android:color="#05DCDCDC" />
+
+
+        </shape>
+    </item>
+    <item>
+        <shape>
+            <padding
+                android:bottom="1dp"
+                android:left="1dp"
+                android:right="1dp"
+                android:top="1dp" />
+
+            <corners android:radius="@dimen/margin10dp" />
 
             <solid android:color="#05DCDCDC" />
 

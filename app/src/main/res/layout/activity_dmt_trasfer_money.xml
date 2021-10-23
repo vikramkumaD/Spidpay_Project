@@ -32,14 +32,14 @@
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:paddingTop="@dimen/marign10dp"
-                android:paddingBottom="@dimen/marign10dp">
+                android:paddingTop="@dimen/margin10dp"
+                android:paddingBottom="@dimen/margin10dp">
 
                 <ImageView
                     android:id="@+id/img_backpress"
                     android:layout_width="24dp"
                     android:layout_height="24dp"
-                    android:layout_marginStart="@dimen/marign10dp"
+                    android:layout_marginStart="@dimen/margin10dp"
                     android:contentDescription="TODO"
                     android:src="@drawable/ic_baseline_arrow_back_ios_24"
                     app:layout_constraintLeft_toLeftOf="parent"
@@ -54,7 +54,7 @@
                     android:fontFamily="@font/lato_bold"
                     android:text="@string/transfermoney"
                     android:textColor="@color/page_heading_color"
-                    android:textSize="@dimen/marign18sp"
+                    android:textSize="@dimen/margin18sp"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintLeft_toRightOf="@+id/img_backpress"
                     app:layout_constraintTop_toTopOf="parent" />
@@ -69,8 +69,8 @@
             android:id="@+id/tv_sendermobilenumber"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/marign20dp"
-            android:layout_marginTop="@dimen/marign20dp"
+            android:layout_marginStart="@dimen/margin20dp"
+            android:layout_marginTop="@dimen/margin20dp"
             android:fontFamily="@font/lato_bold"
             android:text="@string/sendermobilenumber"
             android:textColor="@color/black"
@@ -82,14 +82,15 @@
             android:id="@+id/linear_entermobilenumber"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/marign20dp"
-            android:layout_marginTop="@dimen/marign40dp"
-            android:layout_marginEnd="@dimen/marign20dp"
+            android:layout_marginStart="@dimen/margin20dp"
+            android:layout_marginTop="@dimen/margin40dp"
+            android:layout_marginEnd="@dimen/margin20dp"
             android:background="@drawable/edittext_shadow"
             android:orientation="horizontal"
             app:layout_constraintTop_toBottomOf="@+id/tv_sendermobilenumber">
 
             <EditText
+                android:maxLength="10"
                 android:id="@+id/edt_cash_deposit_amount"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
@@ -97,11 +98,10 @@
                 android:background="@android:color/transparent"
                 android:hint="@string/entermobilenumber"
                 android:inputType="number"
-                android:paddingLeft="@dimen/marign10dp"
-                android:paddingTop="@dimen/marign15dp"
-                android:paddingRight="@dimen/marign10dp"
-                android:paddingBottom="@dimen/marign15dp"
-
+                android:paddingLeft="@dimen/margin10dp"
+                android:paddingTop="@dimen/margin15dp"
+                android:paddingRight="@dimen/margin10dp"
+                android:paddingBottom="@dimen/margin15dp"
                 android:textColorHint="@color/lightgrey" />
 
         </LinearLayout>
@@ -110,16 +110,16 @@
             android:id="@+id/btn_register"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/marign20dp"
-            android:layout_marginTop="@dimen/marign20dp"
-            android:layout_marginEnd="@dimen/marign20dp"
-            android:layout_marginBottom="@dimen/marign20dp"
+            android:layout_marginStart="@dimen/margin20dp"
+            android:layout_marginTop="@dimen/margin20dp"
+            android:layout_marginEnd="@dimen/margin20dp"
+            android:layout_marginBottom="@dimen/margin20dp"
             android:background="@drawable/button_bg_green"
             android:fontFamily="@font/lato"
             android:text="@string/submit"
             android:textAllCaps="false"
             android:textColor="@color/white"
-            android:textSize="@dimen/marign18sp"
+            android:textSize="@dimen/margin18sp"
             app:layout_constraintTop_toBottomOf="@+id/linear_entermobilenumber" />
 
 

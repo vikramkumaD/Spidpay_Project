@@ -121,7 +121,7 @@
     <string name="mobilenoerror1">Enter mobile number!</string>
     <string name="mobilenoerror2">Mobile number must be 10 digit!</string>
     <string name="passworderror1">Enter password!</string>
-    <string name="passworderror2">Password min length is 9!</string>
+    <string name="passworderror2">Password min length is 8!</string>
     <string name="filedcannotbeblank">Field cannot be blank!</string>
     <string name="notification">Notification</string>
     <string name="requestedmt">Requested Amount:</string>
@@ -145,6 +145,7 @@
     <string name="custphonenumber">Customer Phone Number</string>
     <string name="custphonename">Customer Name</string>
     <string name="aadharnumber">Aadhar Number:</string>
+    <string name="aadharnumber_1">Aadhar Number *</string>
     <string name="aepstxt">Before pressing Next button, please read Terms and Condition</string>
     <string name="cashwithdrwal">Cash Withdrwal</string>
     <string name="balanceenquiry">Balance Enquiry</string>
@@ -173,7 +174,9 @@
     <string name="update">Update</string>
     <string name="updateaddress">Update Address</string>
     <string name="pannumber">Pan Number:</string>
+    <string name="pannumber_1">Pan Number *</string>
     <string name="voterid">Voter ID:</string>
+    <string name="voterid_1">Voter ID</string>
     <string name="updatekyc">Update KYC</string>
     <string name="accnumber">A/C Number:</string>
     <string name="storename">Store Name:</string>
@@ -195,7 +198,7 @@
     <string name="balance">Balance</string>
     <string name="requestparent">Request Parent</string>
     <string name="selectoneoptin">Select one option!</string>
-    <string name="notes">Note</string>
+    <string name="notes">Notes</string>
     <string name="tenth">10,000</string>
     <string name="twenth">20,000</string>
     <string name="thirty">30,000</string>
@@ -216,7 +219,7 @@
     <string name="chooseoption">Choose your preferred option</string>
     <string name="spidpaywallet">Spid Wallet</string>
     <string name="tradewallet">Trade Wallet</string>
-    <string name="rupess">"₹ "</string>
+    <string name="rupees">₹ </string>
     <string name="cashdepositsuccesmsg1">Your request for adding money</string>
     <string name="cashdepositsuccesmsg2">to your wallet has been sent successfully</string>
     <string name="cashdepositsuccesmsg3">The amount will be credited to your wallet after it is approved.</string>
@@ -260,7 +263,7 @@
     <string name="moneytransferedamount">Money transferred amount</string>
 
     <string name="sendername">Sender Name</string>
-    <string name="transfermode">TransferMode(Service Charge)</string>
+    <string name="transfermode">Transfer Mode(Service Charge)</string>
     <string name="district">District*</string>
     <string name="district1">District:</string>
     <string name="branchname">Branch Name:</string>
@@ -273,5 +276,9 @@
     <string name="spidwallet">Spid Wallet</string>
     <string name="paytmwallet">Paytm Wallet</string>
     <string name="banktransfer">Bank Transfer</string>
+    <string name="additionalId">Additional ID</string>
+    <string name="select">Select</string>
+    <string name="drivinglicense">Driving License</string>
+    <string name="rationcard">Ration Card</string>
 
 </resources>

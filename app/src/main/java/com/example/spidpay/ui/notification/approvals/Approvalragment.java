@@ -56,7 +56,7 @@ public class Approvalragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull @NotNull View view, @Nullable @org.jetbrains.annotations.Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        ItemOffsetDecoration itemOffsetDecoration=new ItemOffsetDecoration(getActivity(), R.dimen.marign10dp);
+        ItemOffsetDecoration itemOffsetDecoration=new ItemOffsetDecoration(getActivity(), R.dimen.margin10dp);
         fragmentApprovalragmentBinding.rvNotificationApprovals.addItemDecoration(itemOffsetDecoration);
         fragmentApprovalragmentBinding.rvNotificationApprovals.setLayoutManager(new LinearLayoutManager(getActivity()));
         Noti_Approval_Adapter noti_approval_adapter = new Noti_Approval_Adapter();

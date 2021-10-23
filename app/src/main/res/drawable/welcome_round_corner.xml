@@ -5,7 +5,7 @@
     <solid
         android:color="@color/welcome_green_1"/>
     <corners
-        android:radius="@dimen/marign25dp"
+        android:radius="@dimen/margin25dp"
         />
     <stroke
         android:width="2dp"

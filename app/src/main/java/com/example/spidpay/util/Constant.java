@@ -27,6 +27,7 @@ public class Constant {
     public static final String TXN_URL = "http://spidpay-api-565132133.ap-south-1.elb.amazonaws.com/spidpay-txnactivity/";
     public static final String WALLET_URL = "http://spidpay-api-565132133.ap-south-1.elb.amazonaws.com/spidpay-wallet/";
 
+    public static final String ACCOUNT_STATUS ="Pending KYC Verification";
 
     public static final String PARTNERSHIP = "Partnership";
     public static final String SOLE_OWNER = "Sole Owner";
@@ -48,8 +49,6 @@ public class Constant {
     public static final String TRANSACTION_CATEGORY_WALLETTRANSFER = "WALLET_TRANSFER";
     public static final String TRADE_TRANSFER = "WALLET_TRANSFER";
     public static final String BANK_TRANSFER = "BANK_TRANSFER";
-    //
-
     public static final int BOTTOM_HOME = 1;
     public static final int BOTTOM_COMMISION = 2;
     public static final int BOTTOM_NOTIFICATION = 3;

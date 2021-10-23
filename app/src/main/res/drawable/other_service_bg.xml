@@ -6,13 +6,13 @@
     <solid
         android:color="#6382C8"/>
     <corners
-        android:radius="@dimen/marign15dp"
+        android:radius="@dimen/margin15dp"
         />
     <stroke
         android:width="2dp"
         android:color="#7C96DC" />
 
     <size
-        android:height="@dimen/marign20dp"
-        android:width="@dimen/marign20dp" />
+        android:height="@dimen/margin20dp"
+        android:width="@dimen/margin20dp" />
 </shape>

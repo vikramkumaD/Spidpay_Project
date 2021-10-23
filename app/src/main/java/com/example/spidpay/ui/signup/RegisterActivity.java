@@ -12,7 +12,6 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
-import android.service.autofill.UserData;
 import android.text.Editable;
 import android.text.SpannableString;
 import android.text.Spanned;
@@ -21,7 +20,6 @@ import android.text.style.ForegroundColorSpan;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.WindowManager;
-import android.widget.Toast;
 
 import com.example.spidpay.R;
 import com.example.spidpay.data.repository.RegisterRepository;
@@ -143,6 +141,12 @@ public class RegisterActivity extends AppCompatActivity implements RegisterInter
             }
         });
 
+        activityRegisterBinding.tvLogin.setOnClickListener(v -> {
+            Intent intent = new Intent(RegisterActivity.this, LoginActivity.class);
+            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+            startActivity(intent);
+        });
+
     }
 
     @Override
@@ -182,7 +186,7 @@ public class RegisterActivity extends AppCompatActivity implements RegisterInter
                     userDao.insertParent(registerResponse.parentUser);
                 }).start();
 
-
+                new PrefManager(RegisterActivity.this).setKYCPending(false);
                 Constant.START_TOUCH(RegisterActivity.this);
                 activityRegisterBinding.pbLogin.setVisibility(View.GONE);
                 new PrefManager(RegisterActivity.this).setUserID(registerResponse.userId);
@@ -201,7 +205,7 @@ public class RegisterActivity extends AppCompatActivity implements RegisterInter
         interrestedfor_bottomsheet.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
         RecyclerView rv_interreseted_for = view.findViewById(R.id.rv_interreseted_for);
         rv_interreseted_for.setLayoutManager(new LinearLayoutManager(RegisterActivity.this));
-        ItemOffsetDecoration itemOffsetDecoration = new ItemOffsetDecoration(RegisterActivity.this, R.dimen.marign10dp);
+        ItemOffsetDecoration itemOffsetDecoration = new ItemOffsetDecoration(RegisterActivity.this, R.dimen.margin10dp);
         rv_interreseted_for.addItemDecoration(itemOffsetDecoration);
 
         registerViewModel.getInterrestedFor().observe(this, interrestedforResponses -> {

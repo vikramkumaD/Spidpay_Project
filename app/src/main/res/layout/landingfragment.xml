@@ -1,7 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:android="http://schemas.android.com/apk/res/android">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
 
     <data>
+
+
+        <import type="android.view.View" />
+
+        <variable
+            name="pref"
+            type="java.lang.Boolean"
+            />
 
         <variable
             name="landingviewmodel"
@@ -12,10 +21,10 @@
             type="java.util.List&lt;com.example.spidpay.data.response.WalletResponse>" />
     </data>
 
-    <ScrollView xmlns:tools="http://schemas.android.com/tools"
+    <ScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="@dimen/marign100dp"
+        android:layout_marginBottom="@dimen/margin100dp"
         android:background="@color/white"
         tools:context=".ui.landing_page.LandingFragment">
 
@@ -29,29 +38,29 @@
                 android:id="@+id/tv_landing_welcome"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/marign20dp"
-                android:layout_marginTop="@dimen/marign5dp"
+                android:layout_marginStart="@dimen/margin20dp"
+                android:layout_marginTop="@dimen/margin5dp"
                 android:fontFamily="@font/lato_bold"
                 android:text="@string/welcome"
                 android:textColor="@color/dark_blue"
-                android:textSize="@dimen/marign20sp" />
+                android:textSize="@dimen/margin20sp" />
 
             <LinearLayout
                 android:id="@+id/linear_wallet"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/tv_landing_welcome"
-                android:layout_marginTop="@dimen/marign20dp"
+                android:layout_marginTop="@dimen/margin20dp"
                 android:baselineAligned="false">
 
                 <RelativeLayout
                     android:layout_width="135dp"
                     android:layout_height="75dp"
-                    android:layout_marginStart="@dimen/marign20dp"
-                    android:layout_marginEnd="@dimen/marign10dp"
+                    android:layout_marginStart="@dimen/margin20dp"
+                    android:layout_marginEnd="@dimen/margin10dp"
                     android:layout_weight="1"
                     android:background="@drawable/wallet_bg"
-                    android:padding="@dimen/marign10dp">
+                    android:padding="@dimen/margin10dp">
 
                     <RelativeLayout
                         android:layout_width="wrap_content"
@@ -64,8 +73,8 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:fontFamily="@font/lato"
-                            android:paddingStart="@dimen/marign10dp"
-                            android:paddingEnd="@dimen/marign10dp"
+                            android:paddingStart="@dimen/margin10dp"
+                            android:paddingEnd="@dimen/margin10dp"
                             android:text="@string/spidpaywallet"
                             android:textColor="@color/white"
                             android:textStyle="bold" />
@@ -75,10 +84,10 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_below="@+id/tv_landing_mainwallet"
-                            android:layout_marginTop="@dimen/marign10dp"
+                            android:layout_marginTop="@dimen/margin10dp"
                             android:fontFamily="@font/lato"
-                            android:paddingStart="@dimen/marign10dp"
-                            android:paddingEnd="@dimen/marign10dp"
+                            android:paddingStart="@dimen/margin10dp"
+                            android:paddingEnd="@dimen/margin10dp"
                             android:text="@{`₹ `+wallet.get(1).walletBalance}"
                             android:textColor="@color/white" />
 
@@ -87,13 +96,14 @@
 
                     <ImageView
                         android:id="@+id/img_mainwallet_popoup"
-                        android:layout_width="@dimen/marign20dp"
-                        android:layout_height="@dimen/marign20dp"
+                        android:layout_width="@dimen/margin20dp"
+                        android:layout_height="@dimen/margin20dp"
                         android:layout_alignParentEnd="true"
                         android:layout_alignParentBottom="true"
                         android:contentDescription="TODO"
                         android:onClick="@{(v)->landingviewmodel.openAllTransactionAcivity(v,wallet.get(1).walletId,wallet.get(1).walletBalance,`SP`,false)}"
-                        android:src="@drawable/ic_baseline_arrow_forward_24" />
+                        android:src="@drawable/ic_baseline_arrow_forward_24"
+                        android:visibility="@{pref ? View.VISIBLE : View.GONE,default=gone}" />
 
 
                 </RelativeLayout>
@@ -102,11 +112,11 @@
                 <RelativeLayout
                     android:layout_width="135dp"
                     android:layout_height="75dp"
-                    android:layout_marginStart="@dimen/marign10dp"
-                    android:layout_marginEnd="@dimen/marign20dp"
+                    android:layout_marginStart="@dimen/margin10dp"
+                    android:layout_marginEnd="@dimen/margin20dp"
                     android:layout_weight="1"
                     android:background="@drawable/trade_bg"
-                    android:padding="@dimen/marign10dp">
+                    android:padding="@dimen/margin10dp">
 
                     <RelativeLayout
                         android:layout_width="wrap_content"
@@ -119,8 +129,8 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:fontFamily="@font/lato"
-                            android:paddingStart="@dimen/marign10dp"
-                            android:paddingEnd="@dimen/marign10dp"
+                            android:paddingStart="@dimen/margin10dp"
+                            android:paddingEnd="@dimen/margin10dp"
                             android:text="@string/tradewallet"
                             android:textColor="@color/white"
                             android:textStyle="bold" />
@@ -130,10 +140,10 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_below="@+id/tv_landing_tradewallet"
-                            android:layout_marginTop="@dimen/marign10dp"
+                            android:layout_marginTop="@dimen/margin10dp"
                             android:fontFamily="@font/lato"
-                            android:paddingLeft="@dimen/marign10dp"
-                            android:paddingEnd="@dimen/marign10dp"
+                            android:paddingLeft="@dimen/margin10dp"
+                            android:paddingEnd="@dimen/margin10dp"
                             android:text="@{`₹ `+wallet.get(0).walletBalance}"
                             android:textColor="@color/white" />
 
@@ -142,13 +152,14 @@
 
                     <ImageView
                         android:id="@+id/img_tradewallet_popoup"
-                        android:layout_width="@dimen/marign20dp"
-                        android:layout_height="@dimen/marign20dp"
+                        android:layout_width="@dimen/margin20dp"
+                        android:layout_height="@dimen/margin20dp"
                         android:layout_alignParentEnd="true"
                         android:layout_alignParentBottom="true"
                         android:contentDescription="TODO"
                         android:onClick="@{(v)->landingviewmodel.openAllTransactionAcivity(v,wallet.get(0).walletId,wallet.get(0).walletBalance,`Trade`,true)}"
-                        android:src="@drawable/ic_baseline_arrow_forward_24" />
+                        android:src="@drawable/ic_baseline_arrow_forward_24"
+                        android:visibility="@{pref ? View.VISIBLE : View.GONE,default=gone}" />
 
                 </RelativeLayout>
 
@@ -159,19 +170,19 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/linear_wallet"
-                android:layout_marginStart="@dimen/marign20dp"
-                android:layout_marginTop="@dimen/marign10dp"
+                android:layout_marginStart="@dimen/margin20dp"
+                android:layout_marginTop="@dimen/margin10dp"
                 android:fontFamily="@font/lato_bold"
                 android:text="@string/featured"
                 android:textColor="@color/dark_blue"
-                android:textSize="@dimen/marign20sp"
+                android:textSize="@dimen/margin20sp"
                 android:textStyle="bold" />
 
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/tv_featureservice"
-                android:layout_marginTop="@dimen/marign20dp"
+                android:layout_marginTop="@dimen/margin20dp"
                 android:background="@color/shadeslightgrey">
 
 
@@ -180,8 +191,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:baselineAligned="false"
-                    android:paddingStart="@dimen/marign10dp"
-                    android:paddingEnd="@dimen/marign10dp">
+                    android:paddingStart="@dimen/margin10dp"
+                    android:paddingEnd="@dimen/margin10dp">
 
                     <RelativeLayout
                         android:layout_width="wrap_content"
@@ -189,10 +200,12 @@
                         android:layout_weight="1">
 
                         <RelativeLayout
-                            android:layout_width="@dimen/marign100dp"
-                            android:layout_height="@dimen/marign100dp"
+                            android:id="@+id/relative_dmt"
+                            android:layout_width="@dimen/margin100dp"
+                            android:layout_height="@dimen/margin100dp"
                             android:layout_centerInParent="true"
                             android:background="@drawable/landing_page_bg"
+                            android:onClick="@{(v)->landingviewmodel.openDMTScreen(v)}"
                             android:orientation="vertical">
 
                             <RelativeLayout
@@ -203,7 +216,7 @@
 
                                 <ImageView
                                     android:id="@+id/img_dmt"
-                                    android:layout_width="@dimen/marign45dp"
+                                    android:layout_width="@dimen/margin45dp"
                                     android:layout_height="53dp"
                                     android:layout_gravity="center"
                                     android:contentDescription="@string/image"
@@ -213,11 +226,11 @@
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:layout_below="@+id/img_dmt"
-                                    android:layout_marginTop="@dimen/marign10dp"
+                                    android:layout_marginTop="@dimen/margin10dp"
                                     android:fontFamily="@font/lato_bold"
                                     android:text="@string/dmt"
                                     android:textColor="@color/white"
-                                    android:textSize="@dimen/marign18sp" />
+                                    android:textSize="@dimen/margin18sp" />
 
                             </RelativeLayout>
 
@@ -233,8 +246,8 @@
 
                         <RelativeLayout
                             android:id="@+id/relative_aeps"
-                            android:layout_width="@dimen/marign100dp"
-                            android:layout_height="@dimen/marign100dp"
+                            android:layout_width="@dimen/margin100dp"
+                            android:layout_height="@dimen/margin100dp"
                             android:layout_centerInParent="true"
                             android:background="@drawable/landing_page_bg"
                             android:orientation="vertical">
@@ -246,7 +259,7 @@
 
                                 <ImageView
                                     android:id="@+id/img_aadhar"
-                                    android:layout_width="@dimen/marign45dp"
+                                    android:layout_width="@dimen/margin45dp"
                                     android:layout_height="53dp"
                                     android:layout_centerHorizontal="true"
                                     android:contentDescription="@string/image"
@@ -257,11 +270,11 @@
                                     android:layout_height="wrap_content"
                                     android:layout_below="@+id/img_aadhar"
                                     android:layout_centerHorizontal="true"
-                                    android:layout_marginTop="@dimen/marign10dp"
+                                    android:layout_marginTop="@dimen/margin10dp"
                                     android:fontFamily="@font/lato_bold"
                                     android:text="@string/Aeps"
                                     android:textColor="@color/white"
-                                    android:textSize="@dimen/marign18sp" />
+                                    android:textSize="@dimen/margin18sp" />
 
                             </RelativeLayout>
                         </RelativeLayout>
@@ -271,12 +284,12 @@
                     <RelativeLayout
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginEnd="@dimen/marign10dp"
+                        android:layout_marginEnd="@dimen/margin10dp"
                         android:layout_weight="1">
 
                         <RelativeLayout
-                            android:layout_width="@dimen/marign100dp"
-                            android:layout_height="@dimen/marign100dp"
+                            android:layout_width="@dimen/margin100dp"
+                            android:layout_height="@dimen/margin100dp"
                             android:layout_centerInParent="true"
                             android:background="@drawable/landing_page_bg"
                             android:orientation="vertical">
@@ -299,11 +312,11 @@
                                     android:layout_height="wrap_content"
                                     android:layout_below="@+id/img_aatm"
                                     android:layout_centerHorizontal="true"
-                                    android:layout_marginTop="@dimen/marign10dp"
+                                    android:layout_marginTop="@dimen/margin10dp"
                                     android:fontFamily="@font/lato_bold"
                                     android:text="@string/mAtm"
                                     android:textColor="@color/white"
-                                    android:textSize="@dimen/marign18sp" />
+                                    android:textSize="@dimen/margin18sp" />
 
 
                             </RelativeLayout>
@@ -319,23 +332,23 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_below="@+id/linear_money1"
-                    android:layout_marginStart="@dimen/marign20dp"
-                    android:layout_marginTop="@dimen/marign10dp"
+                    android:layout_marginStart="@dimen/margin20dp"
+                    android:layout_marginTop="@dimen/margin10dp"
                     android:fontFamily="@font/lato_bold"
                     android:text="@string/otherservice"
                     android:textColor="@color/dark_blue"
-                    android:textSize="@dimen/marign20sp" />
+                    android:textSize="@dimen/margin20sp" />
 
                 <LinearLayout
                     android:id="@+id/linear_money2"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_below="@+id/tv_othereservice"
-                    android:layout_marginTop="@dimen/marign15dp"
+                    android:layout_marginTop="@dimen/margin15dp"
                     android:baselineAligned="false"
-                    android:paddingStart="@dimen/marign10dp"
-                    android:paddingTop="@dimen/marign10dp"
-                    android:paddingEnd="@dimen/marign10dp">
+                    android:paddingStart="@dimen/margin10dp"
+                    android:paddingTop="@dimen/margin10dp"
+                    android:paddingEnd="@dimen/margin10dp">
 
 
                     <RelativeLayout
@@ -348,14 +361,14 @@
                             android:layout_width="70dp"
                             android:layout_height="70dp"
                             android:layout_centerHorizontal="true"
-                            android:layout_marginTop="@dimen/marign15dp"
+                            android:layout_marginTop="@dimen/margin15dp"
                             android:background="@drawable/ic_grey_circle">
 
 
                             <ImageView
                                 android:id="@+id/img_recharge"
-                                android:layout_width="@dimen/marign20dp"
-                                android:layout_height="@dimen/marign30dp"
+                                android:layout_width="@dimen/margin20dp"
+                                android:layout_height="@dimen/margin30dp"
                                 android:layout_centerInParent="true"
                                 android:src="@drawable/ic_dth_recharge" />
 
@@ -367,7 +380,7 @@
                             android:layout_height="wrap_content"
                             android:layout_below="@+id/relative_dth"
                             android:layout_centerHorizontal="true"
-                            android:layout_marginBottom="@dimen/marign10dp"
+                            android:layout_marginBottom="@dimen/margin10dp"
                             android:fontFamily="@font/lato_bold"
                             android:text="@string/dthrecharge"
                             android:textColor="@color/white"
@@ -388,13 +401,13 @@
                             android:layout_width="@dimen/grey_circle_height_width"
                             android:layout_height="@dimen/grey_circle_height_width"
                             android:layout_centerHorizontal="true"
-                            android:layout_marginTop="@dimen/marign15dp"
+                            android:layout_marginTop="@dimen/margin15dp"
                             android:background="@drawable/ic_grey_circle">
 
                             <ImageView
                                 android:id="@+id/img_gasbill"
-                                android:layout_width="@dimen/marign20dp"
-                                android:layout_height="@dimen/marign30dp"
+                                android:layout_width="@dimen/margin20dp"
+                                android:layout_height="@dimen/margin30dp"
                                 android:layout_centerInParent="true"
                                 android:contentDescription="TODO"
                                 android:src="@drawable/ic_electricity_icon" />
@@ -407,7 +420,7 @@
                             android:layout_height="wrap_content"
                             android:layout_below="@+id/relative_electricity"
                             android:layout_centerHorizontal="true"
-                            android:layout_marginBottom="@dimen/marign10dp"
+                            android:layout_marginBottom="@dimen/margin10dp"
                             android:fontFamily="@font/lato_bold"
                             android:text="@string/electricity"
                             android:textColor="@color/white"
@@ -427,13 +440,13 @@
                             android:layout_width="@dimen/grey_circle_height_width"
                             android:layout_height="@dimen/grey_circle_height_width"
                             android:layout_centerHorizontal="true"
-                            android:layout_marginTop="@dimen/marign15dp"
+                            android:layout_marginTop="@dimen/margin15dp"
                             android:background="@drawable/ic_grey_circle">
 
                             <ImageView
                                 android:id="@+id/img_gas"
-                                android:layout_width="@dimen/marign20dp"
-                                android:layout_height="@dimen/marign30dp"
+                                android:layout_width="@dimen/margin20dp"
+                                android:layout_height="@dimen/margin30dp"
                                 android:layout_centerInParent="true"
                                 android:contentDescription="TODO"
                                 android:src="@drawable/ic_gas"
@@ -449,7 +462,7 @@
                             android:layout_height="wrap_content"
                             android:layout_below="@+id/relative_gas"
                             android:layout_centerHorizontal="true"
-                            android:layout_marginBottom="@dimen/marign10dp"
+                            android:layout_marginBottom="@dimen/margin10dp"
                             android:fontFamily="@font/lato_bold"
                             android:text="@string/gas"
                             android:textColor="@color/white"
@@ -463,10 +476,10 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_below="@+id/linear_money2"
-                    android:paddingStart="@dimen/marign10dp"
-                    android:paddingTop="@dimen/marign10dp"
-                    android:paddingEnd="@dimen/marign10dp"
-                    android:paddingBottom="@dimen/marign30dp">
+                    android:paddingStart="@dimen/margin10dp"
+                    android:paddingTop="@dimen/margin10dp"
+                    android:paddingEnd="@dimen/margin10dp"
+                    android:paddingBottom="@dimen/margin30dp">
 
 
                     <RelativeLayout
@@ -479,13 +492,13 @@
                             android:layout_width="@dimen/grey_circle_height_width"
                             android:layout_height="@dimen/grey_circle_height_width"
                             android:layout_centerHorizontal="true"
-                            android:layout_marginTop="@dimen/marign15dp"
+                            android:layout_marginTop="@dimen/margin15dp"
                             android:background="@drawable/ic_grey_circle">
 
                             <ImageView
                                 android:id="@+id/img_waterbill"
-                                android:layout_width="@dimen/marign30dp"
-                                android:layout_height="@dimen/marign30dp"
+                                android:layout_width="@dimen/margin30dp"
+                                android:layout_height="@dimen/margin30dp"
                                 android:layout_centerInParent="true"
                                 android:contentDescription="TODO"
                                 android:src="@drawable/ic_tap" />
@@ -499,7 +512,7 @@
                             android:layout_height="wrap_content"
                             android:layout_below="@+id/relative_water_bill"
                             android:layout_centerHorizontal="true"
-                            android:layout_marginBottom="@dimen/marign10dp"
+                            android:layout_marginBottom="@dimen/margin10dp"
                             android:fontFamily="@font/lato_bold"
                             android:text="@string/waterbill"
                             android:textColor="@color/white"
@@ -517,7 +530,7 @@
                             android:layout_width="@dimen/grey_circle_height_width"
                             android:layout_height="@dimen/grey_circle_height_width"
                             android:layout_centerHorizontal="true"
-                            android:layout_marginTop="@dimen/marign15dp"
+                            android:layout_marginTop="@dimen/margin15dp"
                             android:background="@drawable/ic_grey_circle"
 
                             >
@@ -525,8 +538,8 @@
 
                             <ImageView
                                 android:id="@+id/img_dthbill"
-                                android:layout_width="@dimen/marign20dp"
-                                android:layout_height="@dimen/marign30dp"
+                                android:layout_width="@dimen/margin20dp"
+                                android:layout_height="@dimen/margin30dp"
                                 android:layout_centerInParent="true"
                                 android:contentDescription="TODO"
                                 android:src="@drawable/ic_landline" />
@@ -540,7 +553,7 @@
                             android:layout_height="wrap_content"
                             android:layout_below="@+id/relative_landline"
                             android:layout_centerHorizontal="true"
-                            android:layout_marginBottom="@dimen/marign10dp"
+                            android:layout_marginBottom="@dimen/margin10dp"
                             android:fontFamily="@font/lato_bold"
                             android:text="@string/landline"
                             android:textColor="@color/white"
@@ -550,12 +563,12 @@
                     <RelativeLayout
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="@dimen/marign10dp"
+                        android:layout_marginStart="@dimen/margin10dp"
                         android:layout_weight="1">
 
                         <RelativeLayout
-                            android:layout_width="@dimen/marign100dp"
-                            android:layout_height="@dimen/marign100dp"
+                            android:layout_width="@dimen/margin100dp"
+                            android:layout_height="@dimen/margin100dp"
                             android:layout_centerInParent="true"
                             android:background="@drawable/rectangle_bg_white"
                             android:orientation="vertical">
@@ -572,22 +585,22 @@
                                     android:gravity="center">
 
                                     <ImageView
-                                        android:layout_width="@dimen/marign10dp"
-                                        android:layout_height="@dimen/marign10dp"
+                                        android:layout_width="@dimen/margin10dp"
+                                        android:layout_height="@dimen/margin10dp"
                                         android:contentDescription="TODO"
                                         android:src="@drawable/circle_green" />
 
                                     <ImageView
-                                        android:layout_width="@dimen/marign10dp"
-                                        android:layout_height="@dimen/marign10dp"
-                                        android:layout_marginStart="@dimen/marign3dp"
+                                        android:layout_width="@dimen/margin10dp"
+                                        android:layout_height="@dimen/margin10dp"
+                                        android:layout_marginStart="@dimen/margin3dp"
                                         android:contentDescription="TODO"
                                         android:src="@drawable/circle_green" />
 
                                     <ImageView
-                                        android:layout_width="@dimen/marign10dp"
-                                        android:layout_height="@dimen/marign10dp"
-                                        android:layout_marginStart="@dimen/marign3dp"
+                                        android:layout_width="@dimen/margin10dp"
+                                        android:layout_height="@dimen/margin10dp"
+                                        android:layout_marginStart="@dimen/margin3dp"
                                         android:contentDescription="TODO"
                                         android:src="@drawable/circle_green" />
                                 </LinearLayout>

@@ -71,7 +71,7 @@ public class CashDespositActivity extends AppCompatActivity implements OnStaticC
         addMoneyViewModel.staticRepository = staticRepository;
         addMoneyViewModel.addMoneyInterface = addMoneyInterface;
         cashDepositeActivityBinding.setAddmoneyviewmodel(addMoneyViewModel);
-        cashDepositeActivityBinding.tvCashdepositeBalance.setText(balance);
+        cashDepositeActivityBinding.tvCashdepositeBalance.setText(getResources().getString(R.string.rupees).concat(balance));
 
         new Thread(() -> cashDepositeActivityBinding.setUser(userDao.getUser())).start();
 
@@ -96,7 +96,7 @@ public class CashDespositActivity extends AppCompatActivity implements OnStaticC
         interrestedfor_bottomsheet.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
         RecyclerView rv_interreseted_for = view.findViewById(R.id.rv_interreseted_for);
         rv_interreseted_for.setLayoutManager(new LinearLayoutManager(CashDespositActivity.this));
-        ItemOffsetDecoration itemOffsetDecoration = new ItemOffsetDecoration(CashDespositActivity.this, R.dimen.marign10dp);
+        ItemOffsetDecoration itemOffsetDecoration = new ItemOffsetDecoration(CashDespositActivity.this, R.dimen.margin10dp);
         rv_interreseted_for.addItemDecoration(itemOffsetDecoration);
 
 
@@ -118,7 +118,7 @@ public class CashDespositActivity extends AppCompatActivity implements OnStaticC
         interrestedfor_bottomsheet.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
         RecyclerView rv_interreseted_for = view.findViewById(R.id.rv_interreseted_for);
         rv_interreseted_for.setLayoutManager(new LinearLayoutManager(CashDespositActivity.this));
-        ItemOffsetDecoration itemOffsetDecoration = new ItemOffsetDecoration(CashDespositActivity.this, R.dimen.marign10dp);
+        ItemOffsetDecoration itemOffsetDecoration = new ItemOffsetDecoration(CashDespositActivity.this, R.dimen.margin10dp);
         rv_interreseted_for.addItemDecoration(itemOffsetDecoration);
 
         List<InterrestedforResponse> list = new ArrayList<>();
