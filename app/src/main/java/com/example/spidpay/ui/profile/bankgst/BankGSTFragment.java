@@ -170,7 +170,7 @@ public class BankGSTFragment extends Fragment implements BankInteface, StaticInt
         progressBar_for_bottom_sheet.setVisibility(View.VISIBLE);
         RecyclerView rv_interreseted_for = view.findViewById(R.id.rv_interreseted_for);
         rv_interreseted_for.setLayoutManager(new LinearLayoutManager(requireActivity()));
-        ItemOffsetDecoration itemOffsetDecoration = new ItemOffsetDecoration(requireActivity(), R.dimen.marign10dp);
+        ItemOffsetDecoration itemOffsetDecoration = new ItemOffsetDecoration(requireActivity(), R.dimen.margin10dp);
         rv_interreseted_for.addItemDecoration(itemOffsetDecoration);
 
         myProfileViewModel.getStaticData().observe(this, interrestedforResponses -> {

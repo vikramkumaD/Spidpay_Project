@@ -5,7 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <ScrollView
-        android:paddingBottom="@dimen/marign20dp"
+        android:paddingBottom="@dimen/margin20dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
@@ -30,14 +30,14 @@
                 <RelativeLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:paddingTop="@dimen/marign10dp"
-                    android:paddingBottom="@dimen/marign10dp">
+                    android:paddingTop="@dimen/margin10dp"
+                    android:paddingBottom="@dimen/margin10dp">
 
                     <ImageView
                         android:id="@+id/img_backpress"
                         android:layout_width="24dp"
                         android:layout_height="24dp"
-                        android:layout_marginStart="@dimen/marign10dp"
+                        android:layout_marginStart="@dimen/margin10dp"
                         android:contentDescription="TODO"
                         android:src="@drawable/ic_baseline_arrow_back_ios_24"
                         app:layout_constraintLeft_toLeftOf="parent"
@@ -51,7 +51,7 @@
                         android:fontFamily="@font/lato_bold"
                         android:text="@string/addmoney"
                         android:textColor="@color/page_heading_color"
-                        android:textSize="@dimen/marign18sp"
+                        android:textSize="@dimen/margin18sp"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintLeft_toRightOf="@+id/img_backpress"
                         app:layout_constraintTop_toTopOf="parent" />
@@ -67,7 +67,7 @@
                 android:id="@+id/payment_successful"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/marign30dp"
+                android:layout_marginTop="@dimen/margin30dp"
                 app:layout_constraintTop_toBottomOf="@+id/carview_header">
 
                 <ImageView
@@ -83,11 +83,11 @@
                     android:id="@+id/tv_request_successful"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/marign20dp"
+                    android:layout_marginTop="@dimen/margin20dp"
                     android:gravity="center"
                     android:text="@string/transfersuccess"
                     android:textColor="@color/green"
-                    android:textSize="@dimen/marign20sp"
+                    android:textSize="@dimen/margin20sp"
                     app:layout_constraintLeft_toLeftOf="parent"
                     app:layout_constraintRight_toRightOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/img_success" />
@@ -96,7 +96,7 @@
                     android:id="@+id/tv_date"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/marign20dp"
+                    android:layout_marginTop="@dimen/margin20dp"
                     android:text="@string/startdate"
                     android:textColor="@color/darkgrey"
                     app:layout_constraintLeft_toLeftOf="parent"
@@ -109,12 +109,12 @@
                 android:id="@+id/constraint_layout_success_1"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="@dimen/marign15dp"
-                android:layout_marginTop="@dimen/marign20dp"
-                android:layout_marginRight="@dimen/marign15dp"
+                android:layout_marginLeft="@dimen/margin15dp"
+                android:layout_marginTop="@dimen/margin20dp"
+                android:layout_marginRight="@dimen/margin15dp"
                 android:background="@drawable/all_transaction_bg"
-                android:paddingTop="@dimen/marign20dp"
-                android:paddingBottom="@dimen/marign20dp"
+                android:paddingTop="@dimen/margin20dp"
+                android:paddingBottom="@dimen/margin20dp"
                 android:visibility="gone"
                 app:layout_constraintTop_toBottomOf="@+id/payment_successful">
 
@@ -122,12 +122,12 @@
                     android:id="@+id/tv_reqestmoney1"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="@dimen/marign20dp"
-                    android:layout_marginEnd="@dimen/marign20dp"
+                    android:layout_marginStart="@dimen/margin20dp"
+                    android:layout_marginEnd="@dimen/margin20dp"
                     android:fontFamily="@font/lato_bold"
                     android:text="@string/reqestmoney1"
                     android:textColor="@color/black"
-                    android:textSize="@dimen/marign18sp"
+                    android:textSize="@dimen/margin18sp"
                     app:layout_constraintLeft_toLeftOf="parent"
                     app:layout_constraintRight_toRightOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
@@ -136,11 +136,11 @@
                     android:id="@+id/tv_reqestmoney2"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="@dimen/marign20dp"
-                    android:layout_marginEnd="@dimen/marign20dp"
+                    android:layout_marginStart="@dimen/margin20dp"
+                    android:layout_marginEnd="@dimen/margin20dp"
                     android:fontFamily="@font/lato_bold"
                     android:textColor="@color/green"
-                    android:textSize="@dimen/marign18sp"
+                    android:textSize="@dimen/margin18sp"
                     app:layout_constraintLeft_toLeftOf="parent"
                     app:layout_constraintRight_toRightOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/tv_reqestmoney1" />
@@ -150,12 +150,12 @@
                     android:id="@+id/reqestmoney3"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="@dimen/marign20dp"
-                    android:layout_marginEnd="@dimen/marign20dp"
+                    android:layout_marginStart="@dimen/margin20dp"
+                    android:layout_marginEnd="@dimen/margin20dp"
                     android:fontFamily="@font/lato_bold"
                     android:text="@string/reqestmoney2"
                     android:textColor="@color/black"
-                    android:textSize="@dimen/marign18sp"
+                    android:textSize="@dimen/margin18sp"
                     app:layout_constraintLeft_toLeftOf="parent"
                     app:layout_constraintRight_toRightOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/tv_reqestmoney2" />
@@ -164,16 +164,16 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="@dimen/marign20dp"
-                    android:layout_marginTop="@dimen/marign20dp"
-                    android:layout_marginEnd="@dimen/marign20dp"
+                    android:layout_marginStart="@dimen/margin20dp"
+                    android:layout_marginTop="@dimen/margin20dp"
+                    android:layout_marginEnd="@dimen/margin20dp"
                     android:fontFamily="@font/lato_bold"
                     android:gravity="center"
-                    android:paddingStart="@dimen/marign20dp"
-                    android:paddingEnd="@dimen/marign20dp"
+                    android:paddingStart="@dimen/margin20dp"
+                    android:paddingEnd="@dimen/margin20dp"
                     android:text="@string/reqestmoney3"
                     android:textColor="@color/black"
-                    android:textSize="@dimen/marign18sp"
+                    android:textSize="@dimen/margin18sp"
                     app:layout_constraintLeft_toLeftOf="parent"
                     app:layout_constraintRight_toRightOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/reqestmoney3" />
@@ -185,13 +185,13 @@
                 android:id="@+id/linear_transfer_status"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="@dimen/marign15dp"
-                android:layout_marginTop="@dimen/marign20dp"
-                android:layout_marginRight="@dimen/marign15dp"
+                android:layout_marginLeft="@dimen/margin15dp"
+                android:layout_marginTop="@dimen/margin20dp"
+                android:layout_marginRight="@dimen/margin15dp"
                 android:background="@drawable/all_transaction_bg"
                 android:orientation="vertical"
-                android:paddingTop="@dimen/marign20dp"
-                android:paddingBottom="@dimen/marign20dp"
+                android:paddingTop="@dimen/margin20dp"
+                android:paddingBottom="@dimen/margin20dp"
                 app:layout_constraintTop_toBottomOf="@+id/constraint_layout_success_1">
 
                 <RelativeLayout
@@ -202,12 +202,12 @@
                         android:id="@+id/tv_cashtobecollect"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="@dimen/marign20dp"
-                        android:layout_marginEnd="@dimen/marign20dp"
+                        android:layout_marginStart="@dimen/margin20dp"
+                        android:layout_marginEnd="@dimen/margin20dp"
                         android:fontFamily="@font/lato_bold"
                         android:text="@string/cashtobe"
                         android:textColor="@color/black"
-                        android:textSize="@dimen/marign18sp"
+                        android:textSize="@dimen/margin18sp"
                         app:layout_constraintLeft_toLeftOf="parent"
                         app:layout_constraintRight_toRightOf="parent"
                         app:layout_constraintTop_toTopOf="parent" />
@@ -217,12 +217,12 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_alignParentEnd="true"
-                        android:layout_marginStart="@dimen/marign20dp"
-                        android:layout_marginEnd="@dimen/marign20dp"
+                        android:layout_marginStart="@dimen/margin20dp"
+                        android:layout_marginEnd="@dimen/margin20dp"
                         android:fontFamily="@font/lato_bold"
                         android:text="5000"
                         android:textColor="@color/black"
-                        android:textSize="@dimen/marign18sp"
+                        android:textSize="@dimen/margin18sp"
                         app:layout_constraintLeft_toLeftOf="parent"
                         app:layout_constraintRight_toRightOf="parent"
                         app:layout_constraintTop_toTopOf="parent" />
@@ -232,18 +232,18 @@
                 <RelativeLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/marign10dp">
+                    android:layout_marginTop="@dimen/margin10dp">
 
                     <TextView
                         android:id="@+id/tv_moneytransfer"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="@dimen/marign20dp"
-                        android:layout_marginEnd="@dimen/marign20dp"
+                        android:layout_marginStart="@dimen/margin20dp"
+                        android:layout_marginEnd="@dimen/margin20dp"
                         android:fontFamily="@font/lato_bold"
                         android:text="@string/moneytransferedamount"
                         android:textColor="@color/black"
-                        android:textSize="@dimen/marign18sp"
+                        android:textSize="@dimen/margin18sp"
                         app:layout_constraintLeft_toLeftOf="parent"
                         app:layout_constraintRight_toRightOf="parent"
                         app:layout_constraintTop_toTopOf="parent" />
@@ -253,12 +253,12 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_alignParentEnd="true"
-                        android:layout_marginStart="@dimen/marign20dp"
-                        android:layout_marginEnd="@dimen/marign20dp"
+                        android:layout_marginStart="@dimen/margin20dp"
+                        android:layout_marginEnd="@dimen/margin20dp"
                         android:fontFamily="@font/lato_bold"
                         android:text="5000"
                         android:textColor="@color/black"
-                        android:textSize="@dimen/marign18sp"
+                        android:textSize="@dimen/margin18sp"
                         app:layout_constraintLeft_toLeftOf="parent"
                         app:layout_constraintRight_toRightOf="parent"
                         app:layout_constraintTop_toTopOf="parent" />
@@ -268,18 +268,18 @@
                 <RelativeLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/marign10dp">
+                    android:layout_marginTop="@dimen/margin10dp">
 
                     <TextView
                         android:id="@+id/tv_servicecharge"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="@dimen/marign20dp"
-                        android:layout_marginEnd="@dimen/marign20dp"
+                        android:layout_marginStart="@dimen/margin20dp"
+                        android:layout_marginEnd="@dimen/margin20dp"
                         android:fontFamily="@font/lato_bold"
                         android:text="@string/servicecharge"
                         android:textColor="@color/black"
-                        android:textSize="@dimen/marign18sp"
+                        android:textSize="@dimen/margin18sp"
                         app:layout_constraintLeft_toLeftOf="parent"
                         app:layout_constraintRight_toRightOf="parent"
                         app:layout_constraintTop_toTopOf="parent" />
@@ -289,12 +289,12 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_alignParentEnd="true"
-                        android:layout_marginStart="@dimen/marign20dp"
-                        android:layout_marginEnd="@dimen/marign20dp"
+                        android:layout_marginStart="@dimen/margin20dp"
+                        android:layout_marginEnd="@dimen/margin20dp"
                         android:fontFamily="@font/lato_bold"
                         android:text="5000"
                         android:textColor="@color/black"
-                        android:textSize="@dimen/marign18sp"
+                        android:textSize="@dimen/margin18sp"
                         app:layout_constraintLeft_toLeftOf="parent"
                         app:layout_constraintRight_toRightOf="parent"
                         app:layout_constraintTop_toTopOf="parent" />
@@ -309,9 +309,9 @@
                 android:id="@+id/linear_payment_detail"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/marign20dp"
-                android:layout_marginTop="@dimen/marign30dp"
-                android:layout_marginEnd="@dimen/marign20dp"
+                android:layout_marginStart="@dimen/margin20dp"
+                android:layout_marginTop="@dimen/margin30dp"
+                android:layout_marginEnd="@dimen/margin20dp"
                 android:orientation="vertical"
                 app:layout_constraintTop_toBottomOf="@+id/linear_transfer_status">
 
@@ -342,7 +342,7 @@
                 <RelativeLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/marign10dp">
+                    android:layout_marginTop="@dimen/margin10dp">
 
                     <TextView
 
@@ -367,7 +367,7 @@
                 <RelativeLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/marign10dp">
+                    android:layout_marginTop="@dimen/margin10dp">
 
                     <TextView
 
@@ -392,7 +392,7 @@
                 <RelativeLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/marign10dp">
+                    android:layout_marginTop="@dimen/margin10dp">
 
                     <TextView
 
@@ -417,7 +417,7 @@
                 <RelativeLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/marign10dp">
+                    android:layout_marginTop="@dimen/margin10dp">
 
                     <TextView
 
@@ -442,7 +442,7 @@
                 <RelativeLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/marign10dp">
+                    android:layout_marginTop="@dimen/margin10dp">
 
                     <TextView
 
@@ -468,7 +468,7 @@
 
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/marign10dp">
+                    android:layout_marginTop="@dimen/margin10dp">
 
                     <TextView
 
@@ -497,16 +497,16 @@
                 android:id="@+id/btn_backtohome"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/marign20dp"
-                android:layout_marginTop="@dimen/marign20dp"
-                android:layout_marginEnd="@dimen/marign20dp"
-                android:layout_marginBottom="@dimen/marign20dp"
+                android:layout_marginStart="@dimen/margin20dp"
+                android:layout_marginTop="@dimen/margin20dp"
+                android:layout_marginEnd="@dimen/margin20dp"
+                android:layout_marginBottom="@dimen/margin20dp"
                 android:background="@drawable/button_bg_green"
                 android:fontFamily="@font/lato"
                 android:text="@string/backtohome"
                 android:textAllCaps="false"
                 android:textColor="@color/white"
-                android:textSize="@dimen/marign18sp"
+                android:textSize="@dimen/margin18sp"
                 app:layout_constraintTop_toBottomOf="@+id/linear_payment_detail" />
 
 

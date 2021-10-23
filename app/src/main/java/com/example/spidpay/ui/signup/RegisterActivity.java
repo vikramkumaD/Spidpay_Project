@@ -205,7 +205,7 @@ public class RegisterActivity extends AppCompatActivity implements RegisterInter
         interrestedfor_bottomsheet.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
         RecyclerView rv_interreseted_for = view.findViewById(R.id.rv_interreseted_for);
         rv_interreseted_for.setLayoutManager(new LinearLayoutManager(RegisterActivity.this));
-        ItemOffsetDecoration itemOffsetDecoration = new ItemOffsetDecoration(RegisterActivity.this, R.dimen.marign10dp);
+        ItemOffsetDecoration itemOffsetDecoration = new ItemOffsetDecoration(RegisterActivity.this, R.dimen.margin10dp);
         rv_interreseted_for.addItemDecoration(itemOffsetDecoration);
 
         registerViewModel.getInterrestedFor().observe(this, interrestedforResponses -> {

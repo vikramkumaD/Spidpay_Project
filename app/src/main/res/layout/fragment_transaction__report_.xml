@@ -16,12 +16,12 @@
             android:id="@+id/tv_select_transaction_type"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/marign20dp"
-            android:layout_marginTop="@dimen/marign20dp"
+            android:layout_marginStart="@dimen/margin20dp"
+            android:layout_marginTop="@dimen/margin20dp"
             android:fontFamily="@font/lato_bold"
             android:text="@string/selecttrasctiontype"
             android:textColor="@color/black"
-            android:textSize="@dimen/marign16sp"
+            android:textSize="@dimen/margin16sp"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -37,14 +37,14 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/marign20dp">
+                android:layout_marginStart="@dimen/margin20dp">
 
 
                 <RadioButton
                     android:id="@+id/rb_type_all"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/marign20dp"
+                    android:layout_marginTop="@dimen/margin20dp"
                     android:layout_weight="1"
                     android:checked="true"
                     android:fontFamily="@font/lato_bold"
@@ -55,7 +55,7 @@
                     android:id="@+id/rb_type_success"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/marign20dp"
+                    android:layout_marginTop="@dimen/margin20dp"
                     android:layout_weight="1.85"
                     android:fontFamily="@font/lato_bold"
                     android:text="@string/successful"
@@ -67,14 +67,14 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/marign20dp">
+                android:layout_marginStart="@dimen/margin20dp">
 
 
                 <RadioButton
                     android:id="@+id/rb_type_failed"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/marign20dp"
+                    android:layout_marginTop="@dimen/margin20dp"
                     android:layout_weight="1"
                     android:fontFamily="@font/lato_bold"
                     android:text="@string/failed"
@@ -86,7 +86,7 @@
                     android:id="@+id/rb_type_refund"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/marign20dp"
+                    android:layout_marginTop="@dimen/margin20dp"
                     android:layout_weight="1.05"
                     android:fontFamily="@font/lato_bold"
                     android:text="@string/refund"
@@ -105,12 +105,12 @@
             android:id="@+id/tv_select_transaction_period"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/marign20dp"
-            android:layout_marginTop="@dimen/marign20dp"
+            android:layout_marginStart="@dimen/margin20dp"
+            android:layout_marginTop="@dimen/margin20dp"
             android:fontFamily="@font/lato_bold"
             android:text="@string/selecttrasctionperiod"
             android:textColor="@color/black"
-            android:textSize="@dimen/marign16sp"
+            android:textSize="@dimen/margin16sp"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/rg_trasaction_type" />
 
@@ -131,8 +131,8 @@
                     android:id="@+id/rb_period_last_month"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="@dimen/marign20dp"
-                    android:layout_marginTop="@dimen/marign20dp"
+                    android:layout_marginStart="@dimen/margin20dp"
+                    android:layout_marginTop="@dimen/margin20dp"
                     android:layout_weight="1"
                     android:checked="true"
                     android:fontFamily="@font/lato_bold"
@@ -145,8 +145,8 @@
                     android:id="@+id/rb_period_last_3month"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="@dimen/marign20dp"
-                    android:layout_marginTop="@dimen/marign20dp"
+                    android:layout_marginStart="@dimen/margin20dp"
+                    android:layout_marginTop="@dimen/margin20dp"
                     android:layout_weight="1.5"
                     android:fontFamily="@font/lato_bold"
                     android:text="@string/last3month"
@@ -160,14 +160,14 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/marign20dp">
+                android:layout_marginStart="@dimen/margin20dp">
 
 
                 <RadioButton
                     android:id="@+id/rb_period_last_6month"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/marign20dp"
+                    android:layout_marginTop="@dimen/margin20dp"
                     android:layout_weight="1"
                     android:fontFamily="@font/lato_bold"
                     android:text="@string/last6month"
@@ -177,7 +177,7 @@
                     android:id="@+id/rb_period_last_oneyear"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/marign20dp"
+                    android:layout_marginTop="@dimen/margin20dp"
                     android:layout_weight="1.5"
                     android:fontFamily="@font/lato_bold"
                     android:text="@string/lastoneyear"
@@ -194,12 +194,12 @@
             android:id="@+id/tv_select_custom_date"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/marign20dp"
-            android:layout_marginTop="@dimen/marign20dp"
+            android:layout_marginStart="@dimen/margin20dp"
+            android:layout_marginTop="@dimen/margin20dp"
             android:fontFamily="@font/lato_bold"
             android:text="@string/selectcustomedate"
             android:textColor="@color/black"
-            android:textSize="@dimen/marign16sp"
+            android:textSize="@dimen/margin16sp"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/rg_trasaction_period" />
 
@@ -208,8 +208,8 @@
             android:id="@+id/tv_start_date"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/marign20dp"
-            android:layout_marginTop="@dimen/marign20dp"
+            android:layout_marginStart="@dimen/margin20dp"
+            android:layout_marginTop="@dimen/margin20dp"
             android:fontFamily="@font/lato_bold"
             android:text="@string/startdate"
             android:textColor="@color/approval_text_color"
@@ -218,10 +218,10 @@
 
         <ImageView
             android:id="@+id/img_calendar_start_date"
-            android:layout_width="@dimen/marign20dp"
-            android:layout_height="@dimen/marign20dp"
-            android:layout_marginStart="@dimen/marign10dp"
-            android:layout_marginTop="@dimen/marign20dp"
+            android:layout_width="@dimen/margin20dp"
+            android:layout_height="@dimen/margin20dp"
+            android:layout_marginStart="@dimen/margin10dp"
+            android:layout_marginTop="@dimen/margin20dp"
             android:src="@mipmap/ic_launcher"
             app:layout_constraintLeft_toRightOf="@+id/tv_start_date"
             app:layout_constraintTop_toBottomOf="@+id/tv_select_custom_date"
@@ -231,8 +231,8 @@
             android:id="@+id/tv_end_date"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/marign20dp"
-            android:layout_marginTop="@dimen/marign20dp"
+            android:layout_marginStart="@dimen/margin20dp"
+            android:layout_marginTop="@dimen/margin20dp"
             android:fontFamily="@font/lato_bold"
             android:text="@string/startdate"
             android:textColor="@color/approval_text_color"
@@ -241,10 +241,10 @@
 
         <ImageView
             android:id="@+id/img_calendar_end_date"
-            android:layout_width="@dimen/marign20dp"
-            android:layout_height="@dimen/marign20dp"
-            android:layout_marginStart="@dimen/marign10dp"
-            android:layout_marginTop="@dimen/marign20dp"
+            android:layout_width="@dimen/margin20dp"
+            android:layout_height="@dimen/margin20dp"
+            android:layout_marginStart="@dimen/margin10dp"
+            android:layout_marginTop="@dimen/margin20dp"
             android:src="@mipmap/ic_launcher"
             app:layout_constraintLeft_toRightOf="@+id/tv_end_date"
             app:layout_constraintTop_toBottomOf="@+id/tv_select_custom_date"
@@ -254,16 +254,16 @@
             android:id="@+id/btn_proceed"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/marign20dp"
-            android:layout_marginTop="@dimen/marign50dp"
-            android:layout_marginEnd="@dimen/marign20dp"
-            android:layout_marginBottom="@dimen/marign20dp"
+            android:layout_marginStart="@dimen/margin20dp"
+            android:layout_marginTop="@dimen/margin50dp"
+            android:layout_marginEnd="@dimen/margin20dp"
+            android:layout_marginBottom="@dimen/margin20dp"
             android:background="@drawable/button_bg_green"
             android:fontFamily="@font/lato"
             android:gravity="center"
             android:text="@string/proceed"
             android:textColor="@color/white"
-            android:textSize="@dimen/marign18sp"
+            android:textSize="@dimen/margin18sp"
             app:layout_constraintTop_toBottomOf="@+id/tv_start_date" />
 
 

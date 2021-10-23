@@ -2,7 +2,6 @@ package com.example.spidpay.ui.tradewallet;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.LiveData;
-import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -11,8 +10,6 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
-import android.text.Editable;
-import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 
@@ -25,9 +22,7 @@ import com.example.spidpay.interfaces.OnStaticClickIterface;
 import com.example.spidpay.interfaces.StaticInterface;
 import com.example.spidpay.interfaces.TradeWalletInterface;
 import com.example.spidpay.ui.signup.InterrestedforAdapter;
-import com.example.spidpay.ui.spwallet.AddMoneyViewModel;
 import com.example.spidpay.ui.spwallet.PaymentSuccessfulActivity;
-import com.example.spidpay.ui.spwallet.cashdeposite.CashDespositActivity;
 import com.example.spidpay.util.Constant;
 import com.example.spidpay.util.ItemOffsetDecoration;
 import com.example.spidpay.util.PrefManager;
@@ -112,7 +107,7 @@ public class TransferMoneyActivity extends AppCompatActivity implements TradeWal
         interrestedfor_bottomsheet.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
         RecyclerView rv_interreseted_for = view.findViewById(R.id.rv_interreseted_for);
         rv_interreseted_for.setLayoutManager(new LinearLayoutManager(TransferMoneyActivity.this));
-        ItemOffsetDecoration itemOffsetDecoration = new ItemOffsetDecoration(TransferMoneyActivity.this, R.dimen.marign10dp);
+        ItemOffsetDecoration itemOffsetDecoration = new ItemOffsetDecoration(TransferMoneyActivity.this, R.dimen.margin10dp);
         rv_interreseted_for.addItemDecoration(itemOffsetDecoration);
 
         List<InterrestedforResponse> list = new ArrayList<>();

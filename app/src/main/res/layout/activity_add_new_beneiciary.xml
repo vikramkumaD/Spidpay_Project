@@ -34,14 +34,14 @@
                 <RelativeLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:paddingTop="@dimen/marign10dp"
-                    android:paddingBottom="@dimen/marign10dp">
+                    android:paddingTop="@dimen/margin10dp"
+                    android:paddingBottom="@dimen/margin10dp">
 
                     <ImageView
                         android:id="@+id/img_backpress"
                         android:layout_width="24dp"
                         android:layout_height="24dp"
-                        android:layout_marginStart="@dimen/marign10dp"
+                        android:layout_marginStart="@dimen/margin10dp"
                         android:contentDescription="TODO"
                         android:src="@drawable/ic_baseline_arrow_back_ios_24"
                         app:layout_constraintLeft_toLeftOf="parent"
@@ -56,7 +56,7 @@
                         android:fontFamily="@font/lato_bold"
                         android:text="@string/addnewbeneficiry"
                         android:textColor="@color/page_heading_color"
-                        android:textSize="@dimen/marign18sp"
+                        android:textSize="@dimen/margin18sp"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintLeft_toRightOf="@+id/img_backpress"
                         app:layout_constraintTop_toTopOf="parent" />
@@ -71,9 +71,9 @@
                 android:id="@+id/linear_enterbeneficiaryname"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/marign20dp"
-                android:layout_marginTop="@dimen/marign40dp"
-                android:layout_marginEnd="@dimen/marign20dp"
+                android:layout_marginStart="@dimen/margin20dp"
+                android:layout_marginTop="@dimen/margin40dp"
+                android:layout_marginEnd="@dimen/margin20dp"
                 android:background="@drawable/edittext_shadow"
                 android:orientation="horizontal"
                 app:layout_constraintTop_toBottomOf="@+id/carview_header">
@@ -86,10 +86,10 @@
                     android:background="@android:color/transparent"
                     android:hint="@string/enterbeneficiaryname"
                     android:inputType="number"
-                    android:paddingLeft="@dimen/marign10dp"
-                    android:paddingTop="@dimen/marign15dp"
-                    android:paddingRight="@dimen/marign10dp"
-                    android:paddingBottom="@dimen/marign15dp"
+                    android:paddingLeft="@dimen/margin10dp"
+                    android:paddingTop="@dimen/margin15dp"
+                    android:paddingRight="@dimen/margin10dp"
+                    android:paddingBottom="@dimen/margin15dp"
 
                     android:textColorHint="@color/lightgrey" />
 
@@ -99,9 +99,9 @@
                 android:id="@+id/linear_beneficiarymobilenumber"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/marign20dp"
-                android:layout_marginTop="@dimen/marign20dp"
-                android:layout_marginEnd="@dimen/marign20dp"
+                android:layout_marginStart="@dimen/margin20dp"
+                android:layout_marginTop="@dimen/margin20dp"
+                android:layout_marginEnd="@dimen/margin20dp"
                 android:background="@drawable/edittext_shadow"
                 android:orientation="horizontal"
                 app:layout_constraintTop_toBottomOf="@+id/linear_enterbeneficiaryname">
@@ -114,10 +114,10 @@
                     android:background="@android:color/transparent"
                     android:hint="@string/beneficiarymobilenumber"
                     android:inputType="text"
-                    android:paddingLeft="@dimen/marign10dp"
-                    android:paddingTop="@dimen/marign15dp"
-                    android:paddingRight="@dimen/marign10dp"
-                    android:paddingBottom="@dimen/marign15dp"
+                    android:paddingLeft="@dimen/margin10dp"
+                    android:paddingTop="@dimen/margin15dp"
+                    android:paddingRight="@dimen/margin10dp"
+                    android:paddingBottom="@dimen/margin15dp"
 
                     android:textColorHint="@color/lightgrey" />
 
@@ -127,9 +127,9 @@
                 android:id="@+id/linear_beneficiaryaccountnumner"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/marign20dp"
-                android:layout_marginTop="@dimen/marign20dp"
-                android:layout_marginEnd="@dimen/marign20dp"
+                android:layout_marginStart="@dimen/margin20dp"
+                android:layout_marginTop="@dimen/margin20dp"
+                android:layout_marginEnd="@dimen/margin20dp"
                 android:background="@drawable/edittext_shadow"
                 android:orientation="horizontal"
                 app:layout_constraintTop_toBottomOf="@+id/linear_beneficiarymobilenumber">
@@ -142,10 +142,10 @@
                     android:background="@android:color/transparent"
                     android:hint="@string/accnumber"
                     android:inputType="text"
-                    android:paddingLeft="@dimen/marign10dp"
-                    android:paddingTop="@dimen/marign15dp"
-                    android:paddingRight="@dimen/marign10dp"
-                    android:paddingBottom="@dimen/marign15dp"
+                    android:paddingLeft="@dimen/margin10dp"
+                    android:paddingTop="@dimen/margin15dp"
+                    android:paddingRight="@dimen/margin10dp"
+                    android:paddingBottom="@dimen/margin15dp"
 
                     android:textColorHint="@color/lightgrey" />
 
@@ -155,9 +155,9 @@
                 android:id="@+id/linear_confirmbeneficiaryaccountnumner"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/marign20dp"
-                android:layout_marginTop="@dimen/marign20dp"
-                android:layout_marginEnd="@dimen/marign20dp"
+                android:layout_marginStart="@dimen/margin20dp"
+                android:layout_marginTop="@dimen/margin20dp"
+                android:layout_marginEnd="@dimen/margin20dp"
                 android:background="@drawable/edittext_shadow"
                 android:orientation="horizontal"
                 app:layout_constraintTop_toBottomOf="@+id/linear_beneficiaryaccountnumner">
@@ -170,10 +170,10 @@
                     android:background="@android:color/transparent"
                     android:hint="@string/confiraccountnumber"
                     android:inputType="number"
-                    android:paddingLeft="@dimen/marign10dp"
-                    android:paddingTop="@dimen/marign15dp"
-                    android:paddingRight="@dimen/marign10dp"
-                    android:paddingBottom="@dimen/marign15dp"
+                    android:paddingLeft="@dimen/margin10dp"
+                    android:paddingTop="@dimen/margin15dp"
+                    android:paddingRight="@dimen/margin10dp"
+                    android:paddingBottom="@dimen/margin15dp"
 
                     android:textColorHint="@color/lightgrey" />
 
@@ -183,9 +183,9 @@
                 android:id="@+id/linear_bank"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/marign20dp"
-                android:layout_marginTop="@dimen/marign20dp"
-                android:layout_marginEnd="@dimen/marign20dp"
+                android:layout_marginStart="@dimen/margin20dp"
+                android:layout_marginTop="@dimen/margin20dp"
+                android:layout_marginEnd="@dimen/margin20dp"
                 android:background="@drawable/edittext_shadow"
                 android:orientation="horizontal"
                 app:layout_constraintTop_toBottomOf="@+id/linear_confirmbeneficiaryaccountnumner">
@@ -198,10 +198,10 @@
                     android:background="@android:color/transparent"
                     android:hint="@string/selectbank"
                     android:inputType="text"
-                    android:paddingLeft="@dimen/marign10dp"
-                    android:paddingTop="@dimen/marign15dp"
-                    android:paddingRight="@dimen/marign10dp"
-                    android:paddingBottom="@dimen/marign15dp"
+                    android:paddingLeft="@dimen/margin10dp"
+                    android:paddingTop="@dimen/margin15dp"
+                    android:paddingRight="@dimen/margin10dp"
+                    android:paddingBottom="@dimen/margin15dp"
 
                     android:textColorHint="@color/lightgrey" />
 
@@ -211,9 +211,9 @@
                 android:id="@+id/linear_ifsccode"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/marign20dp"
-                android:layout_marginTop="@dimen/marign20dp"
-                android:layout_marginEnd="@dimen/marign20dp"
+                android:layout_marginStart="@dimen/margin20dp"
+                android:layout_marginTop="@dimen/margin20dp"
+                android:layout_marginEnd="@dimen/margin20dp"
                 android:background="@drawable/edittext_shadow"
                 android:orientation="horizontal"
                 app:layout_constraintTop_toBottomOf="@+id/linear_bank">
@@ -226,10 +226,10 @@
                     android:background="@android:color/transparent"
                     android:hint="@string/ifsccode"
 
-                    android:paddingLeft="@dimen/marign10dp"
-                    android:paddingTop="@dimen/marign15dp"
-                    android:paddingRight="@dimen/marign10dp"
-                    android:paddingBottom="@dimen/marign15dp"
+                    android:paddingLeft="@dimen/margin10dp"
+                    android:paddingTop="@dimen/margin15dp"
+                    android:paddingRight="@dimen/margin10dp"
+                    android:paddingBottom="@dimen/margin15dp"
 
                     android:textColorHint="@color/lightgrey" />
 
@@ -240,16 +240,16 @@
                 android:id="@+id/btn_register"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/marign20dp"
-                android:layout_marginTop="@dimen/marign20dp"
-                android:layout_marginEnd="@dimen/marign20dp"
-                android:layout_marginBottom="@dimen/marign20dp"
+                android:layout_marginStart="@dimen/margin20dp"
+                android:layout_marginTop="@dimen/margin20dp"
+                android:layout_marginEnd="@dimen/margin20dp"
+                android:layout_marginBottom="@dimen/margin20dp"
                 android:background="@drawable/button_bg_green"
                 android:fontFamily="@font/lato"
                 android:text="@string/submit"
                 android:textAllCaps="false"
                 android:textColor="@color/white"
-                android:textSize="@dimen/marign18sp"
+                android:textSize="@dimen/margin18sp"
                 app:layout_constraintTop_toBottomOf="@+id/linear_enterpincode" />
 
 

@@ -41,7 +41,7 @@ public class AllTransactionByWalletIdAcivity extends AppCompatActivity implement
         allTransactionViewModel.allTransactionInterface = allTransactionInterface;
         allTransactionViewModel.allTransactionRepositroy = allTransactionRepositroy;
         activityGetAllTransactionByWalletIdBinding.setLifecycleOwner(this);
-        ItemOffsetDecoration itemOffsetDecoration = new ItemOffsetDecoration(AllTransactionByWalletIdAcivity.this, R.dimen.marign10dp);
+        ItemOffsetDecoration itemOffsetDecoration = new ItemOffsetDecoration(AllTransactionByWalletIdAcivity.this, R.dimen.margin10dp);
         activityGetAllTransactionByWalletIdBinding.rvAllTransaction.addItemDecoration(itemOffsetDecoration);
         flag = getIntent().getBooleanExtra("flag", false);
         if (flag) {

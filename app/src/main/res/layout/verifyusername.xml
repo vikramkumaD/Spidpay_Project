@@ -14,17 +14,17 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@drawable/dialogwith_whiteborder"
-        android:paddingTop="@dimen/marign20dp"
-        android:paddingBottom="@dimen/marign20dp">
+        android:paddingTop="@dimen/margin20dp"
+        android:paddingBottom="@dimen/margin20dp">
 
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/txtinput_forgot_username"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/marign20dp"
-            android:layout_marginTop="@dimen/marign15dp"
-            android:layout_marginEnd="@dimen/marign20dp"
+            android:layout_marginStart="@dimen/margin20dp"
+            android:layout_marginTop="@dimen/margin15dp"
+            android:layout_marginEnd="@dimen/margin20dp"
             app:hintEnabled="false"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
@@ -39,10 +39,10 @@
                 android:hint="@string/username"
                 android:inputType="text"
                 android:maxLength="10"
-                android:paddingStart="@dimen/marign15dp"
-                android:paddingEnd="@dimen/marign10dp"
-                android:paddingTop="@dimen/marign15dp"
-                android:paddingBottom="@dimen/marign15dp"
+                android:paddingStart="@dimen/margin15dp"
+                android:paddingEnd="@dimen/margin10dp"
+                android:paddingTop="@dimen/margin15dp"
+                android:paddingBottom="@dimen/margin15dp"
                 android:text="@={loginviewmodel.verify_username}"
                 app:hintEnabled="false" />
 
@@ -56,16 +56,16 @@
             android:id="@+id/btn_continue"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/marign20dp"
-            android:layout_marginTop="@dimen/marign20dp"
-            android:layout_marginEnd="@dimen/marign20dp"
-            android:layout_marginBottom="@dimen/marign20dp"
+            android:layout_marginStart="@dimen/margin20dp"
+            android:layout_marginTop="@dimen/margin20dp"
+            android:layout_marginEnd="@dimen/margin20dp"
+            android:layout_marginBottom="@dimen/margin20dp"
             android:background="@drawable/button_bg_green"
             android:fontFamily="@font/lato"
             android:onClick="@{(v)->loginviewmodel.validate_verifyUserName(v)}"
             android:text="@string/txtcontinue"
             android:textColor="@color/white"
-            android:textSize="@dimen/marign18sp"
+            android:textSize="@dimen/margin18sp"
             app:layout_constraintTop_toBottomOf="@+id/txtinput_forgot_username" />
 
 
