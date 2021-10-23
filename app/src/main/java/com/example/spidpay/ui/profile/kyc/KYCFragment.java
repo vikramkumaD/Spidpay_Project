@@ -208,17 +208,23 @@ public class KYCFragment extends Fragment implements KYCInterface, OnStaticClick
         interrestedfor_bottomsheet.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
         progressBar_for_bottom_sheet = view.findViewById(R.id.pb_for_bottomsheet);
         progressBar_for_bottom_sheet.setVisibility(View.VISIBLE);
-        RecyclerView rv_interreseted_for = view.findViewById(R.id.rv_interreseted_for);
-        rv_interreseted_for.setLayoutManager(new LinearLayoutManager(requireActivity()));
+        RecyclerView rv_interested_for = view.findViewById(R.id.rv_interreseted_for);
+        rv_interested_for.setLayoutManager(new LinearLayoutManager(requireActivity()));
         ItemOffsetDecoration itemOffsetDecoration = new ItemOffsetDecoration(requireActivity(), R.dimen.margin10dp);
-        rv_interreseted_for.addItemDecoration(itemOffsetDecoration);
+        rv_interested_for.addItemDecoration(itemOffsetDecoration);
 
         myProfileViewModel.getStaticDataForAdditionalIds(requireContext()).observe(this, interrestedforResponses -> {
             if (!interrestedforResponses.isEmpty()) {
                 Constant.START_TOUCH(requireActivity());
                 progressBar_for_bottom_sheet.setVisibility(View.GONE);
                 InterrestedforAdapter interrestedforAdapter = new InterrestedforAdapter(interrestedforResponses, onStaticClickIterface);
-                rv_interreseted_for.setAdapter(interrestedforAdapter);
+                rv_interested_for.setAdapter(interrestedforAdapter);
+                interrestedfor_bottomsheet.show();
+            }
+            else
+            {
+                InterrestedforAdapter interrestedforAdapter = new InterrestedforAdapter(interrestedforResponses, onStaticClickIterface);
+                rv_interested_for.setAdapter(interrestedforAdapter);
                 interrestedfor_bottomsheet.show();
             }
         });
@@ -250,17 +256,23 @@ public class KYCFragment extends Fragment implements KYCInterface, OnStaticClick
         interrestedfor_bottomsheet.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
         progressBar_for_bottom_sheet = view.findViewById(R.id.pb_for_bottomsheet);
         progressBar_for_bottom_sheet.setVisibility(View.VISIBLE);
-        RecyclerView rv_interreseted_for = view.findViewById(R.id.rv_interreseted_for);
-        rv_interreseted_for.setLayoutManager(new LinearLayoutManager(requireActivity()));
+        RecyclerView rv_interested_for = view.findViewById(R.id.rv_interreseted_for);
+        rv_interested_for.setLayoutManager(new LinearLayoutManager(requireActivity()));
         ItemOffsetDecoration itemOffsetDecoration = new ItemOffsetDecoration(requireActivity(), R.dimen.margin10dp);
-        rv_interreseted_for.addItemDecoration(itemOffsetDecoration);
+        rv_interested_for.addItemDecoration(itemOffsetDecoration);
 
         myProfileViewModel.getStaticData().observe(this, interrestedforResponses -> {
             if (!interrestedforResponses.isEmpty()) {
                 Constant.START_TOUCH(requireActivity());
                 progressBar_for_bottom_sheet.setVisibility(View.GONE);
                 InterrestedforAdapter interrestedforAdapter = new InterrestedforAdapter(interrestedforResponses, onStaticClickIterface);
-                rv_interreseted_for.setAdapter(interrestedforAdapter);
+                rv_interested_for.setAdapter(interrestedforAdapter);
+                interrestedfor_bottomsheet.show();
+            }
+            else
+            {
+                InterrestedforAdapter interrestedforAdapter = new InterrestedforAdapter(interrestedforResponses, onStaticClickIterface);
+                rv_interested_for.setAdapter(interrestedforAdapter);
                 interrestedfor_bottomsheet.show();
             }
         });

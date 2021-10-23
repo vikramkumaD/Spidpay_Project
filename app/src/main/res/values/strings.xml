@@ -87,6 +87,7 @@
     <string name="cashdeposit">Cash Deposit</string>
     <string name="requiredvalidation">Requires the Validation of upload transaction slip</string>
     <string name="available_balance">Available Trade Balance</string>
+    <string name="available_sp_balance"> Available SpidWallet Balance</string>
     <string name="enteramount">Enter Amount</string>
     <string name="proceed">Proceed</string>
     <string name="moneyaddedtowallet">Money will be added to Wallet</string>
@@ -185,7 +186,7 @@
     <string name="partnershipdeed">Partnership Deed:</string>
     <string name="moa">MOA/AOA:</string>
     <string name="coi">COI:</string>
-    <string name="declaration">Declaration:</string>
+    <string name="declaration"> Directors Declaration:</string>
     <string name="updatecompanydetail">Update Company Detail</string>
     <string name="gstinnumber">GSTIN Number:</string>
     <string name="accname">A/C Holder Name:</string>

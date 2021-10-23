@@ -87,7 +87,6 @@
 
         <EditText
             android:visibility="@{company.companyType.description.equals(Constant.SOLE_OWNER) ? View.VISIBLE : View.GONE , default=gone}"
-
             android:id="@+id/edt_edit_udyog"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

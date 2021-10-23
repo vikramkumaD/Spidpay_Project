@@ -107,7 +107,7 @@ public class AddMoneyViewModel extends ViewModel {
         CashTransactionRequest cashTransactionRequest = new CashTransactionRequest();
         cashTransactionRequest.bankName = bankname;
         cashTransactionRequest.bankReferenceId = bankrefid.getValue();
-        cashTransactionRequest.dateTime =Constant.getCurrentDateTime();
+        cashTransactionRequest.dateTime = Constant.getCurrentDateTime();
         cashTransactionRequest.imageRef = "/abc";
         cashTransactionRequest.transferMode = transactiontype;
         addMoneyRequest.cashTransactionRequest = cashTransactionRequest;

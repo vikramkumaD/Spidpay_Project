@@ -181,6 +181,11 @@ public class BankGSTFragment extends Fragment implements BankInteface, StaticInt
                 rv_interreseted_for.setAdapter(interrestedforAdapter);
                 interrestedfor_bottomsheet.show();
             }
+            else {
+                InterrestedforAdapter interrestedforAdapter = new InterrestedforAdapter(interrestedforResponses, onStaticClickIterface);
+                rv_interreseted_for.setAdapter(interrestedforAdapter);
+                interrestedfor_bottomsheet.show();
+            }
         });
     }
 
