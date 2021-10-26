@@ -27,8 +27,10 @@ public class Constant {
     public static final String TXN_URL = "http://spidpay-api-565132133.ap-south-1.elb.amazonaws.com/spidpay-txnactivity/";
     public static final String WALLET_URL = "http://spidpay-api-565132133.ap-south-1.elb.amazonaws.com/spidpay-wallet/";
 
-    public static final String ACCOUNT_STATUS ="Pending KYC Verification";
+    public static final String ACCOUNT_STATUS ="KYC Pending";
 
+    public static final String MY_CONTENT_PROVIDER = "com.example.spidpay.provider";
+    public static final String FILE_DIR = "/spidpay/photo";
     public static final String PARTNERSHIP = "Partnership";
     public static final String SOLE_OWNER = "Sole Owner";
     public static final String PRIVATE_LIMITED = "Private Limited";

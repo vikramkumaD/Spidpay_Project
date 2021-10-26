@@ -5,6 +5,7 @@
 
     <data>
 
+
         <import type="android.view.View" />
 
         <import type="com.example.spidpay.util.Constant" />
@@ -16,6 +17,12 @@
         <variable
             name="companyinfo"
             type="com.example.spidpay.data.response.CompanyReponse" />
+
+
+        <variable
+            name="is_kyc_done"
+            type="java.lang.Boolean"
+            />
 
     </data>
 
@@ -38,6 +45,7 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <ImageView
+            android:visibility="@{is_kyc_done ? View.GONE : View.VISIBLE,default=visible}"
             android:id="@+id/img_edit_kyc"
             android:layout_width="24dp"
             android:layout_height="24dp"

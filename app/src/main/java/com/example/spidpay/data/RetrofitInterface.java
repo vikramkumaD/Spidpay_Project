@@ -31,16 +31,23 @@ import com.example.spidpay.data.response.WalletResponse;
 
 import java.util.List;
 
+import okhttp3.MultipartBody;
+import okhttp3.RequestBody;
 import retrofit2.Call;
 import retrofit2.http.Body;
 import retrofit2.http.GET;
+import retrofit2.http.Header;
 import retrofit2.http.Headers;
+import retrofit2.http.Multipart;
 import retrofit2.http.POST;
 import retrofit2.http.PUT;
+import retrofit2.http.Part;
 import retrofit2.http.Path;
 import retrofit2.http.Query;
 
 public interface RetrofitInterface {
+
+
 
     @Headers({"Content-Type:application/json"})
     @POST("v1/login")
@@ -113,4 +120,13 @@ public interface RetrofitInterface {
     @POST("v1/trade/payout")
     Call<TransferMoenyResponse> getTransferResponse(@Body BankTransferRequest transferMoneyRequest);
 
+    @Multipart
+    @POST("signup/CreateProfile")
+    Call<String> postImage(@Header("Authorization") String user_token, @Part MultipartBody.Part image, @Part("userDetails") RequestBody name);
+
+
+    //http://spidpay-api-565132133.ap-south-1.elb.amazonaws.com/spidpay-identity/api/upload/v1/abc/PAN
+
 }
+
+

@@ -281,5 +281,9 @@
     <string name="select">Select</string>
     <string name="drivinglicense">Driving License</string>
     <string name="rationcard">Ration Card</string>
+    <string name="browse">Browse</string>
+    <string name="camera">From Camera</string>
+    <string name="gallery">From Gallery</string>
+    <string name="cancel">Cancel</string>
 
 </resources>
