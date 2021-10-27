@@ -209,18 +209,19 @@
 
 
                 <EditText
+
                     android:id="@+id/edt_paytm_number"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="@dimen/margin20dp"
                     android:layout_marginEnd="@dimen/margin20dp"
                     android:background="@drawable/transfer_money_bg"
-                    android:enabled="@{transfermoney.total_amount ? false : true}"
                     android:hint="@string/paytmnumber"
                     android:importantForAutofill="no"
                     android:inputType="number"
+                    android:maxLength="10"
                     android:padding="@dimen/margin15dp"
-                    android:text="@={transfermoney.enteramount}"
+                    android:text="@={transfermoney.paytm_number}"
                     android:visibility="@{transfermoney.paytmwallet ? View.VISIBLE : View.GONE,default=gone}"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
@@ -232,7 +233,7 @@
                     android:layout_height="wrap_content"
                     android:visibility="@{transfermoney.bank ? View.VISIBLE : View.GONE,default=gone}"
                     app:layout_constraintStart_toStartOf="@+id/edt_paytm_number"
-                    app:layout_constraintTop_toTopOf="parent">
+                    app:layout_constraintTop_toBottomOf="@id/edt_paytm_number">
 
 
                     <TextView
@@ -256,9 +257,9 @@
                         android:layout_marginStart="@dimen/margin15dp"
                         android:layout_marginTop="@dimen/margin15dp"
                         android:buttonTint="@color/green"
-                        android:checked="@{transfermoney.total_amount, default=true}"
+                        android:checked="@{transfermoney.neft, default=true}"
                         android:fontFamily="@font/lato_bold"
-                        android:onClick="@{()->transfermoney.onTotalAmountClick()}"
+                        android:onClick="@{()->transfermoney.onNEFTClick()}"
                         android:text="@string/neft"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/tv_transfer_mode" />
@@ -270,9 +271,9 @@
                         android:layout_marginStart="@dimen/margin40dp"
                         android:layout_marginTop="@dimen/margin15dp"
                         android:buttonTint="@color/green"
-                        android:checked="@{transfermoney.other_amount}"
+                        android:checked="@{transfermoney.imps}"
                         android:fontFamily="@font/lato_bold"
-                        android:onClick="@{()->transfermoney.onOtherAmountClick()}"
+                        android:onClick="@{()->transfermoney.onIMPSClick()}"
                         android:text="@string/imps"
                         app:layout_constraintLeft_toRightOf="@+id/rb_neft"
                         app:layout_constraintTop_toBottomOf="@+id/tv_transfer_mode" />

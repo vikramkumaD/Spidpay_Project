@@ -10,4 +10,7 @@ public class TransferMoneyRequest {
     @SerializedName("bankTransfer")
     public BankTransferRequest bankTransfer;
 
+    @SerializedName("paytmWalletTransfer")
+    public PaytmTransferRequest paytmTransferRequest;
+
 }

@@ -6,7 +6,7 @@ import androidx.lifecycle.MutableLiveData;
 
 import com.example.spidpay.data.RetrofitClient;
 import com.example.spidpay.data.RetrofitInterface;
-import com.example.spidpay.data.response.InterrestedforResponse;
+import com.example.spidpay.data.response.InterestedResponse;
 import com.example.spidpay.interfaces.StaticInterface;
 import com.example.spidpay.util.Constant;
 import com.example.spidpay.util.NoInternetException;
@@ -29,13 +29,13 @@ public class StaticRepository {
         this.staticInterface = staticInterface;
     }
 
-    public MutableLiveData<List<InterrestedforResponse>> getStaticData(String cat, String role) {
-        MutableLiveData<List<InterrestedforResponse>> listMutableLiveData = new MutableLiveData<>();
+    public MutableLiveData<List<InterestedResponse>> getStaticData(String cat, String role) {
+        MutableLiveData<List<InterestedResponse>> listMutableLiveData = new MutableLiveData<>();
         RetrofitInterface retrofitInterface = RetrofitClient.GetRetrofitClient(context, Constant.USER_URL).create(RetrofitInterface.class);
-        Call<List<InterrestedforResponse>> call = retrofitInterface.getStaticData(cat, role);
-        call.enqueue(new Callback<List<InterrestedforResponse>>() {
+        Call<List<InterestedResponse>> call = retrofitInterface.getStaticData(cat, role);
+        call.enqueue(new Callback<List<InterestedResponse>>() {
             @Override
-            public void onResponse(@NotNull Call<List<InterrestedforResponse>> call, @NotNull Response<List<InterrestedforResponse>> response) {
+            public void onResponse(@NotNull Call<List<InterestedResponse>> call, @NotNull Response<List<InterestedResponse>> response) {
                 if (response.isSuccessful() && response.body() != null) {
                     listMutableLiveData.postValue(response.body());
                 } else {
@@ -55,7 +55,7 @@ public class StaticRepository {
             }
 
             @Override
-            public void onFailure(@NotNull Call<List<InterrestedforResponse>> call, @NotNull Throwable t) {
+            public void onFailure(@NotNull Call<List<InterestedResponse>> call, @NotNull Throwable t) {
                 if (t instanceof NoInternetException) {
                     staticInterface.onStaticFailed("No Internet");
                 } else {

@@ -21,13 +21,13 @@ import java.util.regex.Pattern;
 
 public class Constant {
 
-    //public static final String BASE_URL=" http://spidpay-api-565132133.ap-south-1.elb.amazonaws.com/";
-
     public static final String USER_URL = "http://spidpay-api-565132133.ap-south-1.elb.amazonaws.com/spidpay-identity/api/";
     public static final String TXN_URL = "http://spidpay-api-565132133.ap-south-1.elb.amazonaws.com/spidpay-txnactivity/";
     public static final String WALLET_URL = "http://spidpay-api-565132133.ap-south-1.elb.amazonaws.com/spidpay-wallet/";
+    public static final String PRODUCT_URL = "http://spidpay-api-565132133.ap-south-1.elb.amazonaws.com//spidpay-product/configuration/";
 
     public static final String ACCOUNT_STATUS ="KYC Pending";
+    public static final String SERVICE_CHARGE_PAYOUT ="PAYOUTS";
 
     public static final String MY_CONTENT_PROVIDER = "com.example.spidpay.provider";
     public static final String FILE_DIR = "/spidpay/photo";
@@ -49,8 +49,11 @@ public class Constant {
     public static final String PARENT_ID = "eaf02719-c928-42d5-86a8-7530933a44ca";
     public static final String TRANSACTION_CATEGORY_CASHDEPOSITE = "CASH_TRANSACTION";
     public static final String TRANSACTION_CATEGORY_WALLETTRANSFER = "WALLET_TRANSFER";
-    public static final String TRADE_TRANSFER = "WALLET_TRANSFER";
-    public static final String BANK_TRANSFER = "BANK_TRANSFER";
+    public static final String TRADE_WALLET_TRANSFER = "TRADE_WALLET_TRANSFER";
+    public static final String TRADE_BANK_TRANSFER = "BANK_TRANSFER";
+    public static final String TRADE_PAYTM_TRANSFER="PAYTM";
+    public static final String SERVICE_CHARGE_BANK_TRANSFER = "BANK";
+    public static final String SERVICE_CHARGE_TRADE_WALLET_TRANSFER = "TRADE_WALLET";
     public static final int BOTTOM_HOME = 1;
     public static final int BOTTOM_COMMISION = 2;
     public static final int BOTTOM_NOTIFICATION = 3;

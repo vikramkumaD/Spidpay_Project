@@ -8,7 +8,7 @@ import androidx.databinding.DataBindingUtil;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.spidpay.R;
-import com.example.spidpay.data.response.InterrestedforResponse;
+import com.example.spidpay.data.response.InterestedResponse;
 import com.example.spidpay.databinding.InterrestedforItemviewBinding;
 import com.example.spidpay.interfaces.OnStaticClickIterface;
 
@@ -19,9 +19,9 @@ import java.util.List;
 public class InterrestedforAdapter extends RecyclerView.Adapter<InterrestedforAdapter.InterrestedforViewHolder> {
 
     OnStaticClickIterface onStaticClickIterface;
-    List<InterrestedforResponse> list;
+    List<InterestedResponse> list;
 
-    public InterrestedforAdapter(List<InterrestedforResponse> list, OnStaticClickIterface onStaticClickIterface) {
+    public InterrestedforAdapter(List<InterestedResponse> list, OnStaticClickIterface onStaticClickIterface) {
         this.list = list;
         this.onStaticClickIterface = onStaticClickIterface;
     }

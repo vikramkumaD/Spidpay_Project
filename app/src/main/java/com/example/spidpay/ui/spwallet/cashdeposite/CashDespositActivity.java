@@ -18,7 +18,7 @@ import com.example.spidpay.R;
 import com.example.spidpay.data.repository.AddMoneyRepository;
 import com.example.spidpay.data.repository.StaticRepository;
 import com.example.spidpay.data.response.AddMoneyResponse;
-import com.example.spidpay.data.response.InterrestedforResponse;
+import com.example.spidpay.data.response.InterestedResponse;
 import com.example.spidpay.databinding.ActivityCashDepositeBinding;
 import com.example.spidpay.db.AppDatabase;
 import com.example.spidpay.db.UserDao;
@@ -121,11 +121,11 @@ public class CashDespositActivity extends AppCompatActivity implements OnStaticC
         ItemOffsetDecoration itemOffsetDecoration = new ItemOffsetDecoration(CashDespositActivity.this, R.dimen.margin10dp);
         rv_interreseted_for.addItemDecoration(itemOffsetDecoration);
 
-        List<InterrestedforResponse> list = new ArrayList<>();
-        list.add(new InterrestedforResponse("IMPS", "IMPS"));
-        list.add(new InterrestedforResponse("NEFT", "NEFT"));
-        list.add(new InterrestedforResponse("RTGS", "RTGS"));
-        list.add(new InterrestedforResponse("UPI", "UPI"));
+        List<InterestedResponse> list = new ArrayList<>();
+        list.add(new InterestedResponse("IMPS", "IMPS"));
+        list.add(new InterestedResponse("NEFT", "NEFT"));
+        list.add(new InterestedResponse("RTGS", "RTGS"));
+        list.add(new InterestedResponse("UPI", "UPI"));
         InterrestedforAdapter interrestedforAdapter = new InterrestedforAdapter(list, onStaticClickIterface);
         rv_interreseted_for.setAdapter(interrestedforAdapter);
         interrestedfor_bottomsheet.show();

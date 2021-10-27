@@ -125,6 +125,7 @@ public class BankGSTFragment extends Fragment implements BankInteface, StaticInt
                 bottomSheetDialog_bankinfo.dismiss();
                 Constant.START_TOUCH(requireActivity());
                 myProfileViewModel.getBankInfo(updateResponse.userid);
+                fragmentBankGSTBinding.pbBankinfo.setVisibility(View.GONE);
             }
         });
     }

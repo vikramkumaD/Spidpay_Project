@@ -14,7 +14,7 @@ import com.example.spidpay.data.request.AddMoneyRequest;
 import com.example.spidpay.data.request.CashTransactionRequest;
 import com.example.spidpay.data.request.WalletTransferRequest;
 import com.example.spidpay.data.response.AddMoneyResponse;
-import com.example.spidpay.data.response.InterrestedforResponse;
+import com.example.spidpay.data.response.InterestedResponse;
 import com.example.spidpay.data.response.ParentUser;
 import com.example.spidpay.data.response.UserInfo;
 import com.example.spidpay.interfaces.AddMoneyInterface;
@@ -141,7 +141,7 @@ public class AddMoneyViewModel extends ViewModel {
         addMoneyInterface.onOnlineSuccess(addMoneyResponseLiveData);
     }
 
-    public LiveData<List<InterrestedforResponse>> getStaticData() {
+    public LiveData<List<InterestedResponse>> getStaticData() {
         staticInterface.onStaticStart();
         return staticRepository.getStaticData(Constant.BANK, Constant.ROLE_INTERRESTEDFOR);
     }

@@ -285,7 +285,7 @@
     <string name="camera">From Camera</string>
     <string name="gallery">From Gallery</string>
     <string name="cancel">Cancel</string>
-    <string name="paytmnumber">Enter mobile number registered in paytm</string>
+    <string name="paytmnumber">Paytm mobile number</string>
     <string name="transactionmode">Transaction Mode</string>
     <string name="neft">NEFT</string>
     <string name="imps">IMPS</string>

@@ -51,7 +51,7 @@
         <entry key="..\:/Android Projcet/Spidpay_final/Spidpay_Project/app/src/main/res/layout/activity_payment_successful.xml" value="0.25416666666666665" />
         <entry key="..\:/Android Projcet/Spidpay_final/Spidpay_Project/app/src/main/res/layout/activity_register.xml" value="0.25" />
         <entry key="..\:/Android Projcet/Spidpay_final/Spidpay_Project/app/src/main/res/layout/activity_register_sender.xml" value="0.24010416666666667" />
-        <entry key="..\:/Android Projcet/Spidpay_final/Spidpay_Project/app/src/main/res/layout/activity_tranfer_money.xml" value="0.25416666666666665" />
+        <entry key="..\:/Android Projcet/Spidpay_final/Spidpay_Project/app/src/main/res/layout/activity_tranfer_money.xml" value="0.152" />
         <entry key="..\:/Android Projcet/Spidpay_final/Spidpay_Project/app/src/main/res/layout/activity_transfer_successfull.xml" value="0.25416666666666665" />
         <entry key="..\:/Android Projcet/Spidpay_final/Spidpay_Project/app/src/main/res/layout/address_edit_layout.xml" value="0.25416666666666665" />
         <entry key="..\:/Android Projcet/Spidpay_final/Spidpay_Project/app/src/main/res/layout/alltransaction_itemview.xml" value="0.25416666666666665" />
@@ -66,11 +66,11 @@
         <entry key="..\:/Android Projcet/Spidpay_final/Spidpay_Project/app/src/main/res/layout/fragment_request__wallet__transfer_.xml" value="0.25416666666666665" />
         <entry key="..\:/Android Projcet/Spidpay_final/Spidpay_Project/app/src/main/res/layout/fragment_transaction__report_.xml" value="0.25416666666666665" />
         <entry key="..\:/Android Projcet/Spidpay_final/Spidpay_Project/app/src/main/res/layout/fragment_transfer__money_.xml" value="0.22407407407407406" />
-        <entry key="..\:/Android Projcet/Spidpay_final/Spidpay_Project/app/src/main/res/layout/interrestedfor_bottomsheet.xml" value="0.25416666666666665" />
-        <entry key="..\:/Android Projcet/Spidpay_final/Spidpay_Project/app/src/main/res/layout/landingfragment.xml" value="0.25416666666666665" />
+        <entry key="..\:/Android Projcet/Spidpay_final/Spidpay_Project/app/src/main/res/layout/interrestedfor_bottomsheet.xml" value="0.152" />
+        <entry key="..\:/Android Projcet/Spidpay_final/Spidpay_Project/app/src/main/res/layout/landingfragment.xml" value="0.2" />
         <entry key="..\:/Android Projcet/Spidpay_final/Spidpay_Project/app/src/main/res/layout/test_layout.xml" value="0.25" />
         <entry key="..\:/Android Projcet/Spidpay_final/Spidpay_Project/app/src/main/res/layout/update_bank_detail.xml" value="0.25416666666666665" />
-        <entry key="..\:/Android Projcet/Spidpay_final/Spidpay_Project/app/src/main/res/layout/update_company_detail.xml" value="0.25416666666666665" />
+        <entry key="..\:/Android Projcet/Spidpay_final/Spidpay_Project/app/src/main/res/layout/update_company_detail.xml" value="0.176" />
         <entry key="..\:/Android Projcet/Spidpay_final/Spidpay_Project/app/src/main/res/layout/update_kyc_layout.xml" value="0.25416666666666665" />
         <entry key="..\:/Android Projcet/Spidpay_final/Spidpay_Project/app/src/main/res/layout/verfiysenderdialog.xml" value="0.25416666666666665" />
         <entry key="..\:/Android Projcet/Spidpay_final/Spidpay_Project/app/src/main/res/layout/verifyotpdialog.xml" value="0.25416666666666665" />

@@ -11,11 +11,14 @@ import androidx.lifecycle.ViewModel;
 import com.example.spidpay.R;
 import com.example.spidpay.data.repository.AddMoneyRepository;
 import com.example.spidpay.data.request.BankTransferRequest;
+import com.example.spidpay.data.request.PaytmTransferRequest;
 import com.example.spidpay.data.request.TransferMoneyRequest;
+import com.example.spidpay.data.response.InterestedResponse;
 import com.example.spidpay.data.response.TransferMoenyResponse;
 import com.example.spidpay.interfaces.TradeWalletInterface;
 import com.example.spidpay.util.Constant;
 
+import java.util.List;
 import java.util.Objects;
 
 public class TradeTransferMoneyViewModel extends ViewModel {
@@ -34,6 +37,7 @@ public class TradeTransferMoneyViewModel extends ViewModel {
     public MutableLiveData<Boolean> rtgs = new MutableLiveData<>();
 
 
+    public MutableLiveData<String> paytm_number = new MutableLiveData<>();
     public MutableLiveData<String> notes = new MutableLiveData<>();
     public MutableLiveData<String> enteramount = new MutableLiveData<>();
     public double totalbalance;
@@ -41,8 +45,8 @@ public class TradeTransferMoneyViewModel extends ViewModel {
 
     public void onIMPSClick() {
         imps.setValue(true);
-        rtgs.setValue(false);
-        upi.setValue(false);
+        //rtgs.setValue(false);
+        //upi.setValue(false);
         neft.setValue(false);
     }
 
@@ -62,8 +66,8 @@ public class TradeTransferMoneyViewModel extends ViewModel {
 
     public void onNEFTClick() {
         imps.setValue(false);
-        rtgs.setValue(false);
-        upi.setValue(false);
+        //rtgs.setValue(false);
+        //upi.setValue(false);
         neft.setValue(true);
     }
 
@@ -93,7 +97,6 @@ public class TradeTransferMoneyViewModel extends ViewModel {
     }
 
 
-
     public void onTotalAmountClick() {
         total_amount.setValue(true);
         other_amount.setValue(false);
@@ -113,7 +116,7 @@ public class TradeTransferMoneyViewModel extends ViewModel {
             return;
         }
 
-        double amt=Double.parseDouble(enteramount.getValue());
+        double amt = Double.parseDouble(enteramount.getValue());
 
         if (amt == 0 || amt > totalbalance) {
             tradeWalletInterface.onFailed(view.getResources().getString(R.string.enteramountcannot));
@@ -129,7 +132,7 @@ public class TradeTransferMoneyViewModel extends ViewModel {
 
         TransferMoneyRequest transferMoneyRequest = new TransferMoneyRequest();
         transferMoneyRequest.amount = Integer.parseInt(enteramount.getValue());
-        transferMoneyRequest.transactionCategory = Constant.TRADE_TRANSFER;
+        transferMoneyRequest.transactionCategory = Constant.TRADE_WALLET_TRANSFER;
         transferMoneyRequest.domain = Constant.DOMAIN_NAME;
         transferMoneyRequest.notes = notes.getValue();
         transferMoneyRequest.userId = userId;
@@ -141,7 +144,7 @@ public class TradeTransferMoneyViewModel extends ViewModel {
     public void getBankTransferResponse(String userId) {
         TransferMoneyRequest bankTransferRequest = new TransferMoneyRequest();
         bankTransferRequest.amount = Integer.parseInt(enteramount.getValue());
-        bankTransferRequest.transactionCategory = Constant.BANK_TRANSFER;
+        bankTransferRequest.transactionCategory = Constant.TRADE_BANK_TRANSFER;
         bankTransferRequest.domain = Constant.DOMAIN_NAME;
         bankTransferRequest.notes = notes.getValue();
         bankTransferRequest.userId = userId;
@@ -163,16 +166,34 @@ public class TradeTransferMoneyViewModel extends ViewModel {
 
     }
 
-    public void callMethodBasdedOnUserSelection(String userId)
-    {
-        if(spidpaywallet.getValue())
-        {
+    public void getPaytmTransferResponse(String userId) {
+        TransferMoneyRequest bankTransferRequest = new TransferMoneyRequest();
+        bankTransferRequest.amount = Integer.parseInt(enteramount.getValue());
+        bankTransferRequest.transactionCategory = Constant.TRADE_PAYTM_TRANSFER;
+        bankTransferRequest.domain = Constant.DOMAIN_NAME;
+        bankTransferRequest.notes = notes.getValue();
+        bankTransferRequest.userId = userId;
+
+        PaytmTransferRequest paytmTransferRequest = new PaytmTransferRequest();
+        paytmTransferRequest.MobileNo = "";
+        paytmTransferRequest.ServiceCharge = "";
+        paytmTransferRequest.ValidateBeneficiary = true;
+        paytmTransferRequest.CustomerName = "";
+
+    }
+
+    public void callMethodBasdedOnUserSelection(String userId) {
+        if (spidpaywallet.getValue()) {
             getTradeToSPWallet(userId);
-        }
-        else {
+        } else if (paytmwallet.getValue()) {
+            getPaytmTransferResponse(userId);
+        } else {
             getBankTransferResponse(userId);
         }
+    }
 
+    public LiveData<List<InterestedResponse>> getServiceCharge(String amount, String txnCat) {
+        return addMoneyRepository.getServiceCharge(amount, txnCat);
     }
 
 

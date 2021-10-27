@@ -6,19 +6,15 @@ import static android.app.Activity.RESULT_OK;
 import android.content.Context;
 import android.content.Intent;
 import android.database.Cursor;
-import android.graphics.Bitmap;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.net.Uri;
-import android.os.Build;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.annotation.RequiresApi;
 import androidx.core.content.FileProvider;
 import androidx.databinding.DataBindingUtil;
-import androidx.exifinterface.media.ExifInterface;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.ViewModelProvider;
@@ -56,7 +52,6 @@ import org.jetbrains.annotations.NotNull;
 
 import java.io.File;
 import java.io.IOException;
-import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Locale;
@@ -342,11 +337,11 @@ public class KYCFragment extends Fragment implements KYCInterface, OnStaticClick
         updateBankDetailBinding.edtEditComType.setOnClickListener(v -> {
             is_pb_for_bottom_sheet = true;
             myProfileViewModel.static_value = Constant.COMPANY;
-            getCompayType();
+            getCompanyType();
         });
     }
 
-    public void getCompayType() {
+    public void getCompanyType() {
         is_kyc_data_selection = false;
         View view = LayoutInflater.from(requireActivity()).inflate(R.layout.interrestedfor_bottomsheet, null);
         interrestedfor_bottomsheet = new BottomSheetDialog(requireActivity());
@@ -367,6 +362,7 @@ public class KYCFragment extends Fragment implements KYCInterface, OnStaticClick
                 rv_interested_for.setAdapter(interrestedforAdapter);
                 interrestedfor_bottomsheet.show();
             } else {
+                progressBar_for_bottom_sheet.setVisibility(View.GONE);
                 InterrestedforAdapter interrestedforAdapter = new InterrestedforAdapter(interrestedforResponses, onStaticClickIterface);
                 rv_interested_for.setAdapter(interrestedforAdapter);
                 interrestedfor_bottomsheet.show();

@@ -21,34 +21,62 @@
         android:usesCleartextTraffic="true">
         <activity
             android:name=".ui.dmt.TransferSuccessfullActivity"
-            android:exported="true" />
+            android:exported="true"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".ui.dmt.AddNewBeneiciaryActivity"
-            android:exported="true" />
+            android:exported="true"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".ui.dmt.RegisterSenderActivity"
-            android:exported="true" />
+            android:exported="true"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".ui.dmt.DMT_TrasferMoneyActivity"
-            android:exported="true" />
-        <activity android:name=".ui.spwallet.PaymentFailedActivity" />
-        <activity android:name=".ui.spwallet.WebviewActivity" />
-        <activity android:name=".ui.tradewallet.TransferMoneyActivity" />
-        <activity android:name=".ui.spwallet.cashdeposite.CashDespositActivity" />
-        <activity android:name=".ui.spwallet.PaymentSuccessfulActivity" />
-        <activity android:name=".ui.spwallet.AddMoneyActivity" />
-        <activity android:name=".ui.alltransaction.AllTransactionByWalletIdAcivity" />
+            android:exported="true"
+            android:screenOrientation="portrait" />
         <activity
+            android:name=".ui.spwallet.PaymentFailedActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ui.spwallet.WebviewActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ui.tradewallet.TransferMoneyActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ui.spwallet.cashdeposite.CashDespositActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ui.spwallet.PaymentSuccessfulActivity"
+
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ui.spwallet.AddMoneyActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ui.alltransaction.AllTransactionByWalletIdAcivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:screenOrientation="portrait"
             android:name=".ui.HostActivity"
             android:label="@string/title_activity_host"
             android:theme="@style/Theme.Design.Light.NoActionBar" />
-        <activity android:name=".ui.verifyotp.VerifyOTPActivity" />
-        <activity android:name=".ui.DashboardActivity" />
-        <activity android:name=".ui.WelcomeActivity" />
+        <activity android:name=".ui.verifyotp.VerifyOTPActivity"
+
+            android:screenOrientation="portrait"/>
+        <activity android:name=".ui.DashboardActivity"
+
+            android:screenOrientation="portrait"/>
+        <activity android:name=".ui.WelcomeActivity"
+
+            android:screenOrientation="portrait"/>
         <activity
+
             android:name=".ui.signup.RegisterActivity"
             android:screenOrientation="fullSensor" />
         <activity
+
             android:name=".ui.login.LoginActivity"
             android:screenOrientation="fullSensor" />
         <activity

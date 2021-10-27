@@ -18,7 +18,7 @@ import com.example.spidpay.data.response.BankDetailsResponse;
 import com.example.spidpay.data.response.BooleanResponse;
 import com.example.spidpay.data.response.CommonResponse;
 import com.example.spidpay.data.response.CompanyReponse;
-import com.example.spidpay.data.response.InterrestedforResponse;
+import com.example.spidpay.data.response.InterestedResponse;
 import com.example.spidpay.data.response.KYCResponse;
 import com.example.spidpay.data.response.LoginResponse;
 import com.example.spidpay.data.response.MyAddressResponse;
@@ -58,7 +58,7 @@ public interface RetrofitInterface {
     Call<RegisterResponse> user_onBoarding(@Body RegisterRequest loginRequest);
 
     @GET("static-data/v1/{category}")
-    Call<List<InterrestedforResponse>> getStaticData(@Path("category") String user, @Query("role") String role);
+    Call<List<InterestedResponse>> getStaticData(@Path("category") String user, @Query("role") String role);
 
     @Headers({"Content-Type:application/json"})
     @POST("change-password/v1")
@@ -124,8 +124,11 @@ public interface RetrofitInterface {
     @POST("signup/CreateProfile")
     Call<String> postImage(@Header("Authorization") String user_token, @Part MultipartBody.Part image, @Part("userDetails") RequestBody name);
 
+    @GET("service-charge/amount/product/txnCategory")
+    Call<List<InterestedResponse>> getServiceCharge(@Query("amount") String amount,@Query("product") String product,@Query("txnCategory") String txnCategory);
 
-    //http://spidpay-api-565132133.ap-south-1.elb.amazonaws.com/spidpay-identity/api/upload/v1/abc/PAN
+
+    //  http://spidpay-api-565132133.ap-south-1.elb.amazonaws.com/spidpay-identity/api/upload/v1/abc/PAN
 
 }
 
