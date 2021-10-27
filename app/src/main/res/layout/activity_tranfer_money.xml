@@ -23,10 +23,10 @@
         android:layout_height="wrap_content">
 
         <androidx.constraintlayout.widget.ConstraintLayout
-            android:paddingBottom="@dimen/margin20dp"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:background="#10D1D1D1"
+            android:paddingBottom="@dimen/margin20dp"
             tools:context=".ui.tradewallet.TransferMoneyActivity">
 
             <androidx.cardview.widget.CardView
@@ -198,174 +198,168 @@
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 
+
             <androidx.constraintlayout.widget.ConstraintLayout
-                android:id="@+id/trade_trasfer_label"
+                android:id="@+id/constraint_trade_wallet"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin20dp"
+                app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/trade_trasfer_for">
 
 
-                <RelativeLayout
-                    android:layout_marginTop="@dimen/margin5dp"
-                    android:id="@+id/sp_wallet_label"
-                    android:layout_width="@dimen/margin100dp"
+                <EditText
+                    android:id="@+id/edt_paytm_number"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="@dimen/margin20dp"
-                    android:layout_weight="1"
-                    app:layout_constraintHorizontal_bias="0.5"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent">
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_centerInParent="true"
-                        android:fontFamily="@font/lato_bold"
-                        android:text="@string/spidwallet"
-                        android:textColor="@{transfermoney.spidpaywallet ? @color/welcome_green_2 : @color/tradewallet_grey,default=@color/welcome_green_2}" />
-
-                </RelativeLayout>
-
-                <RelativeLayout
-                    android:layout_marginTop="@dimen/margin5dp"
-                    android:id="@+id/paytm_wallet_label"
-                    android:layout_width="@dimen/margin100dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    app:layout_constraintEnd_toStartOf="@+id/bank_transfer_label"
-                    app:layout_constraintHorizontal_bias="0.5"
-                    app:layout_constraintStart_toEndOf="@+id/sp_wallet_label"
-                    app:layout_constraintTop_toTopOf="parent">
-
-                    <TextView
-                        android:fontFamily="@font/lato_bold"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_centerInParent="true"
-                        android:text="@string/paytmwallet"
-                        android:textColor="@{transfermoney.paytmwallet ? @color/welcome_green_2 : @color/tradewallet_grey,default=@color/tradewallet_grey}" />
-
-                </RelativeLayout>
-
-                <RelativeLayout
-                    android:layout_marginTop="@dimen/margin5dp"
-                    android:id="@+id/bank_transfer_label"
-                    android:layout_width="@dimen/margin100dp"
-                    android:layout_height="wrap_content"
                     android:layout_marginEnd="@dimen/margin20dp"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.5"
+                    android:background="@drawable/transfer_money_bg"
+                    android:enabled="@{transfermoney.total_amount ? false : true}"
+                    android:hint="@string/paytmnumber"
+                    android:importantForAutofill="no"
+                    android:inputType="number"
+                    android:padding="@dimen/margin15dp"
+                    android:text="@={transfermoney.enteramount}"
+                    android:visibility="@{transfermoney.paytmwallet ? View.VISIBLE : View.GONE,default=gone}"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/constraint_bank_transfer_mode"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:visibility="@{transfermoney.bank ? View.VISIBLE : View.GONE,default=gone}"
+                    app:layout_constraintStart_toStartOf="@+id/edt_paytm_number"
                     app:layout_constraintTop_toTopOf="parent">
 
+
                     <TextView
-                        android:fontFamily="@font/lato_bold"
+                        android:id="@+id/tv_transfer_mode"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_centerInParent="true"
-                        android:text="@string/banktransfer"
-                        android:textColor="@{transfermoney.bank ? @color/welcome_green_2 : @color/tradewallet_grey,default=@color/tradewallet_grey}" />
+                        android:layout_alignParentEnd="true"
+                        android:layout_marginStart="@dimen/margin20dp"
+                        android:layout_marginTop="@dimen/margin20dp"
+                        android:layout_marginEnd="@dimen/margin20dp"
+                        android:fontFamily="@font/lato_bold"
+                        android:text="@string/transactionmode"
+                        android:textColor="@color/black"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
 
-                </RelativeLayout>
+                    <RadioButton
+                        android:id="@+id/rb_neft"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/margin15dp"
+                        android:layout_marginTop="@dimen/margin15dp"
+                        android:buttonTint="@color/green"
+                        android:checked="@{transfermoney.total_amount, default=true}"
+                        android:fontFamily="@font/lato_bold"
+                        android:onClick="@{()->transfermoney.onTotalAmountClick()}"
+                        android:text="@string/neft"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/tv_transfer_mode" />
 
-
-            </androidx.constraintlayout.widget.ConstraintLayout>
-
-
-
-
-            <Button
-                android:visibility="@{transfermoney.bank ? View.VISIBLE : View.GONE,default=gone}"
-                android:layout_marginStart="@dimen/margin20dp"
-                android:layout_marginTop="@dimen/margin20dp"
-                android:layout_marginEnd="@dimen/margin20dp"
-                android:background="@drawable/button_bg_green"
-                android:id="@+id/btn_selectbank"
-                app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/trade_trasfer_label"
-                android:textColor="@color/white"
-                android:textAllCaps="false"
-                android:text="@string/selectbank"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"/>
-
-            <TextView
-                android:id="@+id/tv_amount_detail"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentEnd="true"
-                android:layout_marginStart="@dimen/margin20dp"
-                android:layout_marginTop="@dimen/margin20dp"
-                android:layout_marginEnd="@dimen/margin20dp"
-                android:fontFamily="@font/lato_bold"
-                android:text="@string/amoutdetail"
-                android:textColor="@color/black"
-                app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/btn_selectbank" />
+                    <RadioButton
+                        android:id="@+id/rb_imps"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/margin40dp"
+                        android:layout_marginTop="@dimen/margin15dp"
+                        android:buttonTint="@color/green"
+                        android:checked="@{transfermoney.other_amount}"
+                        android:fontFamily="@font/lato_bold"
+                        android:onClick="@{()->transfermoney.onOtherAmountClick()}"
+                        android:text="@string/imps"
+                        app:layout_constraintLeft_toRightOf="@+id/rb_neft"
+                        app:layout_constraintTop_toBottomOf="@+id/tv_transfer_mode" />
 
 
-            <RadioButton
-                android:id="@+id/rb_full_amount"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/margin20dp"
-                android:layout_marginTop="@dimen/margin20dp"
-                android:buttonTint="@color/green"
-                android:checked="@{transfermoney.total_amount, default=true}"
-                android:fontFamily="@font/lato_bold"
-                android:onClick="@{()->transfermoney.onTotalAmountClick()}"
-                android:text="@string/fullamount"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/tv_amount_detail" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
 
-            <RadioButton
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/margin40dp"
-                android:layout_marginTop="@dimen/margin20dp"
-                android:buttonTint="@color/green"
-                android:checked="@{transfermoney.other_amount}"
-                android:fontFamily="@font/lato_bold"
-                android:onClick="@{()->transfermoney.onOtherAmountClick()}"
-                android:text="@string/otheramount"
-                app:layout_constraintLeft_toRightOf="@+id/rb_full_amount"
-                app:layout_constraintTop_toBottomOf="@+id/tv_amount_detail" />
-
-            <RelativeLayout
-                android:id="@+id/relative_transfer_amount"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/rb_full_amount">
 
                 <TextView
-                    android:id="@+id/tv_transfer_amount"
+                    android:id="@+id/tv_amount_detail"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
                     android:layout_marginStart="@dimen/margin20dp"
                     android:layout_marginTop="@dimen/margin20dp"
+                    android:layout_marginEnd="@dimen/margin20dp"
                     android:fontFamily="@font/lato_bold"
-                    android:text="@string/transfer_amount"
+                    android:text="@string/amoutdetail"
                     android:textColor="@color/black"
-                    app:layout_constraintHorizontal_chainStyle="spread" />
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/constraint_bank_transfer_mode" />
+
+                <RadioButton
+                    android:id="@+id/rb_full_amount"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/margin15dp"
+                    android:layout_marginTop="@dimen/margin15dp"
+                    android:buttonTint="@color/green"
+                    android:checked="@{transfermoney.total_amount, default=true}"
+                    android:fontFamily="@font/lato_bold"
+                    android:onClick="@{()->transfermoney.onTotalAmountClick()}"
+                    android:text="@string/fullamount"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/tv_amount_detail" />
+
+                <RadioButton
+                    android:id="@+id/rb_other_amount"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/margin40dp"
+                    android:layout_marginTop="@dimen/margin15dp"
+                    android:buttonTint="@color/green"
+                    android:checked="@{transfermoney.other_amount}"
+                    android:fontFamily="@font/lato_bold"
+                    android:onClick="@{()->transfermoney.onOtherAmountClick()}"
+                    android:text="@string/otheramount"
+                    app:layout_constraintLeft_toRightOf="@+id/rb_full_amount"
+                    app:layout_constraintTop_toBottomOf="@+id/tv_amount_detail" />
+
+
+                <RelativeLayout
+                    android:id="@+id/relative_transfer_amount"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/rb_full_amount">
+
+                    <TextView
+                        android:id="@+id/tv_transfer_amount"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/margin20dp"
+                        android:layout_marginTop="@dimen/margin20dp"
+                        android:fontFamily="@font/lato_bold"
+                        android:text="@string/transfer_amount"
+                        android:textColor="@color/black"
+                        app:layout_constraintHorizontal_chainStyle="spread" />
 
                     <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
                         android:layout_marginStart="@dimen/margin20dp"
                         android:layout_marginTop="@dimen/margin10dp"
                         android:layout_marginEnd="@dimen/margin20dp"
                         android:layout_marginBottom="@dimen/margin10dp"
-                        android:background="@drawable/transfer_money_bg"
                         android:layout_toEndOf="@+id/tv_transfer_amount"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content">
+                        android:background="@drawable/transfer_money_bg">
 
                         <TextView
-                            android:fontFamily="@font/lato_bold"
-                            android:textSize="@dimen/margin16sp"
-                            android:layout_marginStart="@dimen/margin10dp"
-                            android:layout_centerVertical="true"
-                            android:text="@string/rupees"
                             android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"/>
+                            android:layout_height="wrap_content"
+                            android:layout_centerVertical="true"
+                            android:layout_marginStart="@dimen/margin10dp"
+                            android:fontFamily="@font/lato_bold"
+                            android:text="@string/rupees"
+                            android:textSize="@dimen/margin16sp" />
 
                         <EditText
                             android:id="@+id/edt_tranfer_amount"
@@ -383,130 +377,55 @@
                     </RelativeLayout>
 
 
-
-            </RelativeLayout>
-
-            <EditText
-                android:id="@+id/edt_request_parent_notes"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/margin20dp"
-                android:layout_marginTop="@dimen/margin20dp"
-                android:layout_marginEnd="@dimen/margin20dp"
-                android:layout_weight="1"
-                android:background="@drawable/edittext_shadow"
-                android:hint="@string/notes"
-                android:importantForAutofill="no"
-                android:inputType="text"
-                android:text="@={transfermoney.notes}"
-                android:paddingLeft="@dimen/margin10dp"
-                android:paddingTop="@dimen/margin15dp"
-                android:paddingRight="@dimen/margin10dp"
-                android:paddingBottom="@dimen/margin15dp"
-                android:textColorHint="@color/lightgrey"
-                app:layout_constraintTop_toBottomOf="@+id/relative_transfer_amount" />
-
-
-
-
-            <RelativeLayout
-                android:visibility="@{transfermoney.bank ? View.VISIBLE : View.GONE,default=gone}"
-                android:id="@+id/relative_service_charger"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/edt_request_parent_notes">
+                </RelativeLayout>
 
                 <TextView
                     android:id="@+id/tv_service_charge"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
                     android:layout_marginStart="@dimen/margin20dp"
-                    android:layout_marginTop="@dimen/margin20dp"
+                    android:layout_marginEnd="@dimen/margin20dp"
                     android:fontFamily="@font/lato_bold"
-                    android:text="@string/transfermode"
+                    android:text="@string/servicecharge"
                     android:textColor="@color/black"
-                    app:layout_constraintHorizontal_chainStyle="spread" />
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/relative_transfer_amount" />
 
-                <LinearLayout
-                    android:orientation="vertical"
-                    android:layout_marginStart="@dimen/margin20dp"
-                    android:layout_marginTop="@dimen/margin20dp"
-                    android:layout_below="@+id/tv_service_charge"
+
+                <TextView
+
+                    android:id="@+id/tv_service_charge_amount"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content">
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginStart="@dimen/margin20dp"
+                    android:layout_marginEnd="@dimen/margin20dp"
+                    android:fontFamily="@font/lato_bold"
+                    android:textColor="@color/black"
+                    app:layout_constraintLeft_toRightOf="@+id/tv_service_charge"
+                    app:layout_constraintTop_toBottomOf="@+id/relative_transfer_amount" />
 
-                    <RelativeLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content">
 
-                        <RadioButton
-                            android:checked="@{transfermoney.imps}"
-                            android:onClick="@{()->transfermoney.onIMPSClick()}"
-                            android:id="@+id/rb_imps"
-                            android:text="IMPS(₹5)"
-                            android:buttonTint="@color/green"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
 
-                        <RadioButton
-                            android:checked="@{transfermoney.upi}"
-                            android:onClick="@{()->transfermoney.onUPIClick()}"
-                            android:id="@+id/rb_upi"
-                            android:layout_marginStart="@dimen/margin50dp"
-                            android:layout_toRightOf="@+id/rb_imps"
-                            android:text="UPI(₹5)"
-                            android:buttonTint="@color/green"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content" />
-
-                    </RelativeLayout>
-
-                    <RelativeLayout
-                        android:layout_marginTop="@dimen/margin10dp"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content">
-
-                        <RadioButton
-                            android:checked="@{transfermoney.neft}"
-                            android:onClick="@{()->transfermoney.onNEFTClick()}"
-                            android:id="@+id/rb_neft"
-                            android:text="NEFT(₹5)"
-                            android:buttonTint="@color/green"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content" />
-
-                        <RadioButton
-                            android:checked="@{transfermoney.rtgs}"
-                            android:onClick="@{()->transfermoney.onRTGSClick()}"
-                            android:layout_marginStart="@dimen/margin50dp"
-                            android:layout_toRightOf="@+id/rb_neft"
-                            android:text="RTGS(₹5)"
-                            android:buttonTint="@color/green"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content" />
-
-                    </RelativeLayout>
-
-                </LinearLayout>
-            </RelativeLayout>
 
             <Button
-                android:textAllCaps="false"
                 android:id="@+id/btn_register"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/margin20dp"
-                android:layout_marginTop="@dimen/margin20dp"
+                android:layout_marginTop="@dimen/margin30dp"
                 android:layout_marginEnd="@dimen/margin20dp"
                 android:layout_marginBottom="@dimen/margin20dp"
                 android:background="@drawable/button_bg_green"
                 android:fontFamily="@font/lato"
+                android:onClick="@{(v)->transfermoney.onSubmitClick(v)}"
                 android:text="@string/submit"
+                android:textAllCaps="false"
                 android:textColor="@color/white"
                 android:textSize="@dimen/margin18sp"
-                android:onClick="@{(v)->transfermoney.onSubmitClick(v)}"
-                app:layout_constraintTop_toBottomOf="@+id/relative_service_charger" />
+                app:layout_constraintTop_toBottomOf="@+id/constraint_trade_wallet" />
 
 
             <ProgressBar

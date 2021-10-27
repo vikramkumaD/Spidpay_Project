@@ -62,15 +62,12 @@ public class TransferMoneyActivity extends AppCompatActivity implements TradeWal
         tradeTransferMoneyViewModel.enteramount.setValue(getIntent().getStringExtra("balance"));
         tradeTransferMoneyViewModel.totalbalance = Double.parseDouble(getIntent().getStringExtra("balance"));
 
-        activityTranferMoneyBinding.btnSelectbank.setOnClickListener(v -> getBank());
-
     }
 
     @Override
     public void onServiceStart() {
         activityTranferMoneyBinding.pbTransferMoney.setVisibility(View.VISIBLE);
         Constant.STOP_TOUCH(TransferMoneyActivity.this);
-
         tradeTransferMoneyViewModel.callMethodBasdedOnUserSelection(new PrefManager(TransferMoneyActivity.this).getUserID());
     }
 
