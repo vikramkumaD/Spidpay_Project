@@ -1,6 +1,7 @@
 package com.example.spidpay.data;
 
 import com.example.spidpay.data.request.AddMoneyRequest;
+import com.example.spidpay.data.request.BankResponse;
 import com.example.spidpay.data.request.BankTransferRequest;
 import com.example.spidpay.data.request.ChangePasswordRequest;
 import com.example.spidpay.data.request.LoginRequest;
@@ -46,7 +47,6 @@ import retrofit2.http.Path;
 import retrofit2.http.Query;
 
 public interface RetrofitInterface {
-
 
 
     @Headers({"Content-Type:application/json"})
@@ -125,9 +125,12 @@ public interface RetrofitInterface {
     Call<String> postImage(@Header("Authorization") String user_token, @Part MultipartBody.Part image, @Part("userDetails") RequestBody name);
 
     @GET("service-charge/amount/product/txnCategory")
-    Call<List<InterestedResponse>> getServiceCharge(@Query("amount") String amount,@Query("product") String product,@Query("txnCategory") String txnCategory);
+    Call<List<InterestedResponse>> getServiceCharge(@Query("amount") String amount, @Query("product") String product, @Query("txnCategory") String txnCategory);
 
+    @GET("/user/v1/{userId}/banks")
+    Call<List<BankResponse>> getBankResponse(@Path("walletId") String userId, @Query("banks") String banks);
 
+    //user/v1/{userId}/banks
     //  http://spidpay-api-565132133.ap-south-1.elb.amazonaws.com/spidpay-identity/api/upload/v1/abc/PAN
 
 }

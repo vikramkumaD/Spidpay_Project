@@ -1,4 +1,4 @@
-package com.example.spidpay.ui.landing_page;
+package com.example.spidpay.ui.landingpage;
 
 import android.content.Intent;
 import android.view.View;
@@ -11,7 +11,6 @@ import com.example.spidpay.data.response.WalletResponse;
 import com.example.spidpay.interfaces.LandingInterface;
 import com.example.spidpay.ui.alltransaction.AllTransactionByWalletIdAcivity;
 import com.example.spidpay.ui.dmt.DMT_TrasferMoneyActivity;
-import com.example.spidpay.ui.tradewallet.TransferMoneyActivity;
 
 import java.util.List;
 

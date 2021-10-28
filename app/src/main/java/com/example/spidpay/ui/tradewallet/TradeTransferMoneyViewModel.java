@@ -10,6 +10,7 @@ import androidx.lifecycle.ViewModel;
 
 import com.example.spidpay.R;
 import com.example.spidpay.data.repository.AddMoneyRepository;
+import com.example.spidpay.data.request.BankResponse;
 import com.example.spidpay.data.request.BankTransferRequest;
 import com.example.spidpay.data.request.PaytmTransferRequest;
 import com.example.spidpay.data.request.TransferMoneyRequest;
@@ -17,6 +18,7 @@ import com.example.spidpay.data.response.InterestedResponse;
 import com.example.spidpay.data.response.TransferMoenyResponse;
 import com.example.spidpay.interfaces.TradeWalletInterface;
 import com.example.spidpay.util.Constant;
+import com.example.spidpay.util.PrefManager;
 
 import java.util.List;
 import java.util.Objects;
@@ -94,6 +96,8 @@ public class TradeTransferMoneyViewModel extends ViewModel {
         bank.setValue(true);
         enteramount.setValue("");
         notes.setValue("");
+
+
     }
 
 
@@ -183,17 +187,29 @@ public class TradeTransferMoneyViewModel extends ViewModel {
     }
 
     public void callMethodBasdedOnUserSelection(String userId) {
-        if (spidpaywallet.getValue()) {
+        if (spidpaywallet.getValue() != null && spidpaywallet.getValue()) {
             getTradeToSPWallet(userId);
-        } else if (paytmwallet.getValue()) {
+        } else if (paytmwallet.getValue() != null && paytmwallet.getValue()) {
             getPaytmTransferResponse(userId);
         } else {
             getBankTransferResponse(userId);
         }
     }
 
-    public LiveData<List<InterestedResponse>> getServiceCharge(String amount, String txnCat) {
-        return addMoneyRepository.getServiceCharge(amount, txnCat);
+    public LiveData<List<InterestedResponse>> getServiceCharge(String amount) {
+        String txtid = "";
+        if (spidpaywallet.getValue() != null && spidpaywallet.getValue()) {
+            txtid = Constant.SERVICE_CHARGE_TRADE_WALLET_TRANSFER;
+        } else if (paytmwallet.getValue() != null && paytmwallet.getValue()) {
+            txtid = Constant.TRADE_PAYTM_TRANSFER;
+        } else if (bank.getValue() != null && bank.getValue()) {
+            txtid = Constant.SERVICE_CHARGE_BANK_TRANSFER;
+        }
+        return addMoneyRepository.getServiceCharge(amount, txtid);
+    }
+
+    public LiveData<List<BankResponse>> getUserBankList(String userid) {
+        return addMoneyRepository.getUserBank(userid, Constant.BANKS);
     }
 
 

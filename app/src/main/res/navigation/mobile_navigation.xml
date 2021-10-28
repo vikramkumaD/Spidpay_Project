@@ -6,7 +6,7 @@
 
     <fragment
         android:id="@+id/landingFragment"
-        android:name="com.example.spidpay.ui.landing_page.LandingFragment"
+        android:name="com.example.spidpay.ui.landingpage.LandingFragment"
         android:label="Home" >
 
         <action

@@ -8,12 +8,11 @@
 
         <variable
             name="pref"
-            type="java.lang.Boolean"
-            />
+            type="java.lang.Boolean" />
 
         <variable
             name="landingviewmodel"
-            type="com.example.spidpay.ui.landing_page.LandingViewModel" />
+            type="com.example.spidpay.ui.landingpage.LandingViewModel" />
 
         <variable
             name="wallet"
@@ -25,7 +24,7 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="@dimen/margin100dp"
         android:background="@color/white"
-        tools:context=".ui.landing_page.LandingFragment">
+        tools:context=".ui.landingpage.LandingFragment">
 
 
         <RelativeLayout

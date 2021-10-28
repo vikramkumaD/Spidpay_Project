@@ -8,6 +8,7 @@ import androidx.lifecycle.MutableLiveData;
 import com.example.spidpay.data.RetrofitClient;
 import com.example.spidpay.data.RetrofitInterface;
 import com.example.spidpay.data.request.AddMoneyRequest;
+import com.example.spidpay.data.request.BankResponse;
 import com.example.spidpay.data.request.TransferMoneyRequest;
 import com.example.spidpay.data.response.AddMoneyResponse;
 import com.example.spidpay.data.response.InterestedResponse;
@@ -143,6 +144,44 @@ public class AddMoneyRepository {
 
             @Override
             public void onFailure(@NotNull Call<List<InterestedResponse>> call, @NotNull Throwable t) {
+                if (t instanceof NoInternetException) {
+                    //staticInterface.onStaticFailed("No Internet");
+                } else {
+                    //staticInterface.onStaticFailed(t.getMessage());
+                }
+            }
+        });
+        return listMutableLiveData;
+    }
+
+
+    public MutableLiveData<List<BankResponse>> getUserBank(String userid, String bank) {
+        MutableLiveData<List<BankResponse>> listMutableLiveData = new MutableLiveData<>();
+        RetrofitInterface retrofitInterface = RetrofitClient.GetRetrofitClient(context, Constant.USER_URL).create(RetrofitInterface.class);
+        Call<List<BankResponse>> call = retrofitInterface.getBankResponse(userid,bank);
+        call.enqueue(new Callback<List<BankResponse>>() {
+            @Override
+            public void onResponse(@NotNull Call<List<BankResponse>> call, @NotNull Response<List<BankResponse>> response) {
+                if (response.isSuccessful() && response.body() != null) {
+                    listMutableLiveData.postValue(response.body());
+                } else {
+                    try {
+                        if (response.errorBody() != null) {
+                            String errorBody = response.errorBody().string();
+                            String error = Constant.parseErrorBodyofRetrofit(errorBody);
+                            //  staticInterface.onStaticFailed(error);
+                        } else {
+                            //    staticInterface.onStaticFailed(Constant.Server_ERROR);
+                        }
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                        //  staticInterface.onStaticFailed(e.toString());
+                    }
+                }
+            }
+
+            @Override
+            public void onFailure(@NotNull Call<List<BankResponse>> call, @NotNull Throwable t) {
                 if (t instanceof NoInternetException) {
                     //staticInterface.onStaticFailed("No Internet");
                 } else {

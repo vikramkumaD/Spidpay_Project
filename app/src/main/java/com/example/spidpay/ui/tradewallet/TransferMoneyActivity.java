@@ -2,13 +2,17 @@ package com.example.spidpay.ui.tradewallet;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.LiveData;
+import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.View;
 
 import com.example.spidpay.data.repository.AddMoneyRepository;
+import com.example.spidpay.data.response.InterestedResponse;
 import com.example.spidpay.data.response.TransferMoenyResponse;
 import com.example.spidpay.databinding.ActivityTranferMoneyBinding;
 import com.example.spidpay.interfaces.OnStaticClickIterface;
@@ -18,6 +22,8 @@ import com.example.spidpay.ui.spwallet.PaymentSuccessfulActivity;
 import com.example.spidpay.util.Constant;
 import com.example.spidpay.util.PrefManager;
 import com.google.android.material.bottomsheet.BottomSheetDialog;
+
+import java.util.List;
 
 
 public class TransferMoneyActivity extends AppCompatActivity implements TradeWalletInterface, StaticInterface, OnStaticClickIterface {
@@ -50,6 +56,31 @@ public class TransferMoneyActivity extends AppCompatActivity implements TradeWal
         tradeTransferMoneyViewModel.enteramount.setValue(getIntent().getStringExtra("balance"));
         tradeTransferMoneyViewModel.totalbalance = Double.parseDouble(getIntent().getStringExtra("balance"));
 
+        activityTranferMoneyBinding.edtTranferAmount.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+                if (s.length() > 0) {
+                    tradeTransferMoneyViewModel.getServiceCharge(s.toString()).observe(TransferMoneyActivity.this, new Observer<List<InterestedResponse>>() {
+                        @Override
+                        public void onChanged(List<InterestedResponse> interestedResponses) {
+                            if (interestedResponses.size() > 0) {
+
+                            }
+                        }
+                    });
+                }
+            }
+        });
     }
 
     @Override
@@ -83,7 +114,6 @@ public class TransferMoneyActivity extends AppCompatActivity implements TradeWal
         });
 
     }
-
 
 
     @Override

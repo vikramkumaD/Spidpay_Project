@@ -21,6 +21,8 @@ import java.util.regex.Pattern;
 
 public class Constant {
 
+
+
     public static final String USER_URL = "http://spidpay-api-565132133.ap-south-1.elb.amazonaws.com/spidpay-identity/api/";
     public static final String TXN_URL = "http://spidpay-api-565132133.ap-south-1.elb.amazonaws.com/spidpay-txnactivity/";
     public static final String WALLET_URL = "http://spidpay-api-565132133.ap-south-1.elb.amazonaws.com/spidpay-wallet/";
@@ -39,6 +41,7 @@ public class Constant {
     public static final String ONLINE_FAILED = "status=failed";
     public static final String Server_ERROR = "Server error!";
     public static final String BANK = "bank";
+    public static final String BANKS = "banks";
     public static final String COMPANY = "company";
     public static final String USER = "user";
     public static final String ROLE_INTERRESTEDFOR = "SP_EXT_WHITE_LABLE";
