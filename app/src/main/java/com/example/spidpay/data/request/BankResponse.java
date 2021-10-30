@@ -4,6 +4,8 @@ public class BankResponse {
     public String accountHolderName, branchName, ifscCode;
     public int accountNo;
 
+    public BankName bankName;
+
 
     public class BankName {
 

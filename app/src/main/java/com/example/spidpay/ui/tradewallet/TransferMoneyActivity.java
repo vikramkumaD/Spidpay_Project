@@ -25,6 +25,7 @@ import com.example.spidpay.util.Constant;
 import com.example.spidpay.util.PrefManager;
 import com.google.android.material.bottomsheet.BottomSheetDialog;
 
+import java.util.ArrayList;
 import java.util.List;
 
 
@@ -36,12 +37,14 @@ public class TransferMoneyActivity extends AppCompatActivity implements TradeWal
     BottomSheetDialog interrestedfor_bottomsheet;
     StaticInterface staticInterface;
     OnStaticClickIterface onStaticClickIterface;
+    List<BankResponse> bankResponseList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         activityTranferMoneyBinding = ActivityTranferMoneyBinding.inflate(getLayoutInflater());
         setContentView(activityTranferMoneyBinding.getRoot());
+        bankResponseList = new ArrayList<>();
         tradeTransferMoneyViewModel = new ViewModelProvider(this).get(TradeTransferMoneyViewModel.class);
         tradeWalletInterface = this;
         staticInterface = this;
@@ -59,7 +62,7 @@ public class TransferMoneyActivity extends AppCompatActivity implements TradeWal
         tradeTransferMoneyViewModel.totalbalance = Double.parseDouble(getIntent().getStringExtra("balance"));
         activityTranferMoneyBinding.setUserId(new PrefManager(this).getUserID());
 
-       /* tradeTransferMoneyViewModel.paytmwallet.observe(this, aBoolean -> {
+        tradeTransferMoneyViewModel.paytmwallet.observe(this, aBoolean -> {
             if (aBoolean) {
                 tradeTransferMoneyViewModel.getServiceCharge(activityTranferMoneyBinding.edtTranferAmount.getText().toString()).observe(TransferMoneyActivity.this, new Observer<List<InterestedResponse>>() {
                     @Override
@@ -72,20 +75,24 @@ public class TransferMoneyActivity extends AppCompatActivity implements TradeWal
 
             }
         });
-        */
+
 
         tradeTransferMoneyViewModel.bank.observe(this, aBoolean -> {
             if (aBoolean) {
                 tradeTransferMoneyViewModel.getUserBankList(new PrefManager(this).getUserID()).observe(this, new Observer<List<BankResponse>>() {
                     @Override
                     public void onChanged(List<BankResponse> bankResponses) {
-
+                        for (BankResponse bank : bankResponses) {
+                            bankResponseList.addAll(bankResponses);
+                            activityTranferMoneyBinding.tvUserBankName.setText(bank.bankName.description);
+                            activityTranferMoneyBinding.tvUserAccNumber.setText(String.valueOf(bank.accountNo));
+                            activityTranferMoneyBinding.tvUserBankIfsccode.setText(bank.ifscCode);
+                            break;
+                        }
                     }
                 });
             }
         });
-
-
     }
 
     @Override
@@ -135,4 +142,5 @@ public class TransferMoneyActivity extends AppCompatActivity implements TradeWal
     public void onItemClick(String code, String description) {
         interrestedfor_bottomsheet.dismiss();
     }
+
 }

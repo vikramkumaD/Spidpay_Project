@@ -98,7 +98,6 @@ public class TradeTransferMoneyViewModel extends ViewModel {
         bank.setValue(true);
         enteramount.setValue("");
         notes.setValue("");
-        getUserBankList(userId);
     }
 
 

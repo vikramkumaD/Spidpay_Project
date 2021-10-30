@@ -6,7 +6,7 @@
 
     <data>
 
-        <import type="android.view.View"></import>
+        <import type="android.view.View" />
 
         <variable
             name="totalamount"
@@ -252,99 +252,112 @@
                     android:id="@+id/constraint_bank_transfer_mode"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:visibility="@{transfermoney.bank ? View.VISIBLE : View.GONE,default=gone}"
+
                     app:layout_constraintStart_toStartOf="@+id/edt_paytm_number"
                     app:layout_constraintTop_toBottomOf="@id/edt_paytm_name">
 
 
-                    <LinearLayout
-                        android:id="@+id/relative_bank_list"
+                    <androidx.cardview.widget.CardView
+                        android:padding="@dimen/margin10dp"
+                        android:id="@+id/bank_list_card_view"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="@dimen/margin20dp"
-                        android:orientation="vertical"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent">
+                        app:layout_constraintTop_toTopOf="parent"
+                        card_view:cardBackgroundColor="@android:color/white"
+                        card_view:cardElevation="2dp"
+                        card_view:cardUseCompatPadding="true">
 
                         <LinearLayout
+                            android:paddingTop="@dimen/margin10dp"
+                            android:paddingBottom="@dimen/margin10dp"
+                            android:id="@+id/relative_bank_list"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:orientation="horizontal">
+                            android:layout_marginStart="@dimen/margin20dp"
+                            android:orientation="vertical">
 
-                            <TextView
-                                android:layout_width="wrap_content"
+                            <LinearLayout
+                                android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:fontFamily="@font/lato_bold"
-                                android:text="@string/bankname"
-                                android:textColor="@color/botton_nav_inactive_color"
-                                android:textSize="@dimen/margin16sp" />
+                                android:orientation="horizontal">
 
-                            <TextView
-                                android:layout_width="wrap_content"
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:fontFamily="@font/lato_bold"
+                                    android:text="@string/bankname"
+                                    android:textColor="@color/botton_nav_inactive_color"
+                                    android:textSize="@dimen/margin16sp" />
+
+                                <TextView
+                                    android:id="@+id/tv_user_bank_name"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginStart="@dimen/margin20dp"
+                                    android:fontFamily="@font/lato_bold"
+                                    android:textColor="@color/black"
+                                    android:textSize="@dimen/margin16sp" />
+
+
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:layout_marginStart="@dimen/margin20dp"
-                                android:fontFamily="@font/lato_bold"
-                                android:text="SBI Bank"
-                                android:textColor="@color/black"
-                                android:textSize="@dimen/margin16sp" />
+                                android:layout_marginTop="@dimen/margin10dp"
+                                android:orientation="horizontal">
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:fontFamily="@font/lato_bold"
+                                    android:text="@string/accnumber"
+                                    android:textColor="@color/botton_nav_inactive_color"
+                                    android:textSize="@dimen/margin16sp" />
+
+                                <TextView
+                                    android:id="@+id/tv_user_acc_number"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginStart="@dimen/margin20dp"
+                                    android:fontFamily="@font/lato_bold"
+                                    android:textColor="@color/black"
+                                    android:textSize="@dimen/margin16sp" />
+
+
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="@dimen/margin10dp"
+                                android:orientation="horizontal">
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:fontFamily="@font/lato_bold"
+                                    android:text="@string/ifsccode1"
+                                    android:textColor="@color/botton_nav_inactive_color"
+                                    android:textSize="@dimen/margin16sp" />
+
+                                <TextView
+                                    android:id="@+id/tv_user_bank_ifsccode"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginStart="@dimen/margin20dp"
+                                    android:fontFamily="@font/lato_bold"
+                                    android:textColor="@color/black"
+                                    android:textSize="@dimen/margin16sp" />
+
+
+                            </LinearLayout>
 
 
                         </LinearLayout>
 
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="@dimen/margin10dp"
-                            android:orientation="horizontal">
-
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:fontFamily="@font/lato_bold"
-                                android:text="@string/accnumber"
-                                android:textColor="@color/botton_nav_inactive_color"
-                                android:textSize="@dimen/margin16sp" />
-
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_marginStart="@dimen/margin20dp"
-                                android:fontFamily="@font/lato_bold"
-                                android:text="SBI Bank"
-                                android:textColor="@color/black"
-                                android:textSize="@dimen/margin16sp" />
-
-
-                        </LinearLayout>
-
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="@dimen/margin10dp"
-                            android:orientation="horizontal">
-
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:fontFamily="@font/lato_bold"
-                                android:text="@string/ifsccode1"
-                                android:textColor="@color/botton_nav_inactive_color"
-                                android:textSize="@dimen/margin16sp" />
-
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_marginStart="@dimen/margin20dp"
-                                android:fontFamily="@font/lato_bold"
-                                android:text="SBI Bank"
-                                android:textColor="@color/black"
-                                android:textSize="@dimen/margin16sp" />
-
-
-                        </LinearLayout>
-
-
-                    </LinearLayout>
+                    </androidx.cardview.widget.CardView>
 
 
                     <TextView
@@ -360,7 +373,7 @@
                         android:text="@string/transactionmode"
                         android:textColor="@color/black"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/relative_bank_list" />
+                        app:layout_constraintTop_toBottomOf="@+id/bank_list_card_view" />
 
                     <RadioButton
                         android:id="@+id/rb_neft"

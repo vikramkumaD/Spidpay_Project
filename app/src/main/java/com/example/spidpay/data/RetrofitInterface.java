@@ -125,13 +125,13 @@ public interface RetrofitInterface {
     @POST("signup/CreateProfile")
     Call<String> postImage(@Header("Authorization") String user_token, @Part MultipartBody.Part image, @Part("userDetails") RequestBody name);
 
-    @GET("service-charge/")
-    Call<List<InterestedResponse>> getServiceCharge(@Path(value = "amount", encoded = true) String amount, @Query("product") String product, @Query("txnCategory") String txnCategory);
+    @GET("service-charge?")
+    Call<List<InterestedResponse>> getServiceCharge(@Query("amount") String amount, @Query("product") String product, @Query("txnCategory") String txnCategory);
 
-    @GET("/user/v1/{userId}/banks")
-    Call<List<BankResponse>> getBankResponse(@Path("walletId") String userId, @Query("banks") String banks);
+    @GET("user/v1/{userId}/{banks}")
+    Call<List<BankResponse>> getBankResponse(@Path("userId") String userId, @Path("banks") String banks);
 
-    //user/v1/{userId}/banks
+
     //  http://spidpay-api-565132133.ap-south-1.elb.amazonaws.com/spidpay-identity/api/upload/v1/abc/PAN
 
 }
