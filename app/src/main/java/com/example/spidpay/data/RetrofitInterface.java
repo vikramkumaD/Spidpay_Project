@@ -36,6 +36,7 @@ import okhttp3.MultipartBody;
 import okhttp3.RequestBody;
 import retrofit2.Call;
 import retrofit2.http.Body;
+import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
 import retrofit2.http.Header;
 import retrofit2.http.Headers;
@@ -124,8 +125,8 @@ public interface RetrofitInterface {
     @POST("signup/CreateProfile")
     Call<String> postImage(@Header("Authorization") String user_token, @Part MultipartBody.Part image, @Part("userDetails") RequestBody name);
 
-    @GET("service-charge/amount/product/txnCategory")
-    Call<List<InterestedResponse>> getServiceCharge(@Query("amount") String amount, @Query("product") String product, @Query("txnCategory") String txnCategory);
+    @GET("service-charge/")
+    Call<List<InterestedResponse>> getServiceCharge(@Path(value = "amount", encoded = true) String amount, @Query("product") String product, @Query("txnCategory") String txnCategory);
 
     @GET("/user/v1/{userId}/banks")
     Call<List<BankResponse>> getBankResponse(@Path("walletId") String userId, @Query("banks") String banks);

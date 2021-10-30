@@ -35,6 +35,9 @@ public class PaymentSuccessfulActivity extends AppCompatActivity {
             activityPaymentSuccessfulBinding.tvRequestSuccessful.setText(getResources().getString(R.string.transferrequestsuccessful));
         }
 
+
+
+
         if(getIntent().getStringExtra("datetime")!=null && !getIntent().getStringExtra("datetime").equals(""))
         {
             try {

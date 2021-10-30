@@ -13,6 +13,10 @@
             type="String" />
 
         <variable
+            name="userId"
+            type="String" />
+
+        <variable
             name="transfermoney"
             type="com.example.spidpay.ui.tradewallet.TradeTransferMoneyViewModel" />
 
@@ -182,7 +186,7 @@
                     android:layout_height="75dp"
                     android:layout_marginEnd="@dimen/margin20dp"
                     android:background="@{transfermoney.bank ? @drawable/trade_wallet_green : @drawable/trade_wallet_grey}"
-                    android:onClick="@{()->transfermoney.onBankClick()}"
+                    android:onClick="@{()->transfermoney.onBankClick(userId)}"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0.5"
                     app:layout_constraintTop_toTopOf="parent">
@@ -209,7 +213,6 @@
 
 
                 <EditText
-
                     android:id="@+id/edt_paytm_number"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -226,6 +229,24 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 
+                <EditText
+                    android:id="@+id/edt_paytm_name"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/margin20dp"
+                    android:layout_marginTop="@dimen/margin15dp"
+                    android:layout_marginEnd="@dimen/margin20dp"
+                    android:background="@drawable/transfer_money_bg"
+                    android:hint="@string/paytmname"
+                    android:importantForAutofill="no"
+                    android:inputType="text"
+                    android:maxLength="10"
+                    android:padding="@dimen/margin15dp"
+                    android:text="@={transfermoney.paytm_name}"
+                    android:visibility="@{transfermoney.paytmwallet ? View.VISIBLE : View.GONE,default=gone}"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/edt_paytm_number" />
+
 
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:id="@+id/constraint_bank_transfer_mode"
@@ -233,7 +254,7 @@
                     android:layout_height="wrap_content"
                     android:visibility="@{transfermoney.bank ? View.VISIBLE : View.GONE,default=gone}"
                     app:layout_constraintStart_toStartOf="@+id/edt_paytm_number"
-                    app:layout_constraintTop_toBottomOf="@id/edt_paytm_number">
+                    app:layout_constraintTop_toBottomOf="@id/edt_paytm_name">
 
 
                     <LinearLayout
@@ -486,17 +507,36 @@
 
 
                 <TextView
-
                     android:id="@+id/tv_service_charge_amount"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentEnd="true"
-                    android:layout_marginStart="@dimen/margin20dp"
+                    android:layout_marginStart="@dimen/margin30dp"
                     android:layout_marginEnd="@dimen/margin20dp"
                     android:fontFamily="@font/lato_bold"
-                    android:textColor="@color/black"
+                    android:text="@string/rupees_with_zero"
                     app:layout_constraintLeft_toRightOf="@+id/tv_service_charge"
                     app:layout_constraintTop_toBottomOf="@+id/relative_transfer_amount" />
+
+                <EditText
+                    android:id="@+id/edt_tradewallet_notes"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/margin20dp"
+                    android:layout_marginTop="@dimen/margin10dp"
+                    android:layout_marginEnd="@dimen/margin20dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/edittext_shadow"
+                    android:hint="@string/notes"
+                    android:importantForAutofill="no"
+                    android:inputType="text"
+                    android:paddingLeft="@dimen/margin10dp"
+                    android:paddingTop="@dimen/margin15dp"
+                    android:paddingRight="@dimen/margin10dp"
+                    android:paddingBottom="@dimen/margin15dp"
+                    android:text="@={transfermoney.notes}"
+                    android:textColorHint="@color/lightgrey"
+                    app:layout_constraintTop_toBottomOf="@+id/tv_service_charge" />
 
 
             </androidx.constraintlayout.widget.ConstraintLayout>

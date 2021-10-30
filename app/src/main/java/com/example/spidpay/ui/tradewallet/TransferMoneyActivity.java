@@ -9,9 +9,11 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.view.View;
 
 import com.example.spidpay.data.repository.AddMoneyRepository;
+import com.example.spidpay.data.request.BankResponse;
 import com.example.spidpay.data.response.InterestedResponse;
 import com.example.spidpay.data.response.TransferMoenyResponse;
 import com.example.spidpay.databinding.ActivityTranferMoneyBinding;
@@ -55,39 +57,42 @@ public class TransferMoneyActivity extends AppCompatActivity implements TradeWal
         tradeTransferMoneyViewModel.onTotalAmountClick();
         tradeTransferMoneyViewModel.enteramount.setValue(getIntent().getStringExtra("balance"));
         tradeTransferMoneyViewModel.totalbalance = Double.parseDouble(getIntent().getStringExtra("balance"));
+        activityTranferMoneyBinding.setUserId(new PrefManager(this).getUserID());
 
-        activityTranferMoneyBinding.edtTranferAmount.addTextChangedListener(new TextWatcher() {
-            @Override
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-
-            }
-
-            @Override
-            public void onTextChanged(CharSequence s, int start, int before, int count) {
-
-            }
-
-            @Override
-            public void afterTextChanged(Editable s) {
-                if (s.length() > 0) {
-                    tradeTransferMoneyViewModel.getServiceCharge(s.toString()).observe(TransferMoneyActivity.this, new Observer<List<InterestedResponse>>() {
-                        @Override
-                        public void onChanged(List<InterestedResponse> interestedResponses) {
-                            if (interestedResponses.size() > 0) {
-
-                            }
+       /* tradeTransferMoneyViewModel.paytmwallet.observe(this, aBoolean -> {
+            if (aBoolean) {
+                tradeTransferMoneyViewModel.getServiceCharge(activityTranferMoneyBinding.edtTranferAmount.getText().toString()).observe(TransferMoneyActivity.this, new Observer<List<InterestedResponse>>() {
+                    @Override
+                    public void onChanged(List<InterestedResponse> interestedResponses) {
+                        if (interestedResponses.size() > 0) {
+                            Log.e("ok", "ok");
                         }
-                    });
-                }
+                    }
+                });
+
             }
         });
+        */
+
+        tradeTransferMoneyViewModel.bank.observe(this, aBoolean -> {
+            if (aBoolean) {
+                tradeTransferMoneyViewModel.getUserBankList(new PrefManager(this).getUserID()).observe(this, new Observer<List<BankResponse>>() {
+                    @Override
+                    public void onChanged(List<BankResponse> bankResponses) {
+
+                    }
+                });
+            }
+        });
+
+
     }
 
     @Override
     public void onServiceStart() {
         activityTranferMoneyBinding.pbTransferMoney.setVisibility(View.VISIBLE);
         Constant.STOP_TOUCH(TransferMoneyActivity.this);
-        tradeTransferMoneyViewModel.callMethodBasdedOnUserSelection(new PrefManager(TransferMoneyActivity.this).getUserID());
+        tradeTransferMoneyViewModel.callMethodBasdedOnUserSelection(this, new PrefManager(TransferMoneyActivity.this).getUserID());
     }
 
     @Override

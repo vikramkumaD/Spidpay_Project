@@ -182,7 +182,7 @@
                     android:layout_height="75dp"
                     android:layout_marginEnd="@dimen/margin20dp"
                     android:background="@{transfermoney.bank ? @drawable/trade_wallet_green : @drawable/trade_wallet_grey}"
-                    android:onClick="@{()->transfermoney.onBankClick()}"
+
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0.5"
                     app:layout_constraintTop_toTopOf="parent">

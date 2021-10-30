@@ -221,6 +221,7 @@
     <string name="spidpaywallet">Spid Wallet</string>
     <string name="tradewallet">Trade Wallet</string>
     <string name="rupees">₹ </string>
+    <string name="rupees_with_zero">₹0 </string>
     <string name="cashdepositsuccesmsg1">Your request for adding money</string>
     <string name="cashdepositsuccesmsg2">to your wallet has been sent successfully</string>
     <string name="cashdepositsuccesmsg3">The amount will be credited to your wallet after it is approved.</string>
@@ -286,6 +287,7 @@
     <string name="gallery">From Gallery</string>
     <string name="cancel">Cancel</string>
     <string name="paytmnumber">Paytm mobile number</string>
+    <string name="paytmname">Paytm Register Name </string>
     <string name="transactionmode">Transaction Mode</string>
     <string name="neft">NEFT</string>
     <string name="imps">IMPS</string>
