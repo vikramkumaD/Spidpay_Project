@@ -1,15 +1,15 @@
 package com.example.spidpay.data.request;
 
+import com.example.spidpay.data.response.InterestedResponse;
+import com.google.gson.annotations.SerializedName;
+
+
 public class BankResponse {
     public String accountHolderName, branchName, ifscCode;
-    public int accountNo;
+    public String accountNo;
 
-    public BankName bankName;
+    @SerializedName("bankName")
+    public InterestedResponse bankName;
 
 
-    public class BankName {
-
-        public String code, description;
-
-    }
 }

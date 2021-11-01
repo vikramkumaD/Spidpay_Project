@@ -436,57 +436,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content">
 
-                    <RelativeLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content">
 
-                        <RadioButton
-                            android:checked="@{transfermoney.imps}"
-                            android:onClick="@{()->transfermoney.onIMPSClick()}"
-                            android:id="@+id/rb_imps"
-                            android:text="IMPS(₹5)"
-                            android:buttonTint="@color/green"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content" />
 
-                        <RadioButton
-                            android:checked="@{transfermoney.upi}"
-                            android:onClick="@{()->transfermoney.onUPIClick()}"
-                            android:id="@+id/rb_upi"
-                            android:layout_marginStart="@dimen/margin50dp"
-                            android:layout_toRightOf="@+id/rb_imps"
-                            android:text="UPI(₹5)"
-                            android:buttonTint="@color/green"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content" />
-
-                    </RelativeLayout>
-
-                    <RelativeLayout
-                        android:layout_marginTop="@dimen/margin10dp"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content">
-
-                        <RadioButton
-                            android:checked="@{transfermoney.neft}"
-                            android:onClick="@{()->transfermoney.onNEFTClick()}"
-                            android:id="@+id/rb_neft"
-                            android:text="NEFT(₹5)"
-                            android:buttonTint="@color/green"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content" />
-
-                        <RadioButton
-                            android:checked="@{transfermoney.rtgs}"
-                            android:onClick="@{()->transfermoney.onRTGSClick()}"
-                            android:layout_marginStart="@dimen/margin50dp"
-                            android:layout_toRightOf="@+id/rb_neft"
-                            android:text="RTGS(₹5)"
-                            android:buttonTint="@color/green"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content" />
-
-                    </RelativeLayout>
 
                 </LinearLayout>
             </RelativeLayout>

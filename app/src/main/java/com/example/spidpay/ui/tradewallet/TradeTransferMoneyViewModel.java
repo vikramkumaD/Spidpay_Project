@@ -46,32 +46,16 @@ public class TradeTransferMoneyViewModel extends ViewModel {
     public MutableLiveData<String> enteramount = new MutableLiveData<>();
     public double totalbalance;
 
+    public String ifsc = "", accountNumber = "", beneficiaryName = "";
 
     public void onIMPSClick() {
         imps.setValue(true);
-        //rtgs.setValue(false);
-        //upi.setValue(false);
         neft.setValue(false);
     }
 
-    public void onUPIClick() {
-        imps.setValue(false);
-        rtgs.setValue(false);
-        upi.setValue(true);
-        neft.setValue(false);
-    }
-
-    public void onRTGSClick() {
-        imps.setValue(false);
-        rtgs.setValue(true);
-        upi.setValue(false);
-        neft.setValue(false);
-    }
 
     public void onNEFTClick() {
         imps.setValue(false);
-        //rtgs.setValue(false);
-        //upi.setValue(false);
         neft.setValue(true);
     }
 
@@ -79,7 +63,7 @@ public class TradeTransferMoneyViewModel extends ViewModel {
         spidpaywallet.setValue(true);
         paytmwallet.setValue(false);
         bank.setValue(false);
-        enteramount.setValue("");
+        enteramount.setValue(String.valueOf(totalbalance));
         notes.setValue("");
     }
 
@@ -88,7 +72,7 @@ public class TradeTransferMoneyViewModel extends ViewModel {
         spidpaywallet.setValue(false);
         paytmwallet.setValue(true);
         bank.setValue(false);
-        enteramount.setValue("");
+        enteramount.setValue(String.valueOf(totalbalance));
         notes.setValue("");
     }
 
@@ -96,7 +80,7 @@ public class TradeTransferMoneyViewModel extends ViewModel {
         spidpaywallet.setValue(false);
         paytmwallet.setValue(false);
         bank.setValue(true);
-        enteramount.setValue("");
+        enteramount.setValue(String.valueOf(totalbalance));
         notes.setValue("");
     }
 
@@ -144,16 +128,33 @@ public class TradeTransferMoneyViewModel extends ViewModel {
     }
 
     public void getBankTransferResponse(Context context, String userId) {
-        double amt = Double.parseDouble(Objects.requireNonNull(enteramount.getValue()));
+        if (enteramount.getValue() == null || enteramount.getValue().equals("")) {
+            tradeWalletInterface.onFailed(context.getResources().getString(R.string.enter_transfer_amount));
+            return;
+        }
+
+        double amt = Double.parseDouble(enteramount.getValue());
         if (amt == 0 || amt > totalbalance) {
             tradeWalletInterface.onFailed(context.getResources().getString(R.string.enteramountcannot));
             return;
         }
 
-        if (enteramount.getValue() == null && enteramount.getValue().equals("") && notes == null && notes.getValue().equals("")) {
+        if (notes.getValue() == null || notes.getValue().equals("")) {
             tradeWalletInterface.onFailed(context.getResources().getString(R.string.filedcannotbeblank));
             return;
         }
+
+
+        if (imps.getValue()==null && neft.getValue()==null) {
+            tradeWalletInterface.onFailed(context.getResources().getString(R.string.selecttransfermode));
+            return;
+        }
+
+        if (!imps.getValue() && !neft.getValue()) {
+            tradeWalletInterface.onFailed(context.getResources().getString(R.string.selecttransfermode));
+            return;
+        }
+
 
         TransferMoneyRequest bankTransferRequest = new TransferMoneyRequest();
         bankTransferRequest.amount = enteramount.getValue();
@@ -163,13 +164,17 @@ public class TradeTransferMoneyViewModel extends ViewModel {
         bankTransferRequest.userId = userId;
 
         BankTransferRequest bankTransfer = new BankTransferRequest();
-        bankTransfer.ifsc = "HDFC0000543";
-        bankTransfer.accountNumber = "9767462028484";
-        bankTransfer.beneficiaryName = "Asis Jain";
-        bankTransfer.email = "Test1@gmail.com";
-        bankTransfer.mobileNumber = "9663811455";
+        bankTransfer.ifsc = ifsc;
+        bankTransfer.accountNumber = accountNumber;
+        bankTransfer.beneficiaryName = beneficiaryName;
+        bankTransfer.email = "";
+        bankTransfer.mobileNumber = new PrefManager(context).getUserID();
         bankTransfer.serviceCharge = "5.00";
-        bankTransfer.transferMode = "IMPS";
+        if (neft.getValue())
+            bankTransfer.transferMode = "NEFT";
+        else
+            bankTransfer.transferMode = "IMPS";
+
 
         bankTransferRequest.bankTransfer = bankTransfer;
 

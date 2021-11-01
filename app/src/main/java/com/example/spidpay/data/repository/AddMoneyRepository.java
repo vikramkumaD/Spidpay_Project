@@ -183,7 +183,7 @@ public class AddMoneyRepository {
             @Override
             public void onFailure(@NotNull Call<List<BankResponse>> call, @NotNull Throwable t) {
                 if (t instanceof NoInternetException) {
-                    //staticInterface.onStaticFailed("No Internet");
+                   // staticInterface.onStaticFailed("No Internet");
                 } else {
                     //staticInterface.onStaticFailed(t.getMessage());
                 }
