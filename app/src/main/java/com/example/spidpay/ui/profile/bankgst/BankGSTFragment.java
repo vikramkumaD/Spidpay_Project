@@ -125,6 +125,7 @@ public class BankGSTFragment extends Fragment implements BankInteface, StaticInt
                 bottomSheetDialog_bankinfo.dismiss();
                 Constant.START_TOUCH(requireActivity());
                 myProfileViewModel.getBankInfo(updateResponse.userid);
+                fragmentBankGSTBinding.pbBankinfo.setVisibility(View.GONE);
             }
         });
     }
@@ -177,6 +178,11 @@ public class BankGSTFragment extends Fragment implements BankInteface, StaticInt
             if (!interrestedforResponses.isEmpty()) {
                 progressBar_for_bottom_sheet.setVisibility(View.GONE);
                 Constant.START_TOUCH(requireActivity());
+                InterrestedforAdapter interrestedforAdapter = new InterrestedforAdapter(interrestedforResponses, onStaticClickIterface);
+                rv_interreseted_for.setAdapter(interrestedforAdapter);
+                interrestedfor_bottomsheet.show();
+            }
+            else {
                 InterrestedforAdapter interrestedforAdapter = new InterrestedforAdapter(interrestedforResponses, onStaticClickIterface);
                 rv_interreseted_for.setAdapter(interrestedforAdapter);
                 interrestedfor_bottomsheet.show();

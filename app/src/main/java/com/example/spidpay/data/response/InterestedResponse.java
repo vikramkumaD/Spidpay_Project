@@ -1,12 +1,12 @@
 package com.example.spidpay.data.response;
 
-public class InterrestedforResponse {
+public class InterestedResponse {
     public String code, description;
 
-    public InterrestedforResponse() {
+    public InterestedResponse() {
     }
 
-    public InterrestedforResponse(String code, String description) {
+    public InterestedResponse(String code, String description) {
         this.code = code;
         this.description = description;
     }

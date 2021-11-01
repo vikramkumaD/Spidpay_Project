@@ -1,124 +1,479 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
 
-        <import type="com.example.spidpay.util.Constant" />
+        <import type="android.view.View"></import>
 
         <variable
-            name="alltransaction"
-            type="com.example.spidpay.data.response.AllTransactionResponse" />
+            name="totalamount"
+            type="String" />
+
+        <variable
+            name="transfermoney"
+            type="com.example.spidpay.ui.tradewallet.TradeTransferMoneyViewModel" />
+
     </data>
 
-
-    <androidx.cardview.widget.CardView
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        tools:targetApi="lollipop">
-
+        android:layout_height="wrap_content">
 
         <androidx.constraintlayout.widget.ConstraintLayout
+            android:paddingBottom="@dimen/margin20dp"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@drawable/dialogwith_whiteborder"
-            android:paddingStart="@dimen/margin10dp"
-            android:paddingTop="@dimen/margin10dp"
-            android:paddingEnd="@dimen/margin10dp"
-            android:paddingBottom="@dimen/margin10dp">
+            android:layout_height="match_parent"
+            android:background="#10D1D1D1"
+            tools:context=".ui.tradewallet.TransferMoneyActivity">
 
-
-            <TextView
-                android:id="@+id/tv_all_tramsaction_name"
-                android:layout_width="wrap_content"
+            <androidx.cardview.widget.CardView
+                android:id="@+id/carview_header"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:fontFamily="@font/lato_bold"
-                android:text="@{alltransaction.transactionCategory}"
-                android:textColor="@color/black"
-                app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                android:clipChildren="false"
+                android:clipToPadding="false"
+                android:divider="@android:color/transparent"
+                android:dividerHeight="0.0px"
+                android:elevation="8dp"
+                app:layout_constraintTop_toTopOf="parent"
+                card_view:cardElevation="10dp"
+                card_view:cardPreventCornerOverlap="false">
 
-            <TextView
-                android:id="@+id/tv_all_transaction_id"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:fontFamily="@font/lato_bold"
-                android:text="@{`Transaction Id: `+alltransaction.transactionId}"
-                android:textColor="@color/black"
-                android:textSize="14sp"
-                app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/tv_all_tramsaction_name" />
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingTop="@dimen/margin5dp"
+                    android:paddingBottom="@dimen/margin5dp">
 
+                    <ImageView
+                        android:id="@+id/img_backpress"
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:layout_marginStart="@dimen/margin10dp"
 
-            <TextView
-                android:id="@+id/tv_all_transaction_status"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/margin5dp"
-                android:fontFamily="@font/lato_bold"
-                android:text="@string/status"
-                android:textColor="@color/black"
-                app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/tv_all_transaction_id" />
+                        android:contentDescription="TODO"
+                        android:src="@drawable/ic_baseline_arrow_back_ios_24"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
 
-            <TextView
-                android:id="@+id/tv_all_tramsaction_status_value"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/margin5dp"
-                android:layout_marginTop="@dimen/margin5dp"
-                android:fontFamily="@font/lato_bold"
-                android:text="@{alltransaction.status}"
-                android:textColor="@color/black"
-                app:layout_constraintLeft_toRightOf="@+id/tv_all_transaction_status"
-                app:layout_constraintTop_toBottomOf="@+id/tv_all_transaction_id" />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_toRightOf="@+id/img_backpress"
+                        android:fontFamily="@font/lato_bold"
+                        android:text="@string/transfermoney"
+                        android:textColor="@color/page_heading_color"
+                        android:textSize="@dimen/margin16sp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintLeft_toRightOf="@+id/img_backpress"
+                        app:layout_constraintTop_toTopOf="parent" />
 
 
-            <TextView
-                android:id="@+id/tv_all_transaction_date"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/margin10dp"
-                android:fontFamily="@font/lato_bold"
-                android:text="@{alltransaction.retrunDate(alltransaction.creationTime)}"
-                android:textColor="@color/black"
-                app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/tv_all_transaction_status" />
+                </RelativeLayout>
 
+
+            </androidx.cardview.widget.CardView>
 
             <RelativeLayout
-                android:layout_width="wrap_content"
+                android:id="@+id/trade_total_balance"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginEnd="@dimen/margin10dp"
-                app:layout_constraintRight_toRightOf="parent"
-                app:layout_constraintTop_toTopOf="parent">
-
-                <ImageView
-                    android:layout_centerVertical="true"
-                    android:id="@+id/img_transaction_type"
-                    android:layout_width="24dp"
-                    android:layout_height="24dp"
-                    android:layout_marginEnd="@dimen/margin10dp"
-                    android:src="@drawable/ic_baseline_remove_24" />
-
+                android:layout_marginTop="@dimen/margin20dp"
+                android:background="#ECF1FA"
+                android:paddingTop="@dimen/margin20dp"
+                android:paddingBottom="@dimen/margin20dp"
+                android:textSize="@dimen/margin18sp"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/carview_header">
 
                 <TextView
-                    android:id="@+id/tv_all_transaction_amount"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/margin3dp"
-                    android:layout_toEndOf="@+id/img_transaction_type"
+                    android:layout_marginStart="@dimen/margin20dp"
                     android:fontFamily="@font/lato_bold"
-                    android:text="₹ 100000"
-                    android:textColor="@color/debit_transaction_color"
-                    android:textSize="@dimen/margin16sp" />
+                    android:text="@string/totalbalnce"
+                    android:textColor="@color/black" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginStart="@dimen/margin20dp"
+                    android:layout_marginEnd="@dimen/margin20dp"
+                    android:fontFamily="@font/lato_bold"
+                    android:text="@{`₹ `+totalamount}"
+                    android:textColor="@color/green" />
 
 
             </RelativeLayout>
 
 
+            <TextView
+                android:id="@+id/tv_transferfor"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_marginStart="@dimen/margin20dp"
+                android:layout_marginTop="@dimen/margin20dp"
+                android:layout_marginEnd="@dimen/margin20dp"
+                android:fontFamily="@font/lato_bold"
+                android:text="@string/transferto"
+                android:textColor="@color/black"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/trade_total_balance" />
+
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/trade_trasfer_for"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin20dp"
+                app:layout_constraintTop_toBottomOf="@+id/tv_transferfor">
+
+
+                <RelativeLayout
+                    android:id="@+id/sp_wallet"
+                    android:layout_width="@dimen/margin100dp"
+                    android:layout_height="75dp"
+                    android:layout_marginStart="@dimen/margin20dp"
+                    android:layout_weight="1"
+                    android:background="@{transfermoney.spidpaywallet ? @drawable/trade_wallet_green : @drawable/trade_wallet_grey,default=@drawable/trade_wallet_green}"
+                    android:onClick="@{()->transfermoney.onSpidPayWalletClick()}"
+                    app:layout_constraintHorizontal_bias="0.5"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <ImageView
+                        android:layout_width="82dp"
+                        android:layout_height="52dp"
+                        android:layout_centerInParent="true"
+                        android:src="@drawable/ic_speedpaywallet" />
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/paytm_wallet"
+                    android:layout_width="@dimen/margin100dp"
+                    android:layout_height="75dp"
+                    android:layout_weight="1"
+                    android:background="@{transfermoney.paytmwallet ? @drawable/trade_wallet_green : @drawable/trade_wallet_grey}"
+                    android:onClick="@{()->transfermoney.onPaytmClick()}"
+                    app:layout_constraintEnd_toStartOf="@+id/bank_transfer"
+                    app:layout_constraintHorizontal_bias="0.5"
+                    app:layout_constraintStart_toEndOf="@+id/sp_wallet"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <ImageView
+                        android:layout_width="82dp"
+                        android:layout_height="52dp"
+                        android:layout_centerInParent="true"
+                        android:src="@drawable/ic_paytm" />
+
+                </RelativeLayout>
+
+                <RelativeLayout
+
+                    android:id="@+id/bank_transfer"
+                    android:layout_width="@dimen/margin100dp"
+                    android:layout_height="75dp"
+                    android:layout_marginEnd="@dimen/margin20dp"
+                    android:background="@{transfermoney.bank ? @drawable/trade_wallet_green : @drawable/trade_wallet_grey}"
+
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.5"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <ImageView
+                        android:layout_width="68dp"
+                        android:layout_height="65dp"
+                        android:layout_centerInParent="true"
+                        android:src="@drawable/ic_bank" />
+
+                </RelativeLayout>
+
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/trade_trasfer_label"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toBottomOf="@+id/trade_trasfer_for">
+
+
+                <RelativeLayout
+                    android:layout_marginTop="@dimen/margin5dp"
+                    android:id="@+id/sp_wallet_label"
+                    android:layout_width="@dimen/margin100dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/margin20dp"
+                    android:layout_weight="1"
+                    app:layout_constraintHorizontal_bias="0.5"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerInParent="true"
+                        android:fontFamily="@font/lato_bold"
+                        android:text="@string/spidwallet"
+                        android:textColor="@{transfermoney.spidpaywallet ? @color/welcome_green_2 : @color/tradewallet_grey,default=@color/welcome_green_2}" />
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_marginTop="@dimen/margin5dp"
+                    android:id="@+id/paytm_wallet_label"
+                    android:layout_width="@dimen/margin100dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    app:layout_constraintEnd_toStartOf="@+id/bank_transfer_label"
+                    app:layout_constraintHorizontal_bias="0.5"
+                    app:layout_constraintStart_toEndOf="@+id/sp_wallet_label"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <TextView
+                        android:fontFamily="@font/lato_bold"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerInParent="true"
+                        android:text="@string/paytmwallet"
+                        android:textColor="@{transfermoney.paytmwallet ? @color/welcome_green_2 : @color/tradewallet_grey,default=@color/tradewallet_grey}" />
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_marginTop="@dimen/margin5dp"
+                    android:id="@+id/bank_transfer_label"
+                    android:layout_width="@dimen/margin100dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="@dimen/margin20dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.5"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <TextView
+                        android:fontFamily="@font/lato_bold"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerInParent="true"
+                        android:text="@string/banktransfer"
+                        android:textColor="@{transfermoney.bank ? @color/welcome_green_2 : @color/tradewallet_grey,default=@color/tradewallet_grey}" />
+
+                </RelativeLayout>
+
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+
+
+            <Button
+                android:visibility="@{transfermoney.bank ? View.VISIBLE : View.GONE,default=gone}"
+                android:layout_marginStart="@dimen/margin20dp"
+                android:layout_marginTop="@dimen/margin20dp"
+                android:layout_marginEnd="@dimen/margin20dp"
+                android:background="@drawable/button_bg_green"
+                android:id="@+id/btn_selectbank"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/trade_trasfer_label"
+                android:textColor="@color/white"
+                android:textAllCaps="false"
+                android:text="@string/selectbank"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+            <TextView
+                android:id="@+id/tv_amount_detail"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_marginStart="@dimen/margin20dp"
+                android:layout_marginTop="@dimen/margin20dp"
+                android:layout_marginEnd="@dimen/margin20dp"
+                android:fontFamily="@font/lato_bold"
+                android:text="@string/amoutdetail"
+                android:textColor="@color/black"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/btn_selectbank" />
+
+
+            <RadioButton
+                android:id="@+id/rb_full_amount"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/margin20dp"
+                android:layout_marginTop="@dimen/margin20dp"
+                android:buttonTint="@color/green"
+                android:checked="@{transfermoney.total_amount, default=true}"
+                android:fontFamily="@font/lato_bold"
+                android:onClick="@{()->transfermoney.onTotalAmountClick()}"
+                android:text="@string/fullamount"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tv_amount_detail" />
+
+            <RadioButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/margin40dp"
+                android:layout_marginTop="@dimen/margin20dp"
+                android:buttonTint="@color/green"
+                android:checked="@{transfermoney.other_amount}"
+                android:fontFamily="@font/lato_bold"
+                android:onClick="@{()->transfermoney.onOtherAmountClick()}"
+                android:text="@string/otheramount"
+                app:layout_constraintLeft_toRightOf="@+id/rb_full_amount"
+                app:layout_constraintTop_toBottomOf="@+id/tv_amount_detail" />
+
+            <RelativeLayout
+                android:id="@+id/relative_transfer_amount"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/rb_full_amount">
+
+                <TextView
+                    android:id="@+id/tv_transfer_amount"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/margin20dp"
+                    android:layout_marginTop="@dimen/margin20dp"
+                    android:fontFamily="@font/lato_bold"
+                    android:text="@string/transfer_amount"
+                    android:textColor="@color/black"
+                    app:layout_constraintHorizontal_chainStyle="spread" />
+
+                <RelativeLayout
+                    android:layout_marginStart="@dimen/margin20dp"
+                    android:layout_marginTop="@dimen/margin10dp"
+                    android:layout_marginEnd="@dimen/margin20dp"
+                    android:layout_marginBottom="@dimen/margin10dp"
+                    android:background="@drawable/transfer_money_bg"
+                    android:layout_toEndOf="@+id/tv_transfer_amount"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:fontFamily="@font/lato_bold"
+                        android:textSize="@dimen/margin16sp"
+                        android:layout_marginStart="@dimen/margin10dp"
+                        android:layout_centerVertical="true"
+                        android:text="@string/rupees"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"/>
+
+                    <EditText
+                        android:id="@+id/edt_tranfer_amount"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@null"
+                        android:enabled="@{transfermoney.total_amount ? false : true}"
+                        android:importantForAutofill="no"
+                        android:inputType="number"
+                        android:paddingStart="@dimen/margin20dp"
+                        android:paddingTop="@dimen/margin10dp"
+                        android:paddingBottom="@dimen/margin10dp"
+                        android:text="@={transfermoney.enteramount}" />
+
+                </RelativeLayout>
+
+
+
+            </RelativeLayout>
+
+            <EditText
+                android:id="@+id/edt_request_parent_notes"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/margin20dp"
+                android:layout_marginTop="@dimen/margin20dp"
+                android:layout_marginEnd="@dimen/margin20dp"
+                android:layout_weight="1"
+                android:background="@drawable/edittext_shadow"
+                android:hint="@string/notes"
+                android:importantForAutofill="no"
+                android:inputType="text"
+                android:text="@={transfermoney.notes}"
+                android:paddingLeft="@dimen/margin10dp"
+                android:paddingTop="@dimen/margin15dp"
+                android:paddingRight="@dimen/margin10dp"
+                android:paddingBottom="@dimen/margin15dp"
+                android:textColorHint="@color/lightgrey"
+                app:layout_constraintTop_toBottomOf="@+id/relative_transfer_amount" />
+
+
+
+
+            <RelativeLayout
+                android:visibility="@{transfermoney.bank ? View.VISIBLE : View.GONE,default=gone}"
+                android:id="@+id/relative_service_charger"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/edt_request_parent_notes">
+
+                <TextView
+                    android:id="@+id/tv_service_charge"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/margin20dp"
+                    android:layout_marginTop="@dimen/margin20dp"
+                    android:fontFamily="@font/lato_bold"
+                    android:text="@string/transfermode"
+                    android:textColor="@color/black"
+                    app:layout_constraintHorizontal_chainStyle="spread" />
+
+                <LinearLayout
+                    android:orientation="vertical"
+                    android:layout_marginStart="@dimen/margin20dp"
+                    android:layout_marginTop="@dimen/margin20dp"
+                    android:layout_below="@+id/tv_service_charge"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+
+
+
+
+                </LinearLayout>
+            </RelativeLayout>
+
+            <Button
+                android:textAllCaps="false"
+                android:id="@+id/btn_register"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/margin20dp"
+                android:layout_marginTop="@dimen/margin20dp"
+                android:layout_marginEnd="@dimen/margin20dp"
+                android:layout_marginBottom="@dimen/margin20dp"
+                android:background="@drawable/button_bg_green"
+                android:fontFamily="@font/lato"
+                android:text="@string/submit"
+                android:textColor="@color/white"
+                android:textSize="@dimen/margin18sp"
+                android:onClick="@{(v)->transfermoney.onSubmitClick(v)}"
+                app:layout_constraintTop_toBottomOf="@+id/relative_service_charger" />
+
+
+            <ProgressBar
+                android:id="@+id/pb_transfer_money"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:visibility="gone"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+
         </androidx.constraintlayout.widget.ConstraintLayout>
 
-    </androidx.cardview.widget.CardView>
+    </ScrollView>
+
+
 </layout>

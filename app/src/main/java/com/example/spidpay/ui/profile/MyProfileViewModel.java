@@ -16,7 +16,7 @@ import com.example.spidpay.data.request.UpdateCompanyRequest;
 import com.example.spidpay.data.request.UpdateKYCRequest;
 import com.example.spidpay.data.response.BankDetailsResponse;
 import com.example.spidpay.data.response.CompanyReponse;
-import com.example.spidpay.data.response.InterrestedforResponse;
+import com.example.spidpay.data.response.InterestedResponse;
 import com.example.spidpay.data.response.KYCResponse;
 import com.example.spidpay.data.response.MyAddressResponse;
 import com.example.spidpay.data.response.MyProfileResponse;
@@ -233,20 +233,20 @@ public class MyProfileViewModel extends ViewModel {
         bankInteface.onUpdateSuccess(updateResponseLiveData);
     }
 
-    public LiveData<List<InterrestedforResponse>> getStaticData() {
+    public LiveData<List<InterestedResponse>> getStaticData() {
         staticInterface.onStaticStart();
-        LiveData<List<InterrestedforResponse>> interrestedforliveData = staticRepository.getStaticData(static_value, Constant.ROLE_INTERRESTEDFOR);
+        LiveData<List<InterestedResponse>> interrestedforliveData = staticRepository.getStaticData(static_value, Constant.ROLE_INTERRESTEDFOR);
         return interrestedforliveData;
     }
 
-    public LiveData<List<InterrestedforResponse>> getStaticDataForAdditionalIds(Context context) {
+    public LiveData<List<InterestedResponse>> getStaticDataForAdditionalIds(Context context) {
         staticInterface.onStaticStart();
-        List<InterrestedforResponse> interrestedforliveData = new ArrayList<>();
-        interrestedforliveData.add(new InterrestedforResponse("999", context.getResources().getString(R.string.select)));
-        interrestedforliveData.add(new InterrestedforResponse("1", context.getResources().getString(R.string.voterid_1)));
-        interrestedforliveData.add(new InterrestedforResponse("2", context.getResources().getString(R.string.drivinglicense)));
-        interrestedforliveData.add(new InterrestedforResponse("3", context.getResources().getString(R.string.rationcard)));
-        MutableLiveData<List<InterrestedforResponse>> listMutableLiveData = new MutableLiveData<>();
+        List<InterestedResponse> interrestedforliveData = new ArrayList<>();
+        interrestedforliveData.add(new InterestedResponse("999", context.getResources().getString(R.string.select)));
+        interrestedforliveData.add(new InterestedResponse("1", context.getResources().getString(R.string.voterid_1)));
+        interrestedforliveData.add(new InterestedResponse("2", context.getResources().getString(R.string.drivinglicense)));
+        interrestedforliveData.add(new InterestedResponse("3", context.getResources().getString(R.string.rationcard)));
+        MutableLiveData<List<InterestedResponse>> listMutableLiveData = new MutableLiveData<>();
         listMutableLiveData.postValue(interrestedforliveData);
         return listMutableLiveData;
     }

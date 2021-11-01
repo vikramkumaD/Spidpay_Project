@@ -1,6 +1,7 @@
 package com.example.spidpay.data;
 
 import com.example.spidpay.data.request.AddMoneyRequest;
+import com.example.spidpay.data.request.BankResponse;
 import com.example.spidpay.data.request.BankTransferRequest;
 import com.example.spidpay.data.request.ChangePasswordRequest;
 import com.example.spidpay.data.request.LoginRequest;
@@ -18,7 +19,7 @@ import com.example.spidpay.data.response.BankDetailsResponse;
 import com.example.spidpay.data.response.BooleanResponse;
 import com.example.spidpay.data.response.CommonResponse;
 import com.example.spidpay.data.response.CompanyReponse;
-import com.example.spidpay.data.response.InterrestedforResponse;
+import com.example.spidpay.data.response.InterestedResponse;
 import com.example.spidpay.data.response.KYCResponse;
 import com.example.spidpay.data.response.LoginResponse;
 import com.example.spidpay.data.response.MyAddressResponse;
@@ -31,16 +32,23 @@ import com.example.spidpay.data.response.WalletResponse;
 
 import java.util.List;
 
+import okhttp3.MultipartBody;
+import okhttp3.RequestBody;
 import retrofit2.Call;
 import retrofit2.http.Body;
+import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
+import retrofit2.http.Header;
 import retrofit2.http.Headers;
+import retrofit2.http.Multipart;
 import retrofit2.http.POST;
 import retrofit2.http.PUT;
+import retrofit2.http.Part;
 import retrofit2.http.Path;
 import retrofit2.http.Query;
 
 public interface RetrofitInterface {
+
 
     @Headers({"Content-Type:application/json"})
     @POST("v1/login")
@@ -51,7 +59,7 @@ public interface RetrofitInterface {
     Call<RegisterResponse> user_onBoarding(@Body RegisterRequest loginRequest);
 
     @GET("static-data/v1/{category}")
-    Call<List<InterrestedforResponse>> getStaticData(@Path("category") String user, @Query("role") String role);
+    Call<List<InterestedResponse>> getStaticData(@Path("category") String user, @Query("role") String role);
 
     @Headers({"Content-Type:application/json"})
     @POST("change-password/v1")
@@ -113,4 +121,19 @@ public interface RetrofitInterface {
     @POST("v1/trade/payout")
     Call<TransferMoenyResponse> getTransferResponse(@Body BankTransferRequest transferMoneyRequest);
 
+    @Multipart
+    @POST("signup/CreateProfile")
+    Call<String> postImage(@Header("Authorization") String user_token, @Part MultipartBody.Part image, @Part("userDetails") RequestBody name);
+
+    @GET("service-charge?")
+    Call<List<InterestedResponse>> getServiceCharge(@Query("amount") String amount, @Query("product") String product, @Query("txnCategory") String txnCategory);
+
+    @GET("user/v1/{userId}/{banks}")
+    Call<List<BankResponse>> getBankResponse(@Path("userId") String userId, @Path("banks") String banks);
+
+
+    //  http://spidpay-api-565132133.ap-south-1.elb.amazonaws.com/spidpay-identity/api/upload/v1/abc/PAN
+
 }
+
+

@@ -8,8 +8,10 @@ import androidx.lifecycle.MutableLiveData;
 import com.example.spidpay.data.RetrofitClient;
 import com.example.spidpay.data.RetrofitInterface;
 import com.example.spidpay.data.request.AddMoneyRequest;
+import com.example.spidpay.data.request.BankResponse;
 import com.example.spidpay.data.request.TransferMoneyRequest;
 import com.example.spidpay.data.response.AddMoneyResponse;
+import com.example.spidpay.data.response.InterestedResponse;
 import com.example.spidpay.data.response.TransferMoenyResponse;
 import com.example.spidpay.interfaces.AddMoneyInterface;
 import com.example.spidpay.interfaces.TradeWalletInterface;
@@ -19,6 +21,7 @@ import com.example.spidpay.util.NoInternetException;
 import org.jetbrains.annotations.NotNull;
 
 import java.io.IOException;
+import java.util.List;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -77,7 +80,6 @@ public class AddMoneyRepository {
         return addMoneyResponseMutableLiveData;
     }
 
-
     public MutableLiveData<TransferMoenyResponse> getTradeToSpidWalletTransfer(TransferMoneyRequest transferMoneyRequest) {
         MutableLiveData<TransferMoenyResponse> moenyResponseMutableLiveData = new MutableLiveData<>();
         RetrofitInterface retrofitInterface = RetrofitClient.GetRetrofitClient(context, Constant.WALLET_URL).create(RetrofitInterface.class);
@@ -114,5 +116,81 @@ public class AddMoneyRepository {
         });
         return moenyResponseMutableLiveData;
     }
+
+    public MutableLiveData<List<InterestedResponse>> getServiceCharge(String amount, String txnCat) {
+        MutableLiveData<List<InterestedResponse>> listMutableLiveData = new MutableLiveData<>();
+        RetrofitInterface retrofitInterface = RetrofitClient.GetRetrofitClient(context, Constant.PRODUCT_URL).create(RetrofitInterface.class);
+        Call<List<InterestedResponse>> call = retrofitInterface.getServiceCharge(amount, Constant.SERVICE_CHARGE_PAYOUT, txnCat);
+        call.enqueue(new Callback<List<InterestedResponse>>() {
+            @Override
+            public void onResponse(@NotNull Call<List<InterestedResponse>> call, @NotNull Response<List<InterestedResponse>> response) {
+                if (response.isSuccessful() && response.body() != null) {
+                    listMutableLiveData.postValue(response.body());
+                } else {
+                    try {
+                        if (response.errorBody() != null) {
+                            String errorBody = response.errorBody().string();
+                            String error = Constant.parseErrorBodyofRetrofit(errorBody);
+                            //  staticInterface.onStaticFailed(error);
+                        } else {
+                            //    staticInterface.onStaticFailed(Constant.Server_ERROR);
+                        }
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                        //  staticInterface.onStaticFailed(e.toString());
+                    }
+                }
+            }
+
+            @Override
+            public void onFailure(@NotNull Call<List<InterestedResponse>> call, @NotNull Throwable t) {
+                if (t instanceof NoInternetException) {
+                    //staticInterface.onStaticFailed("No Internet");
+                } else {
+                    //staticInterface.onStaticFailed(t.getMessage());
+                }
+            }
+        });
+        return listMutableLiveData;
+    }
+
+
+    public MutableLiveData<List<BankResponse>> getUserBank(String userid, String bank) {
+        MutableLiveData<List<BankResponse>> listMutableLiveData = new MutableLiveData<>();
+        RetrofitInterface retrofitInterface = RetrofitClient.GetRetrofitClient(context, Constant.USER_URL).create(RetrofitInterface.class);
+        Call<List<BankResponse>> call = retrofitInterface.getBankResponse(userid,bank);
+        call.enqueue(new Callback<List<BankResponse>>() {
+            @Override
+            public void onResponse(@NotNull Call<List<BankResponse>> call, @NotNull Response<List<BankResponse>> response) {
+                if (response.isSuccessful() && response.body() != null) {
+                    listMutableLiveData.postValue(response.body());
+                } else {
+                    try {
+                        if (response.errorBody() != null) {
+                            String errorBody = response.errorBody().string();
+                            String error = Constant.parseErrorBodyofRetrofit(errorBody);
+                            //  staticInterface.onStaticFailed(error);
+                        } else {
+                            //    staticInterface.onStaticFailed(Constant.Server_ERROR);
+                        }
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                        //  staticInterface.onStaticFailed(e.toString());
+                    }
+                }
+            }
+
+            @Override
+            public void onFailure(@NotNull Call<List<BankResponse>> call, @NotNull Throwable t) {
+                if (t instanceof NoInternetException) {
+                   // staticInterface.onStaticFailed("No Internet");
+                } else {
+                    //staticInterface.onStaticFailed(t.getMessage());
+                }
+            }
+        });
+        return listMutableLiveData;
+    }
+
 
 }

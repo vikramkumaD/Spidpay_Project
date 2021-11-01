@@ -6,7 +6,7 @@
 
         <variable
             name="interestedfor"
-            type="com.example.spidpay.data.response.InterrestedforResponse" />
+            type="com.example.spidpay.data.response.InterestedResponse" />
         <variable
             name="oninterestedforclick"
             type="com.example.spidpay.interfaces.OnStaticClickIterface" />

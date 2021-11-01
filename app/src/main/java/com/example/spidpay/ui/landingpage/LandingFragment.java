@@ -1,4 +1,4 @@
-package com.example.spidpay.ui.landing_page;
+package com.example.spidpay.ui.landingpage;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;

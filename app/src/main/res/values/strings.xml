@@ -87,7 +87,9 @@
     <string name="cashdeposit">Cash Deposit</string>
     <string name="requiredvalidation">Requires the Validation of upload transaction slip</string>
     <string name="available_balance">Available Trade Balance</string>
+    <string name="available_sp_balance"> Available SpidWallet Balance</string>
     <string name="enteramount">Enter Amount</string>
+    <string name="enter_transfer_amount">Enter Transfer Amount</string>
     <string name="proceed">Proceed</string>
     <string name="moneyaddedtowallet">Money will be added to Wallet</string>
     <string name="selectbank">Select Bank</string>
@@ -185,7 +187,7 @@
     <string name="partnershipdeed">Partnership Deed:</string>
     <string name="moa">MOA/AOA:</string>
     <string name="coi">COI:</string>
-    <string name="declaration">Declaration:</string>
+    <string name="declaration"> Directors Declaration:</string>
     <string name="updatecompanydetail">Update Company Detail</string>
     <string name="gstinnumber">GSTIN Number:</string>
     <string name="accname">A/C Holder Name:</string>
@@ -220,6 +222,7 @@
     <string name="spidpaywallet">Spid Wallet</string>
     <string name="tradewallet">Trade Wallet</string>
     <string name="rupees">₹ </string>
+    <string name="rupees_with_zero">₹0 </string>
     <string name="cashdepositsuccesmsg1">Your request for adding money</string>
     <string name="cashdepositsuccesmsg2">to your wallet has been sent successfully</string>
     <string name="cashdepositsuccesmsg3">The amount will be credited to your wallet after it is approved.</string>
@@ -245,7 +248,9 @@
     <string name="enteramountcannot">Entered amount cannot be 0 or greater than total balance!</string>
     <string name="transferrequestsuccessful">TRANSFER SUCCESSFUL</string>
     <string name="transfermoney1">Your request for transferring money </string>
-    <string name="transfermoney2">to your Spid wallet has been complete successfully</string>
+    <string name="transfermoney_spwallet">to your Spid wallet has been complete successfully</string>
+    <string name="transfermoney_paytm">to your Paytm has been complete successfully</string>
+    <string name="transfermoney_bank">to your Bank Account has been complete successfully</string>
     <string name="comingsoon">Coming soon!</string>
     <string name="sendermobilenumber">Sender Mobile Number</string>
     <string name="registersender">Register Sender</string>
@@ -280,5 +285,15 @@
     <string name="select">Select</string>
     <string name="drivinglicense">Driving License</string>
     <string name="rationcard">Ration Card</string>
+    <string name="browse">Browse</string>
+    <string name="camera">From Camera</string>
+    <string name="gallery">From Gallery</string>
+    <string name="cancel">Cancel</string>
+    <string name="paytmnumber">Paytm mobile number</string>
+    <string name="paytmname">Paytm Register Name </string>
+    <string name="transactionmode">Transaction Mode</string>
+    <string name="neft">NEFT</string>
+    <string name="imps">IMPS</string>
+    <string name="selecttransfermode">Select TransferMode</string>
 
 </resources>

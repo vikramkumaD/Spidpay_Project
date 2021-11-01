@@ -20,6 +20,7 @@
     <dimen name="margin15dp">15dp</dimen>
     <dimen name="margin130dp">130dp</dimen>
 
+
     <dimen name="landing_page_bg_width">125dp</dimen>
     <dimen name="landing_page_bg_height">121dp</dimen>
     <dimen name="margin7dp">7dp</dimen>

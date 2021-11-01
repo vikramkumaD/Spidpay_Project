@@ -29,14 +29,22 @@ public class PaymentSuccessfulActivity extends AppCompatActivity {
             activityPaymentSuccessfulBinding.tvRequestSuccessful.setText(getResources().getString(R.string.walletrequestsuccessful));
             activityPaymentSuccessfulBinding.tvReqestmoney2.setText(getResources().getString(R.string.rupees) + getIntent().getStringExtra("amount"));
         } else {
+
             activityPaymentSuccessfulBinding.constraintLayoutSuccess1.setVisibility(View.GONE);
             activityPaymentSuccessfulBinding.constraintLayoutTransferMoney.setVisibility(View.VISIBLE);
             activityPaymentSuccessfulBinding.tvReqesttransfermoney2.setText(getResources().getString(R.string.rupees) + getIntent().getStringExtra("amount"));
             activityPaymentSuccessfulBinding.tvRequestSuccessful.setText(getResources().getString(R.string.transferrequestsuccessful));
+            if (getIntent().getStringExtra("trade_wallet_payout").equals(Constant.TRADE_PAYTM_TRANSFER)) {
+                activityPaymentSuccessfulBinding.tvTradeWalletMsg.setText(getResources().getString(R.string.transfermoney_paytm));
+            } else if (getIntent().getStringExtra("trade_wallet_payout").equals(Constant.TRADE_BANK_TRANSFER)) {
+                activityPaymentSuccessfulBinding.tvTradeWalletMsg.setText(getResources().getString(R.string.transfermoney_bank));
+            } else {
+                activityPaymentSuccessfulBinding.tvTradeWalletMsg.setText(getResources().getString(R.string.transfermoney_spwallet));
+            }
         }
 
-        if(getIntent().getStringExtra("datetime")!=null && !getIntent().getStringExtra("datetime").equals(""))
-        {
+
+        if (getIntent().getStringExtra("datetime") != null && !getIntent().getStringExtra("datetime").equals("")) {
             try {
                 activityPaymentSuccessfulBinding.tvDate.setText(Constant.convertDate2(getIntent().getStringExtra("datetime")));
             } catch (ParseException e) {

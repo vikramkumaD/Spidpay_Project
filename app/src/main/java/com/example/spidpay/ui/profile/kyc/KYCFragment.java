@@ -1,13 +1,19 @@
 package com.example.spidpay.ui.profile.kyc;
 
 
+import static android.app.Activity.RESULT_OK;
+
 import android.content.Context;
+import android.content.Intent;
+import android.database.Cursor;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
+import android.net.Uri;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.core.content.FileProvider;
 import androidx.databinding.DataBindingUtil;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.LiveData;
@@ -15,6 +21,8 @@ import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.provider.MediaStore;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -26,6 +34,7 @@ import com.example.spidpay.data.repository.StaticRepository;
 import com.example.spidpay.data.response.CompanyReponse;
 import com.example.spidpay.data.response.KYCResponse;
 import com.example.spidpay.data.response.UpdateResponse;
+import com.example.spidpay.databinding.ChooseoptionBinding;
 import com.example.spidpay.databinding.FragmentKYCBinding;
 import com.example.spidpay.databinding.UpdateCompanyDetailBinding;
 import com.example.spidpay.databinding.UpdateKycLayoutBinding;
@@ -41,16 +50,25 @@ import com.google.android.material.bottomsheet.BottomSheetDialog;
 
 import org.jetbrains.annotations.NotNull;
 
+import java.io.File;
+import java.io.IOException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.Locale;
+
 
 public class KYCFragment extends Fragment implements KYCInterface, OnStaticClickIterface, StaticInterface {
+    private static final int REQUEST_CAPTURE_IMAGE = 100;
+    private static final int REQUEST_PICK_IMAGE = 101;
     FragmentKYCBinding fragmentKYCBinding;
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
     KYCInterface kycInterface;
     MyProfileViewModel myProfileViewModel;
     MyProfileRepository myProfileRepository;
-    BottomSheetDialog bottomSheetDialog_kyc, bottomSheetDialog_company;
+    BottomSheetDialog bottomSheetDialog_kyc, bottomSheetDialog_company, bottomSheetDialog_chooseOption;
     UpdateKycLayoutBinding updateKycLayoutBinding;
+    ChooseoptionBinding chooseoptionBinding;
     UpdateCompanyDetailBinding updateBankDetailBinding;
     KYCResponse kycResponse;
     CompanyReponse companyReponse;
@@ -60,7 +78,9 @@ public class KYCFragment extends Fragment implements KYCInterface, OnStaticClick
     StaticRepository staticRepository;
     ProgressBar progressBar_for_bottom_sheet;
     private boolean is_pb_for_bottom_sheet = false;
-    private boolean is_kyc_data_selection=true;
+    private boolean is_kyc_data_selection = true;
+    File photoFile = null, finalpath = null;
+    Uri photoURI;
 
     public KYCFragment() {
 
@@ -100,7 +120,9 @@ public class KYCFragment extends Fragment implements KYCInterface, OnStaticClick
         myProfileViewModel.staticInterface = staticInterface;
         myProfileViewModel.staticRepository = staticRepository;
         myProfileViewModel.getKYCInfo(new PrefManager(requireContext()).getUserID());
+        fragmentKYCBinding.setIsKycDone(new PrefManager(getContext()).getKYCPending());
         getViewLifecycleOwner();
+
     }
 
     @Override
@@ -113,7 +135,7 @@ public class KYCFragment extends Fragment implements KYCInterface, OnStaticClick
     @Override
     public void onKYCSuccess(LiveData<KYCResponse> kycResponseLiveData) {
         kycResponseLiveData.observe(this, kycResponse -> {
-            if(kycResponse.panNo != null && !kycResponse.panNo.equals("")) {
+            if (kycResponse.panNo != null && !kycResponse.panNo.equals("")) {
                 fragmentKYCBinding.pbKyc.setVisibility(View.GONE);
                 Constant.START_TOUCH(requireActivity());
                 fragmentKYCBinding.setKycinfo(kycResponse);
@@ -174,7 +196,7 @@ public class KYCFragment extends Fragment implements KYCInterface, OnStaticClick
     public void onServiceStart() {
         Constant.STOP_TOUCH(requireActivity());
         fragmentKYCBinding.pbKyc.setVisibility(View.VISIBLE);
-        is_pb_for_bottom_sheet=false;
+        is_pb_for_bottom_sheet = false;
     }
 
     @Override
@@ -195,30 +217,107 @@ public class KYCFragment extends Fragment implements KYCInterface, OnStaticClick
         bottomSheetDialog_kyc.show();
         updateKycLayoutBinding.imgDismissDialog.setOnClickListener(v -> bottomSheetDialog_kyc.dismiss());
         updateKycLayoutBinding.edtAdditionalId.setOnClickListener(v -> {
-            is_pb_for_bottom_sheet=true;
+            is_pb_for_bottom_sheet = true;
             getAdditionalIds();
+        });
+
+        updateKycLayoutBinding.btnPanImage.setOnClickListener(v -> {
+            chooseOption();
+        });
+
+
+    }
+
+    private void chooseOption() {
+        bottomSheetDialog_chooseOption = new BottomSheetDialog(requireContext());
+        chooseoptionBinding = DataBindingUtil.inflate(LayoutInflater.from(requireContext()), R.layout.chooseoption, null, false);
+        bottomSheetDialog_chooseOption.setContentView(chooseoptionBinding.getRoot());
+        bottomSheetDialog_chooseOption.show();
+        chooseoptionBinding.relativeCancel.setOnClickListener(v -> bottomSheetDialog_chooseOption.dismiss());
+        chooseoptionBinding.relativeCamera.setOnClickListener(v -> openCameraIntent());
+        chooseoptionBinding.relativeGallery.setOnClickListener(v -> {
+            bottomSheetDialog_chooseOption.dismiss();
+            openGallery();
         });
     }
 
+    private void openGallery() {
+        Intent gallery = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+        gallery.setFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
+        gallery.setFlags(Intent.FLAG_GRANT_WRITE_URI_PERMISSION);
+        startActivityForResult(gallery, REQUEST_PICK_IMAGE);
+
+    }
+
+
+    private void openCameraIntent() {
+        Intent pictureIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+        if (pictureIntent.resolveActivity(requireContext().getPackageManager()) != null) {
+            try {
+                photoFile = createImageFile();
+            } catch (IOException ex) {
+                Log.e("ok", ex.toString());
+            }
+            if (photoFile != null) {
+                photoURI = FileProvider.getUriForFile(requireContext(), Constant.MY_CONTENT_PROVIDER, photoFile);
+                pictureIntent.putExtra(MediaStore.EXTRA_OUTPUT, photoURI);
+                startActivityForResult(pictureIntent, REQUEST_CAPTURE_IMAGE);
+            }
+        }
+    }
+
+    private File createImageFile() throws IOException {
+        String timeStamp = new SimpleDateFormat("yyyyMMdd_HHmmss", Locale.getDefault()).format(new Date());
+        String imageFileName = "IMG_" + timeStamp + "_";
+        File storageDir = new File(requireContext().getApplicationContext().getExternalFilesDir("") + Constant.FILE_DIR);
+        return File.createTempFile(imageFileName,  /* prefix */".jpg",         /* suffix */storageDir      /* directory */);
+    }
+
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (resultCode == RESULT_OK) {
+            if (requestCode == REQUEST_PICK_IMAGE) {
+
+                Uri selectedImageUri = data.getData();
+                if (null != selectedImageUri) {
+                    String path = getRealPathFromURI(selectedImageUri);
+                    Log.e("ok", path.toString());
+                }
+            }
+        }
+    }
+
+    private String getRealPathFromURI(Uri contentURI) {
+        String[] filePathColumn = {MediaStore.Images.Media.DATA};
+        Cursor cursor = requireContext().getContentResolver().query(contentURI, filePathColumn, null, null, null);
+        cursor.moveToFirst();
+        int columnIndex = cursor.getColumnIndex(filePathColumn[0]);
+        return cursor.getString(columnIndex);
+    }
+
     private void getAdditionalIds() {
-        is_kyc_data_selection=true;
+        is_kyc_data_selection = true;
         View view = LayoutInflater.from(requireActivity()).inflate(R.layout.interrestedfor_bottomsheet, null);
         interrestedfor_bottomsheet = new BottomSheetDialog(requireActivity());
         interrestedfor_bottomsheet.setContentView(view);
         interrestedfor_bottomsheet.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
         progressBar_for_bottom_sheet = view.findViewById(R.id.pb_for_bottomsheet);
         progressBar_for_bottom_sheet.setVisibility(View.VISIBLE);
-        RecyclerView rv_interreseted_for = view.findViewById(R.id.rv_interreseted_for);
-        rv_interreseted_for.setLayoutManager(new LinearLayoutManager(requireActivity()));
+        RecyclerView rv_interested_for = view.findViewById(R.id.rv_interreseted_for);
+        rv_interested_for.setLayoutManager(new LinearLayoutManager(requireActivity()));
         ItemOffsetDecoration itemOffsetDecoration = new ItemOffsetDecoration(requireActivity(), R.dimen.margin10dp);
-        rv_interreseted_for.addItemDecoration(itemOffsetDecoration);
+        rv_interested_for.addItemDecoration(itemOffsetDecoration);
 
         myProfileViewModel.getStaticDataForAdditionalIds(requireContext()).observe(this, interrestedforResponses -> {
             if (!interrestedforResponses.isEmpty()) {
                 Constant.START_TOUCH(requireActivity());
                 progressBar_for_bottom_sheet.setVisibility(View.GONE);
                 InterrestedforAdapter interrestedforAdapter = new InterrestedforAdapter(interrestedforResponses, onStaticClickIterface);
-                rv_interreseted_for.setAdapter(interrestedforAdapter);
+                rv_interested_for.setAdapter(interrestedforAdapter);
+                interrestedfor_bottomsheet.show();
+            } else {
+                InterrestedforAdapter interrestedforAdapter = new InterrestedforAdapter(interrestedforResponses, onStaticClickIterface);
+                rv_interested_for.setAdapter(interrestedforAdapter);
                 interrestedfor_bottomsheet.show();
             }
         });
@@ -236,31 +335,36 @@ public class KYCFragment extends Fragment implements KYCInterface, OnStaticClick
         bottomSheetDialog_company.show();
         updateBankDetailBinding.imgDismissDialog.setOnClickListener(v -> bottomSheetDialog_company.dismiss());
         updateBankDetailBinding.edtEditComType.setOnClickListener(v -> {
-            is_pb_for_bottom_sheet=true;
+            is_pb_for_bottom_sheet = true;
             myProfileViewModel.static_value = Constant.COMPANY;
-            getCompayType();
+            getCompanyType();
         });
     }
 
-    public void getCompayType() {
-        is_kyc_data_selection=false;
+    public void getCompanyType() {
+        is_kyc_data_selection = false;
         View view = LayoutInflater.from(requireActivity()).inflate(R.layout.interrestedfor_bottomsheet, null);
         interrestedfor_bottomsheet = new BottomSheetDialog(requireActivity());
         interrestedfor_bottomsheet.setContentView(view);
         interrestedfor_bottomsheet.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
         progressBar_for_bottom_sheet = view.findViewById(R.id.pb_for_bottomsheet);
         progressBar_for_bottom_sheet.setVisibility(View.VISIBLE);
-        RecyclerView rv_interreseted_for = view.findViewById(R.id.rv_interreseted_for);
-        rv_interreseted_for.setLayoutManager(new LinearLayoutManager(requireActivity()));
+        RecyclerView rv_interested_for = view.findViewById(R.id.rv_interreseted_for);
+        rv_interested_for.setLayoutManager(new LinearLayoutManager(requireActivity()));
         ItemOffsetDecoration itemOffsetDecoration = new ItemOffsetDecoration(requireActivity(), R.dimen.margin10dp);
-        rv_interreseted_for.addItemDecoration(itemOffsetDecoration);
+        rv_interested_for.addItemDecoration(itemOffsetDecoration);
 
         myProfileViewModel.getStaticData().observe(this, interrestedforResponses -> {
             if (!interrestedforResponses.isEmpty()) {
                 Constant.START_TOUCH(requireActivity());
                 progressBar_for_bottom_sheet.setVisibility(View.GONE);
                 InterrestedforAdapter interrestedforAdapter = new InterrestedforAdapter(interrestedforResponses, onStaticClickIterface);
-                rv_interreseted_for.setAdapter(interrestedforAdapter);
+                rv_interested_for.setAdapter(interrestedforAdapter);
+                interrestedfor_bottomsheet.show();
+            } else {
+                progressBar_for_bottom_sheet.setVisibility(View.GONE);
+                InterrestedforAdapter interrestedforAdapter = new InterrestedforAdapter(interrestedforResponses, onStaticClickIterface);
+                rv_interested_for.setAdapter(interrestedforAdapter);
                 interrestedfor_bottomsheet.show();
             }
         });
@@ -269,13 +373,11 @@ public class KYCFragment extends Fragment implements KYCInterface, OnStaticClick
 
     @Override
     public void onItemClick(String code, String description) {
-        if(!description.equals(getResources().getString(R.string.select)))
-        {
+        if (!description.equals(getResources().getString(R.string.select))) {
             myProfileViewModel.code = code;
             myProfileViewModel.companytype_description = description;
 
-            if(!is_kyc_data_selection)
-            {
+            if (!is_kyc_data_selection) {
                 updateBankDetailBinding.edtEditComType.setText(description);
                 if (Constant.PARTNERSHIP.equals(description)) {
                     updateBankDetailBinding.edtEditPartnership.setVisibility(View.VISIBLE);
@@ -304,16 +406,13 @@ public class KYCFragment extends Fragment implements KYCInterface, OnStaticClick
                     updateBankDetailBinding.edtEditPartnership.setVisibility(View.GONE);
                     updateBankDetailBinding.edtEditUdyog.setVisibility(View.GONE);
                 }
-            }
-            else {
+            } else {
                 updateKycLayoutBinding.edtAdditionalId.setText(description);
             }
 
             interrestedfor_bottomsheet.dismiss();
-        }
-        else
-        {
-            Constant.showToast(requireContext(),"Select one option");
+        } else {
+            Constant.showToast(requireContext(), "Select one option");
         }
 
     }
